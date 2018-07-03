@@ -8,7 +8,7 @@ app = Flask(__name__)
 # Homepage
 @app.route('/')
 def homepage():
-    return "Bye There!!!"
+    return render_template("index.html")
 
 
 # @app.route('/<user>')
