@@ -5,10 +5,13 @@ app = Flask(__name__)
 
 # 홈페이지 (메인화면)
 @app.route('/')
-@app.route('/<user>')
-def index(user=None):
-    return render_template('index.html', user = user)
+# @app.route('/<user>')
+# def index(user=None):
+#    return render_template('index.html', user = user)
+def homepage():
+    return "Hello There!"
 
+    
 @app.route("/profile/<name>")
 def profile(name):
     return render_template("profile.html", name = name)
