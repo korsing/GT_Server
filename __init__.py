@@ -27,8 +27,10 @@ def aboutleveltest():
     return render_template("abouttest.html")
 
 
-
-
+# For testing
+@app.route('/testsharing')
+def share():
+    return render_template("main.html")
 
 
 if(__name__ == "__main__"):
