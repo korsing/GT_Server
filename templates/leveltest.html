@@ -1,53 +1,23 @@
-<!DOCTYPE HTML>
-<!--
-	Prototype by Pixelarity
-	pixelarity.com | hello@pixelarity.com
-	License: pixelarity.com/license
--->
-<html>
-	<head>
-		<title>Elements - Prototype by Pixelarity</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="../static/assets/css/main.css" />
-	</head>
-	<body class="is-preload">
-
-		<!-- Header -->
-		<header id="header">
-			<h1><a href="/">Han's SW Class</a></h1>
-			<a href="#menu">Menu</a>
-		</header>
-
-		<!-- Menu -->
-			<nav id="menu">
-				<ul class="links">
-					<br><br><br><br>
-				</ul>
-				<ul class="actions stacked">
-					<li><a href="/signup" class="button primary fit">회원 가입</a></li>
-                    <li><a href="/login" class="button fit">로그인</a></li>
-				</ul>
-			</nav>
-
+{% extends "template.html %}
+{% block content%}
 
 	<!-- Main -->
-		<section id="main" class="wrapper">
-			<header>
-				<h2>Test Start</h2>
-				<p>룰루룰ㄹ루ㅜㅜ</p>
-			</header>
-			<div class="inner">
+	<section id="main" class="wrapper">
+		<header>
+			<h2>Test Start</h2>
+			<p>룰루룰ㄹ루ㅜㅜ</p>
+		</header>
+		<div class="inner">
 
-				<section>
-					<h3>Text</h3>
-					<p>This is <b>bold</b> and this is <strong>strong</strong>. This is <i>italic</i> and this is <em>emphasized</em>.
-					This is <sup>superscript</sup> text and this is <sub>subscript</sub> text.
-					This is <u>underlined</u> and this is code: <code>for (;;) { ... }</code>. Finally, <a href="#">this is a link</a>.</p>
-					<h4>Blockquote</h4>
-					<blockquote>Fringilla nisl. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan faucibus. Vestibulum ante ipsum primis in faucibus lorem ipsum dolor sit amet nullam adipiscing eu felis.</blockquote>
-					<h4>Preformatted</h4>
-					<pre><code>i = 0;
+			<section>
+				<h3>Text</h3>
+				<p>This is <b>bold</b> and this is <strong>strong</strong>. This is <i>italic</i> and this is <em>emphasized</em>.
+				This is <sup>superscript</sup> text and this is <sub>subscript</sub> text.
+				This is <u>underlined</u> and this is code: <code>for (;;) { ... }</code>. Finally, <a href="#">this is a link</a>.</p>
+				<h4>Blockquote</h4>
+				<blockquote>Fringilla nisl. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan faucibus. Vestibulum ante ipsum primis in faucibus lorem ipsum dolor sit amet nullam adipiscing eu felis.</blockquote>
+				<h4>Preformatted</h4>
+				<pre><code>i = 0;
 
 while (!deck.isInOrder()) {
 print 'Iteration ' + i;
@@ -56,27 +26,6 @@ i++;
 }
 
 print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
-				</section>
+			</section>
 
-		<!-- Footer -->
-			<footer id="footer">
-				<div class="inner">
-					<ul class="contact">
-						<li>성균관대학교</li>
-						<li>한옥영</li>
-						<li>(02) 123-4567</li>
-					</ul>
-					<p class="copyright">&copy; Han's SW Class. All rights reserved.</p>
-				</div>
-			</footer>
-
-		<!-- Scripts -->
-		<script src="../static/assets/js/jquery.min.js"></script>
-		<script src="../static/assets/js/jquery.scrollex.min.js"></script>
-		<script src="../static/assets/js/browser.min.js"></script>
-		<script src="../static/assets/js/breakpoints.min.js"></script>
-		<script src="../static/assets/js/util.js"></script>
-		<script src="../static/assets/js/main.js"></script>
-
-	</body>
-</html>
+{% endblock %}
