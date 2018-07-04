@@ -1,36 +1,7 @@
-<!DOCTYPE HTML>
-<!--
-	Prototype by Pixelarity
-	pixelarity.com | hello@pixelarity.com
-	License: pixelarity.com/license
--->
-<html>
-	<head>
-		<title>Signup</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="../static/assets/css/main.css" />
-	</head>
-	<body class="is-preload">
+{% extends "template.html" %}
+{% block content%}
 
-		<!-- Header -->
-			<header id="header">
-				<h1><a href="/">Han's SW Class</a></h1>
-				<a href="#menu">Menu</a>
-			</header>
-
-			<!-- Menu -->
-				<nav id="menu">
-					<ul class="links">
-						<br><br><br><br>
-					</ul>
-					<ul class="actions stacked">
-                        <li><a href="/signup" class="button primary fit">회원 가입</a></li>
-                        <li><a href="/login" class="button fit">로그인</a></li>
-					</ul>
-				</nav>
-
-		<!-- Main -->
+<!-- Main -->
 			<section id="main" class="wrapper">
 				<header>
 					<h2>회원가입구현</h2>
@@ -49,25 +20,4 @@
 				</div>
 			</section>
 
-			<!-- Footer -->
-				<footer id="footer">
-					<div class="inner">
-						<ul class="contact">
-							<li>성균관대학교</li>
-							<li>한옥영</li>
-							<li>(02) 123-4567</li>
-						</ul>
-						<p class="copyright">&copy; Han's SW Class. All rights reserved.</p>
-					</div>
-				</footer>
-
-		<!-- Scripts -->
-        <script src="../static/assets/js/jquery.min.js"></script>
-        <script src="../static/assets/js/jquery.scrollex.min.js"></script>
-        <script src="../static/assets/js/browser.min.js"></script>
-        <script src="../static/assets/js/breakpoints.min.js"></script>
-        <script src="../static/assets/js/util.js"></script>
-        <script src="../static/assets/js/main.js"></script>
-
-	</body>
-</html>
+{% endblock %}
