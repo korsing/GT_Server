@@ -30,5 +30,9 @@ def aboutleveltest():
 def sensitiveinfo():
     return render_template("sensitiveinfo.html")
 
+@app.route('/lecture')
+def lecture():
+    return render_template("lecture.html")
+
 if(__name__ == "__main__"):
     app.run()
