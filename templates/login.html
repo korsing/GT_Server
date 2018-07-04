@@ -8,16 +8,59 @@
         <p>Lorem justo in tellus aenean lacinia felis.</p>
     </header>
     <div class="inner">
-<h3> 아이디 비밀번호 </h3>
-        <hr />
-        <h3>Sed magna ornare ultricies</h3>
-        <p>In vestibulum massa quis arcu lobortis tempus. Nam pretium arcu in odio vulputate luctus.
-Suspendisse euismod lorem eget lacinia fringilla. Sed sed felis justo. Nunc sodales elit in laoreet aliquam.
-Nam gravida, nisl sit amet iaculis porttitor, risus nisi rutrum metus.</p>
-        <ul>
-            <li>Faucibus orci lobortis ac adipiscing integer.</li>
-            <li>Col accumsan arcu mi aliquet placerat.</li>
-        </ul>
+        <section>
+            <h3>Form</h3>
+            <form method="post" action="#">
+                <div class="row gtr-uniform">
+                    <div class="col-6 col-12-xsmall">
+                        <label for="demo-name">Name</label>
+                        <input type="text" name="demo-name" id="demo-name" value="" />
+                    </div>
+                    <div class="col-6 col-12-xsmall">
+                        <label for="demo-email">Email</label>
+                        <input type="email" name="demo-email" id="demo-email" value="" />
+                    </div>
+                    <div class="col-12">
+                        <label for="demo-category">Category</label>
+                        <select name="demo-category" id="demo-category">
+                            <option value="">-</option>
+                            <option value="1">Manufacturing</option>
+                            <option value="1">Shipping</option>
+                            <option value="1">Administration</option>
+                            <option value="1">Human Resources</option>
+                        </select>
+                    </div>
+                    <div class="col-4 col-12-small">
+                        <input type="radio" id="demo-priority-low" name="demo-priority" checked>
+                        <label for="demo-priority-low">Low Priority</label>
+                    </div>
+                    <div class="col-4 col-12-small">
+                        <input type="radio" id="demo-priority-normal" name="demo-priority">
+                        <label for="demo-priority-normal">Normal Priority</label>
+                    </div>
+                    <div class="col-4 col-12-small">
+                        <input type="radio" id="demo-priority-high" name="demo-priority">
+                        <label for="demo-priority-high">High Priority</label>
+                    </div>
+                    <div class="col-6 col-12-small">
+                        <input type="checkbox" id="demo-copy" name="demo-copy">
+                        <label for="demo-copy">Email me a copy</label>
+                    </div>
+                
+                    <div class="col-12">
+                        <label for="demo-message">Message</label>
+                        <textarea name="demo-message" id="demo-message" rows="6"></textarea>
+                    </div>
+                    <div class="col-12">
+                        <ul class="actions">
+                            <li><input type="submit" value="Send Message" class="primary" /></li>
+                            <li><input type="reset" value="Reset" /></li>
+                        </ul>
+                    </div>
+                </div>
+            </form>
+        </section>
+
     </div>
 </section>
 
