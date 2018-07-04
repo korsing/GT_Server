@@ -26,5 +26,9 @@ def leveltest():
 def aboutleveltest():
     return render_template("abouttest.html")
 
+@app.route('/sensitiveinfo')
+def sensitiveinfo():
+    return render_template("sensitiveinfo.html")
+
 if(__name__ == "__main__"):
     app.run()
