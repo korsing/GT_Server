@@ -22,7 +22,7 @@ def signup():
 def leveltest():
     return render_template("leveltest.html")
 
-@app.route('/aboutleveltest')
+@app.route('/abouttest')
 def aboutleveltest():
     return render_template("abouttest.html")
 
