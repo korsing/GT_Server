@@ -10,12 +10,13 @@ app = Flask(__name__)
 def homepage():
     return render_template("index.html")
 
+@app.route('/login')
+def login():
+    return render_template("login.html")
 
-# @app.route('/<user>')
-# def index(user=None):
-#    return render_template('index.html', user = user)
-
-
+@app.route("/signup")
+def signup():
+    return render_template("signup.html")
 
 if(__name__ == "__main__"):
     app.run()
