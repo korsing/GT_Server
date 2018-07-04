@@ -18,5 +18,18 @@ def login():
 def signup():
     return render_template("signup.html")
 
+@app.route("/leveltest")
+def leveltest():
+    return render_template("leveltest.html")
+
+@app.route('/aboutleveltest')
+def aboutleveltest():
+    return render_template("abouttest.html")
+
+
+
+
+
+
 if(__name__ == "__main__"):
     app.run()
