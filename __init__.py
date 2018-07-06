@@ -6,9 +6,9 @@ from flask import Flask, \
                   redirect, \
                   url_for, \
                   session
-from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, BooleanField
-from wtforms.validators import InputRequired, Email, Length           
+# from flask_wtf import FlaskForm
+# from wtforms import StringField, PasswordField, BooleanField
+# from wtforms.validators import InputRequired, Email, Length           
 # import MySQLdb # Database Access
 # from datetime import datetime 
 
