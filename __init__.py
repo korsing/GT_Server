@@ -42,7 +42,7 @@ def lecture():
 
 @app.route('/err_ '+'<category>')
 def error():
-    return render_template("error", category)
+    return render_template("error.html", category)
 
 # Start
 if(__name__ == "__main__"):
