@@ -40,9 +40,9 @@ def sensitiveinfo():
 def lecture():
     return render_template("lecture.html")
 
-@app.route('/err_ '+'<category>')
+@app.route('/error')
 def error():
-    return render_template("error.html", category)
+    return render_template("error.html")
 
 # Start
 if(__name__ == "__main__"):
