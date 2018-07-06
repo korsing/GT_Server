@@ -1,5 +1,6 @@
 
 #! /bin/usr/python
+from error_code import*
 from flask import Flask, \
                   render_template, \
                   flash, \
@@ -18,7 +19,6 @@ app = Flask(__name__)
 #    username = StringField("Username", validators=[InputRequired(), Length(min=4, max=15)])
 #    password = PasswordField("Password", validators=[InputRequired(), Length(min=8, max=80)])
 #    remember = BooleanField('Remember Me')
-
 
 
 # Homepage
