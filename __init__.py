@@ -6,8 +6,8 @@ from flask import Flask, \
                   redirect, \
                   url_for, \
                   session 
-import MySQLdb # Database Access
-from datetime import datetime 
+# import MySQLdb # Database Access
+# from datetime import datetime 
 
 app = Flask(__name__)
 
