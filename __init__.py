@@ -1,7 +1,13 @@
 
 #! /bin/usr/python
-from flask import Flask, render_template #, flash, redirect, url_for, session
-# from data import Articles
+from flask import Flask, 
+                  render_template, #
+                  flash, 
+                  redirect, 
+                  url_for, 
+                  session 
+import MySQLdb # Database Access
+from datetime import datetime 
 
 app = Flask(__name__)
 
@@ -34,5 +40,10 @@ def sensitiveinfo():
 def lecture():
     return render_template("lecture.html")
 
+@app.route('/err_ '+'<category>')
+def error():
+    return render_template("error", category)
+
+# Start
 if(__name__ == "__main__"):
     app.run()
