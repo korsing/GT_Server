@@ -28,9 +28,7 @@ def homepage():
 
 @app.route('/login')
 def login():
-    # form = LoginForm()
-
-    return render_template("/admin/login.html", form = form)
+    return render_template("/admin/login.html")
 
 @app.route("/signup")
 def signup():
