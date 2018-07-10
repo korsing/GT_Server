@@ -59,9 +59,9 @@ def leveltest():
 def aboutleveltest():
     return render_template("/assessments/abouttest.html")
 
-@app.route("/leveltest/<Qnum>")
-def question(Qnum):
-    return render_template("question<Qnum>.html") # 테스트 필요
+@app.route("/leveltest/Q<qnum>")
+def question(qnum):
+    return render_template("/assessments/questions/question<qnum>.html") # 테스트 필요
 
 @app.route('/sensitiveinfo')
 def sensitiveinfo():
