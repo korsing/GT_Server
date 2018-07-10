@@ -27,6 +27,14 @@ section, summary, time, mark, audio, video {
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
 	display: block;}
+Question{
+    text-align : center;
+}
+Margin{
+    padding : 10px;
+    margin-left : 100px;
+    margin-right : 100px;
+}
 
 body {
 	line-height: 1;
@@ -48,6 +56,8 @@ blockquote, q {
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
+  
+
 }
 
 body {
@@ -69,6 +79,8 @@ input, select, textarea {
 	-webkit-appearance: none;
 	-ms-appearance: none;
 	appearance: none;
+    margin-left : auto;
+    margin-right : auto;
 }
 
 /* Basic */
@@ -1825,6 +1837,9 @@ input, select, textarea {
 		text-decoration: none;
 		text-transform: uppercase;
 		white-space: nowrap;
+       margin-left : 10px;
+       margin-right : 10px;
+       
 	}
 
 		input[type="submit"].icon:before,
@@ -1882,21 +1897,25 @@ input, select, textarea {
 		color: #707070 !important;
 	}
 
-		input[type="submit"]:hover,
-		input[type="reset"]:hover,
-		input[type="button"]:hover,
-		button:hover,
-		.button:hover {
-			background-color: rgba(144, 144, 144, 0.075);
-		}
+        input[type="submit"]:hover,
+        input[type="reset"]:hover,
+        input[type="button"]:hover,
+        button:hover,
+        .button:hover {
+         /*   background-color: rgba(144, 144, 144, 0.075);*/
+            color: #ffffff;
+            background-color: #db6172;
+        }
 
-			input[type="submit"]:hover:active,
-			input[type="reset"]:hover:active,
-			input[type="button"]:hover:active,
-			button:hover:active,
-			.button:hover:active {
-				background-color: rgba(144, 144, 144, 0.15);
-			}
+            input[type="submit"]:hover:active,
+            input[type="reset"]:hover:active,
+            input[type="button"]:hover:active,
+            button:hover:active,
+            .button:hover:active {
+                /*background-color: rgba(144, 144, 144, 0.15);*/
+                color : #ffffff;
+                background-color: #db6172;
+            }
 
 		input[type="submit"].disabled, input[type="submit"]:disabled,
 		input[type="reset"].disabled,
@@ -2032,7 +2051,8 @@ input, select, textarea {
 		outline: 0;
 		padding: 0 1em;
 		text-decoration: none;
-		width: 100%;
+		width: 80%;
+      
 	}
 
 		input[type="text"]:invalid,
@@ -2289,6 +2309,9 @@ input, select, textarea {
 		border: 0;
 		display: inline-block;
 		position: relative;
+        margin-left : auto;
+        margin-right : auto;
+
 	}
 
 		.image img {
@@ -2816,6 +2839,8 @@ input, select, textarea {
 	table {
 		margin: 0 0 2em 0;
 		width: 100%;
+        text-align : center;
+      
 	}
 
 		table tbody tr {
@@ -2828,16 +2853,19 @@ input, select, textarea {
 			padding: 0.75em 0.75em;
 		}
 
-		table th {
-			font-size: 0.9em;
-			font-weight: normal;
-			padding: 0 0.75em 0.75em 0.75em;
-			text-align: left;
-		}
+        table th {
+            font-size: 0.9em;
+            font-weight: normal;
+            padding:0.75em 0.75em;
+         
+        }
 
-		table thead {
-			border-bottom: solid 2px;
-		}
+        table thead {
+            border-bottom: solid 2px;
+            background-color: #db6172;
+            color: #ffffff;
+         
+        }
 
 		table tfoot {
 			border-top: solid 2px;
@@ -2878,7 +2906,7 @@ input, select, textarea {
 		}
 
 	table th {
-		color: #707070;
+		color: #ffffff;
 	}
 
 	table thead {

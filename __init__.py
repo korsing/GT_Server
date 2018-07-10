@@ -1,4 +1,4 @@
-
+#-*- coding: utf-8-*-
 #! /bin/usr/python
 from error_code import*
 from flask import Flask, render_template
@@ -9,6 +9,7 @@ from wtforms.validators import InputRequired
 app = Flask(__name__)
 app.config['SECRET_KEY'] = "HansClass"
 
+# 입력 칸을 정의하는 클래스 선언
 class LoginForm(Form):
     username = StringField("username", validators=[InputRequired()])
     password = PasswordField("password", validators=[InputRequired()])
@@ -21,6 +22,15 @@ class SignupForm(Form):
     userpw = PasswordField("password", validators=[InputRequired()])
     pwconfirm = PasswordField("password", validators=[InputRequired()])
     school = StringField("school", validators=[InputRequired()])
+
+class QuestionForm(Form):
+    answer = StringField("answer")
+
+# 데이터베이스에 연결하는 함수
+def connection():
+    conn = MySQLdb.connect(host="localhost", user="root", passwd="4swedu@skku", db="GT_DB")
+    c = conn.cursor()
+    return c, conn
 
 # Homepage
 @app.route('/')
@@ -48,6 +58,10 @@ def leveltest():
 @app.route('/abouttest')
 def aboutleveltest():
     return render_template("/assessments/abouttest.html")
+
+@app.route("/leveltest/<Qnum>")
+def question(Qnum):
+    return render_template("question<Qnum>.html") # 테스트 필요
 
 @app.route('/sensitiveinfo')
 def sensitiveinfo():
