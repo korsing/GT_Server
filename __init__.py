@@ -34,7 +34,7 @@ def login():
         return "Login Successful"
     return render_template("/admin/login.html", form=login_Form)
 
-@app.route("/signup")
+@app.route("/signup", methods=['GET', 'POST'])
 def signup():
     signup_form = SignupForm()
     if(signup_form.validate_on_submit()):
