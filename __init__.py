@@ -11,7 +11,7 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = "HansClass"
 
 class LoginForm(FlaskForm):
-    username = StringField('username')
+    username = StringField('Username')
     password = PasswordField('Password')
 
 # Homepage
@@ -21,7 +21,8 @@ def homepage():
 
 @app.route('/login')
 def login():
-    form = LoginForm()
+    form = hello
+    # form = LoginForm()
     return render_template("/admin/login.html", form = form)
 
 @app.route("/signup")
