@@ -23,7 +23,7 @@ def homepage():
 def login():
     form = 'hello'
     # form = LoginForm()
-    return render_template("/admin/login.html", form = form)
+    return render_template("/admin/login.html")
 
 @app.route("/signup")
 def signup():
