@@ -4,13 +4,14 @@ from error_code import*
 from flask import Flask, render_template
 from flask_wtf import Form
 from wtforms import StringField, PasswordField
+from wtforms.validators import InputRequired
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = "HansClass"
 
 class LoginForm(Form):
-    username = StringField("username")
-    password = PasswordField("password")
+    username = StringField("username", validators=[InputRequired()])
+    password = PasswordField("password", validators=[InputRequired()])
 
 # Homepage
 @app.route('/')
@@ -20,6 +21,8 @@ def homepage():
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     login_Form = LoginForm()
+    if(form.validate_on_submit):
+        pass
     return render_template("/admin/login.html", form=login_Form)
 
 @app.route("/signup")
