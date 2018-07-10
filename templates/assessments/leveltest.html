@@ -9,24 +9,36 @@
 		</header>
 		<div class="inner">
 
-			<section>
-				<h3>Text</h3>
-				<p>This is <b>bold</b> and this is <strong>strong</strong>. This is <i>italic</i> and this is <em>emphasized</em>.
-				This is <sup>superscript</sup> text and this is <sub>subscript</sub> text.
-				This is <u>underlined</u> and this is code: <code>for (;;) { ... }</code>. Finally, <a href="#">this is a link</a>.</p>
-				<h4>Blockquote</h4>
-				<blockquote>Fringilla nisl. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan faucibus. Vestibulum ante ipsum primis in faucibus lorem ipsum dolor sit amet nullam adipiscing eu felis.</blockquote>
-				<h4>Preformatted</h4>
-				<pre><code>i = 0;
+				<table class="type03">
 
-while (!deck.isInOrder()) {
-print 'Iteration ' + i;
-deck.shuffle();
-i++;
-}
-
-print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
-			</section>
+						<thead >
+							<tr>
+								<th scope="col">카테고리</th>
+								<th scope="col">문제번호</th>
+								<th scope="col">통과 여부</th>
+							</tr>
+						</thead>
+					
+					
+						<!--   QuestionNumber는 문제 번호 0부터 100까지 증가-->
+						<!--   QuestionCategory는 문제 카테고리 리스트로 사고력, 엔트리, 파이썬 씨 순서로 들어감-->
+						<!--   PassorFail은 DB로부터 검사하여 문제를 풀었는지 아닌지 확인할 변수-->
+						{% for QuestionNumber in range(1,101): %}
+						<tr>
+							{% if QuestionNumber%25 == 1: %}
+								<td scope="row">{{ QuestionCategory[QuestionNumber/25] }}</td>
+							{% end if %}
+							{% if QuestionNumber%25 != 1: %}
+								<td scope="row"></td>
+							{% end if %}
+							<td> <a href="/leveltest/Q{{ QuestionNumber }}.html" class="LeftBlock"> {{ QuestionNumber }}번 </a></td>
+							<td>  {{ PassorFail }} </td>
+						</tr>
+						{% endfor %}
+					
+					
+					
+					</table>
 		</div>
 	</section>
 

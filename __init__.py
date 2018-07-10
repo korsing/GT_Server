@@ -57,7 +57,11 @@ def leveltest():
 
 @app.route('/abouttest')
 def aboutleveltest():
-    return render_template("/assessments/abouttest.html")
+    questionNo = 0
+    category = ["Thinking", "Entry", "Python", "C"]
+    passfail = True
+    # c,conn = connection() # DB에서 갖고와서 비교 후 값 전달    
+    return render_template("/assessments/abouttest.html", QuestionCategory = category, QuestionNumber = questionNo, passorfail = passfail)
 
 @app.route("/leveltest/Q<qnum>")
 def question(qnum):
