@@ -3,7 +3,7 @@
 from error_code import*
 from flask import Flask, render_template
 from flask_wtf import Form
-from wtforms import StringField, PasswordField
+from wtforms import StringField, PasswordField, IntegerField
 from wtforms.validators import InputRequired
 
 app = Flask(__name__)
@@ -12,6 +12,15 @@ app.config['SECRET_KEY'] = "HansClass"
 class LoginForm(Form):
     username = StringField("username", validators=[InputRequired()])
     password = PasswordField("password", validators=[InputRequired()])
+
+class SignupForm(Form):
+    name = StringField("name", validators=[InputRequired()])
+    phone = StringField("phone", validators=[InputRequired()])
+    email = StringField("email", validators=[InputRequired()])
+    userid = StringField("username", validators=[InputRequired()])
+    usedpw = PasswordField("password", validators=[InputRequired()])
+    pwconfirm = PasswordField("password", validators=[InputRequired()])
+    school = StringField("school", validators=[InputRequired()])
 
 # Homepage
 @app.route('/')
@@ -27,8 +36,10 @@ def login():
 
 @app.route("/signup")
 def signup():
-    form = LoginForm()
-    return render_template("/admin/signup.html", form = form)
+    signup_form = SignupForm()
+    if(signup_form.validate_on_submit()):
+        return "Sign Up Successful!"
+    return render_template("/admin/signup.html", form = signup_form)
 
 @app.route("/leveltest")
 def leveltest():
