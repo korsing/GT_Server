@@ -19,10 +19,10 @@ class LoginForm(FlaskForm):
 def homepage():
     return render_template("index.html")
 
-@app.route('/login')
+@app.route('/login',)
 def login():
     form = LoginForm()
-    return render_template("/admin/login.html", form=form)
+    return render_template("/admin/login.html")
 
 @app.route("/signup")
 def signup():
