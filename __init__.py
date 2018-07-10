@@ -53,15 +53,15 @@ def signup():
 
 @app.route("/leveltest")
 def leveltest():
-    return render_template("/assessments/leveltest.html")
-
-@app.route('/abouttest')
-def aboutleveltest():
     questionNo = 0
     category = ["Thinking", "Entry", "Python", "C"]
     passfail = True
     # c,conn = connection() # DB에서 갖고와서 비교 후 값 전달    
-    return render_template("/assessments/abouttest.html", QuestionCategory = category, QuestionNumber = questionNo, passorfail = passfail)
+    return render_template("/assessments/leveltest.html", QuestionCategory = category, QuestionNumber = questionNo, PassorFail = passfail)
+
+@app.route('/abouttest')
+def aboutleveltest():
+    return render_template("/assessments/abouttest.html")
 
 @app.route("/leveltest/Q<qnum>")
 def question(qnum):
