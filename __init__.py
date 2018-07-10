@@ -61,7 +61,7 @@ def aboutleveltest():
 
 @app.route("/leveltest/Q<qnum>")
 def question(qnum):
-    return "question<qnum>"
+    return "question"+"<qnum>"
     # return render_template("/assessments/questions/question<qnum>.html") # 테스트 필요
 
 @app.route('/sensitiveinfo')
@@ -74,7 +74,7 @@ def lecture():
 
 @app.route('/error<errcode>')
 def error(errcode):
-    return render_template("error.html", errcode=errcode)
+    return render_template("/admin/error.html", errcode=errcode)
 
 # Start
 if(__name__ == "__main__"):
