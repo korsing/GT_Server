@@ -46,11 +46,9 @@ def login():
 
 @app.route("/signup", methods=['GET', 'POST'])
 def signup():
-    c, conn = connection()
     signup_form = SignupForm()
     if(signup_form.validate_on_submit()):
-        return "Sign Up Successful!"    
-
+        return "Sign Up Successful!"
     return render_template("/admin/signup.html", form = signup_form)
 
 @app.route("/leveltest")
@@ -58,7 +56,7 @@ def leveltest():
     questionNo = 0
     passfail = True
     # c,conn = connection() # DB에서 갖고와서 비교 후 값 전달    
-    return render_template("/assessments/leveltest.html",QuestionNumber = questionNo, PassorFail = passfail)
+    return render_template("/assessments/leveltest.html", QuestionNumber = questionNo, PassorFail = passfail)
 
 @app.route('/abouttest')
 def aboutleveltest():
