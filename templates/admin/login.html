@@ -9,7 +9,10 @@
     </header>
     <div class="inner">
         <section>
-            <form method="POST" action="#">
+            <form method="POST" action="/">
+                {{ form.csrf_token }}
+                {{ form.username }}
+                {{ form.password }}
                 <div class="row gtr-uniform">
                     <div class="col-6 col-12-xsmall">
                         <label for="demo-name">아이디</label>
