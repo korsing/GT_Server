@@ -1,25 +1,18 @@
 
 #! /bin/usr/python
 from error_code import*
-from flask import Flask, \
-                  render_template, \
-                  flash, \
-                  redirect, \
-                  url_for, \
-                  session
-# from flask_wtf import FlaskForm
-# from wtforms import StringField, PasswordField, BooleanField
-# from wtforms.validators import InputRequired, Email, Length           
-# import MySQLdb # Database Access
-# from datetime import datetime 
+from flask import Flask, render_template,
+from flask_wtf import FlaskForm
+from wtforms import StringField, PasswordField
+
+
 
 app = Flask(__name__)
+app.config['SECRET_KEY'] = "HansClass"
 
-# class LoginForm(FlaskForm):
-#    username = StringField("Username", validators=[InputRequired(), Length(min=4, max=15)])
-#    password = PasswordField("Password", validators=[InputRequired(), Length(min=8, max=80)])
-#    remember = BooleanField('Remember Me')
-
+class LoginForm(FlaskForm):
+    username = StringField('username')
+    password = PasswordField('Password')
 
 # Homepage
 @app.route('/')
@@ -28,7 +21,8 @@ def homepage():
 
 @app.route('/login')
 def login():
-    return render_template("/admin/login.html")
+    form = LoginForm()
+    return render_template("/admin/login.html", form = form)
 
 @app.route("/signup")
 def signup():
