@@ -46,16 +46,16 @@ def login():
 
 @app.route("/signup", methods=['GET', 'POST'])
 def signup():
-    # c, conn = connection()
+    c, conn = connection()
     signup_form = SignupForm()
-    #if(signup_form.validate_on_submit()):
-    #    c.execute("INSERT INTO SIGNUP VALUES (" + SignupForm.name + ", " \
-    #                                            + SignupForm.userid + ", " \
-    #                                            + SignupForm.userpw + ", " \
-    #                                            + SignupForm.email + ", " \
-    #                                            + SignupForm.contact + ", " \
-    #                                            + SignupForm.school + ")")
-        
+    if(signup_form.validate_on_submit()):
+        c.execute("INSERT INTO SIGNUP VALUES (" + SignupForm.name + ", " \
+                                                + SignupForm.userid + ", " \
+                                                + SignupForm.userpw + ", " \
+                                                + SignupForm.email + ", " \
+                                                + SignupForm.contact + ", " \
+                                                + SignupForm.school + ")")
+        return "Sign Up Successful!"    
 
     return render_template("/admin/signup.html", form = signup_form)
 
