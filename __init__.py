@@ -8,11 +8,11 @@ from wtforms import StringField, PasswordField
 
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = "HansClass"
+#app.config['SECRET_KEY'] = "HansClass"
 
-class LoginForm(FlaskForm):
-    username = StringField('Username')
-    password = PasswordField('Password')
+#class LoginForm(FlaskForm):
+#    username = StringField('Username')
+#    password = PasswordField('Password')
 
 # Homepage
 @app.route('/')
