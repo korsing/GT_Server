@@ -5,6 +5,7 @@ from flask import Flask, render_template
 from flask_wtf import Form
 from wtforms import StringField, PasswordField, IntegerField
 from wtforms.validators import InputRequired
+import MySQLdb
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = "HansClass"
@@ -46,9 +47,12 @@ def login():
 
 @app.route("/signup", methods=['GET', 'POST'])
 def signup():
-    # c, conn = connection()
+    c, conn = connection()
     signup_form = SignupForm()
     if(signup_form.validate_on_submit()):   
+        c.execute("INSERT INTO SIGNUP VALUES (%s %s %s %s %s %s)", (signup_form.name, signup_form.userid, signup_form.userpw, signup_form.email, signup_form.phone, signup_form.school))
+        conn.commit()
+        conn.close()
         return "Sign Up Successful!"
     return render_template("/admin/signup.html", form = signup_form)
 
