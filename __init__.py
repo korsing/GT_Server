@@ -3,7 +3,7 @@
 from error_code import*
 from flask import Flask, render_template
 
-
+result = 10/0
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = "HansClass"
@@ -43,4 +43,4 @@ def error(errcode):
 
 # Start
 if(__name__ == "__main__"):
-    app.run()
+    app.run(debug = True)
