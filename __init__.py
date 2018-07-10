@@ -22,7 +22,7 @@ def homepage():
 def login():
     login_Form = LoginForm()
     if(login_Form.validate_on_submit()):
-        return "Login Successful!"
+        return render_template("index.html")
     return render_template("/admin/login.html", form=login_Form)
 
 @app.route("/signup")
