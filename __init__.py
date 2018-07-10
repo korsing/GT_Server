@@ -1,7 +1,7 @@
 
 #! /bin/usr/python
 from error_code import*
-from flask import Flask, render_template
+from flask import Flask, render_template, url_for
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField
 
@@ -21,7 +21,8 @@ def homepage():
 
 @app.route('/login')
 def login():
-    return render_template("/admin/login.html")
+    form = LoginForm()
+    return render_template("/admin/login.html", form=form)
 
 @app.route("/signup")
 def signup():
