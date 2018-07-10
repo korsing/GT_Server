@@ -48,15 +48,7 @@ def login():
 def signup():
     c, conn = connection()
     signup_form = SignupForm()
-    if(signup_form.validate_on_submit()):
-        c.execute("INSERT INTO SIGNUP VALUES (%s %s %s %s %s %s)", (signup_form.name,\
-                                                                    signup_form.userid,\
-                                                                    signup_form.userpw,\
-                                                                    signup_form.email,\
-                                                                    signup_form.phone,\
-                                                                    signup_form.school))
-        conn.commit()
-        conn.close()
+    if(signup_form.validate_on_submit()):   
         return "Sign Up Successful!"
     return render_template("/admin/signup.html", form = signup_form)
 
