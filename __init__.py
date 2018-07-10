@@ -21,8 +21,8 @@ def homepage():
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     login_Form = LoginForm()
-    # if(form.validate_on_submit):
-    #     return "Login Successful!"
+    if(login_Form.validate_on_submit):
+        return "Login Successful!"
     return render_template("/admin/login.html", form=login_Form)
 
 @app.route("/signup")
