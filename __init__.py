@@ -19,7 +19,8 @@ def homepage():
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
-    return render_template("/admin/login.html")
+    login_Form = LoginForm()
+    return render_template("/admin/login.html", form=login_Form)
 
 @app.route("/signup")
 def signup():
