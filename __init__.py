@@ -1,18 +1,12 @@
 
 #! /bin/usr/python
 from error_code import*
-from flask import Flask, render_template, url_for
-from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField
+from flask import Flask, render_template
 
 
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = "HansClass"
-
-class LoginForm(FlaskForm):
-    username = StringField('Username')
-    password = PasswordField('Password')
 
 # Homepage
 @app.route('/')
@@ -21,7 +15,6 @@ def homepage():
 
 @app.route('/login',)
 def login():
-    form = LoginForm()
     return render_template("/admin/login.html")
 
 @app.route("/signup")
