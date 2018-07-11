@@ -43,7 +43,7 @@ def signup():
     signup_form = SignupForm()
     if(signup_form.validate_on_submit()):   
         # return "Sign Up Successful!"
-        return signup_form.name.data + '님 환영합니다.'
+        return signup_form.name.data
     return render_template("/admin/signup.html", form = signup_form)
 
 @app.route("/leveltest")
