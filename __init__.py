@@ -4,8 +4,8 @@ from error_code import*
 from flask import Flask, render_template
 from flask_wtf import Form
 from wtforms import StringField, PasswordField, IntegerField
-from wtforms.validators import InputRequired
-# from flask_mysqldb import MySQL
+from wtforms.validators import InputRequired, Email, Length
+from flask.ext.mysqldb import MySQL
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = "HansClass"
@@ -16,9 +16,9 @@ class LoginForm(Form):
     password = PasswordField("password", validators=[InputRequired()])
 
 class SignupForm(Form):
-    name = StringField("name", validators=[InputRequired()])
-    phone = StringField("phone", validators=[InputRequired()])
-    email = StringField("email", validators=[InputRequired()])
+    name = StringField("name", validators=[InputRequired(), Length(min=4)])
+    phone = StringField("phone", validators=[InputRequired(), Length(min=13, max=13)])
+    email = StringField("email", validators=[InputRequired(), validators=[InputRequired(), Email(message="Invalid Email")]])
     userid = StringField("username", validators=[InputRequired()])
     userpw = PasswordField("password", validators=[InputRequired()])
     pwconfirm = PasswordField("password", validators=[InputRequired()])
