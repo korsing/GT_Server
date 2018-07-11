@@ -42,8 +42,8 @@ def login():
 def signup():
     signup_form = SignupForm()
     if(signup_form.validate_on_submit()):   
-        return "Sign Up Successful!"
-        #return signup_form.name + ' ' + signup_form.userpw + ' ' + signup_form.email
+        # return "Sign Up Successful!"
+        return signup_form.name + '님 환영합니다.'
     return render_template("/admin/signup.html", form = signup_form)
 
 @app.route("/leveltest")
