@@ -9,6 +9,7 @@ from flask_mysqldb import MySQL
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = "HansClass"
+app.debug = True
 
 # 입력 칸을 정의하는 클래스 선언
 class LoginForm(Form):
@@ -74,4 +75,4 @@ def error(errcode):
 
 # Start
 if(__name__ == "__main__"):
-    app.run(debug = True)
+    app.run()
