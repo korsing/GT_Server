@@ -18,7 +18,7 @@ class LoginForm(Form):
 class SignupForm(Form):
     name = StringField("name", validators=[InputRequired(), Length(min=4)])
     phone = StringField("phone", validators=[InputRequired(), Length(min=13, max=13)])
-    email = StringField("email", validators=[InputRequired(), validators=[InputRequired(), Email(message="Invalid Email")]])
+    email = StringField("email", validators=[InputRequired(), Email(message="Invalid Email")])
     userid = StringField("username", validators=[InputRequired()])
     userpw = PasswordField("password", validators=[InputRequired()])
     pwconfirm = PasswordField("password", validators=[InputRequired()])
