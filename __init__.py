@@ -15,7 +15,7 @@ class LoginForm(Form):
     password = PasswordField("password", validators=[InputRequired()])
 
 class SignupForm(Form):
-    name = StringField("name", validators=[InputRequired(), Length(min=4)])
+    name = StringField("name", validators=[InputRequired(), Length()])
     phone = StringField("phone", validators=[InputRequired(), Length(min=13, max=13)])
     email = StringField("email", validators=[InputRequired(), Email(message="Invalid Email")])
     userid = StringField("username", validators=[InputRequired()])
@@ -42,7 +42,7 @@ def login():
 def signup():
     signup_form = SignupForm()
     if(signup_form.validate_on_submit()):   
-        return "Sign Up Successful!"
+        return signup_form.username + ' ' + signup_form.userpw
     return render_template("/admin/signup.html", form = signup_form)
 
 @app.route("/leveltest")
