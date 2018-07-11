@@ -5,7 +5,7 @@ from flask import Flask, render_template
 from flask_wtf import Form
 from wtforms import StringField, PasswordField, IntegerField
 from wtforms.validators import InputRequired
-# import MySQLdb
+# from flask_mysqldb import MySQL
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = "HansClass"
@@ -27,12 +27,6 @@ class SignupForm(Form):
 class QuestionForm(Form):
     answer = StringField("answer")
 
-# 데이터베이스에 연결하는 함수
-def connection():
-    conn = MySQLdb.connect(host="localhost", user="root", passwd="4swedu@skku", db="GT_DB")
-    c = conn.cursor()
-    return c, conn
-
 # Homepage
 @app.route('/')
 def homepage():
@@ -49,10 +43,6 @@ def login():
 def signup():
     signup_form = SignupForm()
     if(signup_form.validate_on_submit()):   
-        c, conn = connection()
-        c.execute("INSERT INTO SIGNUP VALUES (%s %s %s %s %s %s)", (signup_form.name, signup_form.userid, signup_form.userpw, signup_form.email, signup_form.phone, signup_form.school))
-        conn.commit()
-        conn.close()
         return "Sign Up Successful!"
     return render_template("/admin/signup.html", form = signup_form)
 
@@ -60,7 +50,6 @@ def signup():
 def leveltest():
     questionNo = 0
     passfail = True
-    # c,conn = connection() # DB에서 갖고와서 비교 후 값 전달    
     return render_template("/assessments/leveltest.html", QuestionNumber = questionNo, PassorFail = passfail)
 
 @app.route('/abouttest')
