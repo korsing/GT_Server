@@ -5,6 +5,7 @@ from flask import Flask, render_template
 from flask_wtf import Form
 from wtforms import StringField, PasswordField, IntegerField
 from wtforms.validators import InputRequired, Email, Length
+from flask_mysqldb import MySQL
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = "HansClass"
@@ -42,8 +43,7 @@ def login():
 def signup():
     signup_form = SignupForm()
     if(signup_form.validate_on_submit()):   
-        # return "Sign Up Successful!"
-        return signup_form.name.data
+        return "Sign Up Successful!"
     return render_template("/admin/signup.html", form = signup_form)
 
 @app.route("/leveltest")
