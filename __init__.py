@@ -44,7 +44,8 @@ def login():
     login_form = LoginForm()
     if(login_form.validate_on_submit()):
         c, conn = connectDB()
-        return login_form.userid.data
+        userid = login_form.userid.data
+        return userid
         #userpw = login_form.userpw.data
         #return userid
         #c.execute("SELECT userpw FROM USERS WHERE userid = %s", (userid,))
