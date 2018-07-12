@@ -8,6 +8,9 @@ from wtforms.validators import InputRequired, Email, Length
 import MySQLdb
 import os
 
+# 전역변수 선언
+g.sessionFlag = False
+
 # Flask가 동작하기 위해서 필요한 기본 설정 들..
 app = Flask(__name__)
 app.config['SECRET_KEY'] = "HansClass"
