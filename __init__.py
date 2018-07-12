@@ -14,7 +14,7 @@ app.debug = True
 # 입력 칸을 정의하는 클래스 선언
 class LoginForm(Form):
     userid = StringField("username", validators=[InputRequired()])
-    passwd = PasswordField("password", validators=[InputRequired()])
+    userpw = PasswordField("password", validators=[InputRequired()])
 
 class SignupForm(Form):
     name = StringField("name", validators=[InputRequired()])
@@ -45,11 +45,9 @@ def login():
     if(login_form.validate_on_submit()):
         c, conn = connectDB()
         userid = login_form.userid.data
-        return userid
-        #userpw = login_form.userpw.data
-        #return userid
-        #c.execute("SELECT userpw FROM USERS WHERE userid = %s", (userid,))
-        #return c.fetchone()[0]
+        userpw = login_form.userpw.data
+        c.execute("SELECT userpw FROM USERS WHERE userid = %s", (userid,))
+        return c.fetchone()[0]
         #if(userpw == c.fetchone()[0]):
         #    return render_template("/index.html", name = login_form.name.data)
         #else:
