@@ -43,6 +43,9 @@ def connectDB():
 def createSession(username):
     session['user'] = username
 
+def deleteSession():
+    while(len(session['user']) > 0):
+        session.pop('user', None)
 
 
 # 홈페이지 # 로그인 없이는 각 버튼 접근 권한 없애야함!
@@ -66,14 +69,16 @@ def login():
         userpw = login_form.userpw.data # 비밀번호를 저장
         c.execute("SELECT userpw FROM USERS WHERE userid = %s", (userid,)) # 아이디를 사용하여 비밀번호를 DB에서 가져옴
         if(userpw == c.fetchone()[0]): # 입력한 비밀번호와 DB상의 비밀번호가 같다면
-            c.execute("SELECT name FROM USERS WHERE userid = %s", (userid,)) # DB에서 이름을 갖고온다.
-            name = c.fetchone()[0]
             createSession(userid) # 로그인이 완료된 상황이니 세션을 생성
-            return render_template("/index.html", name = name)
+            return redirect('/')
         else:
             return "Login Fail!"
     return render_template("/admin/login.html", form=login_form)
 
+@app.route('/logout')
+def logout():
+    deleteSession()
+    return redirect('/')
 
 @app.route("/signup", methods=['GET', 'POST'])
 def signup():
