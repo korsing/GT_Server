@@ -8,9 +8,6 @@ from wtforms.validators import InputRequired, Email, Length
 import MySQLdb
 import os
 
-# 전역변수 선언
-g.sessionFlag = False
-
 # Flask가 동작하기 위해서 필요한 기본 설정 들..
 app = Flask(__name__)
 app.config['SECRET_KEY'] = "HansClass"
@@ -45,7 +42,6 @@ def connectDB():
 # 로그인을 수행했을 때 세션을 생성하는 함수
 def createSession(username):
     session['user'] = username
-    g.sessionFlag = True
 
 # 세션을 확인하는 함수
 def checkSession():
@@ -66,7 +62,7 @@ def homepage():
         c, conn = connectDB()
         c.execute("SELECT name FROM USERS WHERE userid = %s", (userid,))
         name = c.fetchone()[0]
-        return render_template("index.html", name=name, flag = g.sessionFlag )
+        return render_template("index.html", name=name)
     else:
         return render_template("index.html", name="NULL")
 
