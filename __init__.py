@@ -44,8 +44,7 @@ def createSession(username):
     session['user'] = username
 
 def deleteSession():
-    while(len(session['user']) > 0):
-        session.pop('user', None)
+    session.pop('user', None)
 
 
 # 홈페이지 # 로그인 없이는 각 버튼 접근 권한 없애야함!
