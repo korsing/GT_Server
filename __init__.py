@@ -1,7 +1,7 @@
 #-*- coding: utf-8-*-
 
 from error_code import*
-from flask import Flask, render_template, session
+from flask import Flask, render_template, session, redirect
 from flask_wtf import Form
 from wtforms import StringField, PasswordField, IntegerField
 from wtforms.validators import InputRequired, Email, Length
@@ -68,7 +68,7 @@ def signup():
         c.execute("INSERT INTO USERS VALUES (%s, %s, %s, %s, %s, %s)", (signup_form.name.data, signup_form.userid.data, signup_form.userpw.data, signup_form.email.data, signup_form.phone.data, signup_form.school.data))
         conn.commit()
         conn.close()
-        return render_template("/admin/login.html")
+        return redirect("/login")
     return render_template("/admin/signup.html", form = signup_form)
 
 @app.route("/leveltest")
@@ -94,7 +94,7 @@ def leveltest_category(variable):
             category = "python"
         else:
             category = "c"
-        return render_template("/assessments/questions/" + category + "/Q"+ str(qnum) + ".html", category=category)
+        return render_template("/assessments/questions/" + category + "/Q"+ str(qnum) + ".html",)
 
 
 @app.route('/sensitiveinfo')
