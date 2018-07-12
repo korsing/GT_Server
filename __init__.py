@@ -51,7 +51,7 @@ def signup():
     signup_form = SignupForm()
     if(signup_form.validate_on_submit()):   
         c, conn = connectDB()
-        #c.execute("INSERT INTO USERS VALUES (%s, %s, %s, %s, %s, %s)", (signup_form.name.data, signup_form.userid.data, signup_form.userpw.data, signup_form.email.data, signup_form.phone.data, signup_form.school.data))
+        c.execute("INSERT INTO USERS VALUES (%s, %s, %s, %s, %s, %s)", (signup_form.name.data, signup_form.userid.data, signup_form.userpw.data, signup_form.email.data, signup_form.phone.data, signup_form.school.data))
         #conn.commit()
         #conn.close()
         return signup_form.name.data
