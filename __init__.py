@@ -53,8 +53,8 @@ def checkSession(username):
 # 홈페이지 # 로그인 없이는 각 버튼 접근 권한 없애야함!
 @app.route('/')
 def homepage():
-    createSession("Jeong")
-    return len(session)
+    session['user'] = "Jeong"
+    return session
     
     #name = 'NULL'
     #username = 'NULL'
