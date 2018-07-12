@@ -98,12 +98,11 @@ def thinking():
 @app.route("/leveltest/<category>/Q<qnum>")
 def question(category, qnum):
     possible = ["Thinking", "Entry", "Python", "C"]
-    if(category not in possible):
-        raise wrongDirectory
-    try:
-        return render_template("/assessments/questions/thinking/Q" + str(qnum) + ".html") # 테스트 필요
-    Exception wrongDirectory:
-        return render_template("/admin/error.html", error = "잘 못된 요청입니다.")
+    #if(category not in possible):
+    #    raise wrongDirectory
+    return render_template("/assessments/questions/thinking/Q" + str(qnum) + ".html") # 테스트 필요
+    #Exception wrongDirectory:
+    #    return render_template("/admin/error.html", error = "잘 못된 요청입니다.")
 
 @app.route('/sensitiveinfo')
 def sensitiveinfo():
