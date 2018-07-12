@@ -47,10 +47,11 @@ def login():
         userid = login_form.userid.data
         passwd = login_form.userpw.data
         c.execute("SELECT userpw FROM USERS WHERE userid = %s", (userid,))
-        if(userpw == c.fetchone()[0]):
-            return render_template("/index.html", name = login_form.name.data)
-        else:
-            return "Login Fail!"
+        return c.fetchone()[0]
+        #if(userpw == c.fetchone()[0]):
+        #    return render_template("/index.html", name = login_form.name.data)
+        #else:
+        #    return "Login Fail!"
     return render_template("/admin/login.html", form=login_form)
 
 @app.route("/signup", methods=['GET', 'POST'])
