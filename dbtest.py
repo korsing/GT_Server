@@ -6,7 +6,7 @@ def connection():
     c = conn.cursor()
     return c, conn
 
-name = "정윤석"
+name = "Joshua Jung"
 userid = "korsing4"
 userpw = "dbsdud12"
 email = "joshuanpedia@gmail.com"

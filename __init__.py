@@ -30,7 +30,7 @@ class QuestionForm(Form):
 
 
 def connectDB():
-    conn = MySQLdb.connect(host="localhost", user="root", passwd="4swedu@skku", db="GT_DB")
+    conn = MySQLdb.connect(host="localhost", user="root", passwd="4swedu@skku", db="GT_DB",charset="utf8mb4")
     c = conn.cursor()
     return c, conn
 
@@ -52,9 +52,9 @@ def signup():
     if(signup_form.validate_on_submit()):   
         c, conn = connectDB()
         c.execute("INSERT INTO USERS VALUES (%s, %s, %s, %s, %s, %s)", (signup_form.name.data, signup_form.userid.data, signup_form.userpw.data, signup_form.email.data, signup_form.phone.data, signup_form.school.data))
-        #conn.commit()
-        #conn.close()
-        return signup_form.name.data
+        conn.commit()
+        conn.close()
+        return render_template("/index.html")
     return render_template("/admin/signup.html", form = signup_form)
 
 @app.route("/leveltest")
