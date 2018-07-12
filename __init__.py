@@ -53,13 +53,14 @@ def checkSession(username):
 # 홈페이지 # 로그인 없이는 각 버튼 접근 권한 없애야함!
 @app.route('/')
 def homepage():
-    createSession("Jeong")
     if('user' in session):
-        return session['user']
-    
-    #name = 'NULL'
-    #username = 'NULL'
-    #return render_template("index.html", name=name)
+        userid = session['user']
+        c, conn = connectDB()
+        c.execute("SELECT name FROM USERS WHERE userid = %s", (userid,))
+        name = c.fetchone()[0]
+        return render_template("index.html", name=name)
+    else:
+        return render_template("index.html", name="NULL")
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
