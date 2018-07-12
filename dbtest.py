@@ -18,6 +18,9 @@ c.execute('INSERT INTO USERS VALUES (%s, %s, %s, %s, %s, %s)', (name, userid, us
 
 c.execute("SELECT * FROM USERS WHERE userid = 'korsing'")
 print(c.fetchall()[0])
-print(c.fetchone()[0])
+
+c.execute("SELECT passwd FROM USERS WHERE userid = 'korsing'")
+print(c.fetchone())
+
 conn.commit()
 conn.close()
