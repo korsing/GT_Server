@@ -1,10 +1,11 @@
 #-*- coding: utf-8-*-
+
 from error_code import*
 from flask import Flask, render_template
 from flask_wtf import Form
 from wtforms import StringField, PasswordField, IntegerField
 from wtforms.validators import InputRequired, Email, Length
-from flaskext.mysql import MySQL
+import MySQLdb
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = "HansClass"
