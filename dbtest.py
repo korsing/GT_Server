@@ -2,7 +2,7 @@
 import MySQLdb
 
 def connection():
-    conn = MySQLdb.connect(host="localhost", user="root", passwd="4swedu@skku", db="GT_DB")
+    conn = MySQLdb.connect(host="localhost", user="root", passwd="4swedu@skku", db="GT_DB", charset="utf8")
     c = conn.cursor()
     return c, conn
 
