@@ -30,7 +30,7 @@ class QuestionForm(Form):
 
 
 def connectDB():
-    conn = MySQLdb.connect(host="localhost", user="root", passwd="4swedu@skku", db="GT_DB)
+    conn = MySQLdb.connect(host="localhost", user="root", passwd="4swedu@skku", db="GT_DB")
     c = conn.cursor()
     return c, conn
 
