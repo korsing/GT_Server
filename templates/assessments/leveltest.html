@@ -21,7 +21,6 @@
 					{% for i in range(1,101): %}
 						</thead>
 							<td> {{ i }} </td>
-							<td> 사고력 </td>
 							{% if (i<=25): %}
 							<td> 사고력 </td>
 							{% elif (i<=50): %}
@@ -31,6 +30,7 @@
 							{% else: %}
 							<td> C언어 </td>
 							{% endif %}
+							<td><a href="/leveltest/Q"+{{str(i)}} class="button">문제풀기</a></td>
 							<td> {{ PassorFail }} </td>
 						</tr>
 					{% endfor %}				
