@@ -16,7 +16,7 @@ school = "Do Sung Elementary School"
 c, conn = connection()
 
 id = 'korsing'
-c.execute("SELECT * FROM USERS WHERE userid = (%s)", id)
+c.execute("SELECT * FROM USERS WHERE userid = %s", id)
 print(c.fetchall()[0])
 
 c.execute("SELECT userpw FROM USERS WHERE userid = 'korsing'")
