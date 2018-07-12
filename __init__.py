@@ -37,7 +37,7 @@ def connectDB():
 # Homepage
 @app.route('/')
 def homepage():
-    return render_template("index.html")
+    return render_template("index.html", name="Jung")
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
