@@ -7,7 +7,7 @@ def connection():
     return c, conn
 
 name = "Joshua Jung"
-userid = "korsing4100"
+userid = "korsing400"
 userpw = "dbsdud12"
 email = "joshuanpedia@gmail.com"
 phone = "010-2614-5698"
@@ -18,6 +18,6 @@ c.execute('INSERT INTO USERS VALUES (%s, %s, %s, %s, %s, %s)', (name, userid, us
 
 c.execute("SELECT * FROM USERS WHERE userid = 'korsing'")
 print(c.fetchall()[0])
-
+print(c.fetchone()[0])
 conn.commit()
 conn.close()
