@@ -39,6 +39,17 @@ def connectDB():
     c = conn.cursor()
     return c, conn
 
+# 로그인을 수행했을 때 세션을 생성하는 함수
+def createSession(username):
+    session['user'] = username
+
+# 로그인이 되어있는지 확인하는 함수
+def checkSession(username):
+    if(username in session):
+        return True
+    else:
+        return False
+
 # 홈페이지 # 로그인 없이는 각 버튼 접근 권한 없애야함!
 @app.route('/')
 def homepage():
@@ -55,10 +66,12 @@ def login():
         if(userpw == c.fetchone()[0]): # 입력한 비밀번호와 DB상의 비밀번호가 같다면
             c.execute("SELECT name FROM USERS WHERE userid = %s", (userid,)) # DB에서 이름을 갖고온다.
             name = c.fetchone()[0]
-            return render_template("/index.html", name = name )
+            createSession(userid) # 로그인이 완료된 상황이니 세션을 생성
+            return render_template("/index.html", name = name)
         else:
             return "Login Fail!"
     return render_template("/admin/login.html", form=login_form)
+
 
 @app.route("/signup", methods=['GET', 'POST'])
 def signup():
