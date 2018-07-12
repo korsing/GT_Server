@@ -11,30 +11,36 @@
 
 			<table class="type03">
 
-					<thead >
-						<tr>
-							<th scope="col">문제번호</th>
-							<th scope="col">카테고리</th>
-							<th scope="col">응시하기</th>
-							<th scope="col">통과 여부</th>
-						</tr>
-					{% for i in range(1,101): %}
-						</thead>
-							<td> {{ i }} </td>
-							{% if (i<=25): %}
-							<td> 사고력 </td>
-							{% elif (i<=50): %}
-							<td> 엔트리 </td>
-							{% elif (i<=75): %}
-							<td> 파이썬 </td>
-							{% else: %}
-							<td> C언어 </td>
-							{% endif %}
-							<td><a href="/leveltest/Q{{i}}" class="button">문제풀기</a></td>
-							<td> {{ PassorFail }} </td>
-						</tr>
-					{% endfor %}				
-				</table>
+				<thead >
+					<tr>
+						<th scope="col">난이도</th>
+						<th colspan="2" scope="col">Thinking</th>
+						<th colspan="2" scope="col"> Entry </th>
+						<th colspan="2" scope="col"> Python </th>
+						<th colspan="2" scope="col"> C language </th>
+					</tr>
+				</thead>
+			
+			
+		
+				{% for QuestionNumber in range(1,26): %}
+					<tr>
+			
+						<td>{{((QuestionNumber-1)%25)/5+1}}</td>
+						<td> <a href="Moji.html" class="LeftBlock"> {{QuestionNumber}}번 </a></td>
+						<td>  {{PassorFail}} </td>
+						<td> <a href="Moji.html" class="LeftBlock"> {{QuestionNumber}}번 </a></td>
+						<td>  {{PassorFail}} </td>
+						<td> <a href="Moji.html" class="LeftBlock"> {{QuestionNumber}}번 </a></td>
+						<td>  {{PassorFail}} </td>
+						<td> <a href="Moji.html" class="LeftBlock"> {{QuestionNumber}}번 </a></td>
+						<td>  {{PassorFail}} </td>
+			
+					</tr>
+			  
+				{% endfor %}
+			</table>
+
 		</div>
 	</section>
 
