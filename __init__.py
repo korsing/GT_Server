@@ -45,9 +45,11 @@ def login():
     if(login_form.validate_on_submit()):
         c, conn = connectDB()
         userid = login_form.userid.data
-        passwd = login_form.userpw.data
-        c.execute("SELECT userpw FROM USERS WHERE userid = %s", (userid,))
-        return c.fetchone()[0]
+        userpw = login_form.userpw.data
+        test = userid + ' ' + userpw
+        return test
+        #c.execute("SELECT userpw FROM USERS WHERE userid = %s", (userid,))
+        #return c.fetchone()[0]
         #if(userpw == c.fetchone()[0]):
         #    return render_template("/index.html", name = login_form.name.data)
         #else:
