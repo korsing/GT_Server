@@ -73,17 +73,37 @@ def signup():
 
 @app.route("/leveltest")
 def leveltest():
-    questionNo = 0
-    passfail = True
-    return render_template("/assessments/leveltest.html", QuestionNumber = questionNo, PassorFail = passfail)
+    return render_template("/assessments/leveltest.html")
 
 @app.route('/abouttest')
 def aboutleveltest():
     return render_template("/assessments/abouttest.html")
 
-@app.route("/leveltest/Q<qnum>")
-def question(qnum):
-    return render_template("/assessments/questions/question" + str(qnum) + ".html") # 테스트 필요
+@app.route("/leveltest/thinking")
+def thinking():
+    return render_template("/assessments/questions/thinking/Thinking0.html")
+
+@app.route("/leveltest/entry")
+def thinking():
+    return render_template("/assessments/questions/entry/Entry0.html")
+
+@app.route("/leveltest/python")
+def thinking():
+    return render_template("/assessments/questions/python/Python0.html")
+
+@app.route("/leveltest/c")
+def thinking():
+    return render_template("/assessments/questions/c/C0.html")
+
+@app.route("/leveltest/<category>/Q<qnum>")
+def question(category, qnum):
+    possible = ["Thinking", "Entry", "Python", "C"]
+    if(category not in possible):
+        raise wrongDirectory
+    try:
+        return render_template("/assessments/questions/thinking/Q" + str(qnum) + ".html") # 테스트 필요
+    Exception wrongDirectory:
+        return render_template("/admin/error.html", error = "잘 못된 요청입니다.")
 
 @app.route('/sensitiveinfo')
 def sensitiveinfo():

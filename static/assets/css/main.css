@@ -28,7 +28,13 @@ article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
 	display: block;}
 Question{
+    font-size : 20px;
     text-align : center;
+    margin-left : auto;
+    margin-right : auto;
+}
+table_1{
+    width : 80%;
 }
 Margin{
     padding : 10px;
@@ -2831,18 +2837,20 @@ input, select, textarea {
 
 /* Table */
 
-.table-wrapper {
-	-webkit-overflow-scrolling: touch;
-	overflow-x: auto;
- }
+	.table-wrapper {
+		-webkit-overflow-scrolling: touch;
+		overflow-x: auto;
+       
+	}
 
- table {
-	
-	width: 80%;
-	  text-align : center;
-	margin-left :auto;
-	margin-right : auto;
- }
+	table {
+		
+		width: 70%;
+        text-align : center;
+      margin-left :auto;
+      margin-right : auto;
+	}
+
 		table tbody tr {
 			border: solid 1px;
 			border-left: 0;
@@ -2931,6 +2939,7 @@ input, select, textarea {
 		.wrapper > .inner {
 			margin: 0 auto;
 			width: 75em;
+
 		}
 
 		.wrapper.style1 {
