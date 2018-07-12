@@ -6,12 +6,12 @@ def connection():
     c = conn.cursor()
     return c, conn
 
-name = "정윤석"
+name = "Jung Yoon Seok"
 userid = "korsing"
 userpw = "dbsdud12"
 email = "joshuanpedia@gmail.com"
 phone = "010-2614-5698"
-school = "도성초등학교"
+school = "DoSung Elementary"
 
 c, conn = connection()
 c.execute("INSERT INTO USERS VALUES (%s, %s, %s, %s, %s, %s)",\
