@@ -29,8 +29,12 @@
 		<section id="banner">
 			<div class="inner">
 				<div class="content">
-					{% name = "Hello" %}
-					{{ name }}
+					
+					{% if(name=='JUNG'): %}
+						<h2>현재 레벨테스트가 진행 중 입니다.</h2>
+						<p>로그인하여 테스트를 진행해주세요.</p>
+					{% endif %}
+
 				</div>
 				<ul class="actions stacked">
 					<li><a href="../leveltest" class="button primary major">응시하기</a></li>
