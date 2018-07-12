@@ -94,7 +94,7 @@ def leveltest_category(variable):
             category = "python"
         else:
             category = "c"
-        return render_template("/assessments/questions/" + category + "/Q"+ str(qnum) + ".html")
+        return render_template("/assessments/questions/" + category + "/Q"+ str(qnum) + ".html", category=category)
 
 
 @app.route('/sensitiveinfo')
