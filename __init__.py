@@ -37,7 +37,8 @@ def connectDB():
 # Homepage
 @app.route('/')
 def homepage():
-    return render_template("index.html")
+    name = ""
+    return render_template("index.html", name=name)
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -54,7 +55,7 @@ def signup():
         c.execute("INSERT INTO USERS VALUES (%s, %s, %s, %s, %s, %s)", (signup_form.name.data, signup_form.userid.data, signup_form.userpw.data, signup_form.email.data, signup_form.phone.data, signup_form.school.data))
         conn.commit()
         conn.close()
-        return render_template("/index.html")
+        return render_template("/index.html", name = signup_form.name.data)
     return render_template("/admin/signup.html", form = signup_form)
 
 @app.route("/leveltest")
