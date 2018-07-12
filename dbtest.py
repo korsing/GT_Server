@@ -7,14 +7,14 @@ def connection():
     return c, conn
 
 name = "정윤석"
-userid = "korsing2"
+userid = "korsing3"
 userpw = "dbsdud12"
 email = "joshuanpedia@gmail.com"
 phone = "010-2614-5698"
 school = "도성초등학교"
 
 c, conn = connection()
-c.execute('INSERT INTO USERS VALUES (%s, %s, %s, %s, %s, %s)', (userid, userpw, email, phone, school))
+c.execute('INSERT INTO USERS VALUES (%s, %s, %s, %s, %s, %s)', (name, userid, userpw, email, phone, school))
 
 c.execute("SELECT * FROM USERS")
 print(c.fetchall())
