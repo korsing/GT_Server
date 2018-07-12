@@ -2831,18 +2831,18 @@ input, select, textarea {
 
 /* Table */
 
-	.table-wrapper {
-		-webkit-overflow-scrolling: touch;
-		overflow-x: auto;
-	}
+.table-wrapper {
+	-webkit-overflow-scrolling: touch;
+	overflow-x: auto;
+ }
 
-	table {
-		margin: 0 0 2em 0;
-		width: 100%;
-        text-align : center;
-      
-	}
-
+ table {
+	
+	width: 80%;
+	  text-align : center;
+	margin-left :auto;
+	margin-right : auto;
+ }
 		table tbody tr {
 			border: solid 1px;
 			border-left: 0;
