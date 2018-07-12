@@ -81,7 +81,8 @@ def aboutleveltest():
 
 @app.route("/leveltest/<category>")
 def thinking(category):
-    return render_template("/assessments/questions/"+ str(category) + "/" + str(category) + "0.html")
+    return "/assessments/questions/"+ str(category) + "/" + str(category) + "0.html"
+    #return render_template("/assessments/questions/"+ str(category) + "/" + str(category) + "0.html")
 
 @app.route("/leveltest/<category>/Q<qnum>")
 def question(category, qnum):
