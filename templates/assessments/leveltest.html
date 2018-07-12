@@ -17,13 +17,12 @@
 							<th scope="col">카테고리</th>
 							<th scope="col">통과 여부</th>
 						</tr>
-					{% for i in range(100): %}
+					{% for i in range(1,101): %}
 						</thead>
-							<td> {{ QuestionNumber }} </td>
+							<td> {{ i }} </td>
 							<td> 사고력 </td>
 							<td> {{ PassorFail }} </td>
 						</tr>
-						{{ QuestionNumber = QuestionNumber + 1 }}
 					{% endfor %}				
 				</table>
 		</div>
