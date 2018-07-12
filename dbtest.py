@@ -17,7 +17,7 @@ c, conn = connection()
 c.execute('INSERT INTO USERS VALUES (%s, %s, %s, %s, %s, %s)', (name, userid, userpw, email, phone, school))
 
 c.execute("SELECT * FROM USERS")
-print(c.fetchall())
+print(type(c.fetchall()))
 
 conn.commit()
 conn.close()
