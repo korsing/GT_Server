@@ -48,7 +48,9 @@ def login():
         userpw = login_form.userpw.data
         c.execute("SELECT userpw FROM USERS WHERE userid = %s", (userid,))
         if(userpw == c.fetchone()[0]):
-            return render_template("/index.html", name = userid )
+            c.execute("SELECT name FROM USERS WHERE userid = %s", (userid,))
+            name = c.fetchone()[0]
+            return render_template("/index.html", name = name )
         else:
             return "Login Fail!"
     return render_template("/admin/login.html", form=login_form)
