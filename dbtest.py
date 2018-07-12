@@ -14,8 +14,8 @@ phone = "010-2614-5698"
 school = "도성초등학교"
 
 c, conn = connection()
-c.execute(("INSERT INTO USERS VALUES (%s, %s, %s, %s, %s, %s)",\
-          (name, userid, userpw, email, phone, school)).encode('utf8'))
+sql = "'INSERT INTO USERS VALUES (%s, %s, %s, %s, %s, %s)', (userid, userpw, email, phone, school)"
+c.execute(sql.encode('utf8'))
 
 c.execute("SELECT * FROM USERS")
 print(c.fetchall())
