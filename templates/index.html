@@ -20,8 +20,10 @@
 				<br><br><br><br>
 			</ul>
 			<ul class="actions stacked">
+				{% if (!flag): %}
 				<li><a href="/signup" class="button primary fit">회원가입</a></li>
 				<li><a href="/login" class="button fit">로그인</a></li>
+				{% endif %}
 				<li><a href="/logout" class="button fit">로그아웃</a></li>
 			</ul>
 		</nav>
