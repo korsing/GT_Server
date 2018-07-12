@@ -46,8 +46,8 @@ def login():
         c, conn = connectDB()
         userid = login_form.userid.data
         passwd = login_form.userpw.data
-        c.execute("SELECT userpw FROM USERS WHERE userid = (%s)", userid)
-        if(userpw == c.fetchall()[0]):
+        c.execute("SELECT userpw FROM USERS WHERE userid = %s", (userid,))
+        if(userpw == c.fetchone()[0]):
             return render_template("/index.html", name = login_form.name.data)
         else:
             return "Login Fail!"
