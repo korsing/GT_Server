@@ -15,11 +15,11 @@ school = "Do Sung Elementary School"
 
 c, conn = connection()
 
-id = 'korsing'
+id = 'lorsing'
 c.execute("SELECT * FROM USERS WHERE userid = %s", (id,))
-print(c.fetchall()[0])
+print(c.fetchall())
 
-c.execute("SELECT userpw FROM USERS WHERE userid = 'korsing'")
+c.execute("SELECT userpw FROM USERS WHERE userid = 'lorsing'")
 print(c.fetchone())
 
 conn.commit()
