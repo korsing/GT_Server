@@ -16,8 +16,8 @@ school = "Do Sung Elementary School"
 c, conn = connection()
 c.execute('INSERT INTO USERS VALUES (%s, %s, %s, %s, %s, %s)', (name, userid, userpw, email, phone, school))
 
-c.execute("SELECT * FROM USERS")
-print(type(c.fetchall()))
+c.execute("SELECT * FROM USERS WHERE userid = 'korsing'")
+print(c.fetchall()[0])
 
 conn.commit()
 conn.close()
