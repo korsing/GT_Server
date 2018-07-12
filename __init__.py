@@ -79,10 +79,23 @@ def leveltest():
 def aboutleveltest():
     return render_template("/assessments/abouttest.html")
 
-@app.route("/leveltest/<category>")
-def leveltest_category(category):
-    return render_template("/assessments/questions/" + category + "/0.html")
-    
+@app.route("/leveltest/<variable>")
+def leveltest_category(variable):
+    category_list = ['thinking', 'entry', 'python', 'c']
+    if(variable in category_list):
+        return render_template("/assessments/questions/" + variable + "/start.html")
+    else:
+        qnum = int(variable[1:])
+        if(qnum <= 25):
+            category = "thinking"
+        elif(qnum <= 50):
+            category = "entry"
+        elif(qnum <= 75):
+            category = "python"
+        else:
+            category = "c"
+        return render_template("/assessments/questions/" + category + "/Q"+ str(qnum) + ".html")
+
 
 @app.route('/sensitiveinfo')
 def sensitiveinfo():
