@@ -79,21 +79,9 @@ def leveltest():
 def aboutleveltest():
     return render_template("/assessments/abouttest.html")
 
-@app.route("/leveltest/thinking")
-def thinking():
-    return render_template("/assessments/questions/thinking/Thinking0.html")
-
-@app.route("/leveltest/entry")
-def thinking():
-    return render_template("/assessments/questions/entry/Entry0.html")
-
-@app.route("/leveltest/python")
-def thinking():
-    return render_template("/assessments/questions/python/Python0.html")
-
-@app.route("/leveltest/c")
-def thinking():
-    return render_template("/assessments/questions/c/C0.html")
+@app.route("/leveltest/<category>")
+def thinking(category):
+    return render_template("/assessments/questions/"+ category + "/" + category + "0.html")
 
 @app.route("/leveltest/<category>/Q<qnum>")
 def question(category, qnum):
