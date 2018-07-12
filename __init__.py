@@ -43,22 +43,18 @@ def connectDB():
 def createSession(username):
     session['user'] = username
 
-# 로그인이 되어있는지 확인하는 함수
-def checkSession(username):
-    if(username in session):
-        return True
-    else:
-        return False
-
 # 홈페이지 # 로그인 없이는 각 버튼 접근 권한 없애야함!
 @app.route('/')
 def homepage():
     if('user' in session):
         userid = session['user']
+        return userid
+        '''
         c, conn = connectDB()
         c.execute("SELECT name FROM USERS WHERE userid = %s", (userid,))
         name = c.fetchone()[0]
         return render_template("index.html", name=name)
+        '''
     else:
         return render_template("index.html", name="NULL")
 
