@@ -48,7 +48,7 @@ def login():
         passwd = login_form.userpw.data
         c.execute("SELECT userpw FROM USERS WHERE userid = (%s)", userid)
         if(userpw == c.fetchall()[0]):
-            return render_template("/index.html", name = login_form.name.data))
+            return render_template("/index.html", name = login_form.name.data)
     return render_template("/admin/login.html", form=login_form)
 
 @app.route("/signup", methods=['GET', 'POST'])
