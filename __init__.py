@@ -55,7 +55,6 @@ def login():
         if(userpw == c.fetchone()[0]): # 입력한 비밀번호와 DB상의 비밀번호가 같다면
             c.execute("SELECT name FROM USERS WHERE userid = %s", (userid,)) # DB에서 이름을 갖고온다.
             name = c.fetchone()[0]
-            session['user'] = name
             return render_template("/index.html", name = name )
         else:
             return "Login Fail!"
