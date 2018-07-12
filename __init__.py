@@ -1,5 +1,4 @@
 #-*- coding: utf-8-*-
-#! /bin/usr/python
 from error_code import*
 from flask import Flask, render_template
 from flask_wtf import Form
