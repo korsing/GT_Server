@@ -13,8 +13,8 @@ app.debug = True
 
 # 입력 칸을 정의하는 클래스 선언
 class LoginForm(Form):
-    username = StringField("username", validators=[InputRequired()])
-    password = PasswordField("password", validators=[InputRequired()])
+    userid = StringField("username", validators=[InputRequired()])
+    passwd = PasswordField("password", validators=[InputRequired()])
 
 class SignupForm(Form):
     name = StringField("name", validators=[InputRequired()])
@@ -41,10 +41,15 @@ def homepage():
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
-    login_Form = LoginForm()
-    if(login_Form.validate_on_submit()):
-        return "Login Successful"
-    return render_template("/admin/login.html", form=login_Form)
+    login_form = LoginForm()
+    if(login_form.validate_on_submit()):
+        c, conn = connectDB()
+        userid = login_form.userid.data
+        passwd = login_form.userpw.data
+        c.execute("SELECT userpw FROM USERS WHERE userid = (%s)", userid)
+        if(userpw == c.fetchall()[0]):
+            return render_template("/index.html", name = login_form.name.data))
+    return render_template("/admin/login.html", form=login_form)
 
 @app.route("/signup", methods=['GET', 'POST'])
 def signup():
@@ -54,7 +59,7 @@ def signup():
         c.execute("INSERT INTO USERS VALUES (%s, %s, %s, %s, %s, %s)", (signup_form.name.data, signup_form.userid.data, signup_form.userpw.data, signup_form.email.data, signup_form.phone.data, signup_form.school.data))
         conn.commit()
         conn.close()
-        return render_template("/index.html", name = signup_form.name.data)
+        return render_template("/admin/login.html")
     return render_template("/admin/signup.html", form = signup_form)
 
 @app.route("/leveltest")
