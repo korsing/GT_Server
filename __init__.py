@@ -62,7 +62,8 @@ def homepage():
         c, conn = connectDB()
         c.execute("SELECT name FROM USERS WHERE userid = %s", (userid,))
         name = c.fetchone()[0]
-        return checkSession()
+        flag = checkSession()
+        return flag
         # return render_template("index.html", name=name, flag = checkSession())
     else:
         return checkSession()
