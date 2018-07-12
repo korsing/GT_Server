@@ -7,7 +7,7 @@ def connection():
     return c, conn
 
 name = "Joshua Jung"
-userid = "korsing4"
+userid = "korsing4100"
 userpw = "dbsdud12"
 email = "joshuanpedia@gmail.com"
 phone = "010-2614-5698"
