@@ -1,7 +1,7 @@
 #-*- coding: utf-8-*-
 
 from error_code import*
-from flask import Flask, render_template, session, redirect
+from flask import Flask, render_template, session, redirect, flash, g
 from flask_wtf import Form
 from wtforms import StringField, PasswordField, IntegerField
 from wtforms.validators import InputRequired, Email, Length
@@ -42,6 +42,14 @@ def connectDB():
 # 로그인을 수행했을 때 세션을 생성하는 함수
 def createSession(username):
     session['user'] = username
+    g.sessionFlag = True
+
+# 세션을 확인하는 함수
+def checkSession():
+    if('user' in session):
+        return True
+    else:
+        return False
 
 def deleteSession():
     session.pop('user', None)
@@ -55,7 +63,7 @@ def homepage():
         c, conn = connectDB()
         c.execute("SELECT name FROM USERS WHERE userid = %s", (userid,))
         name = c.fetchone()[0]
-        return render_template("index.html", name=name)
+        return render_template("index.html", name=name, flag = g.sessionFlag )
     else:
         return render_template("index.html", name="NULL")
 
