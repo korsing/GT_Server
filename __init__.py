@@ -62,9 +62,11 @@ def homepage():
         c, conn = connectDB()
         c.execute("SELECT name FROM USERS WHERE userid = %s", (userid,))
         name = c.fetchone()[0]
-        return render_template("index.html", name=name, flag = checkSession())
+        return checkSession()
+        # return render_template("index.html", name=name, flag = checkSession())
     else:
-        return render_template("index.html", name="NULL", flag = checkSession())
+        return checkSession()
+        # return render_template("index.html", name="NULL", flag = checkSession())
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
