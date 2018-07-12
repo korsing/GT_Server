@@ -5,7 +5,7 @@ from flask import Flask, render_template
 from flask_wtf import Form
 from wtforms import StringField, PasswordField, IntegerField
 from wtforms.validators import InputRequired, Email, Length
-# from flask_mysqldb import MySQL
+from flask_mysqldb import MySQL
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = "HansClass"
