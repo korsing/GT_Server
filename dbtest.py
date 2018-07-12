@@ -14,10 +14,9 @@ phone = "010-2614-5698"
 school = "Do Sung Elementary School"
 
 c, conn = connection()
-c.execute('INSERT INTO USERS VALUES (%s, %s, %s, %s, %s, %s)', (name, userid, userpw, email, phone, school))
 
 id = 'korsing'
-c.execute("SELECT * FROM USERS WHERE userid = ('%s')", id)
+c.execute("SELECT * FROM USERS WHERE userid = (%s)", id)
 print(c.fetchall()[0])
 
 c.execute("SELECT userpw FROM USERS WHERE userid = 'korsing'")
