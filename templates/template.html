@@ -5,6 +5,7 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="../static/assets/css/main.css"/>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
 	</head>
 	<body class="is-preload">
 
@@ -19,9 +20,13 @@
 				<br><br><br><br>
 			</ul>
 			<ul class="actions stacked">
-				<li><a href="/signup" class="button primary fit">회원가입</a></li>
-				<li><a href="/login" class="button fit">로그인</a></li>
-				<li><a href="/logout" class="button fit">로그아웃</a></li>
+				{% if(flag == False): %}
+					<li><a href="/signup" class="button primary fit">회원가입</a></li>
+					<li><a href="/login" class="button fit">로그인</a></li>
+				{% endif %}
+				{% if(flag == True): %}
+					<li><a href="/logout" class="button fit">로그아웃</a></li>
+				{% endif %}
 			</ul>
 		</nav>
 

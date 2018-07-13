@@ -1,7 +1,7 @@
 #-*- coding: utf-8-*-
 
 from error_code import*
-from flask import Flask, render_template, session, redirect, flash, g
+from flask import Flask, render_template, session, redirect, flash
 from flask_wtf import Form
 from wtforms import StringField, PasswordField, IntegerField
 from wtforms.validators import InputRequired, Email, Length
@@ -99,7 +99,18 @@ def signup():
 
 @app.route("/leveltest")
 def leveltest():
-    return render_template("/assessments/leveltest.html")
+    if('user' in session):
+        userid = session['user']
+        c, conn = connectDB()
+        c.execute("SELECT name FROM USERS WHERE userid = %s", (userid,))
+        name = c.fetchone()[0]
+        return render_template("/assessments/leveltest.html", name=name, flag = True)
+    else:
+        flash("레벨테스트에 참여하기 위해서는 로그인을 해주세요.")
+        return redirect("/")
+
+
+    return render_template()
 
 @app.route('/abouttest')
 def aboutleveltest():

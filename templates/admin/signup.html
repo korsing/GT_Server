@@ -11,6 +11,16 @@
 					<form method="POST">
 						{{ form.csrf_token }}
 						<div class="row gtr-uniform">
+							{% with messages = get_flashed_messages() %}
+								{% if (messages) :%}
+									{% for message in messages :%}
+										<div class="alert alert-warning alert-dismissible" role="alert">
+											{{ message }}
+										</div>
+									{% endfor %}
+								{% endif %}
+							{% endwith %}
+
 							<div class="col-6 col-12-xsmall">
 								<label for="demo-name">이름</label>
 								{{ form.name }}
