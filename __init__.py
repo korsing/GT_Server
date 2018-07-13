@@ -87,9 +87,10 @@ def login():
             createSession(userid) # 로그인이 완료된 상황이니 세션을 생성
             return redirect('/')
         else: # 입력한 비밀번호가 DB와 다르다면
-            message = "아이디나 비밀번호가 틀렸습니다."
-            createError(message)
-            return redirect('/error')
+            return "로그인에 실패!"
+            #message = "아이디나 비밀번호가 틀렸습니다."
+            #createError(message)
+            #return redirect('/error')
     return render_template("/admin/login.html", form=login_form)
 
 @app.route('/onlyformembers')
