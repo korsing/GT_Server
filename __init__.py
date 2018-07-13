@@ -60,6 +60,23 @@ def homepage():
     else:
         return render_template("index.html", name="NULL", flag = False)
 
+@app.route('/error<errcode>')
+def error(errcode):
+    '''
+    에러 종류
+    1. 회원가입 관련 1) 핸드폰번호 양식 오류 2) 이메일 양식 오류 3) 아이디 양식 오류 4) 비밀번호 불일치
+    2. 로그인 관련 
+    3. 
+    '''
+    err_categories = [\
+                         ["핸드폰 번호가 잘못되었습니다.", "이메일이 잘못되었습니다.", "아이디는 5글자 이상으로 작성해주세요.", "비밀번호가 일치하지 않습니다."],\
+                         ["아이디나 비밀번호가 잘못되었습니다."]\
+                    ] 
+    first_cat = int(err_code[0])
+    second_cat = int(err_code[2])
+
+    return render_template("/admin/error.html", errcode=err_categories[first_cat][second_cat])
+
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     login_form = LoginForm()
@@ -86,7 +103,7 @@ def signup():
     if(signup_form.validate_on_submit()):
         if(signup_form.userpw.data != signup_form.pwconfirm.data):
             message = "비밀번호가 일치하지 않습니다."
-            return message
+            return redirect('/error1-4')
         else:
             c, conn = connectDB()
             c.execute("INSERT INTO USERS VALUES (%s, %s, %s, %s, %s, %s)", (signup_form.name.data, signup_form.userid.data, signup_form.userpw.data, signup_form.email.data, signup_form.phone.data, signup_form.school.data))
@@ -139,9 +156,7 @@ def sensitiveinfo():
 def lecture():
     return render_template("lecture.html")
 
-@app.route('/error<errcode>')
-def error(errcode):
-    return render_template("/admin/error.html", errcode=errcode)
+
 
 # Start
 if(__name__ == "__main__"):
