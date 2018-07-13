@@ -144,7 +144,7 @@ def leveltest_category(variable):
             else:
                 category = "c"
             return render_template("/assessments/questions/" + category + "/Q"+ str(qnum) + ".html",)
-     else:
+    else:
         return redirect("/onlyformembers")
         
 
