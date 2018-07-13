@@ -89,7 +89,7 @@ def login():
 
 @app.route('/onlyformembers')
 def onlyformembers():
-    return render_template)"/admin/onlyformembers.html")
+    return render_template("/admin/onlyformembers.html")
 
 @app.route('/logout')
 def logout():
