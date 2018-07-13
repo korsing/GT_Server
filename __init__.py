@@ -1,6 +1,4 @@
 #-*- coding: utf-8-*-
-
-from error_code import*
 from flask import Flask, render_template, session, redirect, flash
 from flask_wtf import Form
 from wtforms import StringField, PasswordField, IntegerField
@@ -66,7 +64,7 @@ def homepage():
         return render_template("index.html", name="NULL", flag = False)
 
 @app.route('/error')
-def error():
+def errorArose():
     if('errmsg' in session): # 현재 무슨 에러가 발생했다면
         errcode = session['errmsg'] # 무슨 에러인지 메세지 갖고오고
     else: # 동작하는지 테스트용도.. 실제로 이 url 치고 들어오는 사람은 없을테니까
