@@ -47,6 +47,11 @@ def createSession(username):
 def deleteSession():
     session.pop('user', None)
 
+def createError(message):
+    session['message'] = message
+
+def deleteError():
+    session.pop('message', None)
 
 # 홈페이지 # 로그인 없이는 각 버튼 접근 권한 없애야함!
 @app.route('/')
@@ -60,20 +65,11 @@ def homepage():
     else:
         return render_template("index.html", name="NULL", flag = False)
 
-@app.route('/error<errcode>')
-def error(errcode):
-    '''
-    에러 종류
-    1. 회원가입 관련 1) 핸드폰번호 양식 오류 2) 이메일 양식 오류 3) 아이디 양식 오류 4) 비밀번호 불일치
-    2. 로그인 관련 
-    3. 
-    '''
-    err_categories = [["핸드폰 번호가 잘못되었습니다.", "이메일이 잘못되었습니다.", "아이디는 5글자 이상으로 작성해주세요.", "비밀번호가 일치하지 않습니다."],["아이디나 비밀번호가 잘못되었습니다."]] 
-    first_cat = int(errcode[0])-1
-    second_cat = int(errcode[2])-1
-
-    return err_categories[first_cat][second_cat]
-    #return render_template("/admin/error.html", errcode=err_categories[first_cat][second_cat])
+@app.route('/error')
+def error():
+    message = session['message']
+    deleteMessage
+    return render_template("/admin/error.html", message=message)
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -87,8 +83,13 @@ def login():
             createSession(userid) # 로그인이 완료된 상황이니 세션을 생성
             return redirect('/')
         else:
+
             return "Login Fail!"
     return render_template("/admin/login.html", form=login_form)
+
+@app.route('/onlyformembers')
+def onlyformembers():
+    return render_template)"/admin/onlyformembers.html")
 
 @app.route('/logout')
 def logout():
@@ -101,7 +102,8 @@ def signup():
     if(signup_form.validate_on_submit()):
         if(signup_form.userpw.data != signup_form.pwconfirm.data):
             message = "비밀번호가 일치하지 않습니다."
-            return redirect('/error1-4')
+            createError(message)
+            return redirect('/error')
         else:
             c, conn = connectDB()
             c.execute("INSERT INTO USERS VALUES (%s, %s, %s, %s, %s, %s)", (signup_form.name.data, signup_form.userid.data, signup_form.userpw.data, signup_form.email.data, signup_form.phone.data, signup_form.school.data))
@@ -119,10 +121,7 @@ def leveltest():
         name = c.fetchone()[0]
         return render_template("/assessments/leveltest.html", name=name, flag = True)
     else:
-        return redirect("/")
-
-
-    return render_template()
+        return redirect("/onlyformembers")
 
 @app.route('/abouttest')
 def aboutleveltest():
@@ -130,21 +129,24 @@ def aboutleveltest():
 
 @app.route("/leveltest/<variable>")
 def leveltest_category(variable):
-    category_list = ['thinking', 'entry', 'python', 'c']
-    if(variable in category_list):
-        return render_template("/assessments/questions/" + variable + "/start.html")
-    else:
-        qnum = int(variable[1:])
-        if(qnum <= 25):
-            category = "thinking"
-        elif(qnum <= 50):
-            category = "entry"
-        elif(qnum <= 75):
-            category = "python"
+    if('user' in session):
+        category_list = ['thinking', 'entry', 'python', 'c']
+        if(variable in category_list):
+            return render_template("/assessments/questions/" + variable + "/start.html")
         else:
-            category = "c"
-        return render_template("/assessments/questions/" + category + "/Q"+ str(qnum) + ".html",)
-
+            qnum = int(variable[1:])
+            if(qnum <= 25):
+                category = "thinking"
+            elif(qnum <= 50):
+                category = "entry"
+            elif(qnum <= 75):
+                category = "python"
+            else:
+                category = "c"
+            return render_template("/assessments/questions/" + category + "/Q"+ str(qnum) + ".html",)
+     else:
+        return redirect("/onlyformembers")
+        
 
 @app.route('/sensitiveinfo')
 def sensitiveinfo():
