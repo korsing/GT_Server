@@ -68,14 +68,11 @@ def error(errcode):
     2. 로그인 관련 
     3. 
     '''
-    err_categories = [\
-                         ["핸드폰 번호가 잘못되었습니다.", "이메일이 잘못되었습니다.", "아이디는 5글자 이상으로 작성해주세요.", "비밀번호가 일치하지 않습니다."],\
-                         ["아이디나 비밀번호가 잘못되었습니다."]\
-                    ] 
-    first_cat = int(err_code[0])
-    second_cat = int(err_code[2])
-
-    return render_template("/admin/error.html", errcode=err_categories[first_cat][second_cat])
+    err_categories = [["핸드폰 번호가 잘못되었습니다.", "이메일이 잘못되었습니다.", "아이디는 5글자 이상으로 작성해주세요.", "비밀번호가 일치하지 않습니다."],["아이디나 비밀번호가 잘못되었습니다."]] 
+    first_cat = int(err_code[0])-1
+    second_cat = int(err_code[2])-1
+    return err_categories[first_cat][second_cat]
+    #return render_template("/admin/error.html", errcode=err_categories[first_cat][second_cat])
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
