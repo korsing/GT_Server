@@ -71,7 +71,7 @@ def error():
         error = session['errmsg'] # 무슨 에러인지 메세지 갖고오고
     else: # 동작하는지 테스트용도.. 실제로 이 url 치고 들어오는 사람은 없을테니까
         error = "현재 오류가 없습니다!"
-    return render_template("/lecture.html", message = "error")
+    return render_template("/admin/error.html", message = "error")
 
 @app.route('/deleteerror')
 def testtest():
