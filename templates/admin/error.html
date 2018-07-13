@@ -1,2 +1,15 @@
-hello world!
-{{ message }}
+{% extends "template.html" %}
+{% block content %}
+
+<!-- Main -->
+<section id="main" class="wrapper">
+	<header>
+		<h2>Oops! Something must have went wrong!</h2>
+		<p>이전 페이지로 돌아가서 다시 시도해보세요.</p>
+    </header>
+    <div class="inner">
+        {{ message }}
+    </div>
+</section>
+
+{% endblock %}
