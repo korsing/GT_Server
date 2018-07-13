@@ -48,10 +48,10 @@ def deleteSession():
     session.pop('user', None)
 
 def createError(message):
-    session['message'] = message
+    session['errmsg'] = message
 
 def deleteError():
-    session.pop('message', None)
+    session.pop('errmsg', None)
 
 # 홈페이지 # 로그인 없이는 각 버튼 접근 권한 없애야함!
 @app.route('/')
@@ -67,8 +67,8 @@ def homepage():
 
 @app.route('/error')
 def error():
-    if('message' in session): # 현재 무슨 에러가 발생했다면
-        message = session['message'] # 무슨 에러인지 메세지 갖고오고
+    if('errmsg' in session): # 현재 무슨 에러가 발생했다면
+        message = session['errmsg'] # 무슨 에러인지 메세지 갖고오고
         deleteMessage() # 그 메세지는 처리된 것으로 간주하여 삭제
     else: # 동작하는지 테스트용도.. 실제로 이 url 치고 들어오는 사람은 없을테니까
         message = "현재 오류가 없습니다!"
@@ -87,10 +87,9 @@ def login():
             createSession(userid) # 로그인이 완료된 상황이니 세션을 생성
             return redirect('/')
         else: # 입력한 비밀번호가 DB와 다르다면
-            return "로그인에 실패!"
-            #message = "아이디나 비밀번호가 틀렸습니다."
-            #createError(message)
-            #return redirect('/error')
+            message = "아이디나 비밀번호가 틀렸습니다."
+            createError(message)
+            return redirect('/error')
     return render_template("/admin/login.html", form=login_form)
 
 @app.route('/onlyformembers')
