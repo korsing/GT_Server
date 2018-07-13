@@ -67,8 +67,7 @@ def homepage():
 
 @app.route('/error')
 def error():
-
-    return render_template('/admin/error.html', message = "안녕하세요")
+    return render_template("/admin/error.html", message ="안녕하세요")
 
 @app.route('/deleteerror')
 def testtest():
