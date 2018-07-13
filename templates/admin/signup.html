@@ -5,18 +5,20 @@
 			<section id="main" class="wrapper">
 				<header>
 					<h2>회원가입</h2>
-					<p>Sign Up     {{ form.username }}</p>
+					<p>Sign Up</p>
 				</header>
 				<div class="inner">
 					<form method="POST">
 						{{ form.csrf_token }}
 						<div class="row gtr-uniform">
 							{% with messages = get_flashed_messages() %}
-								{% for message in messages: %}
-									<div class="alert alert-warning alert-dismissible" role="alert">
-										{{ message }}
-									</div>
-								{% endfor %}	
+								{% if (messages): %}
+									{% for message in messages: %}
+										<div class="alert alert-warning alert-dismissible" role="alert">
+											{{ message }}
+										</div>
+									{% endfor %}
+								{% endif %}
 							{% endwith %}
 
 							<div class="col-6 col-12-xsmall">
