@@ -1,82 +1,10 @@
 {% extends "template.html" %}
 {% block content%}
 
-<!-- Menu -->
-<nav id="menu">
-        <ul class="links">
-            <br><br><br><br>
-        </ul>
-        <ul class="actions stacked">
-            <li><a href="/signup" class="button primary fit">회원가입</a></li>
-            <li><a href="/login" class="button fit">로그인</a></li>
-            <li><a href="/logout" class="button fit">로그아웃</a></li>
-        </ul>
-    </nav>
 <!-- Main -->
 <section id="main" class="wrapper">
         <header>
-            <h2>2018 영재 아카데미 일정</h2>
-            <p>일자별 수업 예정 사항과 진행 사항을 확인할 수 있습니다.</p>
+            <h2>{{ message }}</h2>
         </header>
-        <div class="inner">
-
-            <section>
-                <h3>레벨 테스트란?</h3>
-                <p>실제 수업이 시작되기 전에 시행되는 레벨테스트는 정보 영재 학생들의 현 수준을 확인하고, 그에 맞는 교육 서비스를 제공하기 위해서 시행됩니다.</p>
-                <p>This is <b>bold</b> and this is <strong>strong</strong>. This is <i>italic</i> and this is <em>emphasized</em>.
-                This is <sup>superscript</sup> text and this is <sub>subscript</sub> text.
-                This is <u>underlined</u> and this is code: <code>for (;;) { ... }</code>. Finally, <a href="#">this is a link</a>.</p>
-                <h4>Blockquote</h4>
-                <blockquote>Fringilla nisl. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan faucibus. Vestibulum ante ipsum primis in faucibus lorem ipsum dolor sit amet nullam adipiscing eu felis.</blockquote>
-                
-            </section>
-
-            <section>
-                <h3>수업 진행상황</h3>
-                <div class="table-wrapper">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>날짜</th>
-                                <th>수업시차</th>
-                                <th>수업내용</th>
-                                <th>과제</th>
-                                <th>첨부파일</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>8월 9일 목요일</td>
-                                <td>1교시</td>
-                                <td>Python 기초1</td>
-                                <td><a href = "#">과제1.py</a></td>
-                                <td><a href = "#">실습1.pdf</a></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td>2교시</td>
-                                <td>Python 기초2</td>
-                                <td><a href = "#">과제2.py</a></td>
-                                <td><a href = "#">실습2.pdf</a></td>
-                            </tr>
-                            <tr>
-                                <td>8월 10일 금요일</td>
-                                <td>1교시</td>
-                                <td>Python 응용1</td>
-                                <td><a href = "#">과제3.py</a></td>
-                                <td><a href = "#">실습3.pdf</a></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td>2교시</td>
-                                <td>Python 응용2</td>
-                                <td><a href = "#">과제4.py</a></td>
-                                <td><a href = "#">실습4.pdf</a></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-        </div>
-    </section>
-
+</section>
 {% endblock %}
