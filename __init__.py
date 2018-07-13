@@ -22,8 +22,8 @@ class LoginForm(Form):
 # 회원가입란을 정의하는 클래스 선언
 class SignupForm(Form):
     name = StringField("name", validators=[InputRequired()])
-    phone = StringField("phone", validators=[InputRequired(), Length(min=13, max=13)])
-    email = StringField("email", validators=[InputRequired(), Email(message="Invalid Email")])
+    phone = StringField("phone", validators=[InputRequired()])
+    email = StringField("email", validators=[InputRequired()])
     userid = StringField("username", validators=[InputRequired()])
     userpw = PasswordField("password", validators=[InputRequired()])
     pwconfirm = PasswordField("password", validators=[InputRequired()])
@@ -43,13 +43,7 @@ def connectDB():
 def createSession(username):
     session['user'] = username
 
-# 세션을 확인하는 함수
-def checkSession():
-    if('user' in session):
-        return True
-    else:
-        return False
-
+# 로그아웃 함수
 def deleteSession():
     session.pop('user', None)
 
@@ -91,8 +85,14 @@ def signup():
     signup_form = SignupForm()
     if(signup_form.validate_on_submit()):
         if(signup_form.userpw.data != signup_form.pwconfirm.data):
-            flash("Passwords do not match!")
-            return render_template("/admin/signup.html", form=signup_form)
+            message = "비밀번호가 일치하지 않습니다."
+            return render_template("/admin/signup.html", form=signup_form, message = message)
+        elif("@" not in signup_form.email.data):
+            message = "이메일 형식이 올바르지 않습니다."
+            return render_template("/admin/signup.html", form=signup_form, message = message)
+        elif(len(signup_form.userid) < 5):
+            message = "아이디는 최소 5글자 이상으로 작성해주세요."
+            return render_template("/admin/signup.html", form=signup_form, message = message)
         else:
             c, conn = connectDB()
             c.execute("INSERT INTO USERS VALUES (%s, %s, %s, %s, %s, %s)", (signup_form.name.data, signup_form.userid.data, signup_form.userpw.data, signup_form.email.data, signup_form.phone.data, signup_form.school.data))
@@ -110,7 +110,6 @@ def leveltest():
         name = c.fetchone()[0]
         return render_template("/assessments/leveltest.html", name=name, flag = True)
     else:
-        flash("레벨테스트에 참여하기 위해서는 로그인을 해주세요.")
         return redirect("/")
 
 
