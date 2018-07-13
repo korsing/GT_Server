@@ -72,7 +72,8 @@ def error():
         deleteMessage() # 그 메세지는 처리된 것으로 간주하여 삭제
     else: # 동작하는지 테스트용도.. 실제로 이 url 치고 들어오는 사람은 없을테니까
         message = "현재 오류가 없습니다!"
-    return render_template("/admin/error.html", message=message)
+    return message
+    #return render_template("/admin/error.html", message=message)
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
