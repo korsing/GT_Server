@@ -72,7 +72,7 @@ def error():
     else: # 동작하는지 테스트용도.. 실제로 이 url 치고 들어오는 사람은 없을테니까
         error = "현재 오류가 없습니다!"
     # error 변수는 정상적으로 나옴
-    return type(error)
+    return str(type(error))
     #return render_template("/admin/error.html", message = error)
     # 렌더링 정상적으로 잘되는데
 
