@@ -93,7 +93,9 @@ def login():
         else: # 입력한 비밀번호가 DB와 다르다면
             message = "아이디나 비밀번호가 틀렸습니다."
             createError(message)
-            return redirect('/error')
+            msg = session['errmsg']
+            return msg
+            #return redirect('/error')
     return render_template("/admin/login.html", form=login_form)
 
 @app.route('/onlyformembers')
