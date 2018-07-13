@@ -67,7 +67,7 @@ def homepage():
 
 @app.route('/error')
 def error():
-    return render_template("/index")
+    return render_template("/lecture.html")
 
 @app.route('/deleteerror')
 def testtest():
