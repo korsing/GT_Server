@@ -86,7 +86,7 @@ def signup():
     if(signup_form.validate_on_submit()):
         if(signup_form.userpw.data != signup_form.pwconfirm.data):
             message = "비밀번호가 일치하지 않습니다."
-            return render_template("/admin/signup.html", form=signup_form, message = message)
+            return message
         else:
             c, conn = connectDB()
             c.execute("INSERT INTO USERS VALUES (%s, %s, %s, %s, %s, %s)", (signup_form.name.data, signup_form.userid.data, signup_form.userpw.data, signup_form.email.data, signup_form.phone.data, signup_form.school.data))
