@@ -120,25 +120,19 @@ def logout():
 @app.route("/signup", methods=['GET', 'POST'])
 def signup():
     signup_form = SignupForm()
-    loginInfo = hashpassword(signup_form.userid.data, signup_form.userpw.data)
-    
-    return loginInfo.pw_hash
-    '''
-    password = loginInfo.pw_hash
-    doubleCheckInfo = hashpassword(signup_form.userid.data, signup_form.pwconfirm.data)
-    pwConfirm = doubleCheckInfo.pw_hash
-    if(password != pwConfirm):
-        if(signup_form.userpw.data != signup_form.pwconfirm.data):
+    if(signup_form.validate_on_submit()):
+        loginInfo = hashpassword(signup_form.userid.data, signup_form.userpw.data)
+        password = loginInfo.pw_hash
+        if(loginInfo.check_password(signup_form.pwconfirm.data):
             message = "비밀번호가 일치하지 않습니다."
             createError(message)
-            return redirect('/error')
+            return message
         else:
             c, conn = connectDB()
             c.execute("INSERT INTO USERS VALUES (%s, %s, %s, %s, %s, %s)", (signup_form.name.data, signup_form.userid.data, password, signup_form.email.data, signup_form.phone.data, signup_form.school.data))
             conn.commit()
             conn.close()
             return redirect("/login")
-            '''
     return render_template("/admin/signup.html", form = signup_form)
 
 @app.route("/leveltest")
