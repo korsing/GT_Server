@@ -5,6 +5,8 @@ from wtforms import StringField, PasswordField, IntegerField
 from wtforms.validators import InputRequired, Email, Length
 import MySQLdb
 import os
+from werkzeug.security import generate_password_hash, check_password_hash
+
 
 # Flask가 동작하기 위해서 필요한 기본 설정 들..
 app = Flask(__name__)
@@ -30,6 +32,16 @@ class SignupForm(Form):
 # 레벨테스트란을 정의하는 클래스 선언
 class QuestionForm(Form):
     answer = StringField("answer")
+
+# 비밀번호 해시함수
+class hashpassword(object):
+    def __init__(self, username, password):
+        self.username = username
+        self.password = password
+    def set_password(self, password):
+        self.pw_hash = generate_password_hash(password)
+    def check_password(self, password):
+        return check_password_hash(self.pw_hash, password)
 
 # DB 연동을 수행하는 함수
 def connectDB():
@@ -85,6 +97,8 @@ def login():
         c, conn = connectDB() # DB에 연결하고
         userid = login_form.userid.data # 입력받은 아이디와
         userpw = login_form.userpw.data # 비밀번호를 저장
+        loginInfo = hashpassword(userid, userpw)
+        userpw = loginInfo.pw_hash
         c.execute("SELECT userpw FROM USERS WHERE userid = %s", (userid,)) # 아이디를 사용하여 비밀번호를 DB에서 가져옴
         if(userpw == c.fetchone()[0]): # 입력한 비밀번호와 DB상의 비밀번호가 같다면
             createSession(userid) # 로그인이 완료된 상황이니 세션을 생성
@@ -107,14 +121,18 @@ def logout():
 @app.route("/signup", methods=['GET', 'POST'])
 def signup():
     signup_form = SignupForm()
-    if(signup_form.validate_on_submit()):
+    loginInfo = hashpassword(signup_form.userid.data, signup_form.userpw.data)
+    password = loginInfo.pw_hash
+    doubleCheckInfo = hashpassword(signup_form.userid.data, signup_form.pwconfirm.data)
+    pwConfirm = doubleCheckInfo.pw_hash
+    if(password != pwConfirm):
         if(signup_form.userpw.data != signup_form.pwconfirm.data):
             message = "비밀번호가 일치하지 않습니다."
             createError(message)
             return redirect('/error')
         else:
             c, conn = connectDB()
-            c.execute("INSERT INTO USERS VALUES (%s, %s, %s, %s, %s, %s)", (signup_form.name.data, signup_form.userid.data, signup_form.userpw.data, signup_form.email.data, signup_form.phone.data, signup_form.school.data))
+            c.execute("INSERT INTO USERS VALUES (%s, %s, %s, %s, %s, %s)", (signup_form.name.data, signup_form.userid.data, password, signup_form.email.data, signup_form.phone.data, signup_form.school.data))
             conn.commit()
             conn.close()
             return redirect("/login")
