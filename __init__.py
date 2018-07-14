@@ -94,7 +94,6 @@ def login():
             message = "아이디나 비밀번호가 틀렸습니다."
             createError(message)
             return message
-        '''
     return render_template("/admin/login.html", form=login_form)
 
 @app.route('/onlyformembers')
@@ -110,13 +109,12 @@ def logout():
 def signup():
     signup_form = SignupForm()
     if(signup_form.validate_on_submit()):
-        #loginInfo = hashpassword(signup_form.userid.data, signup_form.userpw.data)
-        password = generate_password_hash(signup_form.userpw.data)
-        if(!check_password_hash(password, signup_form.pwconfirm.data)):
+        if(signup_form.userid.data != signup_form.userpw.data):
             message = "비밀번호가 일치하지 않습니다."
             createError(message)
             return message
         else:
+            password = generate_password_hash(signup_form.userpw.data)
             c, conn = connectDB()
             c.execute("INSERT INTO USERS VALUES (%s, %s, %s, %s, %s, %s)", (signup_form.name.data, signup_form.userid.data, password, signup_form.email.data, signup_form.phone.data, signup_form.school.data))
             conn.commit()
