@@ -86,11 +86,8 @@ def login():
     if(login_form.validate_on_submit()): # 로그인 버튼이 눌렸을 때 수행되는 코드
         c, conn = connectDB() # DB에 연결하고
         userid = login_form.userid.data # 입력받은 아이디와
-        userpw = generate_password_hash(login_form.userpw.data) # 비밀번호를 저장
-        return userpw
-        '''
         c.execute("SELECT userpw FROM USERS WHERE userid = %s", (userid,)) # 아이디를 사용하여 비밀번호를 DB에서 가져옴
-        if(userpw == c.fetchone()[0]): # 입력한 비밀번호와 DB상의 비밀번호가 같다면
+        if(check_password_hash(c.fetchone()[0], login_form.userpw.data): # 입력한 비밀번호와 DB상의 비밀번호가 같다면
             createSession(userid) # 로그인이 완료된 상황이니 세션을 생성
             return redirect('/')
         else: # 입력한 비밀번호가 DB와 다르다면
@@ -115,8 +112,7 @@ def signup():
     if(signup_form.validate_on_submit()):
         #loginInfo = hashpassword(signup_form.userid.data, signup_form.userpw.data)
         password = generate_password_hash(signup_form.userpw.data)
-        password_check = generate_password_hash(signup_form.pwconfirm.data)
-        if(password == password_check):
+        if(!check_password_hash(password, signup_form.pwconfirm.data)):
             message = "비밀번호가 일치하지 않습니다."
             createError(message)
             return message
