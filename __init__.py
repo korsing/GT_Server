@@ -121,8 +121,8 @@ def logout():
 def signup():
     signup_form = SignupForm()
     if(signup_form.validate_on_submit()):
-        loginInfo = hashpassword(signup_form.userid.data, signup_form.userpw.data)
-        password = loginInfo.pw_hash
+        #loginInfo = hashpassword(signup_form.userid.data, signup_form.userpw.data)
+        password = generate_password_hash(signup_form.userpw.data)
         return password
         '''
         if(loginInfo.check_password(signup_form.pwconfirm.data)):
