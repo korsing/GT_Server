@@ -125,6 +125,13 @@ def signup():
 @app.route("/leveltest")
 def leveltest():
     if('user' in session):
+        return render_template("/assessments/abouttest.html", flag = True)
+    else:
+        return redirect("/onlyformembers")
+
+@app.route('/abouttest')
+def aboutleveltest():
+    if('user' in session):
         userid = session['user']
         c, conn = connectDB()
         c.execute("SELECT name FROM USERS WHERE userid = %s", (userid,))
@@ -132,9 +139,6 @@ def leveltest():
         return render_template("/assessments/leveltest.html", name=name, flag = True)
     else:
         return redirect("/onlyformembers")
-
-@app.route('/abouttest')
-def aboutleveltest():
     return render_template("/assessments/abouttest.html")
 
 @app.route("/leveltest/<variable>")
