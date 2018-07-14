@@ -86,16 +86,15 @@ def login():
     if(login_form.validate_on_submit()): # 로그인 버튼이 눌렸을 때 수행되는 코드
         c, conn = connectDB() # DB에 연결하고
         userid = login_form.userid.data # 입력받은 아이디와
-        userpw = login_form.userpw.data # 비밀번호를 저장
-        loginInfo = hashpassword(userid, userpw)
+        userpw = generate_password_hash(login_form.userpw.data) # 비밀번호를 저장
         c.execute("SELECT userpw FROM USERS WHERE userid = %s", (userid,)) # 아이디를 사용하여 비밀번호를 DB에서 가져옴
-        if(loginInfo.check_password(c.fetchone()[0])): # 입력한 비밀번호와 DB상의 비밀번호가 같다면
+        if(userpw == c.fetchone()[0]): # 입력한 비밀번호와 DB상의 비밀번호가 같다면
             createSession(userid) # 로그인이 완료된 상황이니 세션을 생성
             return redirect('/')
         else: # 입력한 비밀번호가 DB와 다르다면
             message = "아이디나 비밀번호가 틀렸습니다."
             createError(message)
-            return redirect('/error')
+            return message
     return render_template("/admin/login.html", form=login_form)
 
 @app.route('/onlyformembers')
