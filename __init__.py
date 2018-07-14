@@ -33,16 +33,6 @@ class SignupForm(Form):
 class QuestionForm(Form):
     answer = StringField("answer")
 
-# 비밀번호 해시함수
-class hashpassword(object):
-    def __init__(self, username, password):
-        self.username = username
-        self.password = password
-    def set_password(self, password):
-        self.pw_hash = generate_password_hash(password)
-    def check_password(self, password):
-        return check_password_hash(self.pw_hash, password)
-
 # DB 연동을 수행하는 함수
 def connectDB():
     conn = MySQLdb.connect(host="localhost", user="root", passwd="4swedu@skku", db="GT_DB",charset="utf8mb4")
@@ -123,9 +113,8 @@ def signup():
     if(signup_form.validate_on_submit()):
         #loginInfo = hashpassword(signup_form.userid.data, signup_form.userpw.data)
         password = generate_password_hash(signup_form.userpw.data)
-        return password
-        '''
-        if(loginInfo.check_password(signup_form.pwconfirm.data)):
+        password_check = generate_password_hash(signup_form.pwconfirm.data)
+        if(loginInfo.check_password(password, password_check)):
             message = "비밀번호가 일치하지 않습니다."
             createError(message)
             return message
