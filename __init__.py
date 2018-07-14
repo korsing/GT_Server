@@ -109,7 +109,7 @@ def logout():
 def signup():
     signup_form = SignupForm()
     if(signup_form.validate_on_submit()):
-        if(signup_form.userid.data != signup_form.userpw.data):
+        if(signup_form.userpw.data != signup_form.pwconfirm.data):
             message = "비밀번호가 일치하지 않습니다."
             createError(message)
             return message
