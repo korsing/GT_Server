@@ -120,10 +120,9 @@ def logout():
 @app.route("/signup", methods=['GET', 'POST'])
 def signup():
     signup_form = SignupForm()
-    return signup_form.userid + signup_form.userpw
-    #loginInfo = hashpassword(signup_form.userid.data, signup_form.userpw.data)
+    loginInfo = hashpassword(signup_form.userid.data, signup_form.userpw.data)
     
-    #return render_template("lecture.html", message = loginInfo.pw_hash)
+    return loginInfo.pw_hash
     '''
     password = loginInfo.pw_hash
     doubleCheckInfo = hashpassword(signup_form.userid.data, signup_form.pwconfirm.data)
@@ -139,8 +138,9 @@ def signup():
             conn.commit()
             conn.close()
             return redirect("/login")
+            '''
     return render_template("/admin/signup.html", form = signup_form)
-    '''
+
 @app.route("/leveltest")
 def leveltest():
     if('user' in session):
