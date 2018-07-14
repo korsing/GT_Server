@@ -124,7 +124,6 @@ def signup():
             conn.commit()
             conn.close()
             return redirect("/login")
-        '''
     return render_template("/admin/signup.html", form = signup_form)
 
 @app.route("/leveltest")
