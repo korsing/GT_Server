@@ -114,7 +114,7 @@ def signup():
         #loginInfo = hashpassword(signup_form.userid.data, signup_form.userpw.data)
         password = generate_password_hash(signup_form.userpw.data)
         password_check = generate_password_hash(signup_form.pwconfirm.data)
-        if(loginInfo.check_password(password, password_check)):
+        if(check_password(password, password_check)):
             message = "비밀번호가 일치하지 않습니다."
             createError(message)
             return message
