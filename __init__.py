@@ -123,7 +123,7 @@ def signup():
     if(signup_form.validate_on_submit()):
         loginInfo = hashpassword(signup_form.userid.data, signup_form.userpw.data)
         password = loginInfo.pw_hash
-        if(loginInfo.check_password(signup_form.pwconfirm.data):
+        if(loginInfo.check_password(signup_form.pwconfirm.data)):
             message = "비밀번호가 일치하지 않습니다."
             createError(message)
             return message
