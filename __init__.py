@@ -123,6 +123,8 @@ def signup():
     if(signup_form.validate_on_submit()):
         loginInfo = hashpassword(signup_form.userid.data, signup_form.userpw.data)
         password = loginInfo.pw_hash
+        return password
+        '''
         if(loginInfo.check_password(signup_form.pwconfirm.data)):
             message = "비밀번호가 일치하지 않습니다."
             createError(message)
@@ -133,6 +135,7 @@ def signup():
             conn.commit()
             conn.close()
             return redirect("/login")
+        '''
     return render_template("/admin/signup.html", form = signup_form)
 
 @app.route("/leveltest")
