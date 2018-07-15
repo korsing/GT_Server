@@ -5,37 +5,18 @@
     <Question>
             <div align="center">
             <div style="width : 50%">
-                <h1 style="text-align:left"> 51. 의사코드는 프로그램 작성 이전에 각 모듈이 작동하는 논리를 표현하기 위해 <br/>
-                사람이 쉽게 이해할 수 있는 자연어 등으로 프로그래밍 언어의 형식을 빌어 작성하는 것을 말한다. <br/>
-                다음은 의사코드를 Python 언어로 표현한 것인데, 파이썬 코드에서 빈칸에 들어갈 알맞은 변수명을 작성하시오. </h1>
+                <h1 style="text-align:left"> 
+                    53. 다음 for문이 실행되면 출력되는 값을 구하시오.
+                </h1>
             </div>
             <pre style ="width : 50%;">
                 <code style="text-align: left">
-                    
-[의사코드]
-SET var1 100 
-SET var2 200
-SET count 0
-REPEAT
-    WHEN ( var1 = var2 )
-        STOP REPEATING
-    INCREASE var1 by 1
-    INCREASE count by 1
-SAY count
 
-[Python]
-
-var1 = 100
-var2 = 200
-count = 0
-while( 1 ):
-    if( var1 == [ 1 ] ):
-        break;
-    var1 += 1
-    [ 2 ] += 1
-
-print( count )
-                    </code>
+for i in range( 0,100,1 ):
+if( i%40 == 0 ):
+    print(“%d” %(i))
+                        
+                </code>
             </pre>
             <form method="POST">
                 {{ form.csrf_token }}
