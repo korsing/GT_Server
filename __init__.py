@@ -180,17 +180,13 @@ def leveltest_category(variable):
                 data = question_form.answer.data
                 c,conn = connectDB()
                 query = "SELECT * FROM " + category + " WHERE userid = '" + userid + "';"
-                
                 flag = c.execute(query)
                 if(flag != 0):
-                    return "HELLo"
                     update_Variable = "UPDATE " + category +" SET Q"+ str(qnum) +" = '" + data + "' WHERE userid = '" + userid + "';"
                     c.execute(update_Variable)
-                    return "입력된 정보가 있네요"
                 else:
                     execute_Variable = "Insert into "+ category + " (userid, Q" + str(qnum) + " ) VALUES ('" + userid + "','" + data+ "');"
                     c.execute(execute_Variable)
-                    return "입력된 정보가 없어요"
                 conn.commit()
                 conn.close()
                 return redirect('/leveltest/'+category)
