@@ -161,6 +161,10 @@ def aboutleveltest():
 @app.route("/leveltest/<variable>", methods=['GET', 'POST'])
 def leveltest_category(variable):
     if('user' in session):
+        name = session['user']
+        c, conn = connectDB()
+        c.execute("SELECT userid from USERS WHERE name = %s", (name,))
+        userid = c.fetchone()[0]
         category_list = ['thinking', 'entry', 'python', 'c']
         if(variable in category_list):
             return render_template("/assessments/questions/" + variable + "/start.html")
@@ -177,7 +181,9 @@ def leveltest_category(variable):
             question_form = QuestionForm()
             if(question_form.validate_on_submit()):
                 data = question_form.answer.data
-                return data
+                c.execute("INSERT into test_answer VALUES (%s, %s)", (userid, data))
+                conn.commit()
+                conn.close()
         return render_template("/assessments/questions/" + category + "/Q"+ str(qnum) + ".html", form = question_form)
     else:
         return redirect("/onlyformembers")
