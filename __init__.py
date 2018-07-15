@@ -185,9 +185,11 @@ def leveltest_category(variable):
                 if(flag):
                     update_Variable = "UPDATE " + category +" SET Q"+ str(qnum) +" = '" + data + "' WHERE userid = '" + userid + "';"
                     c.execute(update_Variable)
+                    return "입력된 정보가 있네요"
                 else:
                     execute_Variable = "Insert into "+ category + " (userid, Q" + str(qnum) + " ) VALUES ('" + userid + "','" + data+ "');"
                     c.execute(execute_Variable)
+                    return "입력된 정보가 없어요"
                 conn.commit()
                 conn.close()
                 return redirect('/leveltest/'+category)
