@@ -1,0 +1,56 @@
+﻿
+{% extends "template.html" %}
+{% block content %}
+<!-- Main -->
+<section id="main" class="wrapper">
+    <Question>
+            <div align="center">
+               <div style="width : 50%">
+                <h1 style="text-align:left">84.c언어 프로그램에서는 조건에 따라 문장을 선택해서 실행할 수 있다.<br>
+  조건문이 참이라면 if 아래에 연결된 문장이 실행되며 거짓일 경우 else 아래에 연결된 문장이 실행된다.<br>
+  if ( 조건문 ) <br>
+  	printf(“참이다”);<br>
+  else <br>
+  	printf(“다르다”);<br>
+
+  조건문에는 다음과 같은 문장들이 올 수 있다.<br>
+  a > b	: a 가 b 보다 크다면 참, 아니면 거짓<br>
+  a >= b	: a 가 b 보다 크거나 같다면 참, 아니면 거짓<br>
+  a == b : a 가 b와 같다면 참, 아니면 거짓<br>
+  a != b : a가 b와 다르면 참, 아니면 거짓<br>
+
+  아래의 프로그램은 사용자의 정수 입력이 홀수인지 짝수인지 판별해 주는 프로그램이다. 빈칸에 맞는 조건문을 알맞게 작성하시오.<br></h1></div></div>
+            <pre style ="width : 50%;">
+                <code style="text-align: left">
+#include <stdio.h>
+
+int main(void){
+int x;
+	scanf("%d", &x);
+	if(   빈칸    )
+		printf(“홀수”);
+	else
+		printf(“짝수”);
+	return 0;
+}
+
+                </code>
+            </pre>
+            <form method="POST">
+                {{ form.csrf_token }}
+                <div>
+                    <Margin>
+                    {{ form.answer(rows="8", cols="100") }}
+                    </Margin>
+                </div>
+                <div>
+                    <ul class="actions">
+                        <li><input type="submit" value="제출하기" class="primary" /></li>
+                        <li><a href="/leveltest/c" class="button fit">건너뛰기</a></li>
+                    </ul>
+                </div>
+            </form>
+        </Question>
+
+</section>
+{% endblock %}

@@ -1,0 +1,50 @@
+﻿{% extends "template.html" %}
+{% block content %}
+<!-- Main -->
+<section id="main" class="wrapper">
+    <Question>
+            <div align="center">
+               <div style="width : 50%">
+                <h1 style="text-align:left">95.c언어 프로그램에서는 같은 종류의 값들을 배열의 형태로 저장할 수 있다. <br>
+  int a[8] = {1, 2, 3, 4, 5, 6, 7, 8 }; <br>
+  (배열의이름[크기] = { 값1, 값2, … };) <br>
+  위의 문장은 아래와 같은 형태로 저장된다. <br>
+<img src="/static/image/questions/c/C_Q95_1.png" />
+  배열의 각 값은 0번부터 순서대로 매겨지며 “배열의이름[순서]”으로 저장된 값을 사용할 수 있다. <br>
+  다음 프로그램의 예상되는 출력 결과를 쓰시오.<br>
+</h1></div></div>
+            <pre style ="width : 50%;">
+                <code style="text-align: left">
+#include <stdio.h>
+int main(void){
+	int a[8] = { 0, 0, 0, 0, 0, 0, 0, 0 };
+	int i;
+	int j = 1;
+	for ( i=0 ; i<8 ; i++){
+		a[i] = j;
+		j = j + i;
+	}
+	for (i=0; i<8;i++)
+		printf(“%d “,a[i]);
+	return 0;
+}
+                </code>
+            </pre>
+            <form method="POST">
+                {{ form.csrf_token }}
+                <div>
+                    <Margin>
+                    {{ form.answer(rows="8", cols="100") }}
+                    </Margin>
+                </div>
+                <div>
+                    <ul class="actions">
+                        <li><input type="submit" value="제출하기" class="primary" /></li>
+                        <li><a href="/leveltest/c" class="button fit">건너뛰기</a></li>
+                    </ul>
+                </div>
+            </form>
+        </Question>
+
+</section>
+{% endblock %}

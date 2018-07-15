@@ -1,0 +1,44 @@
+﻿
+{% extends "template.html" %}
+{% block content %}
+<!-- Main -->
+<section id="main" class="wrapper">
+    <Question>
+            <div align="center">
+              <div style="width : 50%">
+                <h1 style="text-align:left">86.다음 프로그램은 사용자가 두 개의 값을 입력하면 각각 num1 변수와 num2 변수에 저장한 후, 두 변수의 값을 서로 바꿔주는 프로그램이다.<br>
+  빈칸에 알맞은 변수 이름을 작성하시오.<br></h1></div></div>
+            <pre style ="width : 50%;">
+                <code style="text-align: left">
+#include <stdio.h>
+int main(void){
+	int num1;
+	int num2;
+	int temp = 0;
+	scanf(“%d %d”, &num1, &num2);
+	temp = (1);
+	num1 = (2);
+	num2 = (3);
+	return 0;
+}
+                </code>
+            </pre>
+
+            <form method="POST">
+                {{ form.csrf_token }}
+                <div>
+                    <Margin>
+                    {{ form.answer(rows="8", cols="100") }}
+                    </Margin>
+                </div>
+                <div>
+                    <ul class="actions">
+                        <li><input type="submit" value="제출하기" class="primary" /></li>
+                        <li><a href="/leveltest/c" class="button fit">건너뛰기</a></li>
+                    </ul>
+                </div>
+            </form>
+        </Question>
+
+</section>
+{% endblock %}

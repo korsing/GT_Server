@@ -1,0 +1,41 @@
+﻿
+{% extends "template.html" %}
+{% block content %}
+<!-- Main -->
+<section id="main" class="wrapper">
+    <Question>
+            <div align="center">
+               <div style="width : 50%">
+                <h1 style="text-align:left">94.다음은 1단부터 6단까지 구구단을 출력하는 프로그램이다. <br>
+  빈칸에 알맞은 값을 채우시오. <br>
+</h1></div></div>
+            <pre style ="width : 50%;">
+                <code style="text-align: left">
+#include <stdio.h>
+int main(void){
+	int i, j;
+	for ( i = 1;   (1)  ; i++)
+		for ( j = 1; j < 10 ; j++)
+			printf(“%d * %d = %d\n”, i, (2), i * j);
+	return 0;
+}
+                </code>
+            </pre>
+            <form method="POST">
+                {{ form.csrf_token }}
+                <div>
+                    <Margin>
+                    {{ form.answer(rows="8", cols="100") }}
+                    </Margin>
+                </div>
+                <div>
+                    <ul class="actions">
+                        <li><input type="submit" value="제출하기" class="primary" /></li>
+                        <li><a href="/leveltest/c" class="button fit">건너뛰기</a></li>
+                    </ul>
+                </div>
+            </form>
+        </Question>
+
+</section>
+{% endblock %}

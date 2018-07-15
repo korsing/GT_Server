@@ -1,0 +1,50 @@
+﻿
+
+{% extends "template.html" %}
+{% block content %}
+<!-- Main -->
+<section id="main" class="wrapper">
+    <Question>
+            <div align="center">
+              <div style="width : 50%">
+                <h1 style="text-align:left">88.다음 프로그램은 사용자가 세 개의 서로 다른 정수를 입력하면 순서대로 x 변수, y 변수, z 변수에 저장하고 가장 큰 값부터 순서대로 출력해 주는 프로그램이다. <br>
+  빈 칸에 알맞은 문장을 작성하시오.<br></h1></div></div>
+            <pre style ="width : 50%;">
+                <code style="text-align: left">
+#include <stdio.h>
+int main(void){
+  int x, y, z;
+  int temp = 0;
+	scanf("%d %d %d", &x, &y, &z);
+	if ( x < y ){
+		 (1)
+  }
+  if (y < z) {
+	   (2)
+  }
+	if (x < y) {
+		 (1)
+	}
+	printf(“%d %d %d”, x, y, z);
+	return 0;
+}
+                </code>
+            </pre>
+            <form method="POST">
+                {{ form.csrf_token }}
+                <div>
+                    <Margin>
+                    {{ form.answer(rows="8", cols="100") }}
+                    </Margin>
+                </div>
+                <div>
+                    <ul class="actions">
+                        <li><input type="submit" value="제출하기" class="primary" /></li>
+                        <li><a href="/leveltest/c" class="button fit">건너뛰기</a></li>
+                    </ul>
+                </div>
+            </form>
+        </Question>
+
+</section>
+{% endblock %}

@@ -1,0 +1,43 @@
+﻿
+{% extends "template.html" %}
+{% block content %}
+<!-- Main -->
+<section id="main" class="wrapper">
+    <Question>
+            <div align="center">
+               <div style="width : 50%">
+                <h1 style="text-align:left"> 79.c언어 프로그램에서는 scanf() 명령어를 사용해 사용자에게 특정 값을 입력 받을 수 있다. <br>
+  다음 문장을 실행하면 a라는 공간에 사용자의 입력(정수)을 저장할 수 있다. <br>
+  int a; <br>
+  scanf(“%d”, &a);<br>
+  다음 프로그램을 실행하고 사용자가 정수 100을 입력했을 때, 예상되는 출력 값을 쓰시오. <br></h1></div></div>
+            <pre style ="width : 50%;">
+                <code style="text-align: left">
+#include <stdio.h>
+int main(void){
+	int a;
+	scanf(“%d”, &a);
+	printf(“%d%d”, a,a);
+	return 0;
+}
+                </code>
+            </pre>
+          </h1>
+            <form method="POST">
+                {{ form.csrf_token }}
+                <div>
+                    <Margin>
+                    {{ form.answer(rows="8", cols="100") }}
+                    </Margin>
+                </div>
+                <div>
+                    <ul class="actions">
+                        <li><input type="submit" value="제출하기" class="primary" /></li>
+                        <li><a href="/leveltest/c" class="button fit">건너뛰기</a></li>
+                    </ul>
+                </div>
+            </form>
+        </Question>
+
+</section>
+{% endblock %}

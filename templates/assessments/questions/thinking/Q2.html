@@ -1,0 +1,28 @@
+{% extends "template.html" %}
+{% block content %}
+<!-- Main -->
+<section id="main" class="wrapper">
+    <Question>
+        <div align="center">
+            <div style="width : 50%">
+                <h1 style="text-align:left"> 2. 5개의 색깔의 옷을 번갈아 가면서 입는다고 한다. 어제 입었던 색깔의 옷을 오늘 입을 수 없다면 4일동안 입을 수 있는 옷의 경우의 수는 얼마인가?</h1>
+                </div>
+            </div>
+        <form method="POST">
+            {{ form.csrf_token }}
+            <div>
+                <Margin>
+                    {{ form.answer(rows="8", cols="100") }}
+                </Margin>
+            </div>
+            <div>
+                <ul class="actions">
+                    <li><input type="submit" value="제출하기" class="primary" /></li>
+                    <li><a href="/leveltest/thinking" class="button fit">건너뛰기</a></li>
+                </ul>
+            </div>
+        </form>
+    </Question>
+
+</section>
+{% endblock %}

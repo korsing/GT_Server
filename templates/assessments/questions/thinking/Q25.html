@@ -1,0 +1,29 @@
+{% extends "template.html" %}
+{% block content %}
+<!-- Main -->
+<section id="main" class="wrapper">
+    <Question>
+        <div align="center">
+            <div style="width : 50%">
+                <h1 style="text-align:left">25. 철수와 영희는 <조건>에 따라 게임을 진행하려고 한다. 철수가 먼저 게임을 진행한다고 할 때, 철수가 반드시 이기는 방법을 설계해 보시오.</h1>
+            </div>
+            <img src="/static/image/questions/thinking/q25.png" />
+        </div>
+        <form method="POST">
+            {{ form.csrf_token }}
+            <div>
+                <Margin>
+                    {{ form.answer(rows="8", cols="100") }}
+                </Margin>
+            </div>
+            <div>
+                <ul class="actions">
+                    <li><input type="submit" value="제출하기" class="primary" /></li>
+                    <li><a href="/leveltest/thinking" class="button fit">건너뛰기</a></li>
+                </ul>
+            </div>
+        </form>
+    </Question>
+
+</section>
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends "template.html" %}
+{% block content %}
+<!-- Main -->
+<section id="main" class="wrapper">
+    <Question>
+        <div align="center">
+            <div style="width : 50%">
+                <h1 style="text-align:left">  9. 만약 여러분이 외딴 무인도에 홀로 남겨졌다고 한다. 이때 배낭을 열어보니 무인도에서의 생존에 필요한 3개의 물건이 있었다. 이때 본인의 배낭에는 어떤 물건이 있을 것인지, 그 물건이 있을 만한 이유가 무엇인지 서술해보시오.</h1>
+
+                </div>
+            </div>
+        <form method="POST">
+            {{ form.csrf_token }}
+            <div>
+                <Margin>
+                    {{ form.answer(rows="8", cols="100") }}
+                </Margin>
+            </div>
+            <div>
+                <ul class="actions">
+                    <li><input type="submit" value="제출하기" class="primary" /></li>
+                    <li><a href="/leveltest/thinking" class="button fit">건너뛰기</a></li>
+                </ul>
+            </div>
+        </form>
+    </Question>
+
+</section>
+{% endblock %}

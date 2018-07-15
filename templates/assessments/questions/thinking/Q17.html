@@ -1,0 +1,30 @@
+{% extends "template.html" %}
+{% block content %}
+<!-- Main -->
+<section id="main" class="wrapper">
+    <Question>
+        <div align="center">
+            <div style="width : 50%">
+                <h1 style="text-align:left">  17. A~H까지 8가지 작업이 있고, 각 작업마다 걸리는 시간이 다르다고 한다. 조건을 보고 작업 G가 완료될 때까지 소요되는 시간을 구하시오.(단 여러 작업들은 병행으로 수행될 수 있다.) </h1>
+            </div>
+            <img src="/static/image/questions/thinking/q17.png" />
+         
+        </div>
+        <form method="POST">
+            {{ form.csrf_token }}
+            <div>
+                <Margin>
+                    {{ form.answer(rows="8", cols="100") }}
+                </Margin>
+            </div>
+            <div>
+                <ul class="actions">
+                    <li><input type="submit" value="제출하기" class="primary" /></li>
+                    <li><a href="/leveltest/thinking" class="button fit">건너뛰기</a></li>
+                </ul>
+            </div>
+        </form>
+    </Question>
+
+</section>
+{% endblock %}

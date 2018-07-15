@@ -3,24 +3,27 @@
 <!-- Main -->
 <section id="main" class="wrapper">
     <Question>
-            <div align="center">
-            <h1>43. 사용자가 어떤 양수를 입력해도 가위, 바위, 보 세 가지 중에 하나를 부여하려고 합니다. 사용자가 입력한 숫자에 실행해야할 연산은 무엇일까요?</h1>
-            <img src="/static/image/questions/entry/q18.png" /></div>
-            
-            <form target="_blank">
+        <div align="center">
+            <div style="width : 50%">
+                <h1 style="text-align:left">43. 사용자가 어떤 양수를 입력해도 가위, 바위, 보 세 가지 중에 하나를 부여하려고 합니다. 사용자가 입력한 숫자에 실행해야할 연산은 무엇일까요?</h1>
+                </div>
+                <img src="/static/image/questions/entry/q18.png" />
+            </div>
+            <form method="POST">
+                {{ form.csrf_token }}
                 <div>
                     <Margin>
-                    <textarea id="comment" class cols="25" rows="5" style="resize: none; outline: none;"></textarea>
-                        </Margin>
+                        {{ form.answer(rows="8", cols="100") }}
+                    </Margin>
                 </div>
                 <div>
-    
-                    <a href="/leveltest/entry" class="button">제출하기</a>
-                    <a href="/leveltest/entry" class="button">건너뛰기</a>
-    
+                    <ul class="actions">
+                        <li><input type="submit" value="제출하기" class="primary" /></li>
+                        <li><a href="/leveltest/entry" class="button fit">건너뛰기</a></li>
+                    </ul>
                 </div>
             </form>
-        </Question>
-    
+</Question>
+
 </section>
-{% endblock %}    
+{% endblock %}

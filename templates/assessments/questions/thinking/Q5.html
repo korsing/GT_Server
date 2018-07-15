@@ -1,0 +1,29 @@
+{% extends "template.html" %}
+{% block content %}
+<!-- Main -->
+<section id="main" class="wrapper">
+    <Question>
+        <div align="center">
+            <div style="width : 50%">
+                <h1 style="text-align:left">  5.다음과 같은 도형을 단 한 번의 직선 칼질으로 두 조각으로 나누었을 때, 각각의 조각이 가지고 있는 검정색의 넓이가 같고 흰색의 넓이도 같다고 한다. 이때 어떤 부분을 어떻게 잘라야 할까?</h1>
+                </div>
+                <img src="/static/image/questions/thinking/q5.png" />
+            </div>
+        <form method="POST">
+            {{ form.csrf_token }}
+            <div>
+                <Margin>
+                    {{ form.answer(rows="8", cols="100") }}
+                </Margin>
+            </div>
+            <div>
+                <ul class="actions">
+                    <li><input type="submit" value="제출하기" class="primary" /></li>
+                    <li><a href="/leveltest/thinking" class="button fit">건너뛰기</a></li>
+                </ul>
+            </div>
+        </form>
+    </Question>
+
+</section>
+{% endblock %}

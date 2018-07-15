@@ -3,29 +3,27 @@
 <!-- Main -->
 <section id="main" class="wrapper">
     <Question>
-            <div align="center">
-            <h1> 36. 다음은 사용자가 그리고 싶어하는 도형을 그려주는 프로그램의 일부분입니다. 주어진 블록들을 활용하여 프로그램을 완성하세요. </h1>
-            <h1> (사용자가 3을 입력하면 삼각형을, 4를 입력하면 사각형을 그려주는 프로그램입니다.) </h1>
-            <h1> 정답은 블록 번호를 순서대로 써주시고, 블록 두 개를 합칠 때는 ‘+’ 사용해서 나타내고, </h1>
-            <h1> 흰 칸에 들어갈 값을 나타내기 위해서는 블록 번호 옆에 대괄호([,])를 쓰고 값을 순서대로 써주세요. </h1>
-
-            <img src="/static/image/questions/entry/q11-1.png" /></div>
-            <h2>ex) 4번 + 5번[2, 9번[5,6]]  </h2>
-            <img src="/static/image/questions/entry/q11-2.png" /></div>
-            <form target="_blank">
+        <div align="center">
+            <div style="width : 50%">
+                <h1 style="text-align:left">36. 다음과 같은 코드를 실행했을 때 출력되는 결과 값을 적어주세요. </h1>
+                </div>
+                <img src="/static/image/questions/entry/q19.png" />
+            </div>
+            <form method="POST">
+                {{ form.csrf_token }}
                 <div>
                     <Margin>
-                    <textarea id="comment" class cols="25" rows="5" style="resize: none; outline: none;"></textarea>
-                        </Margin>
+                        {{ form.answer(rows="8", cols="100") }}
+                    </Margin>
                 </div>
                 <div>
-    
-                    <a href="/leveltest/entry" class="button">제출하기</a>
-                    <a href="/leveltest/entry" class="button">건너뛰기</a>
-    
+                    <ul class="actions">
+                        <li><input type="submit" value="제출하기" class="primary" /></li>
+                        <li><a href="/leveltest/entry" class="button fit">건너뛰기</a></li>
+                    </ul>
                 </div>
             </form>
-        </Question>
-    
+</Question>
+
 </section>
-{% endblock %}    
+{% endblock %}

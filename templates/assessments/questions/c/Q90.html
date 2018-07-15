@@ -1,0 +1,43 @@
+﻿{% extends "template.html" %}
+{% block content %}
+<!-- Main -->
+<section id="main" class="wrapper">
+    <Question>
+            <div align="center">
+                     <div style="width : 50%">
+                <h1 style="text-align:left">90.다음 프로그램을 실행했을 때, 예상되는 결과를 쓰시오.<br></h1></div></div>
+            <pre style ="width : 50%;">
+                <code style="text-align: left">
+#include <stdio.h>
+int main(void){
+	int x = 0;
+	int y = 0;
+	for ( x = 1 ; x < 11 ; x++) {
+		if ( x < 6)
+			y = y + x;
+		else
+			y = y – 1;
+  }
+  printf(“%d %d”, x, y);
+	return 0;
+}
+                </code>
+            </pre>
+            <form method="POST">
+                {{ form.csrf_token }}
+                <div>
+                    <Margin>
+                    {{ form.answer(rows="8", cols="100") }}
+                    </Margin>
+                </div>
+                <div>
+                    <ul class="actions">
+                        <li><input type="submit" value="제출하기" class="primary" /></li>
+                        <li><a href="/leveltest/c" class="button fit">건너뛰기</a></li>
+                    </ul>
+                </div>
+            </form>
+        </Question>
+
+</section>
+{% endblock %}

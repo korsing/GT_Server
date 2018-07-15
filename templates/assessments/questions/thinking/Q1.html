@@ -1,27 +1,29 @@
 {% extends "template.html" %}
 {% block content %}
-
 <!-- Main -->
 <section id="main" class="wrapper">
     <Question>
-            <div align="center">
-            <h1> ë‹¤ìŒ ì§ìœ¡ë©´ì²´ì—ì„œ ë‚˜ì˜¬ ìˆ˜ ìˆëŠ” ê²€ì • ë¸”ëŸ­ì˜ ìµœëŒ€ ê°œìˆ˜ëŠ”?</h1>
-            <img src="/static/images/Thinking_Q1.png" /></div>
-            <form target="_blank">
-                <div>
-                    <Margin>
-                    <textarea id="comment" class cols="25" rows="5" style="resize: none; outline: none;"></textarea>
-                        </Margin>
+        <div align="center">
+            <div style="width : 50%">
+                <h1 style="text-align:left"> 1. ´ÙÀ½ Á¤À°¸éÃ¼¿¡¼­ ³ª¿Ã ¼ö ÀÖ´Â °ËÁ¤ ºí·°ÀÇ ÃÖ´ë °³¼ö´Â?</h1>
                 </div>
-                <div>
-    
-                    <a href="/leveltest/thinking" class="button">ì œì¶œí•˜ê¸°</a>
-                    <a href="/leveltest" class="button">ê±´ë„ˆë›°ê¸°</a>
-    
-                </div>
-            </form>
-        </Question>
-    
-</section>
+                <img src="/static/image/questions/thinking/q1.png" />
+            </div>
+        <form method="POST">
+            {{ form.csrf_token }}
+            <div>
+                <Margin>
+                    {{ form.answer(rows="8", cols="100") }}
+                </Margin>
+            </div>
+            <div>
+                <ul class="actions">
+                    <li><input type="submit" value="Á¦ÃâÇÏ±â" class="primary" /></li>
+                    <li><a href="/leveltest/thinking" class="button fit">°Ç³Ê¶Ù±â</a></li>
+                </ul>
+            </div>
+        </form>
+    </Question>
 
+</section>
 {% endblock %}

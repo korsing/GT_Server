@@ -1,0 +1,30 @@
+{% extends "template.html" %}
+{% block content %}
+<!-- Main -->
+<section id="main" class="wrapper">
+    <Question>
+        <div align="center">
+            <div style="width : 50%">
+                <h1 style="text-align:left"> 20.여러분들이 자동청소기를 만드는 사람이라고 하자. 자동청소기가 새로운 집에 가서 집의 구조를 익힐 수 있는 방법을 3가지 설계 해보시오.</h1>
+            </div>
+            <img src="/static/image/questions/thinking/q14-1.png" />
+            <img src="/static/image/questions/thinking/q14-2.png" />
+        </div>
+        <form method="POST">
+            {{ form.csrf_token }}
+            <div>
+                <Margin>
+                    {{ form.answer(rows="8", cols="100") }}
+                </Margin>
+            </div>
+            <div>
+                <ul class="actions">
+                    <li><input type="submit" value="제출하기" class="primary" /></li>
+                    <li><a href="/leveltest/thinking" class="button fit">건너뛰기</a></li>
+                </ul>
+            </div>
+        </form>
+    </Question>
+
+</section>
+{% endblock %}

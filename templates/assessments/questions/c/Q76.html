@@ -1,0 +1,58 @@
+﻿{% extends "template.html" %}
+{% block content %}
+<!-- Main -->
+<section id="main" class="wrapper">
+    <Question>
+            <div align="center">
+               <div style="width : 50%">
+                <h1 style="text-align:left"> 76.c언어로 만든 프로그램은 위에서 아래로 한 줄씩 실행된다.<br>
+                int main(void) 후 나오는 중괄호 안에 있는 문장들이 프로그램에서 실제 실행되는 문장들이다.<br>
+                return 0; 문장은 정상 종료를 의미하며 다음의 문제들을 푸는데 고려하지 않아도 된다.<br>
+                c언어에서는 printf() 명령어를 사용하면 사용자에게 괄호 안의 내용을 보여줄 수 있다.<br>
+                아래 프로그램의 실행 결과는 다음과 같다.<br></h1></div>
+                </div>
+            <pre style ="width : 50%;">
+                <code style="text-align: left">
+#include <stdio.h>
+int main(void){
+	printf("A");
+	printf("BB\n");
+	printf("CCC");
+	return 0;
+}
+                </code>
+            </pre><h1>
+            출력 : <br>
+            ABB <br>
+            CCC <br>
+            다음의 프로그램의 예상되는 출력 결과를 쓰시오. <br></h1>
+            <pre style ="width : 50%;">
+                <code style="text-align: left">
+#include <stdio.h>
+int main(void){
+	printf("XXX\n");
+	printf("YY\n");
+	printf("ZZZ");
+	return 0;
+}
+                </code>
+            </pre>
+
+            <form method="POST">
+                {{ form.csrf_token }}
+                <div>
+                    <Margin>
+                    {{ form.answer(rows="8", cols="100") }}
+                    </Margin>
+                </div>
+                <div>
+                    <ul class="actions">
+                        <li><input type="submit" value="제출하기" class="primary" /></li>
+                        <li><a href="/leveltest/c" class="button fit">건너뛰기</a></li>
+                    </ul>
+                </div>
+            </form>
+        </Question>
+
+</section>
+{% endblock %}

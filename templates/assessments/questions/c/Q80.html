@@ -1,0 +1,55 @@
+
+{% extends "template.html" %}
+{% block content %}
+<!-- Main -->
+<section id="main" class="wrapper">
+    <Question>
+        <div align="center">
+            <div style="width : 50%">
+                <h1 style="text-align:left">
+                    80.c 언어 프로그램에서는 사칙연산이 가능하다. <br>
+                    a + b	: a와 b 값을 더한다. <br>
+                    a – b	: a와 b 값을 뺀다. <br>
+                    a * b	: a와 b 값을 곱한다. <br>
+                    a / b	: a를 b로 나눈 몫을 구한다. <br>
+                    a % b	: a를 b로 나눈 나머지를 구한다. <br>
+                    a = b	: b 값을 a에 대입한다.  <br>
+                    다음 프로그램은 사용자가 두 정수를 입력하면 사칙연산 한 결과를 출력해주는 프로그램이다. 빈 칸에 알맞은 값들을 작성하시오.<br>
+                </h1>
+            </div>
+            </div>
+            <pre style="width : 50%;">
+            <code style="text-align: left">
+#include <stdio.h>
+int main(void){
+	int num1, num2;
+	scanf(“%d %d”, &num1, &num2);
+	printf(“더한 값 : %d\n” ,    (1)    );
+  printf(“뺀 값 : %d\n” ,    (2)     );
+  printf(“곱한 값 : %d\n”,    (3)    );
+	printf(“나눈 몫 : %d\n” ,    (4)    );
+  printf(“나눈 나머지 : %d” ,    (5)    );
+	return 0;
+}
+
+                </code>
+            </pre>
+            </h1>
+            <form method="POST">
+                {{ form.csrf_token }}
+                <div>
+                    <Margin>
+                        {{ form.answer(rows="8", cols="100") }}
+                    </Margin>
+                </div>
+                <div>
+                    <ul class="actions">
+                        <li><input type="submit" value="제출하기" class="primary" /></li>
+                        <li><a href="/leveltest/c" class="button fit">건너뛰기</a></li>
+                    </ul>
+                </div>
+            </form>
+</Question>
+
+</section>
+{% endblock %}

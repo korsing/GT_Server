@@ -1,0 +1,48 @@
+﻿{% extends "template.html" %}
+{% block content %}
+<!-- Main -->
+<section id="main" class="wrapper">
+    <Question>
+            <div align="center">
+                          <div style="width : 50%">
+                <h1 style="text-align:left">98.다음 프로그램에서 출력되는 결과를 쓰시오. <br>
+</h1></div></div>
+            <pre style ="width : 50%;">
+                <code style="text-align: left">
+#include <stdio.h>
+int main(void){
+	int p[8] = { 1, 1, 1, 1, 1, 1, 1, 1 };
+	int x = 0;
+	int i,j;
+	for(i=0;i<8;i++){
+		p[x] = 0;
+		x = x + 3;
+		if( x > 8)
+			x = x % 8;
+		if ( i == 5)
+			for(j=0;j<8;j++)
+				printf("%d ",p[j]);
+	}
+	return 0;
+}
+
+                </code>
+            </pre>
+            <form method="POST">
+                {{ form.csrf_token }}
+                <div>
+                    <Margin>
+                    {{ form.answer(rows="8", cols="100") }}
+                    </Margin>
+                </div>
+                <div>
+                    <ul class="actions">
+                        <li><input type="submit" value="제출하기" class="primary" /></li>
+                        <li><a href="/leveltest/c" class="button fit">건너뛰기</a></li>
+                    </ul>
+                </div>
+            </form>
+        </Question>
+
+</section>
+{% endblock %}
