@@ -1,7 +1,7 @@
 #-*- coding: utf-8-*-
 from flask import Flask, render_template, session, redirect, flash
 from flask_wtf import Form
-from wtforms import StringField, PasswordField, IntegerField
+from wtforms import StringField, PasswordField, IntegerField, TextField
 from wtforms.validators import InputRequired, Email, Length
 import MySQLdb
 import os
@@ -31,7 +31,7 @@ class SignupForm(Form):
 
 # 레벨테스트란을 정의하는 클래스 선언
 class QuestionForm(Form):
-    answer = StringField("answer")
+    answer = TextField("answer")
 
 # DB 연동을 수행하는 함수
 def connectDB():
