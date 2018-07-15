@@ -2040,7 +2040,7 @@ input, select, textarea {
 		display: block;
 		font-size: 0.9em;
 		font-weight: normal;
-		margin: 0 0 1em 0;
+		margin: 40 0 1em 0;
 	}
 
 	input[type="text"],
