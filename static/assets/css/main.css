@@ -2028,6 +2028,7 @@ input, select, textarea {
 	.features section {
 		background-color: #ffffff;
 		border-bottom: solid 1px #eaeaea;
+		
 	}
 
 /* Form */
@@ -2041,7 +2042,7 @@ input, select, textarea {
 		font-size: 0.9em;
 		font-weight: normal;
 		margin:  0 0 1em 0;
-		margin-left : 40px;
+		margin-left : 80px;
 	}
 
 	input[type="text"],
@@ -2862,6 +2863,7 @@ input, select, textarea {
 
 		table td {
 			padding: 0.75em 0.75em;
+			font-size: 0.9em;
 		}
 
         table th {
