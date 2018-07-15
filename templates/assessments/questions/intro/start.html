@@ -3,7 +3,23 @@
 <!-- Main -->
 <section id="main" class="wrapper">
 
-return "aaaa"
+      
+
+
+            <form method="POST">
+                {{ form.csrf_token }}
+                <div>
+                    <Margin>
+                        {{ form.answer(rows="8", cols="100") }}
+                    </Margin>
+                </div>
+                <div>
+                    <ul class="actions">
+                        <li><input type="submit" value="다음으로" class="primary" /></li>
+                    </ul>
+                </div>
+            </form>
+        
 
 </section>
 {% endblock %}
