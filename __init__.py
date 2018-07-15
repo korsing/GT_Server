@@ -68,7 +68,7 @@ def homepage():
 @app.route('/error')
 def error():
     if('errmsg' in session): # 현재 무슨 에러가 발생했다면
-        error = session['errmsg'] # 무슨 에러인지 메세지 갖고오고
+        message = session['errmsg'] # 무슨 에러인지 메세지 갖고오고
     else: # 동작하는지 테스트용도.. 실제로 이 url 치고 들어오는 사람은 없을테니까
         message = "현재 오류가 없습니다!"
     return message
@@ -93,6 +93,10 @@ def login():
             message = "아이디나 비밀번호가 틀렸습니다."
             createError(message)
             return redirect('/error')
+        # 이까지 온다는 것은 if문에서 안걸렸다는 말.. DB에 해당 아이디가 없다! 아이디 오류
+        message = "아이디가 틀렸습니다."
+        createError(message)
+        return redirect('/error')
     return render_template("/admin/login.html", form=login_form)
 
 @app.route('/onlyformembers')
