@@ -165,7 +165,6 @@ def leveltest_category(variable):
         if(variable in category_list):
             return render_template("/assessments/questions/" + variable + "/start.html")
         else:
-            question_form = QuestionForm()
             qnum = int(variable[1:])
             if(qnum <= 25):
                 category = "thinking"
@@ -175,9 +174,10 @@ def leveltest_category(variable):
                 category = "python"
             else:
                 category = "c"
-            #if(question_form.validate_on_submit()):
-            #    return question_form.answer.data
-            return render_template("/assessments/questions/" + category + "/Q"+ str(qnum) + ".html", form = question_form)
+            if(question_form.validate_on_submit()):
+                return question_form.answer.data
+        question_form = QuestionForm()
+        return render_template("/assessments/questions/" + category + "/Q"+ str(qnum) + ".html", form = question_form)
     else:
         return redirect("/onlyformembers")
 
