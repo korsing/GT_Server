@@ -179,7 +179,7 @@ def leveltest_category(variable):
             if(question_form.validate_on_submit()):
                 data = question_form.answer.data
                 c,conn = connectDB()
-                c.execute("SELECT * FROM  %s WHERE userid = %s", (category,userid,))
+                c.execute("SELECT * FROM  %s WHERE userid = %s", (category,userid))
                 flag = c.fetchall()
                 if(flag != None):
                     c.execute("UPDATE %s SET %s = %s WHERE userid = %s", (category,qnum,data, userid))
