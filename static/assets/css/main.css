@@ -2534,8 +2534,7 @@ input, select, textarea {
 		list-style: none;
 		margin-left: -1em;
 		padding-left: 0;
-		margin-left: auto;
-		margin-right : auto;
+		margin-left: 700px;
 	}
 
 		ul.actions li {
