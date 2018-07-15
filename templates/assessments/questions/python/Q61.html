@@ -5,37 +5,30 @@
     <Question>
             <div align="center">
             <div style="width : 50%">
-                <h1 style="text-align:left"> 51. 의사코드는 프로그램 작성 이전에 각 모듈이 작동하는 논리를 표현하기 위해 <br/>
-                사람이 쉽게 이해할 수 있는 자연어 등으로 프로그래밍 언어의 형식을 빌어 작성하는 것을 말한다. <br/>
-                다음은 의사코드를 Python 언어로 표현한 것인데, 파이썬 코드에서 빈칸에 들어갈 알맞은 변수명을 작성하시오. </h1>
+                <h1 style="text-align:left"> 
+                    61. 다음 코드에서 내림차순으로 정렬을 하고자 한다면 변경되어야하는 코드를 작성하시오.
+                </h1>
             </div>
             <pre style ="width : 50%;">
                 <code style="text-align: left">
 
-[의사코드]
-SET var1 100 
-SET var2 200
-SET count 0
-REPEAT
-    WHEN ( var1 = var2 )
-        STOP REPEATING
-    INCREASE var1 by 1
-    INCREASE count by 1
-SAY count
-
-[Python]
-
-var1 = 100
-var2 = 200
-count = 0
-while( 1 ):
-    if( var1 == [ ① ] ):
-        break;
-    var1 += 1
-    [ ② ] += 1
-
-print( count )
-                    </code>
+unsorted = [1,8,4,3,7,5,2,10,9,6]
+sorted = []
+def swap(list, i, j):
+    # i, j는 인덱스 값
+    temp = list[i]
+    list[i] = list[j]
+    list[j] = temp
+    return list
+for i in range(len(unsorted)):
+    # len()은 해당 자료형의 원소개수를
+    # 반환해주는 내장 함수
+    for j in range(i+1, len(unsorted)):
+        if(unsorted[ 1 ] > unsorted[ 2 ]):
+        sorted = swap(unsorted, i, j)
+print(sorted)            
+     
+                </code>
             </pre>
             <form method="POST">
                 {{ form.csrf_token }}
