@@ -181,6 +181,8 @@ def leveltest_category(variable):
                 c,conn = connectDB()
                 c.execute("SELECT * FROM  %s WHERE userid = %s", (category,userid))
                 flag = c.fetchall()
+                return flag
+                '''
                 if(flag):
                     c.execute("UPDATE %s SET %s = %s WHERE userid = %s", (category,qnum,data, userid))
                 else:
@@ -188,6 +190,7 @@ def leveltest_category(variable):
                 conn.commit()
                 conn.close()
                 return redirect('/leveltest/'+category)
+                '''
         return render_template("/assessments/questions/" + category + "/Q"+ str(qnum) + ".html", form = question_form)
     else:
         return redirect("/onlyformembers")
