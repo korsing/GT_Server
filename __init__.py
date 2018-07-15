@@ -181,7 +181,7 @@ def leveltest_category(variable):
                 c,conn = connectDB()
                 c.execute("SELECT * FROM  %s WHERE userid = %s", (category,userid))
                 flag = c.fetchall()
-                if(flag != None):
+                if(flag):
                     c.execute("UPDATE %s SET %s = %s WHERE userid = %s", (category,qnum,data, userid))
                 else:
                     c.execute("INSERT into %s (userid, %s) VALUES (%s, %s)", (category,qnum, userid, data))
