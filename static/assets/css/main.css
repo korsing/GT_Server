@@ -1843,8 +1843,8 @@ input, select, textarea {
 		text-decoration: none;
 		text-transform: uppercase;
 		white-space: nowrap;
-       margin-left : auto;
-       margin-right : auto;
+       margin-left : 10px;
+       margin-right : 10px;
        
 	}
 
