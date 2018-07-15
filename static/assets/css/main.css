@@ -2993,6 +2993,8 @@ input, select, textarea {
 
 			.wrapper.split {
 				text-align: center;
+				margin-left: auto;
+				margin-right : auto;
 			}
 
 				.wrapper.split ul.actions {
@@ -3001,8 +3003,7 @@ input, select, textarea {
 					-ms-justify-content: center;
 					justify-content: center;
 					width: 100%;
-					margin-left: auto;
-					margin-right : auto;
+					
 				}
 
 					.wrapper.split ul.actions li:first-child {
