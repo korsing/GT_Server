@@ -180,11 +180,10 @@ def leveltest_category(variable):
                 data = question_form.answer.data
                 c,conn = connectDB()
                 query = "SELECT * FROM " + category + " WHERE userid = '" + userid + "';"
-                return query
-                '''
+                
                 c.execute(query)
-                flag = c.fetchall()
-                return flag
+                flag = c.fetchone()[0]
+                
                 if(flag != None):
                     update_Variable = "UPDATE " + category +" SET Q"+ str(qnum) +" = '" + data + "' WHERE userid = '" + userid + "';"
                     c.execute(update_Variable)
@@ -195,7 +194,7 @@ def leveltest_category(variable):
                     return "입력된 정보가 없어요"
                 conn.commit()
                 conn.close()
-                return redirect('/leveltest/'+category)'''
+                return redirect('/leveltest/'+category)
                 
         return render_template("/assessments/questions/" + category + "/Q"+ str(qnum) + ".html", form = question_form)
     else:
