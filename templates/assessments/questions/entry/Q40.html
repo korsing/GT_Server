@@ -1,3 +1,5 @@
+{% extends "template.html" %}
+{% block content %}
 <!-- Main -->
 <section id="main" class="wrapper">
     <Question>
@@ -7,7 +9,7 @@
             <h1> 정답은 블록 번호를 순서대로 써주시고, 블록 두 개를 합칠 때는 ‘+’ 사용해서 나타내고, </h1>
             <h1> 흰 칸에 들어갈 값을 나타내기 위해서는 블록 번호 옆에 대괄호([,])를 쓰고 값을 순서대로 써주세요. </h1>
 
-            <img src="static/image/questions/entry/q15.png" /></div>
+            <img src="/static/image/questions/entry/q15.png" /></div>
             
             <form target="_blank">
                 <div>
@@ -25,3 +27,4 @@
         </Question>
     
 </section>
+{% endblock %}    

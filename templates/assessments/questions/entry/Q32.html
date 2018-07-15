@@ -1,3 +1,5 @@
+{% extends "template.html" %}
+{% block content %}
 <!-- Main -->
 <section id="main" class="wrapper">
     <Question>
@@ -6,9 +8,9 @@
             <h1> 다음에 있는 블록들을 활용하여 리스트 안에 저장되어 있는 숫자들 중 가장 큰 수를 찾아내서 max라는 변수에 저장하는 프로그램을 완성하세요. </h1>
             <h1> 흰 칸 안에 있는 값들은 자유롭게 변경 가능합니다. 정답은 블록 번호를 순서대로 써주시고, 블록 두 개를 합칠 때는 ‘+’ 사용해서 나타내고, </h1>
             <h1> 흰 칸에 들어갈 값을 나타내기 위해서는 블록 번호 옆에 대괄호([,])를 쓰고 값을 순서대로 써주세요.</h1>
-            <img src="static/image/questions/entry/q7-1.png" /></div>
+            <img src="/static/image/questions/entry/q7-1.png" /></div>
             <h2>ex) 9번 + 11번[6번, 5번[7번]] </h2>
-            <img src="static/image/questions/entry/q7-2.png" /></div>
+            <img src="/static/image/questions/entry/q7-2.png" /></div>
             <form target="_blank">
                 <div>
                     <Margin>
@@ -25,3 +27,4 @@
         </Question>
     
 </section>
+{% endblock %}    
