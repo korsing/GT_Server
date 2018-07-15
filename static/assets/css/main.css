@@ -2534,6 +2534,8 @@ input, select, textarea {
 		list-style: none;
 		margin-left: -1em;
 		padding-left: 0;
+		margin-left: auto;
+		margin-right : auto;
 	}
 
 		ul.actions li {
@@ -2993,8 +2995,7 @@ input, select, textarea {
 
 			.wrapper.split {
 				text-align: center;
-				margin-left: auto;
-				margin-right : auto;
+				
 			}
 
 				.wrapper.split ul.actions {
