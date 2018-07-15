@@ -138,7 +138,11 @@ def signup():
 @app.route("/leveltest")
 def leveltest():
     if('user' in session):
-        return render_template("/assessments/leveltest.html", flag = True)
+                userid = session['user']
+        c, conn = connectDB()
+        c.execute("SELECT name FROM USERS WHERE userid = %s", (userid,))
+        name = c.fetchone()[0]
+        return render_template("/assessments/leveltest.html", name = name, flag = True)
     else:
         return redirect("/onlyformembers")
 
