@@ -5,35 +5,26 @@
     <Question>
             <div align="center">
             <div style="width : 50%">
-                <h1 style="text-align:left"> 51. 의사코드는 프로그램 작성 이전에 각 모듈이 작동하는 논리를 표현하기 위해 <br/>
-                사람이 쉽게 이해할 수 있는 자연어 등으로 프로그래밍 언어의 형식을 빌어 작성하는 것을 말한다. <br/>
-                다음은 의사코드를 Python 언어로 표현한 것인데, 파이썬 코드에서 빈칸에 들어갈 알맞은 변수명을 작성하시오. </h1>
+                <h1 style="text-align:left"> 
+                    72. 다음 제시문을 읽고, 제시문에서 요구하는 작업을 Python으로 작성하시오.
+                </h1>
             </div>
             <pre style ="width : 50%;">
                 <code style="text-align: left">
 
-[의사코드]
-SET var1 100 
-SET var2 200
-SET count 0
-REPEAT
-    WHEN ( var1 = var2 )
-        STOP REPEATING
-    INCREASE var1 by 1
-    INCREASE count by 1
-SAY count
+[제시문]
+이번 태풍 “쁘라삐룬”의 영향으로 성균관대학교 600주년 기념관 지하 1층이 물에 잠기는 참사가 벌어졌다. 
+이에 학생들은 수해 복구 자원봉사를 통해 물을 퍼내려고 하는데, 봉사활동의 조건은 다음과 같다.
 
-[Python]
-var1 = 100
-var2 = 200
-count = 0
-while( 1 ):
-    if( var1 == [ ① ] ):
-        break;
-    var1 += 1
-    [ ② ] += 1
-print( count )
-                    </code>
+ⓐ 물의 양은 랜덤하게 주어진다. (N)
+ⓑ 물을 퍼내기 위해 구비된 버킷의 종류는 10L, 5L, 1L짜리 총 3개 밖에 없다.
+ⓒ 버킷의 개수는 최소한으로 사용한다.
+ⓓ 학생 한 사람당 하나의 버킷만 들 수 있다.
+ⓔ 각 버킷에는 최대한 물이 가득 차게 한다.
+
+이때, 필요한 사람의 수를 구하는 프로그램을 작성하시오. 
+
+                </code>
             </pre>
             <form method="POST">
                 {{ form.csrf_token }}

@@ -6,23 +6,25 @@
             <div align="center">
             <div style="width : 50%">
                 <h1 style="text-align:left"> 
-                    67. 다음은 Python에서 함수를 활용하여 프로그램을 작성한 것이다. 함수에는 반환형과 비반환형이 존재하는데, 다음은 비반환형을 나타낸 코드이다.<br/>
-                    주어진 코드를 참고하여 아래 함수를 반환형으로 수정하시오.
+                    67. 다음은 Python의 산술연산자인 %를 활용하여 임의의 숫자가 짝수인지 판별하는 프로그램이다. 빈칸에 알맞은 내용을 채워 넣으시오.
+                    (단, 소수는 1과 자기 자신 이외에 약수가 없는 숫자를 의미한다.)
                 </h1>
             </div>
             <pre style ="width : 50%;">
                 <code style="text-align: left">
 
-def get_Max(list):
-biggest = list[0]
-for i in range(1,len(list)):
-    if(list[i] > biggest):
-        biggest = list[i]
-print(biggest)
-
-list = [1,2,5,9,-3.6,10,4]
-get_Max(list)
-
+num = int(input("숫자를 입력하세요. : "))
+flag = False # 소수가 아니다 
+# flag는 해당 숫자가 소수인지 아닌지 기록하는 변수
+for i in range( ① ,num,1):
+   if(num % i == 0):
+      flag = ②
+      break
+if(flag == False):
+   print("%d는 소수입니다." %(num))
+else:
+   print("%d는 소수가 아닙니다." %(num))
+     
                 </code>
             </pre>
             <form method="POST">

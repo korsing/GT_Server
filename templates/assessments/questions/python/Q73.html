@@ -5,35 +5,26 @@
     <Question>
             <div align="center">
             <div style="width : 50%">
-                <h1 style="text-align:left"> 51. 의사코드는 프로그램 작성 이전에 각 모듈이 작동하는 논리를 표현하기 위해 <br/>
-                사람이 쉽게 이해할 수 있는 자연어 등으로 프로그래밍 언어의 형식을 빌어 작성하는 것을 말한다. <br/>
-                다음은 의사코드를 Python 언어로 표현한 것인데, 파이썬 코드에서 빈칸에 들어갈 알맞은 변수명을 작성하시오. </h1>
+                <h1 style="text-align:left"> 
+                    73. 다음은 피보나치 수열에 관한 설명이다. 피보나치 수열에서 알고자하는 항의 순번을 입력하면 <br/>
+                    해당 값을 출력해주는 프로그램을 완성하시오. (단, a1 = 0, a2 = 1 이다) <br/> <br/>
+                    [피보나치 수열]<br/>
+                    첫 번째 항 a1 = 0<br/>
+                    두 번째 항 a2 = 1 일 때, <br/>
+                    세 번째 항 a3 = a2 + a1 = 1<br/>
+                    네 번째 항 a4 = a3 + a2 = 2<br/>
+                    표준식은 A(n+2) = A(n+1) + A(n)<br/>
+                </h1>
             </div>
             <pre style ="width : 50%;">
                 <code style="text-align: left">
 
-[의사코드]
-SET var1 100 
-SET var2 200
-SET count 0
-REPEAT
-    WHEN ( var1 = var2 )
-        STOP REPEATING
-    INCREASE var1 by 1
-    INCREASE count by 1
-SAY count
+fibo = [0,1] # 1항과 2항은 주어진다.
+for i in range(①, n, 1):
+    fibo.append(② + fibo[i-2])
+print(③) # 해당 항의 값을 출력
 
-[Python]
-var1 = 100
-var2 = 200
-count = 0
-while( 1 ):
-    if( var1 == [ ① ] ):
-        break;
-    var1 += 1
-    [ ② ] += 1
-print( count )
-                    </code>
+                </code>
             </pre>
             <form method="POST">
                 {{ form.csrf_token }}
