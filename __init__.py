@@ -67,10 +67,10 @@ def homepage():
 
 @app.route('/error')
 def error():
-    if('errmsg' in session): # 현재 무슨 에러가 발생했다면
-        error = session['errmsg'] # 무슨 에러인지 메세지 갖고오고
-    else: # 동작하는지 테스트용도.. 실제로 이 url 치고 들어오는 사람은 없을테니까
-        error = "현재 오류가 없습니다!"
+    #if('errmsg' in session): # 현재 무슨 에러가 발생했다면
+    #    error = session['errmsg'] # 무슨 에러인지 메세지 갖고오고
+    #else: # 동작하는지 테스트용도.. 실제로 이 url 치고 들어오는 사람은 없을테니까
+    error = "현재 오류가 없습니다!"
     # error 변수는 정상적으로 나옴
     return render_template("/admin/error.html", message = error) #변수가 안넘어감
     # 렌더링 정상적으로 잘되는데
@@ -185,7 +185,7 @@ def page_not_found(e):
 @app.errorhandler(500)
 def page_not_found(e):
     return redirect('/error', message = "Internal Server Error!")
-    
+
 # Start
 if(__name__ == "__main__"):
     app.run()
