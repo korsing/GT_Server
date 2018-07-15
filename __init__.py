@@ -158,7 +158,7 @@ def aboutleveltest():
         return redirect("/onlyformembers")
     return render_template("/assessments/abouttest.html")
 
-@app.route("/leveltest/<variable>")
+@app.route("/leveltest/<variable>", methods=['GET', 'POST'])
 def leveltest_category(variable):
     if('user' in session):
         category_list = ['thinking', 'entry', 'python', 'c']
@@ -176,12 +176,15 @@ def leveltest_category(variable):
             else:
                 category = "c"
             if(question_form.validate_on_submit()):
-                return "제출되었습니다!"
+                return question_form.answer.data
             return render_template("/assessments/questions/" + category + "/Q"+ str(qnum) + ".html", form = question_form)
     else:
         return redirect("/onlyformembers")
-        
-
+ '''       
+@app.route("/leveltest/<category>Q<qnum>")
+def questions(category, qnum):
+    render_template("/assessments/questions/")
+'''
 @app.route('/sensitiveinfo')
 def sensitiveinfo():
     return render_template("/privacy/sensitiveinfo.html")
