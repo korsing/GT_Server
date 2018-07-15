@@ -180,11 +180,7 @@ def leveltest_category(variable):
             return render_template("/assessments/questions/" + category + "/Q"+ str(qnum) + ".html", form = question_form)
     else:
         return redirect("/onlyformembers")
- '''       
-@app.route("/leveltest/<category>Q<qnum>")
-def questions(category, qnum):
-    render_template("/assessments/questions/")
-'''
+
 @app.route('/sensitiveinfo')
 def sensitiveinfo():
     return render_template("/privacy/sensitiveinfo.html")
