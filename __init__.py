@@ -179,7 +179,12 @@ def leveltest_category(variable):
             if(question_form.validate_on_submit()):
                 data = question_form.answer.data
                 c,conn = connectDB()
-                c.execute("INSERT into test_answer VALUES (%s, %s)", (userid, data))
+                c.execute("SELECT * FROM test_answer WHERE userid = %s", (userid,))
+                flag = c.fetchall()
+                if(flag):
+                    c.execute("UPDATE test_answer SET answer = %s WHERE userid = %s", (data, userid))
+                else:
+                    c.execute("INSERT into test_answer VALUES (%s, %s)", (userid, data))
                 conn.commit()
                 conn.close()
         return render_template("/assessments/questions/" + category + "/Q"+ str(qnum) + ".html", form = question_form)
