@@ -183,6 +183,7 @@ def leveltest_category(variable):
                 
                 flag = c.execute(query)
                 if(flag != 0):
+                    return "HELLo"
                     update_Variable = "UPDATE " + category +" SET Q"+ str(qnum) +" = '" + data + "' WHERE userid = '" + userid + "';"
                     c.execute(update_Variable)
                     return "입력된 정보가 있네요"
