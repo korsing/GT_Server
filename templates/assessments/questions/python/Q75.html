@@ -1,0 +1,48 @@
+{% extends "template.html" %}
+{% block content %}
+<!-- Main -->
+<section id="main" class="wrapper">
+    <Question>
+            <div align="center">
+            <div style="width : 50%">
+                <h1 style="text-align:left"> 
+                    55. 프로그래밍을 하다보면, 개발자의 의도와는 상관없이 발생하는 에러 들이 있다. (예를 들면 나이를 입력해야하는 칸에 이름을 입력한다던지, 10글자 이내로 입력하는 칸에 그 이상을 입력한다던지 등)
+                   이런 경우를 최대한 예상하여 에러가 발생하도록 두지 않고, 대책을 마련해두는 방식을 예외처리라고 부르는데, 다음은 예외처리를 진행하는 Python 코드이다.
+                   아래 코드를 간략하게 설명하고, 추가로 예외 처리할 수 있는 상황을 한 가지 더 만들어보시오.
+                </h1>
+            </div>
+            <pre style ="width : 50%;">
+                <code style="text-align: left">
+
+class MinusAge(Exception):
+pass
+try:
+    name = int(input("나이 : "))
+    if(name <= 0):
+        raise MinusAge
+except ValueError:
+    print("나이가 문자입니다.")
+except MinusAge:
+    print("나이가 음수입니다.")
+                                             
+                </code>
+            </pre>
+            <form method="POST">
+                {{ form.csrf_token }}
+                <div>
+                    <Margin>
+                    {{ form.answer(rows="8", cols="100") }}
+                    </Margin>
+                </div>
+                <div>
+                    <ul class="actions">
+                        <li><input type="submit" value="제출하기" class="primary" /></li>
+                        <li><a href="/leveltest/python" class="button fit">건너뛰기</a></li>
+                    </ul>
+                </div>
+            </form>
+        </Question>
+    </div>
+</section>
+{% endblock %}
+

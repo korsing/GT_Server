@@ -6,17 +6,28 @@
             <div align="center">
             <div style="width : 50%">
                 <h1 style="text-align:left"> 
-                    57. 다음은 1부터 100까지 더하는 프로그램을 for문을 활용하여 작성한 것이다. 이를 while문으로 바꾸어 작성해보시오.
+                    59. 다음은 정렬되지 않은 자료를 오름차순으로 정렬하는 코드이다. 빈칸에 알맞은 변수 명을 작성하시오.
                 </h1>
             </div>
             <pre style ="width : 50%;">
                 <code style="text-align: left">
 
-sum = 0
-for i in range(1,101,1):
-    sum += i
-print(sum)     
-
+unsorted = [1,8,4,3,7,5,2,10,9,6]
+sorted = []
+def swap(list, i, j):
+    # i, j는 인덱스 값
+    temp = list[i]
+    list[i] = list[j]
+    list[j] = temp
+    return list
+for i in range(len(unsorted)):
+    # len()은 해당 자료형의 원소개수를
+    # 반환해주는 내장 함수
+    for j in range(i+1, len(unsorted)):
+        if(unsorted[ 1 ] > unsorted[ 2 ]):
+        sorted = swap(unsorted, i, j)
+print(sorted)            
+     
                 </code>
             </pre>
             <form method="POST">
