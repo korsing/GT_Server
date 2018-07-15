@@ -138,7 +138,7 @@ def signup():
 @app.route("/leveltest")
 def leveltest():
     if('user' in session):
-        return render_template("/assessments/abouttest.html", flag = True)
+        return render_template("/assessments/leveltest.html", flag = True)
     else:
         return redirect("/onlyformembers")
 
