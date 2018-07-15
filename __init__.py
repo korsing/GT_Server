@@ -181,11 +181,8 @@ def leveltest_category(variable):
                 c,conn = connectDB()
                 query = "SELECT * FROM " + category + " WHERE userid = '" + userid + "';"
                 
-                c.execute(query)
-                
-                flag = c.fetchone()[0]
-                return flag
-                if(flag != None):
+                flag = c.execute(query)
+                if(flag != 0):
                     update_Variable = "UPDATE " + category +" SET Q"+ str(qnum) +" = '" + data + "' WHERE userid = '" + userid + "';"
                     c.execute(update_Variable)
                     return "입력된 정보가 있네요"
