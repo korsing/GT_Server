@@ -87,7 +87,7 @@ def login():
         userid = login_form.userid.data # 입력받은 아이디와
         c.execute("SELECT userpw FROM USERS WHERE userid = %s", (userid,)) # 아이디를 사용하여 비밀번호를 DB에서 가져옴
         userpw_tuple = c.fetchone()
-        if(len(userpw_tuple) == 0): # 갖고온게 하나도 없다는 말은 userid가 존재하지 않는다!
+        if(userpw_tuple==None): # 갖고온게 하나도 없다는 말은 userid가 존재하지 않는다!
             message = "아이디가 틀렸습니다."
             createError(message)
             return redirect('/error')
