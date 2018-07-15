@@ -179,18 +179,18 @@ def leveltest_category(variable):
             if(question_form.validate_on_submit()):
                 data = question_form.answer.data
                 c,conn = connectDB()
-                c.execute("SELECT * FROM  %s WHERE userid = %s", (category,userid))
+                query = "SELECT * FROM " + category + " WHERE userid = " + userid + ";"
+                c.execute(query)
                 flag = c.fetchall()
-                return flag
-                '''
                 if(flag):
-                    c.execute("UPDATE %s SET %s = %s WHERE userid = %s", (category,qnum,data, userid))
+                    update_Variable = "UPDATE " + category +" SET "+ qnum +" = " + data + " WHERE userid = " + userid + ";"
+                    c.execute(update_Variable)
                 else:
-                    c.execute("INSERT into %s (userid, %s) VALUES (%s, %s)", (category,qnum, userid, data))
+                    c.execute("INSERT into %s (userid, %s) VALUES (%s, %s);", (category,qnum, userid, data))
                 conn.commit()
                 conn.close()
                 return redirect('/leveltest/'+category)
-                '''
+                
         return render_template("/assessments/questions/" + category + "/Q"+ str(qnum) + ".html", form = question_form)
     else:
         return redirect("/onlyformembers")
