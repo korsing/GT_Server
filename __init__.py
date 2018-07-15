@@ -138,9 +138,9 @@ def signup():
 @app.route("/leveltest")
 def leveltest():
     if('user' in session):
-        userid = session['user']
+        name = session['user']
         c, conn = connectDB()
-        c.execute("SELECT name FROM USERS WHERE userid = %s", (userid,))
+        c.execute("SELECT userid FROM USERS WHERE name = %s", (name,))
         name = c.fetchone()[0]
         return render_template("/assessments/leveltest.html", name = name, flag = True)
     else:
@@ -181,7 +181,7 @@ def leveltest_category(variable):
             question_form = QuestionForm()
             if(question_form.validate_on_submit()):
                 data = question_form.answer.data
-                c.execute("INSERT into test_answer VALUES (%s, %s)", (userid, data))
+                c.execute("INSERT into test_answer VALUES (%s, %s)", (name, data))
                 conn.commit()
                 conn.close()
         return render_template("/assessments/questions/" + category + "/Q"+ str(qnum) + ".html", form = question_form)
