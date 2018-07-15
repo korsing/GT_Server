@@ -117,7 +117,7 @@ def signup():
         c, conn = connectDB()
         c.execute("SELECT userid from USERS;")
         for userid_tuple in c.fetchall():
-            if(signup_form.userid in userid_tuple): # DB에 이미 해당 아이디가 있다면
+            if(signup_form.userid.data in userid_tuple): # DB에 이미 해당 아이디가 있다면
                 message = "해당 아이디가 이미 존재합니다."
                 createError(message)
                 return message
