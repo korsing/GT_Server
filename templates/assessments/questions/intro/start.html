@@ -3,23 +3,18 @@
 <!-- Main -->
 <section id="main" class="wrapper">
 
-      
+        <div class="col-12">
+                <label for="demo-category">질문 1 : 나는 다른 학생들과 함께 팀을 이루어 작업하는 것을 즐거워한다.</label>
+                <select name="demo-category" id="demo-category">
+                    <option value="">-</option>
+                    <option value="1">항상 즐거워 한다.</option>
+                    <option value="1">어느 친구냐에 따라 다르다</option>
+                    <option value="1">혼자 하는 것이 더 즐겁다.</option>
+                </select>
+            </div>
 
-
-            <form method="POST">
-                {{ form.csrf_token }}
-                <div>
-                    <Margin>
-                        {{ form.answer(rows="8", cols="100") }}
-                    </Margin>
-                </div>
-                <div>
-                    <ul class="actions">
-                        <li><input type="submit" value="다음으로" class="primary" /></li>
-                    </ul>
-                </div>
-            </form>
-        
+            
+       
 
 </section>
 {% endblock %}
