@@ -187,7 +187,7 @@ def leveltest_category(variable):
                     c.execute("INSERT into test_answer VALUES (%s, %s)", (userid, data))
                 conn.commit()
                 conn.close()
-                return ('/leveltest/'+category)
+                return redirect('/leveltest/'+category)
         return render_template("/assessments/questions/" + category + "/Q"+ str(qnum) + ".html", form = question_form)
     else:
         return redirect("/onlyformembers")
