@@ -138,7 +138,7 @@ def signup():
 @app.route("/leveltest")
 def leveltest():
     if('user' in session):
-                userid = session['user']
+        userid = session['user']
         c, conn = connectDB()
         c.execute("SELECT name FROM USERS WHERE userid = %s", (userid,))
         name = c.fetchone()[0]
