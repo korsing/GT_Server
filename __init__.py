@@ -40,8 +40,8 @@ def connectDB():
     return c, conn
 
 # 로그인을 수행했을 때 세션을 생성하는 함수
-def createSession(username):
-    session['user'] = username
+def createSession(userid):
+    session['user'] = userid
 
 # 로그아웃 함수
 def deleteSession():
@@ -138,9 +138,9 @@ def signup():
 @app.route("/leveltest")
 def leveltest():
     if('user' in session):
-        name = session['user']
+        userid = session['user']
         c, conn = connectDB()
-        c.execute("SELECT userid FROM USERS WHERE name = %s", (name,))
+        c.execute("SELECT name FROM USERS WHERE userid = %s", (userid,))
         name = c.fetchone()[0]
         return render_template("/assessments/leveltest.html", name = name, flag = True)
     else:
@@ -161,12 +161,7 @@ def aboutleveltest():
 @app.route("/leveltest/<variable>", methods=['GET', 'POST'])
 def leveltest_category(variable):
     if('user' in session):
-        name = session['user']
-        return name
-        '''
-        c, conn = connectDB()
-        c.execute("SELECT userid from USERS WHERE name = %s", (name,))
-        userid = c.fetchone()[0]
+        userid = session['user']
         category_list = ['thinking', 'entry', 'python', 'c']
         if(variable in category_list):
             return render_template("/assessments/questions/" + variable + "/start.html")
@@ -183,7 +178,8 @@ def leveltest_category(variable):
             question_form = QuestionForm()
             if(question_form.validate_on_submit()):
                 data = question_form.answer.data
-                c.execute("INSERT into test_answer VALUES (%s, %s)", (name, data))
+                c,conn = connectDB()
+                c.execute("INSERT into test_answer VALUES (%s, %s)", (userid, data))
                 conn.commit()
                 conn.close()
         return render_template("/assessments/questions/" + category + "/Q"+ str(qnum) + ".html", form = question_form)
