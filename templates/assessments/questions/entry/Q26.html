@@ -9,14 +9,14 @@
             <form target="_blank">
                 <div>
                     <Margin>
-                    <textarea id="comment" class cols="25" rows="5" style="resize: none; outline: none;"></textarea>
-                        </Margin>
+                    {{ form.answer }}
+                    </Margin>
                 </div>
                 <div>
-    
-                    <a href="/leveltest/entry" class="button">제출하기</a>
-                    <a href="/leveltest/entry" class="button">건너뛰기</a>
-    
+                    <ul class="actions">
+                        <li><input type="submit" value="제출하기" class="primary" /></li>
+                        <li><a href="/leveltest/entry" class="button fit">아이디/비밀번호 복구</a></li>
+                    </ul>
                 </div>
             </form>
         </Question>
