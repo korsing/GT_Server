@@ -67,13 +67,12 @@ def homepage():
 
 @app.route('/error')
 def error():
-    #if('errmsg' in session): # 현재 무슨 에러가 발생했다면
-    #    error = session['errmsg'] # 무슨 에러인지 메세지 갖고오고
-    #else: # 동작하는지 테스트용도.. 실제로 이 url 치고 들어오는 사람은 없을테니까
-    message = "현재 오류가 없습니다!"
-    # error 변수는 정상적으로 나옴
-    return render_template("/admin/error.html", message = message) #변수가 안넘어감
-    # 렌더링 정상적으로 잘되는데
+    if('errmsg' in session): # 현재 무슨 에러가 발생했다면
+        error = session['errmsg'] # 무슨 에러인지 메세지 갖고오고
+    else: # 동작하는지 테스트용도.. 실제로 이 url 치고 들어오는 사람은 없을테니까
+        message = "현재 오류가 없습니다!"
+    return message
+    #return render_template("/admin/error.html", message = message) #변수가 안넘어감
 
 @app.route('/deleteerror')
 def testtest():
@@ -93,7 +92,7 @@ def login():
         else: # 입력한 비밀번호가 DB와 다르다면
             message = "아이디나 비밀번호가 틀렸습니다."
             createError(message)
-            return message
+            return redirect('/error')
     return render_template("/admin/login.html", form=login_form)
 
 @app.route('/onlyformembers')
@@ -112,7 +111,7 @@ def signup():
         if(signup_form.userpw.data != signup_form.pwconfirm.data): # 비밀번호와 비밀번호 확인이 일치하는지 체크
             message = "비밀번호가 일치하지 않습니다."
             createError(message)
-            return message
+            return redirect('/error')
 
         c, conn = connectDB()
         c.execute("SELECT userid from USERS;")
@@ -120,7 +119,7 @@ def signup():
             if(signup_form.userid.data in userid_tuple): # DB에 이미 해당 아이디가 있다면
                 message = "해당 아이디가 이미 존재합니다."
                 createError(message)
-                return message
+                return redirect('/error')
         
         # 이까지 온다는 것 자체가 위에 에러 if문에서 하나도 안걸렸다는 말!
         password = generate_password_hash(signup_form.userpw.data) 
