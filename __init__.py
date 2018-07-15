@@ -162,6 +162,8 @@ def aboutleveltest():
 def leveltest_category(variable):
     if('user' in session):
         name = session['user']
+        return name
+        '''
         c, conn = connectDB()
         c.execute("SELECT userid from USERS WHERE name = %s", (name,))
         userid = c.fetchone()[0]
@@ -187,7 +189,7 @@ def leveltest_category(variable):
         return render_template("/assessments/questions/" + category + "/Q"+ str(qnum) + ".html", form = question_form)
     else:
         return redirect("/onlyformembers")
-
+    '''
 @app.route('/sensitiveinfo')
 def sensitiveinfo():
     return render_template("/privacy/sensitiveinfo.html")
