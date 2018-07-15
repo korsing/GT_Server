@@ -176,7 +176,8 @@ def leveltest_category(variable):
                 category = "c"
             question_form = QuestionForm()
             if(question_form.validate_on_submit()):
-                return question_form.answer.data
+                data = question_form.answer.data
+                return data
         return render_template("/assessments/questions/" + category + "/Q"+ str(qnum) + ".html", form = question_form)
     else:
         return redirect("/onlyformembers")
