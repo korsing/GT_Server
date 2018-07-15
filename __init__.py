@@ -183,10 +183,11 @@ def leveltest_category(variable):
                 c.execute(query)
                 flag = c.fetchall()
                 if(flag):
-                    update_Variable = "UPDATE " + category +" SET "+ qnum +" = " + data + " WHERE userid = " + userid + ";"
+                    update_Variable = "UPDATE " + category +" SET "+ str(qnum) +" = " + data + " WHERE userid = " + userid + ";"
                     c.execute(update_Variable)
                 else:
-                    c.execute("INSERT into %s (userid, %s) VALUES (%s, %s);", (category,qnum, userid, data))
+                    execute_Variable = "Insert into "+ category + " (userid, " + str(qnum) + " ) VALUES (" + userid + "," + data+ ");"
+                    c.execute(execute_Variable)
                 conn.commit()
                 conn.close()
                 return redirect('/leveltest/'+category)
