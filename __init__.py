@@ -86,17 +86,19 @@ def login():
         c, conn = connectDB() # DB에 연결하고
         userid = login_form.userid.data # 입력받은 아이디와
         c.execute("SELECT userpw FROM USERS WHERE userid = %s", (userid,)) # 아이디를 사용하여 비밀번호를 DB에서 가져옴
-        if(check_password_hash(c.fetchone()[0], login_form.userpw.data)): # 입력한 비밀번호와 DB상의 비밀번호가 같다면
-            createSession(userid) # 로그인이 완료된 상황이니 세션을 생성
-            return redirect('/')
-        else: # 입력한 비밀번호가 DB와 다르다면
-            message = "아이디나 비밀번호가 틀렸습니다."
+        userpw_tuple = c.fetchone()
+        if(len(userpw_tuple) == 0): # 갖고온게 하나도 없다는 말은 userid가 존재하지 않는다!
+            message = "아이디가 틀렸습니다."
             createError(message)
             return redirect('/error')
-        # 이까지 온다는 것은 if문에서 안걸렸다는 말.. DB에 해당 아이디가 없다! 아이디 오류
-        message = "아이디가 틀렸습니다."
-        createError(message)
-        return redirect('/error')
+        else:
+            if(check_password_hash(userpw_tuple[0], login_form.userpw.data)): # 입력한 비밀번호와 DB상의 비밀번호가 같다면
+                createSession(userid) # 로그인이 완료된 상황이니 세션을 생성
+                return redirect('/')
+            else: # 입력한 비밀번호가 DB와 다르다면
+                message = "아이디나 비밀번호가 틀렸습니다."
+                createError(message)
+                return redirect('/error')
     return render_template("/admin/login.html", form=login_form)
 
 @app.route('/onlyformembers')
