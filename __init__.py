@@ -182,6 +182,7 @@ def leveltest_category(variable):
                 query = "SELECT * FROM " + category + " WHERE userid = '" + userid + "';"
                 c.execute(query)
                 flag = c.fetchall()
+                return flag
                 if(flag):
                     update_Variable = "UPDATE " + category +" SET Q"+ str(qnum) +" = '" + data + "' WHERE userid = '" + userid + "';"
                     c.execute(update_Variable)
