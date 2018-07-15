@@ -178,8 +178,14 @@ def sensitiveinfo():
 def lecture():
     return render_template("lecture.html")
 
+@app.errorhandler(404)
+def page_not_found(e):
+    return redirect('/error', message = "Page Not Found!")
 
-
+@app.errorhandler(500)
+def page_not_found(e):
+    return redirect('/error', message = "Internal Server Error!")
+    
 # Start
 if(__name__ == "__main__"):
     app.run()
