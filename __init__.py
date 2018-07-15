@@ -162,7 +162,7 @@ def aboutleveltest():
 def leveltest_category(variable):
     if('user' in session):
         userid = session['user']
-        category_list = ['thinking', 'entry', 'python', 'c']
+        category_list = ['thinking', 'entry', 'python', 'c', 'intro']
         if(variable in category_list):
             return render_template("/assessments/questions/" + variable + "/start.html")
         else:
