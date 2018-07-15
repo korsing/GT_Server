@@ -109,17 +109,25 @@ def logout():
 def signup():
     signup_form = SignupForm()
     if(signup_form.validate_on_submit()):
-        if(signup_form.userpw.data != signup_form.pwconfirm.data):
+        if(signup_form.userpw.data != signup_form.pwconfirm.data): # 비밀번호와 비밀번호 확인이 일치하는지 체크
             message = "비밀번호가 일치하지 않습니다."
             createError(message)
             return message
-        else:
-            password = generate_password_hash(signup_form.userpw.data)
-            c, conn = connectDB()
-            c.execute("INSERT INTO USERS VALUES (%s, %s, %s, %s, %s, %s)", (signup_form.name.data, signup_form.userid.data, password, signup_form.email.data, signup_form.phone.data, signup_form.school.data))
-            conn.commit()
-            conn.close()
-            return redirect("/login")
+
+        c, conn = connectDB()
+        c.execute("SELECT userid from USERS;")
+        for userid_tuple in c.fetchall():
+            if(signup_form.userid in userid_tuple): # DB에 이미 해당 아이디가 있다면
+                message = "해당 아이디가 이미 존재합니다."
+                createError(message)
+                return message
+        
+        # 이까지 온다는 것 자체가 위에 에러 if문에서 하나도 안걸렸다는 말!
+        password = generate_password_hash(signup_form.userpw.data) 
+        c.execute("INSERT INTO USERS VALUES (%s, %s, %s, %s, %s, %s)", (signup_form.name.data, signup_form.userid.data, password, signup_form.email.data, signup_form.phone.data, signup_form.school.data))
+        conn.commit()
+        conn.close()
+        return redirect("/login")
     return render_template("/admin/signup.html", form = signup_form)
 
 @app.route("/leveltest")
