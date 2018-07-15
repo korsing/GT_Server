@@ -26,16 +26,16 @@
         {% for i in range(0,5): %}
         <tr>
 
-            <td>난이도 : {{i}}</td>
-            <td> <a href="/leveltest/Q{{i*5+26}}" class="LeftBlock"> {{i*5+1}}번 </a></td>
+            <td>난이도 : {{i+1}}</td>
+            <td> <a href="/leveltest/Q{{i*5+26}}" class="button"> {{i*5+1}}번 문제풀기 </a></td>
             <td>  {{PassorFail}} </td>
-            <td> <a href="/leveltest/Q{{i*5+26}}" class="LeftBlock"> {{i*5+2}}번 </a></td>
+            <td> <a href="/leveltest/Q{{i*5+26}}" class="button"> {{i*5+2}}번 문제풀기 </a></td>
             <td>  {{PassorFail}} </td>
-            <td> <a href="/leveltest/Q{{i*5+26}}" class="LeftBlock"> {{i*5+3}}번 </a></td>
+            <td> <a href="/leveltest/Q{{i*5+26}}" class="button"> {{i*5+3}}번 문제풀기 </a></td>
             <td>  {{PassorFail}} </td>
-            <td> <a href="/leveltest/Q{{i*5+26}}" class="LeftBlock"> {{i*5+4}}번 </a></td>
+            <td> <a href="/leveltest/Q{{i*5+26}}" class="button"> {{i*5+4}}번 문제풀기 </a></td>
             <td>  {{PassorFail}} </td>
-            <td> <a href="/leveltest/Q{{i*5+26}}" class="LeftBlock"> {{i*5+5}}번 </a></td>
+            <td> <a href="/leveltest/Q{{i*5+26}}" class="button"> {{i*5+5}}번 문제풀기 </a></td>
             <td>  {{PassorFail}} </td>
 
         </tr>
