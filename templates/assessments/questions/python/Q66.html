@@ -6,22 +6,35 @@
             <div align="center">
             <div style="width : 50%">
                 <h1 style="text-align:left"> 
-                    64. 다음은 파이썬 자료형의 활용 방법이다. 에러가 발생하는 구간을 고르고, 
-                    고칠 수 있다면 고쳐보고, 아니면 틀린 이유를 작성하시오.
+                    66. Python 수업시간에 수아는 선생님께 다음 두 가지 경우의 조건문에 대해서 질문을 하려고 한다. 두 경우가 어떻게 다른지 간략히 서술하시오.
                 </h1>
             </div>
             <pre style ="width : 50%;">
                 <code style="text-align: left">
 
-list = [1,2,3,4,5]                     ①
-tuple = (1,4,5, “a”)                   ②
-tuple[0] = list[4]                     ③
-list[5] = list[0]                      ④
-for i in range(len(list)):             ⑤
-    dictionary = {list[i] : tuple[i]}  ⑥
-print(list)                            ⑦
-print(tuple)                           ⑧
-print(dictionary)                      ⑨        
+[보기 1]
+if(score > 90):
+    print(“A”)
+if(score > 80):
+    print(“B”)
+if(score > 70):
+    print(“C”)
+if(score > 60):
+    print(“D”)
+else:
+    print(“F”)
+
+[보기 2]
+if(score > 90):
+    print(“A”)
+elif(score > 80):
+    print(“B”)
+elif(score > 70):
+    print(“C”)
+elif(score > 60):
+    print(“D”)
+else:
+    print(“F”)
 
                 </code>
             </pre>

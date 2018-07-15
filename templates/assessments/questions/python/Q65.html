@@ -1,0 +1,60 @@
+{% extends "template.html" %}
+{% block content %}
+<!-- Main -->
+<section id="main" class="wrapper">
+    <Question>
+            <div align="center">
+            <div style="width : 50%">
+                <h1 style="text-align:left"> 
+                    65. 다음은 Python Contest에서 응시자의 응시자코드에 따라서 고사장을 알려주는 프로그램이다. 조건에 맞도록 프로그램을 완성하시오. <br/>
+                    <조건>
+                    ① 응시자코드의 첫 두 글자는 건물 번호를 나타낸다. 건물은 호암관(50), 경제관(33) 2개가 존재한다. <br/>
+                    ② 강의실은 101호, 102호, 103호가 있으며, 정원은 5명씩이다. 강의실 배정은 101호부터 시작하여 정원이 차면 다음 강의실을 배정하는 방식으로 진행한다. <br/>
+                    예) 6번째 접수자 홍길동 50345CA는 호암관 102에 배정된다.
+                </h1>
+            </div>
+            <pre style ="width : 50%;">
+                <code style="text-align: left">
+
+count = [0, 0]
+# 호암관, 경영관 응시자 수
+while(1):
+        code = input("응시번호를 입력하세요. : ")
+    if(code[:2] == "50"):
+        if(count[0] < 5):
+            ①
+        elif(count[0] < 10) :
+            ②
+        else:
+            ③
+        count[0] += 1
+    if(code[:2] == "33"):
+        if(count[1] < 5):
+            ④
+        elif(count[1] < 10) :
+            ⑤
+        else:
+            ⑥ 
+        count[1] += 1   
+                        
+                </code>
+            </pre>
+            <form method="POST">
+                {{ form.csrf_token }}
+                <div>
+                    <Margin>
+                    {{ form.answer(rows="8", cols="100") }}
+                    </Margin>
+                </div>
+                <div>
+                    <ul class="actions">
+                        <li><input type="submit" value="제출하기" class="primary" /></li>
+                        <li><a href="/leveltest/python" class="button fit">건너뛰기</a></li>
+                    </ul>
+                </div>
+            </form>
+        </Question>
+    </div>
+</section>
+{% endblock %}
+

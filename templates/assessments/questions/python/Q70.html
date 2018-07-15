@@ -6,22 +6,23 @@
             <div align="center">
             <div style="width : 50%">
                 <h1 style="text-align:left"> 
-                    64. 다음은 파이썬 자료형의 활용 방법이다. 에러가 발생하는 구간을 고르고, 
-                    고칠 수 있다면 고쳐보고, 아니면 틀린 이유를 작성하시오.
+                    70. 다음은 피보나치 수열에 관한 설명이다. 피보나치 수열에서 알고자하는 항의 순번을 입력하면 <br/>
+                    해당 값을 출력해주는 프로그램을 완성하시오. (단, a1 = 0, a2 = 1 이다) <br/> <br/>
+                    [피보나치 수열]<br/>
+                    첫 번째 항 a1 = 0<br/>
+                    두 번째 항 a2 = 1 일 때, <br/>
+                    세 번째 항 a3 = a2 + a1 = 1<br/>
+                    네 번째 항 a4 = a3 + a2 = 2<br/>
+                    표준식은 A(n+2) = A(n+1) + A(n)<br/>
                 </h1>
             </div>
             <pre style ="width : 50%;">
                 <code style="text-align: left">
 
-list = [1,2,3,4,5]                     ①
-tuple = (1,4,5, “a”)                   ②
-tuple[0] = list[4]                     ③
-list[5] = list[0]                      ④
-for i in range(len(list)):             ⑤
-    dictionary = {list[i] : tuple[i]}  ⑥
-print(list)                            ⑦
-print(tuple)                           ⑧
-print(dictionary)                      ⑨        
+fibo = [0,1] # 1항과 2항은 주어진다.
+for i in range(①, n, 1):
+    fibo.append(② + fibo[i-2])
+print(③) # 해당 항의 값을 출력
 
                 </code>
             </pre>

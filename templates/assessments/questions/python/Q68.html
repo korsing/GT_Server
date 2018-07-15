@@ -6,22 +6,20 @@
             <div align="center">
             <div style="width : 50%">
                 <h1 style="text-align:left"> 
-                    64. 다음은 파이썬 자료형의 활용 방법이다. 에러가 발생하는 구간을 고르고, 
-                    고칠 수 있다면 고쳐보고, 아니면 틀린 이유를 작성하시오.
+                    68. 다음은 일렬의 Python 코드를 순서에 상관없이 나열해둔 것이다. 프로그램이 정상적으로 실행되도록 순서에 맞게 나열하시오.
                 </h1>
             </div>
             <pre style ="width : 50%;">
                 <code style="text-align: left">
 
-list = [1,2,3,4,5]                     ①
-tuple = (1,4,5, “a”)                   ②
-tuple[0] = list[4]                     ③
-list[5] = list[0]                      ④
-for i in range(len(list)):             ⑤
-    dictionary = {list[i] : tuple[i]}  ⑥
-print(list)                            ⑦
-print(tuple)                           ⑧
-print(dictionary)                      ⑨        
+
+① for i in range(9,-1,-1):
+② for k in range(0,10-i,1):
+③ print("◀",end="")
+④ print(" ".format(i),end="")
+⑤ print()
+⑥ for j in range(0,i,1):
+                        
 
                 </code>
             </pre>

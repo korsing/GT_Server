@@ -6,22 +6,22 @@
             <div align="center">
             <div style="width : 50%">
                 <h1 style="text-align:left"> 
-                    64. 다음은 파이썬 자료형의 활용 방법이다. 에러가 발생하는 구간을 고르고, 
-                    고칠 수 있다면 고쳐보고, 아니면 틀린 이유를 작성하시오.
+                    67. 다음은 Python에서 함수를 활용하여 프로그램을 작성한 것이다. 함수에는 반환형과 비반환형이 존재하는데, 다음은 비반환형을 나타낸 코드이다.<br/>
+                    주어진 코드를 참고하여 아래 함수를 반환형으로 수정하시오.
                 </h1>
             </div>
             <pre style ="width : 50%;">
                 <code style="text-align: left">
 
-list = [1,2,3,4,5]                     ①
-tuple = (1,4,5, “a”)                   ②
-tuple[0] = list[4]                     ③
-list[5] = list[0]                      ④
-for i in range(len(list)):             ⑤
-    dictionary = {list[i] : tuple[i]}  ⑥
-print(list)                            ⑦
-print(tuple)                           ⑧
-print(dictionary)                      ⑨        
+def get_Max(list):
+biggest = list[0]
+for i in range(1,len(list)):
+    if(list[i] > biggest):
+        biggest = list[i]
+print(biggest)
+
+list = [1,2,5,9,-3.6,10,4]
+get_Max(list)
 
                 </code>
             </pre>
