@@ -33,7 +33,7 @@ class SignupForm(Form):
 
 # 레벨테스트란을 정의하는 클래스 선언
 class QuestionForm(Form):
-    answer = TextAreaField("answer")
+    answer = TextAreaField("answer", choices=[("option1", "혼자할래요"), ("option2", "같이할래요")], validators=[InputRequired()])
 
 # DB 연동을 수행하는 함수
 def connectDB():
@@ -179,7 +179,7 @@ def questions(qnum):
         userid = session['user']
         category = get_CAT(int(qnum))
 
-        if(qnum <= 100):
+        if(int(qnum) <= 100):
             question_form = QuestionForm()
             form = question_form
         else:
