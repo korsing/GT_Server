@@ -171,15 +171,13 @@ def get_CAT(qnum):
         category = "c"
     else:
         category = 'intro'
-    return category
+    return qnum, category
 
-@app.route("/leveltest/Q<qnum>", methods=['GET', 'POST'])
-def questions(qnum):
+@app.route("/leveltest/Q<qnum1>", methods=['GET', 'POST'])
+def questions(qnum1):
     if('user' in session):
         userid = session['user']
-        category = get_CAT(int(qnum))
-        data = str(qnum) + str(type(qnum))
-        return data
+        qnum, category = get_CAT(int(qnum1))
         if(qnum <= 100):
             question_form = QuestionForm()
             form = question_form
@@ -201,7 +199,7 @@ def questions(qnum):
             conn.commit()
             conn.close()
             return redirect('/leveltest/' + category)
-        return render_template("/assessments/questions/" + category +"/Q" + qnum + ".html", form=form)
+        return render_template("/assessments/questions/" + category +"/Q" + str(qnum) + ".html", form=form)
     else:
         return redirect("/onlyformemebers")
 
