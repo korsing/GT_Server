@@ -193,6 +193,7 @@ def leveltest_category(variable):
                 conn.commit()
                 conn.close()
                 return redirect('/leveltest/'+category)
+        return 
     else:
         return redirect("/onlyformembers")
 
