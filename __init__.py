@@ -244,10 +244,10 @@ def leveltest_category(variable):
                         passorfail.append("O")
                     else:
                         passorfail.append("X")
-                
+
+            difficulty = ["BEGINNER", "EASY", "STANDARD", "DIFFICULT", "CHALLENGING"]
             category_list = ['thinking', 'entry', 'python', 'c', 'intro']
             if(variable in category_list):
-                difficulty = ["매우쉬움", "쉬움", "보통", "어려움", "매우어려움"]
                 return render_template("/assessments/questions/" + variable + "/start.html", PassorFail=passorfail, difficulty = difficulty)
         else:
             return redirect("/onlyformembers")
