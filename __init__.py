@@ -179,7 +179,6 @@ def questions(qnum):
     if('user' in session):
         userid = session['user']
         category = get_CAT(int(qnum))
-        return "if문에 들어가지 못했습니다."
         if(qnum <= 100):
             return "qnum이 100보다 작습니다."
             form = QuestionForm()
