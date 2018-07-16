@@ -210,7 +210,7 @@ def leveltest_category(variable):
             query = "SELECT * FROM " + variable + " WHERE userid = '" + userid + "';"
             c.execute(query)
             datalist = c.fetchall()
-            return datalist
+            return datalist[0][0]
             category_list = ['thinking', 'entry', 'python', 'c', 'intro']
             if(variable in category_list):
                 return render_template("/assessments/questions/" + variable + "/start.html")
