@@ -179,14 +179,11 @@ def questions(qnum):
     if('user' in session):
         userid = session['user']
         category = get_CAT(int(qnum))
-        #                                   이까지는 무조건 된다.       
         if(qnum <= 100):
-            question_form = QuestionForm()
-            form = question_form
-            return "gello"
+            form = QuestionForm()
         else:
-            intro_form = SurveyForm()
-            form = intro_form
+            form = SurveyForm()
+        return form
         if(form.validate_on_submit()):
             data = form.answer.data
             c,conn = connectDB()
