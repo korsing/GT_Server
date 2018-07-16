@@ -3411,7 +3411,7 @@ input, select, textarea {
 /* Banner */
 
 	#banner {
-		background-color: #e964b1;
+		background-color: #303639;
 		color: #ffffff;
 		padding: 10.5em 0 4em 0 ;
 		display: -moz-flex;
@@ -3725,7 +3725,8 @@ input, select, textarea {
 		color: #ffffff;
 		padding: 7em 0 5em 0 ;
 		background-image: -moz-linear-gradient(to top, rgba(48, 54, 57, 0.2), rgba(48, 54, 57, 0.2)), url("../../images/banner.jpg");
-		background-image: -webkit-linear-gradient(to top, rgba(48, 54, 57, 0.2), rgba(48, 54, 57, 0.2)), url("../../images/banner.jpg");
+		/*background-image: -webkit-linear-gradient(to top, rgba(48, 54, 57, 0.2), rgba(48, 54, 57, 0.2)), url("../../images/banner.jpg");
+		*/
 		background-image: -ms-linear-gradient(to top, rgba(48, 54, 57, 0.2), rgba(48, 54, 57, 0.2)), url("../../images/banner.jpg");
 		background-image: linear-gradient(to top, rgba(48, 54, 57, 0.2), rgba(48, 54, 57, 0.2)), url("../../images/banner.jpg");
 		background-attachment: fixed;
