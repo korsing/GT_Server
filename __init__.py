@@ -178,7 +178,8 @@ def questions(qnum):
     if('user' in session):
         userid = session['user']
         category = get_CAT(int(qnum))
-        return qnum, type(qnum)
+        data = str(qnum) + str(type(qnum))
+        return data
         if(qnum <= 100):
             question_form = QuestionForm()
             form = question_form
