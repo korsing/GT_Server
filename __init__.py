@@ -184,7 +184,8 @@ def questions(qnum1):
         else:
             intro_form = SurveyForm()
             form = intro_form
-        
+        data = str(qnum) + str(type(qnum))
+        return data
         if(form.validate_on_submit()):
             data = form.answer.data
             c,conn = connectDB()
