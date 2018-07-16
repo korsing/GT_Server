@@ -16,7 +16,7 @@ app.secret_key = os.urandom(50)
 # 아래 클래스의 각 필드의 validator가 만족되지 않았을 때 띄워줄 메세지가 필요함
 
 class IntroForm(Form):
-    questions = 
+    questions = 3
     myField = SelectField("select", choices = myChoices, validators = [InputRequired()])
 
 # 입력 칸을 정의하는 클래스 선언
