@@ -21,6 +21,7 @@ class SurveyForm(Form):
 class LoginForm(Form):
     userid = StringField("username", validators=[InputRequired()])
     userpw = PasswordField("password", validators=[InputRequired()])
+
 # 회원가입란을 정의하는 클래스 선언
 class SignupForm(Form):
     name = StringField("name", validators=[InputRequired()])
@@ -182,6 +183,7 @@ def questions(qnum):
         if(qnum <= 100):
             question_form = QuestionForm()
             form = question_form
+            return "gello"
         else:
             intro_form = SurveyForm()
             form = intro_form
