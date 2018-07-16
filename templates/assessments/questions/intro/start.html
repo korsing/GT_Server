@@ -8,7 +8,45 @@
         <p>Pretest Questions</p>
     </header>
 
-    <li><input type="submit" value="제출하기" class="primary" /></li>
+    <table class="Thinking">
+
+        <thead>
+
+            <tr>
+                <th colspan="14" scope="col">문제번호</th>
+
+            </tr>
+        </thead>
+
+
+        <!--   QuestionNumber는 문제 번호 0부터 100까지 증가-->
+        <!--   QuestionCategory는 문제 카테고리 리스트로 사고력, 엔트리, 파이썬 씨 순서로 들어감-->
+        <!--   PassorFail은 DB로부터 검사하여 문제를 풀었는지 아닌지 확인할 변수-->
+       
+        <tr>
+
+            <td> <a href="/leveltest/Q101" class="button"> 1번 문제풀기 </a></td>
+            <td>  {{PassorFail[0]}} </td>
+            <td> <a href="/leveltest/Q102" class="button"> 2번 문제풀기 </a></td>
+            <td>  {{PassorFail[1]}} </td>
+            <td> <a href="/leveltest/Q103" class="button"> 3번 문제풀기 </a></td>
+            <td>  {{PassorFail[2]}} </td>
+            <td> <a href="/leveltest/Q104" class="button"> 4번 문제풀기 </a></td>
+            <td>  {{PassorFail[3]}} </td>
+            <td> <a href="/leveltest/Q105" class="button"> 5번 문제풀기 </a></td>
+            <td>  {{PassorFail[4]}} </td>
+            <td> <a href="/leveltest/Q106" class="button"> 6번 문제풀기 </a></td>
+            <td>  {{PassorFail[5]}} </td>
+            <td> <a href="/leveltest/Q107" class="button"> 7번 문제풀기 </a></td>
+            <td>  {{PassorFail[6]}} </td>
+            
+
+        </tr>
+
+       
+    </table>
+    <br />
+    <center> <a href=/leveltest class="button">뒤로 가기</a></center>
    
 </section>
 
