@@ -22,7 +22,7 @@
         <tr>
             {% if(PassorFail[0] == 'X'): %}
             <td> <a href="/leveltest/Q101" class="button"> 1번 문제풀기 </a></td>
-            <td>  {{PassorFail[0]}} </td>
+            <td><img src='/static/image/notattempted.png'></td>
             {% else: %}
             <td> <a href="/leveltest/Q101" class="button primary disabled"> 1번 문제풀기 </a></td>
             <td><img src='/static/image/attempted.png'></td>
@@ -30,7 +30,7 @@
         
             {% if(PassorFail[1] == 'X'): %}
             <td> <a href="/leveltest/Q102" class="button"> 2번 문제풀기 </a></td>
-            <td>  {{PassorFail[1]}} </td>
+            <td><img src='/static/image/notattempted.png'></td>
             {% else: %}
             <td> <a href="/leveltest/Q102" class="button primary disabled"> 2번 문제풀기 </a></td>
             <td><img src='/static/image/attempted.png'></td>
@@ -38,7 +38,7 @@
 
             {% if(PassorFail[2] == 'X'): %}
             <td> <a href="/leveltest/Q103" class="button"> 3번 문제풀기 </a></td>
-            <td>  {{PassorFail[2]}} </td>
+            <td><img src='/static/image/notattempted.png'></td>
             {% else: %}
             <td> <a href="/leveltest/Q103" class="button primary disabled"> 3번 문제풀기 </a></td>
             <td><img src='/static/image/attempted.png'></td>
@@ -71,14 +71,15 @@
             </tr>
             <tr>
                 <td></td>
-                
+                <td></td>
             {% if(PassorFail[6] == 'X'): %}
-            <td colspan="3"> <a href="/leveltest/Q107" class="button"> 7번 문제풀기 </a></td>
+            <td colspan=> <a href="/leveltest/Q107" class="button"> 7번 문제풀기 </a></td>
             <td><img src='/static/image/notattempted.png'></td>
             {% else: %}
             <td> <a href="/leveltest/Q107" class="button primary disabled"> 7번 문제풀기 </a></td>
             <td><img src='/static/image/attempted.png'></td>
             {% endif %}
+            <td></td>
             <td></td>
         </tr>
 
