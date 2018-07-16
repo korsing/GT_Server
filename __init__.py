@@ -183,7 +183,6 @@ def questions(qnum):
             form = QuestionForm()
         else:
             form = SurveyForm()
-        return "form 변수에 정상적으로 대입되었습니다."
         if(form.validate_on_submit()): 
             data = form.answer.data
             c,conn = connectDB()
