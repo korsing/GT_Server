@@ -27,42 +27,42 @@
             <td colspan="2">{{difficulty[i]}}</td>
             {% if(PassorFail[i*5] == 'X'): %}
             <td> <a href="/leveltest/Q{{i*5+1}}" class="button"> {{i*5+1}}번 문제풀기 </a></td>
-            <td>  {{PassorFail[i*5]}} </td>
+            <td><img src='/static/image/notattempted.png'></td>
             {% else: %}
             <td> <a href="/leveltest/Q{{i*5+1}}" class="button primary disabled"> {{i*5+1}}번 문제풀기 </a></td>
-            <td>  {{PassorFail[i*5]}} </td>
+            <td><img src='/static/image/attempted.png'></td>
             {% endif %}
 
             {% if(PassorFail[i*5+1] == 'X'): %}
             <td> <a href="/leveltest/Q{{i*5+2}}" class="button"> {{i*5+2}}번 문제풀기 </a></td>
-            <td>  {{PassorFail[i*5+1]}} </td>
+            <td><img src='/static/image/notattempted.png'></td>
             {% else: %}
             <td> <a href="/leveltest/Q{{i*5+2}}" class="button primary disabled"> {{i*5+2}}번 문제풀기 </a></td>
-            <td>  {{PassorFail[i*5+1]}} </td>
+            <td><img src='/static/image/attempted.png'></td>
             {% endif %}
 
             {% if(PassorFail[i*5+2] == 'X'): %}
             <td> <a href="/leveltest/Q{{i*5+3}}" class="button"> {{i*5+3}}번 문제풀기 </a></td>
-            <td>  {{PassorFail[i*5+2]}} </td>
+            <td><img src='/static/image/notattempted.png'></td>
             {% else: %}
             <td> <a href="/leveltest/Q{{i*5+3}}" class="button primary disabled"> {{i*5+3}}번 문제풀기 </a></td>
-            <td>  {{PassorFail[i*5+2]}} </td>
+            <td><img src='/static/image/attempted.png'></td>
             {% endif %}
             
             {% if(PassorFail[i*5+3] == 'X'): %}
             <td> <a href="/leveltest/Q{{i*5+4}}" class="button"> {{i*5+4}}번 문제풀기 </a></td>
-            <td>  {{PassorFail[i*5+3]}} </td>
+            <td><img src='/static/image/notattempted.png'></td>
             {% else: %}
             <td> <a href="/leveltest/Q{{i*5+4}}" class="button primary disabled"> {{i*5+4}}번 문제풀기 </a></td>
-            <td>  {{PassorFail[i*5+3]}} </td>
+            <td><img src='/static/image/attempted.png'></td>
             {% endif %}
 
             {% if(PassorFail[i*5+4] == 'X'): %}
             <td> <a href="/leveltest/Q{{i*5+5}}" class="button"> {{i*5+5}}번 문제풀기 </a></td>
-            <td>  {{PassorFail[i*5+4]}} </td>
+            <td><img src='/static/image/notattempted.png'></td>
             {% else: %}
             <td> <a href="/leveltest/Q{{i*5+5}}" class="button primary disabled"> {{i*5+5}}번 문제풀기 </a></td>
-            <td>  {{PassorFail[i*5+4]}} </td>
+            <td><img src='/static/image/attempted.png'></td>
             {% endif %}
         </tr>
 

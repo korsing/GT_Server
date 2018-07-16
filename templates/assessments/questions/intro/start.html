@@ -11,7 +11,7 @@
     <table>
 
         <thead>
-                <th colspan="14" scope="col">문제번호</th>
+                <th colspan="6" scope="col">문제번호</th>
         </thead>
 
 
@@ -25,7 +25,7 @@
             <td>  {{PassorFail[0]}} </td>
             {% else: %}
             <td> <a href="/leveltest/Q101" class="button primary disabled"> 1번 문제풀기 </a></td>
-            <td>  {{PassorFail[0]}} </td>
+            <td><img src='/static/image/attempted.png'></td>
             {% endif %}
         
             {% if(PassorFail[1] == 'X'): %}
@@ -33,7 +33,7 @@
             <td>  {{PassorFail[1]}} </td>
             {% else: %}
             <td> <a href="/leveltest/Q102" class="button primary disabled"> 2번 문제풀기 </a></td>
-            <td>  {{PassorFail[1]}} </td>
+            <td><img src='/static/image/attempted.png'></td>
             {% endif %}
 
             {% if(PassorFail[2] == 'X'): %}
@@ -41,41 +41,45 @@
             <td>  {{PassorFail[2]}} </td>
             {% else: %}
             <td> <a href="/leveltest/Q103" class="button primary disabled"> 3번 문제풀기 </a></td>
-            <td>  {{PassorFail[2]}} </td>
+            <td><img src='/static/image/attempted.png'></td>
             {% endif %}
-
+</tr>
+<tr>
             {% if(PassorFail[3] == 'X'): %}
             <td> <a href="/leveltest/Q104" class="button"> 4번 문제풀기 </a></td>
-            <td>  {{PassorFail[3]}} </td>
+            <td><img src='/static/image/notattempted.png'></td>
             {% else: %}
             <td> <a href="/leveltest/Q104" class="button primary disabled"> 4번 문제풀기 </a></td>
-            <td>  {{PassorFail[3]}} </td>
+            <td><img src='/static/image/attempted.png'></td>
             {% endif %}
 
             {% if(PassorFail[4] == 'X'): %}
             <td> <a href="/leveltest/Q105" class="button"> 5번 문제풀기 </a></td>
-            <td>  {{PassorFail[4]}} </td>
+            <td><img src='/static/image/notattempted.png'></td>
             {% else: %}
             <td> <a href="/leveltest/Q105" class="button primary disabled"> 5번 문제풀기 </a></td>
-            <td>  {{PassorFail[4]}} </td>
+            <td><img src='/static/image/attempted.png'></td>
             {% endif %}
 
             {% if(PassorFail[5] == 'X'): %}
             <td> <a href="/leveltest/Q106" class="button"> 6번 문제풀기 </a></td>
-            <td>  {{PassorFail[5]}} </td>
+            <td><img src='/static/image/notattempted.png'></td>
             {% else: %}
             <td> <a href="/leveltest/Q106" class="button primary disabled"> 6번 문제풀기 </a></td>
-            <td>  {{PassorFail[5]}} </td>
+            <td><img src='/static/image/attempted.png'></td>
             {% endif %}
-            
+            </tr>
+            <tr>
+                <td></td>
+                
             {% if(PassorFail[6] == 'X'): %}
-            <td> <a href="/leveltest/Q107" class="button"> 7번 문제풀기 </a></td>
-            <td>  {{PassorFail[6]}} </td>
+            <td colspan="3"> <a href="/leveltest/Q107" class="button"> 7번 문제풀기 </a></td>
+            <td><img src='/static/image/notattempted.png'></td>
             {% else: %}
             <td> <a href="/leveltest/Q107" class="button primary disabled"> 7번 문제풀기 </a></td>
-            <td>  {{PassorFail[6]}} </td>
+            <td><img src='/static/image/attempted.png'></td>
             {% endif %}
-
+            <td></td>
         </tr>
 
        
