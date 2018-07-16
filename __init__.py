@@ -221,10 +221,10 @@ def leveltest_category(variable):
 
             else:
                 for column in datalist[0][1:]:
-                if(column != None):
-                    passorfail.append("O")
-                else:
-                    passorfail.append("X")
+                    if(column != None):
+                        passorfail.append("O")
+                    else:
+                        passorfail.append("X")
                 
             category_list = ['thinking', 'entry', 'python', 'c', 'intro']
             if(variable in category_list):
