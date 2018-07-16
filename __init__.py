@@ -15,7 +15,7 @@ app.secret_key = os.urandom(50)
 
 # 초기 설문조사를 위한 클래스 선언
 class SurveyForm(Form):
-    answer = SelectField("answer", choices=[])
+    answer = SelectField("answer", choices=[("option1", "혼자할래요"), ("option2", "같이할래요")], validators=[InputRequired()])
 
 # 입력 칸을 정의하는 클래스 선언
 class LoginForm(Form):
@@ -33,7 +33,7 @@ class SignupForm(Form):
 
 # 레벨테스트란을 정의하는 클래스 선언
 class QuestionForm(Form):
-    answer = TextAreaField("answer", choices=[("option1", "혼자할래요"), ("option2", "같이할래요")], validators=[InputRequired()])
+    answer = TextAreaField("answer")
 
 # DB 연동을 수행하는 함수
 def connectDB():
@@ -178,8 +178,7 @@ def questions(qnum):
     if('user' in session):
         userid = session['user']
         category = get_CAT(int(qnum))
-        return category
-        
+        #                                   이까지는 무조건 된다.       
         if(qnum <= 100):
             question_form = QuestionForm()
             form = question_form
