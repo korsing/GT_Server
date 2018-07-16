@@ -6,18 +6,31 @@
             <h2>2018 영재아카데미 레벨테스트</h2>
             <p>2018 G&T Level Test</p>
         </header>
-
-        <div class="col-12">
-                <label for="demo-category">질문 나는 컴퓨터 또는 전자기기를 사랑한다.</label>
-                <select name="demo-category" id="demo-category" style="background-color : #07eeff">
-                    <option value="">답변을 선택하세요.</option>
-                    <option value="1">컴퓨터나 전자기기가 정말 좋다.</option>
-                    <option value="2">필요할 때만 좋아한다.</option>
-                    <option value="3">그렇게 썩 좋아하지는 않는다.</option>
-                </select>
+    <Question>
+        <div align="center">
+            <div style="width : 80%">
+                <h2 style="text-align:left">5. 다음 중 본인이 해당하는 보기의 번호를 입력하세요.</h2>
+                <h1 style="text-align:left">나는 컴퓨터 또는 전자기기를 좋아한다.</h1>
+                <h1 style="text-align:left">
+                    ①: 컴퓨터나 전자기기가 정말 좋다. <br/>
+                    ②: 필요할 때만 좋아한다. <br/>
+                    ③: 그렇게 썩 좋아하지는 않는다.</h1>
             </div>
-
-            
+            <form method="POST">
+                {{ form.csrf_token }}
+                <div>
+                    <Margin>
+                        {{ form.answer(rows="8", cols="100") }}
+                    </Margin>
+                </div>
+                <div>
+                    <ul class="actions">
+                        <li><input type="submit" value="제출하기" class="primary" /></li>
+                    </ul>
+                </div>
+            </form>
+        </div>
+    </Question>
        
 
 </section>

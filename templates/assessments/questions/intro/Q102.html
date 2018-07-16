@@ -6,18 +6,31 @@
             <h2>2018 영재아카데미 레벨테스트</h2>
             <p>2018 G&T Level Test</p>
         </header>
-
-        <div class="col-12">
-                <label for="demo-category">질문 2. 나는 문제 풀이 하는 것을 즐거워 한다.</label>
-                <select name="demo-category" id="demo-category" style="background-color : #e96112">
-                    <option value="">답변을 선택하세요.</option>
-                    <option value="1">그렇다.</option>
-                    <option value="2">어느 친구냐에 따라 다르다</option>
-                    <option value="3">혼자 하는 것이 더 즐겁다.</option>
-                </select>
+    <Question>
+        <div align="center">
+            <div style="width : 80%">
+                <h2 style="text-align:left">2. 다음 중 본인이 해당하는 보기의 번호를 입력하세요.</h2>
+                <h1 style="text-align:left">나는 문제풀이 하는 것을 즐거워한다.</h1>
+                <h1 style="text-align:left">
+                    ①: 그렇다. <br/>
+                    ②: 문제에 따라 다르다. <br/>
+                    ③: 문제풀이를 좋아하지 않는다.</h1>
             </div>
-
-            
+            <form method="POST">
+                {{ form.csrf_token }}
+                <div>
+                    <Margin>
+                        {{ form.answer(rows="8", cols="100") }}
+                    </Margin>
+                </div>
+                <div>
+                    <ul class="actions">
+                        <li><input type="submit" value="제출하기" class="primary" /></li>
+                    </ul>
+                </div>
+            </form>
+        </div>
+    </Question>
        
 
 </section>

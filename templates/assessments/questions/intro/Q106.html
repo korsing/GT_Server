@@ -6,18 +6,31 @@
             <h2>2018 영재아카데미 레벨테스트</h2>
             <p>2018 G&T Level Test</p>
         </header>
-
-        <div class="col-12">
-                <label for="demo-category">질문 6. 나는 문제가 잘 안 풀리는 경우 해결 방법을 찾을 때까지 포기하지 않는다.</label>
-                <select name="demo-category" id="demo-category" style="background-color : #2c0af0">
-                    <option value="">답변을 선택하세요.</option>
-                    <option value="1">안 풀리는 문제는 그냥 포기한다.</option>
-                    <option value="2">그래도 몇 번 시도는 해본다.</option>
-                    <option value="3">풀릴 때까지 절대 포기하지 않는다.</option>
-                </select>
+    <Question>
+        <div align="center">
+            <div style="width : 80%">
+                <h2 style="text-align:left">6. 다음 중 본인이 해당하는 보기의 번호를 입력하세요.</h2>
+                <h1 style="text-align:left">나는 문제가 잘 안풀리는 경우, 해결 방법을 찾을 때까지 포기하지 않는다.</h1>
+                <h1 style="text-align:left">
+                    ①: 안풀리는 문제는 그냥 포기한다. <br/>
+                    ②: 그래도 몇 번 시도는 해본다. <br/>
+                    ③: 풀릴 때까지 절대 포기하지 않는다.</h1>
             </div>
-
-            
+            <form method="POST">
+                {{ form.csrf_token }}
+                <div>
+                    <Margin>
+                        {{ form.answer(rows="8", cols="100") }}
+                    </Margin>
+                </div>
+                <div>
+                    <ul class="actions">
+                        <li><input type="submit" value="제출하기" class="primary" /></li>
+                    </ul>
+                </div>
+            </form>
+        </div>
+    </Question>
        
 
 </section>
