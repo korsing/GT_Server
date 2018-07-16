@@ -17,7 +17,7 @@ app.secret_key = os.urandom(50)
 
 class IntroForm(Form):
     questions = 3
-    myField = SelectField("select", choices = myChoices, validators = [InputRequired()])
+    myField = SelectField("select", choices = questions, validators = [InputRequired()])
 
 # 입력 칸을 정의하는 클래스 선언
 class LoginForm(Form):
