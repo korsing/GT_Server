@@ -23,7 +23,7 @@ class IntroForm(Form):
 class LoginForm(Form):
     userid = StringField("username", validators=[InputRequired()])
     userpw = PasswordField("password", validators=[InputRequired()])
-
+class 
 # 회원가입란을 정의하는 클래스 선언
 class SignupForm(Form):
     name = StringField("name", validators=[InputRequired()])
@@ -167,45 +167,28 @@ def aboutleveltest():
 def leveltest_category(variable):
     if('user' in session):
         userid = session['user']
-        qnum = int(variable[1:])
-        if(qnum <= 100): # QuestionForm을 던져야함
-            category_list = ['thinking', 'entry', 'python', 'c', 'intro']
-            if(variable in category_list):
-                return render_template("/assessments/questions/" + variable + "/start.html")
-            else:
-                if(qnum <= 25):
-                    category = "thinking"
-                elif(qnum <= 50):
-                    category = "entry"
-                elif(qnum <= 75):
-                    category = "python"
-                elif(qnum <= 100):
-                    category = "c"
-                else:
-                    category = 'intro'
-                question_form = QuestionForm()
-                # 일반 문제에서 제출하기가 눌렸을 때
-                if(question_form.validate_on_submit()):
-                    data = question_form.answer.data
-                    c,conn = connectDB()
-                    query = "SELECT * FROM " + category + " WHERE userid = '" + userid + "';"
-                    flag = c.execute(query)
-                    if(flag != 0):
-                        update_Variable = "UPDATE " + category +" SET Q"+ str(qnum) +" = '" + data + "' WHERE userid = '" + userid + "';"
-                        c.execute(update_Variable)
-                    else:
-                        execute_Variable = "Insert into "+ category + " (userid, Q" + str(qnum) + " ) VALUES ('" + userid + "','" + data+ "');"
-                        c.execute(execute_Variable)
-                    conn.commit()
-                    conn.close()
-                    return redirect('/leveltest/'+category)
-            return render_template("/assessments/questions/" + category + "/Q"+ str(qnum) + ".html", form = question_form)
+        category_list = ['thinking', 'entry', 'python', 'c', 'intro']
+        if(variable in category_list):
+            return render_template("/assessments/questions/" + variable + "/start.html")
         else:
+            qnum = int(variable[1:])
+            if(qnum <= 25):
+                category = "thinking"
+            elif(qnum <= 50):
+                category = "entry"
+            elif(qnum <= 75):
+                category = "python"
+            elif(qnum <= 100):
+                category = "c"
+            else:
+                category = 'intro'
+            question_form = QuestionForm()
             intro_form = IntroForm()
-            # 인트로 설문조사에 제출하기가 눌렸을 때
-            if(intro_form.validate_on_submit()):
-                data = intro_form.question1.data
-                c, conn = connectDB()
+
+            # 일반 문제에서 제출하기가 눌렸을 때
+            if(question_form.validate_on_submit()):
+                data = question_form.answer.data
+                c,conn = connectDB()
                 query = "SELECT * FROM " + category + " WHERE userid = '" + userid + "';"
                 flag = c.execute(query)
                 if(flag != 0):
@@ -217,7 +200,6 @@ def leveltest_category(variable):
                 conn.commit()
                 conn.close()
                 return redirect('/leveltest/'+category)
-            return render_template("/assessments/questions/" + category + "/Q"+ str(qnum) + ".html", form = intro_form)
     else:
         return redirect("/onlyformembers")
 
