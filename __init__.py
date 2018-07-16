@@ -182,7 +182,7 @@ def questions(qnum):
         if(int(qnum) <= 100):
             form = QuestionForm()
         else:
-            form = SurveyForm()
+            form = QuestionForm() #나중에 수정의 용이성을 위해서..
         if(form.validate_on_submit()): 
             data = form.answer.data
             c,conn = connectDB()

@@ -15,13 +15,12 @@
                 {{ form.csrf_token }}
                 <div>
                     <Margin>
-                        {{ form }}
+                        {{ form.answer(rows="8", cols="100") }}
                     </Margin>
                 </div>
                 <div>
                     <ul class="actions">
                         <li><input type="submit" value="제출하기" class="primary" /></li>
-                        <li><a href="/leveltest/intro" class="button fit">건너뛰기</a></li>
                     </ul>
                 </div>
             </form>
