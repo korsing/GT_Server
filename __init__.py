@@ -176,9 +176,6 @@ def leveltest_category(variable):
             else:
                 category = 'intro'
             question_form = QuestionForm()
-            intro_form = IntroForm()
-
-            # 일반 문제에서 제출하기가 눌렸을 때
             if(question_form.validate_on_submit()):
                 data = question_form.answer.data
                 c,conn = connectDB()
@@ -193,7 +190,7 @@ def leveltest_category(variable):
                 conn.commit()
                 conn.close()
                 return redirect('/leveltest/'+category)
-        return 
+        return render_template("/assessments/questions/" + category + "/Q"+ str(qnum) + ".html", form = question_form)
     else:
         return redirect("/onlyformembers")
 
