@@ -14,15 +14,16 @@ app.config['SECRET_KEY'] = "HansClass"
 app.secret_key = os.urandom(50)
 
 # 아래 클래스의 각 필드의 validator가 만족되지 않았을 때 띄워줄 메세지가 필요함
-
 class IntroForm(Form):
-    question1 = SelectField("q1", choices= (('','')))
+    question1 = SelectField("q1", choices=[('a1', '항상 즐거워 한다.'), \
+                                           ('a2', '어느 친구냐에 따라 다르다.'), \
+                                           ('a3', '혼자하는 것이 더 즐겁다.')], validators=[InputRequired()])
 
 # 입력 칸을 정의하는 클래스 선언
 class LoginForm(Form):
     userid = StringField("username", validators=[InputRequired()])
     userpw = PasswordField("password", validators=[InputRequired()])
-
+class 
 # 회원가입란을 정의하는 클래스 선언
 class SignupForm(Form):
     name = StringField("name", validators=[InputRequired()])
@@ -166,27 +167,45 @@ def aboutleveltest():
 def leveltest_category(variable):
     if('user' in session):
         userid = session['user']
-        category_list = ['thinking', 'entry', 'python', 'c', 'intro']
-        if(variable in category_list):
-            return render_template("/assessments/questions/" + variable + "/start.html")
-        else:
-            qnum = int(variable[1:])
-            if(qnum <= 25):
-                category = "thinking"
-            elif(qnum <= 50):
-                category = "entry"
-            elif(qnum <= 75):
-                category = "python"
-            elif(qnum <= 100):
-                category = "c"
+        qnum = int(variable[1:])
+        if(qnum <= 100): # QuestionForm을 던져야함
+            category_list = ['thinking', 'entry', 'python', 'c', 'intro']
+            if(variable in category_list):
+                return render_template("/assessments/questions/" + variable + "/start.html")
             else:
-                category = 'intro'
-            question_form = QuestionForm()
+                if(qnum <= 25):
+                    category = "thinking"
+                elif(qnum <= 50):
+                    category = "entry"
+                elif(qnum <= 75):
+                    category = "python"
+                elif(qnum <= 100):
+                    category = "c"
+                else:
+                    category = 'intro'
+                question_form = QuestionForm()
+                # 일반 문제에서 제출하기가 눌렸을 때
+                if(question_form.validate_on_submit()):
+                    data = question_form.answer.data
+                    c,conn = connectDB()
+                    query = "SELECT * FROM " + category + " WHERE userid = '" + userid + "';"
+                    flag = c.execute(query)
+                    if(flag != 0):
+                        update_Variable = "UPDATE " + category +" SET Q"+ str(qnum) +" = '" + data + "' WHERE userid = '" + userid + "';"
+                        c.execute(update_Variable)
+                    else:
+                        execute_Variable = "Insert into "+ category + " (userid, Q" + str(qnum) + " ) VALUES ('" + userid + "','" + data+ "');"
+                        c.execute(execute_Variable)
+                    conn.commit()
+                    conn.close()
+                    return redirect('/leveltest/'+category)
+            return render_template("/assessments/questions/" + category + "/Q"+ str(qnum) + ".html", form = question_form)
+        else:
             intro_form = IntroForm()
-
-            if(question_form.validate_on_submit()):
-                data = question_form.answer.data
-                c,conn = connectDB()
+            # 인트로 설문조사에 제출하기가 눌렸을 때
+            if(intro_form.validate_on_submit()):
+                data = intro_form.question1.data
+                c, conn = connectDB()
                 query = "SELECT * FROM " + category + " WHERE userid = '" + userid + "';"
                 flag = c.execute(query)
                 if(flag != 0):
@@ -198,8 +217,7 @@ def leveltest_category(variable):
                 conn.commit()
                 conn.close()
                 return redirect('/leveltest/'+category)
-                
-        return render_template("/assessments/questions/" + category + "/Q"+ str(qnum) + ".html", form = question_form)
+            return render_template("/assessments/questions/" + category + "/Q"+ str(qnum) + ".html", form = intro_form)
     else:
         return redirect("/onlyformembers")
 
