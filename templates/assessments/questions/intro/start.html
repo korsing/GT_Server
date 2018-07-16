@@ -1,24 +1,36 @@
 {% extends "template.html" %}
-{% block content %}
+{% block content%}
+
 <!-- Main -->
 <section id="main" class="wrapper">
-        <header>
-            <h2>2018 영재아카데미 레벨테스트</h2>
-            <p>2018 G&T Level Test</p>
-        </header>
+    <header>
+        <h2>2018 영재아카데미 레벨테스트</h2>
+        <p>Pretest Questions</p>
+    </header>
 
-        <div class="col-12">
-                <label for="demo-category">질문 1 : 나는 다른 학생들과 함께 팀을 이루어 작업하는 것을 즐거워한다.</label>
-                <select name="demo-category" id="demo-category" style="background-color : #d64c5f">
-                    <option value="">-</option>
-                    <option value="1">항상 즐거워 한다.</option>
-                    <option value="2">어느 친구냐에 따라 다르다</option>
-                    <option value="3">혼자 하는 것이 더 즐겁다.</option>
-                </select>
-            </div>
+    <table>
+        <thead>
+            <tr>
+                <th colspan="10" scope="col">문제번호</th>
+                <th scope="col">제출여부</th>
+            </tr>
+        </thead>
 
-            
-       
 
+        <!--   QuestionNumber는 문제 번호 0부터 100까지 증가-->
+        <!--   QuestionCategory는 문제 카테고리 리스트로 사고력, 엔트리, 파이썬 씨 순서로 들어감-->
+        <!--   PassorFail은 DB로부터 검사하여 문제를 풀었는지 아닌지 확인할 변수-->
+        <tr>
+            {% for i in range(101,108): %}
+                <td> <a href="/leveltest/Q{{i}}" class="button"> {{i-100}}번 문제풀기 </a></td>
+                <td>  {{PassorFail}} </td>
+            {% endfor %}
+        </tr>
+    </table>
+    <br />
+    <center> <a href=/leveltest class="button">뒤로 가기</a></center>
+   
 </section>
+
 {% endblock %}
+

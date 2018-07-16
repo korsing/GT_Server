@@ -173,8 +173,10 @@ def leveltest_category(variable):
                 category = "entry"
             elif(qnum <= 75):
                 category = "python"
-            else:
+            elif(qnum <= 100):
                 category = "c"
+            else:
+                category = 'intro'
             question_form = QuestionForm()
             if(question_form.validate_on_submit()):
                 data = question_form.answer.data
