@@ -202,6 +202,8 @@ def questions(qnum):
             form = QuestionForm() #나중에 수정의 용이성을 위해서..
         if(form.validate_on_submit()): 
             data = form.answer.data
+            if(len(data)>500):
+                data = data[:500]
             c,conn = connectDB()
             query = "SELECT * FROM " + category + " WHERE userid = '" + userid + "';"
             flag = c.execute(query)
