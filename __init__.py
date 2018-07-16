@@ -162,15 +162,15 @@ def aboutleveltest():
 
 def get_CAT(qnum):
     if(qnum <= 25):
-                category = "thinking"
-            elif(qnum <= 50):
-                category = "entry"
-            elif(qnum <= 75):
-                category = "python"
-            elif(qnum <= 100):
-                category = "c"
-            else:
-                category = 'intro'
+        category = "thinking"
+    elif(qnum <= 50):
+        category = "entry"
+    elif(qnum <= 75):
+        category = "python"
+    elif(qnum <= 100):
+        category = "c"
+    else:
+        category = 'intro'
     return category
 
 @app.route("/leveltest/Q<qnum>", methods=['GET', 'POST'])
