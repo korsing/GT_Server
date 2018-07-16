@@ -178,8 +178,7 @@ def questions(qnum):
     if('user' in session):
         userid = session['user']
         category = get_CAT(int(qnum))
-        return qnum, type(qnum)
-        if(int(qnum) <= 100):
+        if(qnum <= 100):
             question_form = QuestionForm()
             form = question_form
         else:
@@ -200,7 +199,6 @@ def questions(qnum):
             conn.commit()
             conn.close()
             return redirect('/leveltest/' + category)
-        '''
         return render_template("/assessments/questions/" + category +"/Q" + qnum + ".html", form=form)
     else:
         return redirect("/onlyformemebers")
