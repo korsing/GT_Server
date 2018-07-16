@@ -13,17 +13,10 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = "HansClass"
 app.secret_key = os.urandom(50)
 
-# 아래 클래스의 각 필드의 validator가 만족되지 않았을 때 띄워줄 메세지가 필요함
-class IntroForm(Form):
-    question1 = SelectField("q1", choices=[('a1', '항상 즐거워 한다.'), \
-                                           ('a2', '어느 친구냐에 따라 다르다.'), \
-                                           ('a3', '혼자하는 것이 더 즐겁다.')], validators=[InputRequired()])
-
 # 입력 칸을 정의하는 클래스 선언
 class LoginForm(Form):
     userid = StringField("username", validators=[InputRequired()])
     userpw = PasswordField("password", validators=[InputRequired()])
-class 
 # 회원가입란을 정의하는 클래스 선언
 class SignupForm(Form):
     name = StringField("name", validators=[InputRequired()])
