@@ -218,7 +218,7 @@ def leveltest_category(variable):
                     passorfail.append("제출")
             category_list = ['thinking', 'entry', 'python', 'c', 'intro']
             if(variable in category_list):
-                return render_template("/assessments/questions/" + variable + "/start.html", passorfail=passorfail)
+                return render_template("/assessments/questions/" + variable + "/start.html", PassorFail=passorfail)
         else:
             return redirect("/onlyformembers")
 
