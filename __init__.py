@@ -213,9 +213,9 @@ def leveltest_category(variable):
             passorfail = []
             for column in datalist[1:]:
                 if(column != None):
-                    passorfail.append("미제출")
+                    passorfail.append("X")
                 else:
-                    passorfail.append("제출")
+                    passorfail.append("O")
             category_list = ['thinking', 'entry', 'python', 'c', 'intro']
             if(variable in category_list):
                 return render_template("/assessments/questions/" + variable + "/start.html", PassorFail=passorfail)
