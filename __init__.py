@@ -209,13 +209,23 @@ def leveltest_category(variable):
             c, conn = connectDB()
             query = "SELECT * FROM " + variable + " WHERE userid = '" + userid + "';"
             c.execute(query)
-            datalist = c.fetchall()[0]
+            datalist = c.fetchall()
             passorfail = []
-            for column in datalist[1:]:
+            if(datalist == 0):
+                if(variable == 'intro'):
+                    length = 7
+                else:
+                    length = 25
+                for i in range(length):
+                    passorfail.append('X')
+
+            else:
+                for column in datalist[0][1:]:
                 if(column != None):
                     passorfail.append("O")
                 else:
                     passorfail.append("X")
+                
             category_list = ['thinking', 'entry', 'python', 'c', 'intro']
             if(variable in category_list):
                 return render_template("/assessments/questions/" + variable + "/start.html", PassorFail=passorfail)
