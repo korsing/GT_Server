@@ -211,7 +211,7 @@ def leveltest_category(variable):
             c.execute(query)
             datalist = c.fetchall()
             passorfail = []
-            if(datalist == 0):
+            if(len(datalist) == 0):
                 if(variable == 'intro'):
                     length = 7
                 else:
