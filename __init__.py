@@ -179,12 +179,15 @@ def questions(qnum):
     if('user' in session):
         userid = session['user']
         category = get_CAT(int(qnum))
+        return "if문에 들어가지 못했습니다."
         if(qnum <= 100):
+            return "qnum이 100보다 작습니다."
             form = QuestionForm()
         else:
+            return "qnum이 100보다 큽니다"
             form = SurveyForm()
-        return form
-        if(form.validate_on_submit()):
+        return "form 변수에 정상적으로 대입되었습니다."
+        if(form.validate_on_submit()): 
             data = form.answer.data
             c,conn = connectDB()
             query = "SELECT * FROM " + category + " WHERE userid = '" + userid + "';"
