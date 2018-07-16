@@ -26,18 +26,46 @@
         {% for i in range(0,5): %}
         <tr>
 
-            <td colspan="2">난이도 : {{i+1}}</td>
+            <td>난이도 : {{i+1}}</td>
+            {% if(PassorFail[i*5] == 'X'): %}
             <td> <a href="/leveltest/Q{{i*5+26}}" class="button"> {{i*5+26}}번 문제풀기 </a></td>
             <td>  {{PassorFail[i*5]}} </td>
+            {% else: %}
+            <td> <a href="/leveltest/Q{{i*5+26}}" class="button primary disabled"> {{i*5+26}}번 문제풀기 </a></td>
+            <td>  {{PassorFail[i*5]}} </td>
+            {% endif %}
+
+            {% if(PassorFail[i*5+1] == 'X'): %}
             <td> <a href="/leveltest/Q{{i*5+27}}" class="button"> {{i*5+27}}번 문제풀기 </a></td>
             <td>  {{PassorFail[i*5+1]}} </td>
+            {% else: %}
+            <td> <a href="/leveltest/Q{{i*5+27}}" class="button primary disabled"> {{i*5+27}}번 문제풀기 </a></td>
+            <td>  {{PassorFail[i*5+1]}} </td>
+            {% endif %}
+
+            {% if(PassorFail[i*5+2] == 'X'): %}
             <td> <a href="/leveltest/Q{{i*5+28}}" class="button"> {{i*5+28}}번 문제풀기 </a></td>
             <td>  {{PassorFail[i*5+2]}} </td>
+            {% else: %}
+            <td> <a href="/leveltest/Q{{i*5+28}}" class="button primary disabled"> {{i*5+28}}번 문제풀기 </a></td>
+            <td>  {{PassorFail[i*5+2]}} </td>
+            {% endif %}
+            
+            {% if(PassorFail[i*5+3] == 'X'): %}
             <td> <a href="/leveltest/Q{{i*5+29}}" class="button"> {{i*5+29}}번 문제풀기 </a></td>
             <td>  {{PassorFail[i*5+3]}} </td>
+            {% else: %}
+            <td> <a href="/leveltest/Q{{i*5+29}}" class="button primary disabled"> {{i*5+29}}번 문제풀기 </a></td>
+            <td>  {{PassorFail[i*5+3]}} </td>
+            {% endif %}
+
+            {% if(PassorFail[i*5+4] == 'X'): %}
             <td> <a href="/leveltest/Q{{i*5+30}}" class="button"> {{i*5+30}}번 문제풀기 </a></td>
             <td>  {{PassorFail[i*5+4]}} </td>
-
+            {% else: %}
+            <td> <a href="/leveltest/Q{{i*5+30}}" class="button primary disabled"> {{i*5+30}}번 문제풀기 </a></td>
+            <td>  {{PassorFail[i*5+4]}} </td>
+            {% endif %}
         </tr>
 
         {% endfor %}
