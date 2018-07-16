@@ -23,7 +23,7 @@ class IntroForm(Form):
 class LoginForm(Form):
     userid = StringField("username", validators=[InputRequired()])
     userpw = PasswordField("password", validators=[InputRequired()])
-class 
+
 # 회원가입란을 정의하는 클래스 선언
 class SignupForm(Form):
     name = StringField("name", validators=[InputRequired()])
