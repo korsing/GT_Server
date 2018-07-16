@@ -13,6 +13,10 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = "HansClass"
 app.secret_key = os.urandom(50)
 
+# 초기 설문조사를 위한 클래스 선언
+class SurveyForm(Form):
+    answer = SelectField("answer", choices=[])
+
 # 입력 칸을 정의하는 클래스 선언
 class LoginForm(Form):
     userid = StringField("username", validators=[InputRequired()])
@@ -156,16 +160,8 @@ def aboutleveltest():
         return redirect("/onlyformembers")
     return render_template("/assessments/abouttest.html")
 
-@app.route("/leveltest/<variable>", methods=['GET', 'POST'])
-def leveltest_category(variable):
-    if('user' in session):
-        userid = session['user']
-        category_list = ['thinking', 'entry', 'python', 'c', 'intro']
-        if(variable in category_list):
-            return render_template("/assessments/questions/" + variable + "/start.html")
-        else:
-            qnum = int(variable[1:])
-            if(qnum <= 25):
+def get_CAT(qnum):
+    if(qnum <= 25):
                 category = "thinking"
             elif(qnum <= 50):
                 category = "entry"
@@ -175,24 +171,49 @@ def leveltest_category(variable):
                 category = "c"
             else:
                 category = 'intro'
+    return category
+
+@app.route("/leveltest/Q<qnum>", methods=['GET', 'POST'])
+def questions(qnum):
+    if('user' in session):
+        userid = session['user']
+        category = get_CAT(int(qnum))
+
+        if(qnum <= 100):
             question_form = QuestionForm()
-            if(question_form.validate_on_submit()):
-                data = question_form.answer.data
-                c,conn = connectDB()
-                query = "SELECT * FROM " + category + " WHERE userid = '" + userid + "';"
-                flag = c.execute(query)
-                if(flag != 0):
-                    update_Variable = "UPDATE " + category +" SET Q"+ str(qnum) +" = '" + data + "' WHERE userid = '" + userid + "';"
-                    c.execute(update_Variable)
-                else:
-                    execute_Variable = "Insert into "+ category + " (userid, Q" + str(qnum) + " ) VALUES ('" + userid + "','" + data+ "');"
-                    c.execute(execute_Variable)
-                conn.commit()
-                conn.close()
-                return redirect('/leveltest/'+category)
-        return render_template("/assessments/questions/" + category + "/Q"+ str(qnum) + ".html", form = question_form)
+            form = question_form
+        else:
+            intro_form = SurveyForm()
+            form = intro_form
+
+        if(form.validate_on_submit()):
+            data = form.answer.data
+            c,conn = connectDB()
+            query = "SELECT * FROM " + category + " WHERE userid = '" + userid + "';"
+            flag = c.execute(query)
+            if(flag != 0):
+                update_Variable = "UPDATE " + category +" SET Q"+ str(qnum) +" = '" + data + "' WHERE userid = '" + userid + "';"
+                c.execute(update_Variable)
+            else:
+                execute_Variable = "Insert into "+ category + " (userid, Q" + str(qnum) + " ) VALUES ('" + userid + "','" + data+ "');"
+                c.execute(execute_Variable)
+            conn.commit()
+            conn.close()
+            return redirect('/leveltest/' + category)
+        return render_template("/assessments/questions/" + category +"/Q" + qnum + ".html", form=form)
     else:
-        return redirect("/onlyformembers")
+        return redirect("/onlyformemebers")
+
+@app.route("/leveltest/<variable>", methods=['GET', 'POST'])
+def leveltest_category(variable):
+    if(variable[0] != 'Q'):
+        if('user' in session):
+            userid = session['user']
+            category_list = ['thinking', 'entry', 'python', 'c', 'intro']
+            if(variable in category_list):
+                return render_template("/assessments/questions/" + variable + "/start.html")
+        else:
+            return redirect("/onlyformembers")
 
 @app.route('/sensitiveinfo')
 def sensitiveinfo():
