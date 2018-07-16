@@ -25,17 +25,45 @@
         <tr>
 
             <td>난이도 : {{i+1}}</td>
+            {% if(PassorFail[i*5] == 'X'): %}
             <td> <a href="/leveltest/Q{{i*5+1}}" class="button"> {{i*5+1}}번 문제풀기 </a></td>
             <td>  {{PassorFail[i*5]}} </td>
+            {% else: %}
+            <td> <a href="/leveltest/Q{{i*5+1}}" class="button primary disabled"> {{i*5+1}}번 문제풀기 </a></td>
+            <td>  {{PassorFail[i*5]}} </td>
+            {% endif %}
+
+            {% if(PassorFail[i*5+1] == 'X'): %}
             <td> <a href="/leveltest/Q{{i*5+2}}" class="button"> {{i*5+2}}번 문제풀기 </a></td>
             <td>  {{PassorFail[i*5+1]}} </td>
+            {% else: %}
+            <td> <a href="/leveltest/Q{{i*5+2}}" class="button primary disabled"> {{i*5+2}}번 문제풀기 </a></td>
+            <td>  {{PassorFail[i*5+1]}} </td>
+            {% endif %}
+
+            {% if(PassorFail[i*5+2] == 'X'): %}
             <td> <a href="/leveltest/Q{{i*5+3}}" class="button"> {{i*5+3}}번 문제풀기 </a></td>
             <td>  {{PassorFail[i*5+2]}} </td>
+            {% else: %}
+            <td> <a href="/leveltest/Q{{i*5+3}}" class="button primary disabled"> {{i*5+3}}번 문제풀기 </a></td>
+            <td>  {{PassorFail[i*5+2]}} </td>
+            {% endif %}
+            
+            {% if(PassorFail[i*5+3] == 'X'): %}
             <td> <a href="/leveltest/Q{{i*5+4}}" class="button"> {{i*5+4}}번 문제풀기 </a></td>
             <td>  {{PassorFail[i*5+3]}} </td>
+            {% else: %}
+            <td> <a href="/leveltest/Q{{i*5+4}}" class="button primary disabled"> {{i*5+4}}번 문제풀기 </a></td>
+            <td>  {{PassorFail[i*5+3]}} </td>
+            {% endif %}
+
+            {% if(PassorFail[i*5+4] == 'X'): %}
             <td> <a href="/leveltest/Q{{i*5+5}}" class="button"> {{i*5+5}}번 문제풀기 </a></td>
             <td>  {{PassorFail[i*5+4]}} </td>
-
+            {% else: %}
+            <td> <a href="/leveltest/Q{{i*5+5}}" class="button primary disabled"> {{i*5+5}}번 문제풀기 </a></td>
+            <td>  {{PassorFail[i*5+4]}} </td>
+            {% endif %}
         </tr>
 
         {% endfor %}
