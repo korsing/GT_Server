@@ -90,7 +90,7 @@ def login():
         c.execute("SELECT userpw FROM USERS WHERE userid = %s", (userid,)) # 아이디를 사용하여 비밀번호를 DB에서 가져옴
         userpw_tuple = c.fetchone()
         if(userpw_tuple==None): # 갖고온게 하나도 없다는 말은 userid가 존재하지 않는다!
-            message = "ID Not Found"
+            message = "Your ID or PASSWORD seems to be wrong!"
             createError(message)
             return redirect('/error')
         else:
@@ -98,7 +98,7 @@ def login():
                 createSession(userid) # 로그인이 완료된 상황이니 세션을 생성
                 return redirect('/')
             else: # 입력한 비밀번호가 DB와 다르다면
-                message = ("아이디나 비밀번호가 틀렸습니다.")
+                message = "Your ID or PASSWORD seems to be wrong!"
                 createError(message)
                 return redirect('/error')
     return render_template("/admin/login.html", form=login_form)
@@ -117,22 +117,22 @@ def signup():
     signup_form = SignupForm()
     if(signup_form.validate_on_submit()):
         if('@' not in signup_form.email.data):
-            message = ("이메일 양식이 올바르지 않습니다.")
+            message = "Wrong EMAIL has been entered."
             createError(message)
             return redirect('/error')
             
         if(len(signup_form.userid.data) < 5):
-            message = ('아이디는 최소 5글자 이상으로 작성해주세요.')
+            message = "ID must be more than 5 characters."
             createError(message)
             return redirect('/error')
 
         if(len(signup_form.userpw.data) < 8):
-            message = ('비밀번호는 최소 8자 이상으로 작성해주세요.')
+            message = "PASSWORD must be more than 8 characters."
             createError(message)
             return redirect('/error')
 
         if(signup_form.userpw.data != signup_form.pwconfirm.data): # 비밀번호와 비밀번호 확인이 일치하는지 체크
-            message = ("비밀번호가 일치하지 않습니다.")
+            message = "PASSWORDs do not match!"
             createError(message)
             return redirect('/error')
 
@@ -140,7 +140,7 @@ def signup():
         c.execute("SELECT userid from USERS;")
         for userid_tuple in c.fetchall():
             if(signup_form.userid.data in userid_tuple): # DB에 이미 해당 아이디가 있다면
-                message = ("해당 아이디가 이미 존재합니다.")
+                message = "That ID already exists! Please another one."
                 createError(message)
                 return redirect('/error')
         
@@ -249,18 +249,6 @@ def leveltest_category(variable):
 @app.route('/sensitiveinfo')
 def sensitiveinfo():
     return render_template("/privacy/sensitiveinfo.html")
-
-@app.route('/lecture')
-def lecture():
-    return render_template("lecture.html")
-
-@app.errorhandler(404)
-def page_not_found(e):
-    return redirect('/error', message = "Page Not Found!")
-
-@app.errorhandler(500)
-def page_not_found(e):
-    return redirect('/error', message = "Internal Server Error!")
 
 # Start
 if(__name__ == "__main__"):
