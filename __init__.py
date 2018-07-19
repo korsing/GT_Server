@@ -268,7 +268,7 @@ def printdb():
             data = c.fetchall()
             for users in data:
                 members.append(users[0])
-            return members[0]
+            return members
 
             # data[0][0]은 return되는데 data[0]은 return이 안됨..
             # 튜플은 return이 안되나?
