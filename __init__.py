@@ -268,6 +268,26 @@ def printdb():
                     members.append("O")
                 else:
                     members.append("X")
+                flag = c.execute("SELECT * FROM thinking WHERE userid = %s", (userdata[1],))
+                if(flag != 0):
+                    members.append("O")
+                else:
+                    members.append("X")
+                flag = c.execute("SELECT * FROM entry WHERE userid = %s", (userdata[1],))
+                if(flag != 0):
+                    members.append("O")
+                else:
+                    members.append("X")
+                flag = c.execute("SELECT * FROM python WHERE userid = %s", (userdata[1],))
+                if(flag != 0):
+                    members.append("O")
+                else:
+                    members.append("X")
+                flag = c.execute("SELECT * FROM c WHERE userid = %s", (userdata[1],))
+                if(flag != 0):
+                    members.append("O")
+                else:
+                    members.append("X")
             return render_template('Database.html', members = members, memberscount = len(members))
 
         else:

@@ -22,13 +22,17 @@
             </tr>
         </thead>
         
-        {% for i in range(0,memberscount,5): %}
+        {% for i in range(0,memberscount,9): %}
         <tr>
-            <td>{{ members[i] }}</td>
-            <td>{{ members[i+1] }}</td>
-            <td>{{ members[i+2] }}</td>
-            <td>{{ members[i+3] }}</td>
-            <td>{{ members[i+4] }}</td>
+            <td>{{ members[i] }}</td>   <!-- 이름 -->
+            <td>{{ members[i+1] }}</td> <!-- 아이디 -->
+            <td>{{ members[i+2] }}</td> <!-- 이메일 -->
+            <td>{{ members[i+3] }}</td> <!-- 전화번호 -->
+            <td>{{ members[i+4] }}</td> <!-- 설문조사 -->
+            <td>{{ members[i+5] }}</td> <!-- 사고력 -->
+            <td>{{ members[i+6] }}</td> <!-- 엔트리 -->
+            <td>{{ members[i+7] }}</td> <!-- 파이썬 -->
+            <td>{{ members[i+8] }}</td> <!-- C언어 -->
         </tr>
         {% endfor %}
     </table>
