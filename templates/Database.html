@@ -14,15 +14,21 @@
                 <th scope="col">아이디</th>
                 <th scope="col">이메일</th>
                 <th scope="col">전화번호</th>
+                <th scope="col">설문조사</th>
+                <th scope="col">사고력</th>
+                <th scope="col">엔트리</th>
+                <th scope="col">파이썬</th>
+                <th scope="col">C언어</th>
             </tr>
         </thead>
         
-        {% for i in range(0,memberscount,4): %}
+        {% for i in range(0,memberscount,5): %}
         <tr>
             <td>{{ members[i] }}</td>
             <td>{{ members[i+1] }}</td>
             <td>{{ members[i+2] }}</td>
             <td>{{ members[i+3] }}</td>
+            <td>{{ members[i+4] }}</td>
         </tr>
         {% endfor %}
     </table>

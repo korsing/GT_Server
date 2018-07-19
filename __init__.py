@@ -263,6 +263,11 @@ def printdb():
             for userdata in data:
                 for element in userdata:
                     members.append(element)
+                flag = c.execute("SELECT * FROM intro WHERE userid = %s", (userid,))
+                if(flag != 0):
+                    members.append("O")
+                else:
+                    members.append("X")
             return render_template('Database.html', members = members, memberscount = len(members))
 
         else:
