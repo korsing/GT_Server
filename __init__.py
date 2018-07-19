@@ -267,7 +267,7 @@ def printdb():
                 if(flag != 0):
                     counter = 0
                     temp = c.fetchall()[0]
-                    for questions in temp[1:]
+                    for questions in temp[1:]:
                         if(questions != None):
                             counter += 1
                     yesno = "O [" + str(counter) + "/7]"
