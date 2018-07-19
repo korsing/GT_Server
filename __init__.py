@@ -266,8 +266,19 @@ def printdb():
             c, conn = connectDB()
             c.execute("SELECT name, userid, email, phone FROM USERS")
             data = c.fetchall()
+            name = []
+            userid = []
+            email = []
+            phone = []
             for users in data:
-                members.append(users[0])
+                name.append(users[0])
+                userid.append(users[1])
+                email.append(users[2])
+                phone.append(user[3])
+            members.append(name)
+            members.append(userid)
+            members.append(email)
+            members.append(phone)
             return render_template("/Database.html", members = members)
 
             # data[0][0]은 return되는데 data[0]은 return이 안됨..
