@@ -266,7 +266,9 @@ def printdb():
             c, conn = connectDB()
             c.execute("SELECT name, userid, email, phone FROM USERS")
             data = c.fetchall()
-            return "hello"
+            return data[0]
+            
+            '''
             for users in data:
                 members.append(users)
                 
@@ -296,6 +298,7 @@ def printdb():
                 c.append(users)
 
             return render_template('Database.html', members = members)
+            '''
         else:
             return redirect('/onlyformembers')
     else:
