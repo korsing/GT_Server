@@ -294,7 +294,7 @@ def printdb():
             for users in data:
                 c.append(users)
 
-            return render_template('Database.html', members = members, intro = intro, thinking = thinking, entry = entry, python = python, c = c, i = 0)
+            return render_template('Database.html', members = members)
         else:
             return redirect('/onlyformembers')
     else:
