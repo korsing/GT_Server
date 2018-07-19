@@ -286,7 +286,7 @@ def printdb():
             return render_template('Database.html', userinfo = userinfo, i = 0)
         else:
             return redirect('/onlyformembers')
-    else"
+    else:
         return redirect('/onlyformembers')
 @app.route('/sensitiveinfo')
 def sensitiveinfo():
