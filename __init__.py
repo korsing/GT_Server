@@ -266,7 +266,12 @@ def printdb():
             c, conn = connectDB()
             c.execute("SELECT name, userid, email, phone FROM USERS")
             data = c.fetchall()
-            return data[0][0]
+            for tuples in data:
+                members.append(list(tuples))
+            return members[0]
+
+            # data[0][0]은 return되는데 data[0]은 return이 안됨..
+            # 튜플은 return이 안되나?
             
             '''
             for users in data:
