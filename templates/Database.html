@@ -6,18 +6,14 @@
     <table>
         <thead>
             <tr>
-                <th colspan="3" scope="col">순번</th>
                 <th colspan="3" scope="col">이름</th>
-                <th colspan="15" scope="col">이메일</th>
-                <th colspan="15" scope="col">전화번호/th>
-                <th colspan="5" scope="col">시험응시여부</th>
             </tr>
         </thead>
-
+        <tr>
         {% for name in members: %}
-            {{ name }}
+            <td>{{ name }}</td>
         {% endfor %}
-
+        </tr>
 
 </section>
 {% endblock %}
