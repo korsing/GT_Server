@@ -263,7 +263,7 @@ def printdb():
             for userdata in data:
                 for element in userdata:
                     members.append(element)
-                flag = c.execute("SELECT * FROM intro WHERE userid = %s", (userid,))
+                flag = c.execute("SELECT * FROM intro WHERE userid = %s", (userdata[1],))
                 if(flag != 0):
                     members.append("O")
                 else:
