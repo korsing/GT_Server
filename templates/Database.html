@@ -9,14 +9,15 @@
                 <th colspan="3" scope="col">이름</th>
             </tr>
         </thead>
-        <tr>
+        
         {% for i in range(0,memberscount,4): %}
+        <tr>
             <td>{{ members[i] }}</td>>
             <td>{{ members[i+1] }}</td>>
             <td>{{ members[i+2] }}</td>>
             <td>{{ members[i+3] }}</td>>
-        {% endfor %}
         </tr>
+        {% endfor %}
 
 </section>
 {% endblock %}
