@@ -266,9 +266,9 @@ def printdb():
                 flag = c.execute("SELECT * FROM intro WHERE userid = %s", (userdata[1],))
                 if(flag != 0):
                     counter = 0
-                    answer = c.fetchall()[1:]
-                    for questions in answer:
-                        if(questions != "NULL"):
+                    temp = c.fetchall()[0]
+                    for questions in temp[1:]
+                        if(questions != None):
                             counter += 1
                     yesno = "O [" + str(counter) + "/7]"
                     members.append(yesno)
