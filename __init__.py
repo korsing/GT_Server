@@ -252,6 +252,42 @@ def leveltest_category(variable):
         else:
             return redirect("/onlyformembers")
 
+@app.route('/admin')
+def printdb():
+    if('user' in session):
+        if(session['user'] = 'admin'):
+            userinfo = []
+
+            c, conn = connectDB()
+            c.execute("SELECT * FROM USERS")
+            data = c.fetchall()
+            userinfo.append({'USERS'}:data)
+
+            c.execute("SELECT * FROM intro")
+            data = c.fetchall()
+            userinfo.append({'INTRO'}:data)
+
+            c.execute("SELECT * FROM thinking")
+            data = c.fetchall()
+            userinfo.append({'THINKING'}:data)
+
+            c.execute("SELECT * FROM entry")
+            data = c.fetchall()
+            userinfo.append({'ENTRY'}:data)
+
+            c.execute("SELECT * FROM python")
+            data = c.fetchall()
+            userinfo.append({'PYTHON'}:data)
+
+            c.execute("SELECT * FROM C")
+            data = c.fetchall()
+            userinfo.append({'C'}:data)
+
+            return render_template('Database.html', userinfo = userinfo, i = 0)
+        else:
+            return redirect('/onlyformembers')
+    else"
+        return redirect('/onlyformembers')
 @app.route('/sensitiveinfo')
 def sensitiveinfo():
     return render_template("/privacy/sensitiveinfo.html")

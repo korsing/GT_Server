@@ -1,0 +1,31 @@
+{% extends "template.html" %}
+{% block content%}
+
+<!-- Main -->
+<section id="main" class="wrapper">
+    <table>
+        <thead>
+            <tr>
+                <th colspan="3" scope="col">순번</th>
+                <th colspan="3" scope="col">이름</th>
+                <th colspan="15" scope="col">이메일</th>
+                <th colspan="15" scope="col">전화번호/th>
+                <th colspan="5" scope="col">시험응시여부</th>
+            </tr>
+        </thead>
+
+        <tr>
+            {% for userdata in userinfo[0]['USERS']: %}
+                <td>{{ i }}</td>
+                <td>{{ userdata[0] }}</td>
+                <td>{{ userdata[3] }}</td>
+                <td>{{ userdata[4] }}</td>
+                <td>{{ userdata[5] }}</td>
+                {{ i += 1}}
+            {% endfor %}
+        </tr>
+
+
+
+</section>
+{% endblock %}
