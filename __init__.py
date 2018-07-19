@@ -252,70 +252,19 @@ def leveltest_category(variable):
         else:
             return redirect("/onlyformembers")
 
-@app.route('/admin')
+@app.route('/dashboard')
 def printdb():
     if('user' in session):
         if(session['user'] == 'admin'):
-            members = []
-            intro = []
-            thinking = []
-            entry = []
-            python = []
-            c = []
-
             c, conn = connectDB()
             userNo = c.execute("SELECT name, userid, email, phone FROM USERS")
             data = c.fetchall()
-            name = []
-            userid = []
-            email = []
-            phone = []
-            for users in data:
-                name.append(users[0])
-                userid.append(users[1])
-                email.append(users[2])
-                phone.append(user[3])
-            members.append(name)
-            members.append(userid)
-            members.append(email)
-            members.append(phone)
-            return render_template("/Database.html", members = members, userNo = userNo)
-
-            # data[0][0]은 return되는데 data[0]은 return이 안됨..
-            # 튜플은 return이 안되나?
-            # 리스트로 변환하고 return 시도해도 안됨
-
-            '''
-            for users in data:
-                members.append(users)
-                
-            c.execute("SELECT * FROM intro")
-            data = c.fetchall()
-            for users in data:
-                intro.append(users)
-
-            c.execute("SELECT * FROM thinking")
-            data = c.fetchall()
-            for users in data:
-                thinking.append(users)
-
-            c.execute("SELECT * FROM entry")
-            data = c.fetchall()
-            for users in data:
-                entry.append(users)
-
-            c.execute("SELECT * FROM python")
-            data = c.fetchall()
-            for users in data:
-                python.append(users)
-
-            c.execute("SELECT * FROM c")
-            data = c.fetchall()
-            for users in data:
-                c.append(users)
-
+            members = []
+            for userdata in data:
+                for element in userdata:
+                    members.append(element)
             return render_template('Database.html', members = members)
-            '''
+
         else:
             return redirect('/onlyformembers')
     else:
