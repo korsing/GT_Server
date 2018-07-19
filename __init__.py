@@ -266,7 +266,7 @@ def printdb():
             c, conn = connectDB()
             c.execute("SELECT name, userid, email, phone FROM USERS")
             data = c.fetchall()
-            return data[0]
+            return "hello"
             for users in data:
                 members.append(users)
                 
