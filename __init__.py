@@ -276,22 +276,46 @@ def printdb():
                     members.append("X")
                 flag = c.execute("SELECT * FROM thinking WHERE userid = %s", (userdata[1],))
                 if(flag != 0):
-                    members.append("O")
+                    counter = 0
+                    temp = c.fetchall()[0]
+                    for questions in temp[1:]:
+                        if(questions != None):
+                            counter += 1
+                    yesno = "O [" + str(counter) + "/25]"
+                    members.append(yesno)
                 else:
                     members.append("X")
                 flag = c.execute("SELECT * FROM entry WHERE userid = %s", (userdata[1],))
                 if(flag != 0):
-                    members.append("O")
+                    counter = 0
+                    temp = c.fetchall()[0]
+                    for questions in temp[1:]:
+                        if(questions != None):
+                            counter += 1
+                    yesno = "O [" + str(counter) + "/25]"
+                    members.append(yesno)
                 else:
                     members.append("X")
                 flag = c.execute("SELECT * FROM python WHERE userid = %s", (userdata[1],))
                 if(flag != 0):
-                    members.append("O")
+                    counter = 0
+                    temp = c.fetchall()[0]
+                    for questions in temp[1:]:
+                        if(questions != None):
+                            counter += 1
+                    yesno = "O [" + str(counter) + "/25]"
+                    members.append(yesno)
                 else:
                     members.append("X")
                 flag = c.execute("SELECT * FROM c WHERE userid = %s", (userdata[1],))
                 if(flag != 0):
-                    members.append("O")
+                    counter = 0
+                    temp = c.fetchall()[0]
+                    for questions in temp[1:]:
+                        if(questions != None):
+                            counter += 1
+                    yesno = "O [" + str(counter) + "/25]"
+                    members.append(yesno)
                 else:
                     members.append("X")
             return render_template('Database.html', members = members, memberscount = len(members))
