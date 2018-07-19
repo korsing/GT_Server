@@ -265,7 +265,13 @@ def printdb():
                     members.append(element)
                 flag = c.execute("SELECT * FROM intro WHERE userid = %s", (userdata[1],))
                 if(flag != 0):
-                    members.append("O")
+                    counter = 0
+                    answer = c.fetchall()[1:]
+                    for questions in answer:
+                        if(questions != "NULL"):
+                            count += 1
+                    yesno = "O [" + str(counter) + "]"
+                    members.append(yesno)
                 else:
                     members.append("X")
                 flag = c.execute("SELECT * FROM thinking WHERE userid = %s", (userdata[1],))
