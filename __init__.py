@@ -266,6 +266,7 @@ def printdb():
             c, conn = connectDB()
             c.execute("SELECT * FROM USERS")
             data = c.fetchall()
+            return data[:50]
             for users in data:
                 members.append(users)
                 
