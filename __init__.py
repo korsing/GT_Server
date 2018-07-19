@@ -264,7 +264,7 @@ def printdb():
             c = []
 
             c, conn = connectDB()
-            c.execute("SELECT name, userid, email, phone FROM USERS")
+            userNo = c.execute("SELECT name, userid, email, phone FROM USERS")
             data = c.fetchall()
             name = []
             userid = []
@@ -279,7 +279,7 @@ def printdb():
             members.append(userid)
             members.append(email)
             members.append(phone)
-            return render_template("/Database.html", members = members)
+            return render_template("/Database.html", members = members, userNo = userNo)
 
             # data[0][0]은 return되는데 data[0]은 return이 안됨..
             # 튜플은 return이 안되나?
