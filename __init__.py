@@ -269,8 +269,8 @@ def printdb():
                     answer = c.fetchall()[1:]
                     for questions in answer:
                         if(questions != "NULL"):
-                            count += 1
-                    yesno = "O [" + str(counter) + "]"
+                            counter += 1
+                    yesno = "O [" + str(counter) + "/7]"
                     members.append(yesno)
                 else:
                     members.append("X")
