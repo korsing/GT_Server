@@ -255,7 +255,7 @@ def leveltest_category(variable):
 @app.route('/admin')
 def printdb():
     if('user' in session):
-        if(session['user'] = 'admin'):
+        if(session['user'] == 'admin'):
             userinfo = []
 
             c, conn = connectDB()
