@@ -268,7 +268,7 @@ def printdb():
             data = c.fetchall()
             for users in data:
                 members.append(users)
-            return members
+                
             c.execute("SELECT * FROM intro")
             data = c.fetchall()
             for users in data:
