@@ -256,7 +256,6 @@ def leveltest_category(variable):
 def printdb():
     if('user' in session):
         if(session['user'] == 'admin'):
-            return "관리자모드로 로그인되었습니다."
             userinfo = []
 
             c, conn = connectDB()
