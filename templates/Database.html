@@ -10,8 +10,11 @@
             </tr>
         </thead>
         <tr>
-        {% for element in members: %}
-            <td>{{element}}</td>>
+        {% for i in range(0,memberscount,4): %}
+            <td>{{ members[i] }}</td>>
+            <td>{{ members[i+1] }}</td>>
+            <td>{{ members[i+2] }}</td>>
+            <td>{{ members[i+3] }}</td>>
         {% endfor %}
         </tr>
 

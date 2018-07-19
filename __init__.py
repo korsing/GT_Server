@@ -263,7 +263,7 @@ def printdb():
             for userdata in data:
                 for element in userdata:
                     members.append(element)
-            return render_template('Database.html', members = members)
+            return render_template('Database.html', members = members, memberscount = len(members))
 
         else:
             return redirect('/onlyformembers')
