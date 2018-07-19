@@ -14,7 +14,9 @@
             </tr>
         </thead>
 
-        {{ data }}
+        {% for members in userinfo['USERS']: %}
+            {{ members }}
+        {% endfor %}
 
 
 
