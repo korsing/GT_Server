@@ -256,33 +256,45 @@ def leveltest_category(variable):
 def printdb():
     if('user' in session):
         if(session['user'] == 'admin'):
-            userinfo = []
+            members = []
+            intro = []
+            thinking = []
+            entry = []
+            python = []
+            c = []
 
             c, conn = connectDB()
             c.execute("SELECT * FROM USERS")
             data = c.fetchall()
-            userinfo.append({'USERS':data})
-
+            for users in data:
+                members.append(users)
+            return members
             c.execute("SELECT * FROM intro")
             data = c.fetchall()
-            userinfo.append({'INTRO':data})
+            for users in data:
+                intro.append(users)
 
             c.execute("SELECT * FROM thinking")
             data = c.fetchall()
-            userinfo.append({'THINKING':data})
+            for users in data:
+                thinking.append(users)
 
             c.execute("SELECT * FROM entry")
             data = c.fetchall()
-            userinfo.append({'ENTRY':data})
+            for users in data:
+                entry.append(users)
 
+            c.execute("SELECT * FROM python")
             data = c.fetchall()
-            userinfo.append({'PYTHON':data})
+            for users in data:
+                python.append(users)
 
-            c.execute("SELECT * FROM C")
+            c.execute("SELECT * FROM c")
             data = c.fetchall()
-            userinfo.append({'C':data})
+            for users in data:
+                c.append(users)
 
-            return render_template('Database.html', userinfo = userinfo, i = 0)
+            return render_template('Database.html', members = members, intro = intro, thinking = thinking, entry = entry, python = python, c = c, i = 0)
         else:
             return redirect('/onlyformembers')
     else:
