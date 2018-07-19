@@ -261,7 +261,7 @@ def printdb():
             c, conn = connectDB()
             c.execute("SELECT * FROM USERS")
             data = c.fetchall()
-            return data[0]
+            return data[0][0]
             userinfo.append({'USERS':data})
 
             c.execute("SELECT * FROM intro")
