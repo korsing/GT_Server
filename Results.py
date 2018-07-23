@@ -26,10 +26,10 @@ f.write("Start of Thinking Questions")
 for tuple in thinking:
     data = ""
     for column in tuple:
-        data += str(column)
+        data += str(column) + "\n"
     f.write(data)
-
-f.write("-------------------------------------------")
+    f.write("\n")
+f.write("-------------------------------------------\n")
 
 c.execute("SELECT * FROM entry")
 entry = c.fetchall()
@@ -38,10 +38,10 @@ f.write("Start of Entry Questions")
 for tuple in entry:
     data = ""
     for column in tuple:
-        data += str(column)
+        data += str(column) + "\n"
     f.write(data)
-    
-f.write("-------------------------------------------")
+    f.write("\n")
+f.write("-------------------------------------------\n")
 
 c.execute("SELECT * FROM python")
 python = c.fetchall()
@@ -50,10 +50,10 @@ f.write("Start of Python Questions")
 for tuple in python:
     data = ""
     for column in tuple:
-        data += str(column)
+        data += str(column) + "\n"
     f.write(data)
-
-f.write("-------------------------------------------")
+    f.write("\n")
+f.write("-------------------------------------------\n")
 
 c.execute("SELECT * FROM c")
 clang = c.fetchall()
@@ -62,9 +62,9 @@ f.write("Start of C Questions")
 for tuple in clang:
     data = ""
     for column in tuple:
-        data += str(column)
+        data += str(column) + "\n"
     f.write(data)
-
-f.write("-------------------------------------------")
+    f.write("\n")
+f.write("-------------------------------------------\n")
 
 f.close()
