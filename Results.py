@@ -27,7 +27,8 @@ category = ["intro", "thinking", "entry", "python", "c"]
 row = 1
 for i in range(len(category)):
     col = 1
-    c.execute("SELECT * FROM %s",(category[i],))
+    query = "SELECT * FROM " + str(category[i]) + " ;"
+    c.execute(query)
     data = c.fetchall() # DB 안에 있는 내용을 튜플로 가져옴
     for tuples in data:
         for element in tuples:
@@ -35,4 +36,4 @@ for i in range(len(category)):
             col += 1
         row += 1
 
-
+workbook.close()
