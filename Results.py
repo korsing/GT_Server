@@ -4,67 +4,39 @@ def connectDB():
     c = conn.cursor()
     return c, conn
 
+def writeIn(filename, mass):
+    for tuple in mass:
+        for column in tuple:
+            filename.write(column)
+            filename.write('\n')
+        filename.write('\n')
+    filename.write('---------------------------------------\n')
+
 c, conn = connectDB()
 f=open("results.txt", "w")
 
 c.execute("SELECT * FROM intro")
 intro = c.fetchall()
-
-f.write("Start of Intro Survey")
-for tuple in intro:
-    data = ""
-    for column in tuple:
-        data += str(column)
-    f.write(data)
-
-f.write("-------------------------------------------")
+f.write("Start of Intro Survey! \n")
+writeIn(f, intro)
 
 c.execute("SELECT * FROM thinking")
 thinking = c.fetchall()
-
-f.write("Start of Thinking Questions")
-for tuple in thinking:
-    data = ""
-    for column in tuple:
-        data += str(column) + "\n"
-    f.write(data)
-    f.write("\n")
-f.write("-------------------------------------------\n")
+f.write("Start of Thinking Questions! \n")
+writeIn(f, thinking)
 
 c.execute("SELECT * FROM entry")
 entry = c.fetchall()
-
-f.write("Start of Entry Questions")
-for tuple in entry:
-    data = ""
-    for column in tuple:
-        data += str(column) + "\n"
-    f.write(data)
-    f.write("\n")
-f.write("-------------------------------------------\n")
+f.write("Start of Entry Questions! \n")
+writeIn(f, intro)
 
 c.execute("SELECT * FROM python")
 python = c.fetchall()
-
-f.write("Start of Python Questions")
-for tuple in python:
-    data = ""
-    for column in tuple:
-        data += str(column) + "\n"
-    f.write(data)
-    f.write("\n")
-f.write("-------------------------------------------\n")
+writeIn(f, python)
 
 c.execute("SELECT * FROM c")
 clang = c.fetchall()
-
-f.write("Start of C Questions")
-for tuple in clang:
-    data = ""
-    for column in tuple:
-        data += str(column) + "\n"
-    f.write(data)
-    f.write("\n")
-f.write("-------------------------------------------\n")
+f.write("Start of C Questions! \n")
+writeIn(f, clang)
 
 f.close()
