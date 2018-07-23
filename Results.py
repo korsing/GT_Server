@@ -7,7 +7,7 @@ def connectDB():
 def writeIn(filename, mass):
     for tuple in mass:
         for column in tuple:
-            filename.write(column)
+            filename.write(str(column))
             filename.write('\n')
         filename.write('\n')
     filename.write('---------------------------------------\n')
