@@ -19,21 +19,22 @@ worksheet = workbook.add_worksheet()
 writeExcel(worksheet, 0,0, "Seq")
 writeExcel(worksheet, 0,1, "UserID")
 
-for i in range(2, 28):
-    writeExcel(worksheet, i,0, i-2)
+for i in range(25):
+    writeExcel(worksheet, 0,i+2, i+1)
 
 category = ["intro", "thinking", "entry", "python", "c"]
 
 row = 1
 for i in range(len(category)):
-    col = 1
     query = "SELECT * FROM " + str(category[i]) + " ;"
     c.execute(query)
     data = c.fetchall() # DB 안에 있는 내용을 튜플로 가져옴
     for tuples in data:
+        col = 1
+        row += 1
         for element in tuples:
             writeExcel(worksheet, row, col, str(element))
             col += 1
-        row += 1
+        
 
 workbook.close()
