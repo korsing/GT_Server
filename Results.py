@@ -1,42 +1,38 @@
 import MySQLdb
+import xlsxwriter
+
 def connectDB():
     conn = MySQLdb.connect(host="localhost", user="root", passwd="4swedu@skku", db="GT_DB",charset="utf8mb4")
     c = conn.cursor()
     return c, conn
 
-def writeIn(filename, mass):
-    for tuple in mass:
-        for column in tuple:
-            filename.write(str(column)+' / ')
-            filename.write('\n')
-        filename.write('\n')
-    filename.write('---------------------------------------\n')
+def writeExcel(file, row, col, content):
+    file.write(row, col, content)
 
+# DB연결
 c, conn = connectDB()
-f=open("results.txt", "w")
+# 엑셀파일 생성
+workbook = xlsxwriter.Workbook("results.xlsx")
+worksheet = workbook.add_worksheet()
 
-c.execute("SELECT * FROM intro")
-intro = c.fetchall()
-f.write("Start of Intro Survey! \n")
-writeIn(f, intro)
+# 가로 타이틀 작성
+writeExcel(worksheet, 0,0, "Seq"")
+writeExcel(worksheet, 0,1, "UserID")
 
-c.execute("SELECT * FROM thinking")
-thinking = c.fetchall()
-f.write("Start of Thinking Questions! \n")
-writeIn(f, thinking)
+for i in range(2, 28):
+    writeExcel(worksheet, i,0, i-2)
 
-c.execute("SELECT * FROM entry")
-entry = c.fetchall()
-f.write("Start of Entry Questions! \n")
-writeIn(f, intro)
+category = ["intro", "thinking", "entry", "python", "c"]
 
-c.execute("SELECT * FROM python")
-python = c.fetchall()
-writeIn(f, python)
+row = 1
+for i in range(len(category)):
+    col = 1
+    c.execute("SELECT * FROM %s",(category[i],))
+    data = c.fetchall() # DB 안에 있는 내용을 튜플로 가져옴
+    for tuples in data:
+        for element in tuples:
+            writeExcel(worksheet, row, col, str(element))
+            col += 1
+        row += 1
 
-c.execute("SELECT * FROM c")
-clang = c.fetchall()
-f.write("Start of C Questions! \n")
-writeIn(f, clang)
 
-f.close()
