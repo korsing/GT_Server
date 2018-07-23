@@ -12,7 +12,10 @@ intro = c.fetchall()
 
 f.write("Start of Intro Survey")
 for tuple in intro:
-    f.write(tuple)
+    data = ""
+    for column in tuple:
+        data += str(column)
+    f.write(data)
 
 f.write("-------------------------------------------")
 
@@ -21,7 +24,11 @@ thinking = c.fetchall()
 
 f.write("Start of Thinking Questions")
 for tuple in thinking:
-    f.write(tuple)
+    data = ""
+    for column in tuple:
+        data += str(column)
+    f.write(data)
+
 f.write("-------------------------------------------")
 
 c.execute("SELECT * FROM entry")
@@ -29,7 +36,11 @@ entry = c.fetchall()
 
 f.write("Start of Entry Questions")
 for tuple in entry:
-    f.write(tuple)
+    data = ""
+    for column in tuple:
+        data += str(column)
+    f.write(data)
+    
 f.write("-------------------------------------------")
 
 c.execute("SELECT * FROM python")
@@ -37,7 +48,11 @@ python = c.fetchall()
 
 f.write("Start of Python Questions")
 for tuple in python:
-    f.write(tuple)
+    data = ""
+    for column in tuple:
+        data += str(column)
+    f.write(data)
+
 f.write("-------------------------------------------")
 
 c.execute("SELECT * FROM c")
@@ -45,7 +60,11 @@ clang = c.fetchall()
 
 f.write("Start of C Questions")
 for tuple in clang:
-    f.write(tuple)
+    data = ""
+    for column in tuple:
+        data += str(column)
+    f.write(data)
+
 f.write("-------------------------------------------")
 
 f.close()
