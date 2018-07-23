@@ -16,7 +16,7 @@ workbook = xlsxwriter.Workbook("results.xlsx")
 worksheet = workbook.add_worksheet()
 
 # 가로 타이틀 작성
-writeExcel(worksheet, 0,0, "Seq"")
+writeExcel(worksheet, 0,0, "Seq")
 writeExcel(worksheet, 0,1, "UserID")
 
 for i in range(2, 28):
