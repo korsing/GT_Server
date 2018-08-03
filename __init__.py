@@ -64,7 +64,34 @@ def homepage():
         c, conn = connectDB()
         c.execute("SELECT name FROM USERS WHERE userid = %s", (userid,))
         name = c.fetchone()[0]
-        return render_template("index.html", name=name, flag = True)
+        id_list = ["yumin06", "XXXXX", "sampark", "x*x+y*y=1", "elliejjang002", "junslee1004", 
+        "juna0306", "terry7", "13110276", "muscle0408", "hbchoi", "jas2006", "genesis",
+        "glacier-dragon", "admin" ]
+        #강유민 권경빈 박상윤 이솔 이유경 이준서 이준하 임태원 주형조 최서현 최현빈 최현준 추지훈 하준 관리자
+        excel_url = ["https://docs.google.com/spreadsheets/d/1Piaoxl6K3mCtet3iDqnAYCTyO7OX-ILhui7Xb5_yY0Y/",
+        "https://docs.google.com/spreadsheets/d/1kem_tK6RQOyTMwxfLZukN0xUQ6uDqw7t7w9YD46KQBg/",
+        "https://docs.google.com/spreadsheets/d/1J1faY82TpVjXJWnpP5UjEDWFVlcNtv_-Qtdrw2h6Lcw/",
+        "https://docs.google.com/spreadsheets/d/1ilkezPkk1z0Nup31nGWD_wgfuTRAjvRqvKrLUOZo-Lw/",
+        "https://docs.google.com/spreadsheets/d/1ARVP04kSY4ysbEWN_Cz2veshgVzdh1ZgTPTjfozBg9I/",
+        "https://docs.google.com/spreadsheets/d/1XpNYPfFHn_l65uRoOeRLKUwYkD4dP0c7IwHVuK7LKgc/",
+        "https://docs.google.com/spreadsheets/d/1LSbDcR7Uh35y5WL6weCWFZwHutzC8wXOBxW2B2MW5ww/",
+        "https://docs.google.com/spreadsheets/d/1R7v0P-acIRwqtR1YmwwRdcOwULyWE0ykgUBW_3R82e8",
+        "https://docs.google.com/spreadsheets/d/1aGth9z-PO_srVFrk0d-TkKjA8jgMqYK_XSj0pHFPS_I/",
+        "https://docs.google.com/spreadsheets/d/1A5jcFv3ifGFeJnuzhRi3NB1zhmbAyOLHanmq-nUgpZk/",
+        "https://docs.google.com/spreadsheets/d/1Igr8wo3ACFON2umdepGTvK9k2c4fsKIo3aQhXcmv5XQ/",
+        "https://docs.google.com/spreadsheets/d/1FL7jTeGatvwp_gxRXfiRZuZkr3zqfj3r8pxjwrObN8E/",
+        "https://docs.google.com/spreadsheets/d/1xF7bBpwY53nu769T-daqUoE6uBetK7r3F32gfhT_nrQ/",
+        "https://docs.google.com/spreadsheets/d/1GM54OOh0mIj-3eewXnrOKjuRDi4dQ_JJLVPtDp-z0Tw/",
+        "https://www.naver.com/",
+        ]
+        target_url = "/"
+        target_index = 0
+        for i in id_list:
+            if (userid == i):
+                target_url = excel_url[target_index]
+                break
+            target_index = target_index + 1
+        return render_template("index.html", name=name, flag = True, url=target_url)
     else:
         return render_template("index.html", name="NULL", flag = False)
 
