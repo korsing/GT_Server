@@ -82,7 +82,7 @@ def homepage():
         "https://docs.google.com/spreadsheets/d/1FL7jTeGatvwp_gxRXfiRZuZkr3zqfj3r8pxjwrObN8E/",
         "https://docs.google.com/spreadsheets/d/1xF7bBpwY53nu769T-daqUoE6uBetK7r3F32gfhT_nrQ/",
         "https://docs.google.com/spreadsheets/d/1GM54OOh0mIj-3eewXnrOKjuRDi4dQ_JJLVPtDp-z0Tw/",
-        "https://www.naver.com/",
+        "https://docs.google.com/spreadsheets/d/1wFlZ7kLG6zSdS72mLPdMlWqYtbq99zyiqk6bzFO7hl8/",
         ]
         target_url = "/"
         target_index = 0
