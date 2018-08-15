@@ -130,15 +130,15 @@ def signup():
         query = "SELECT userid FROM USERS WHERE school = '" + signup_form.school.data + "' AND studNo = '" + signup_form.schoolid.data + "';" 
         c.execute(query) # 이 값은 나온 값의 개수로 정상적으로 나오는데 return은 안됌..
         
-        check = c.fetchall()
+        check = c.fetchone()
 
         return "135번째 줄까지 정상 실행"
 
-        for element in check[0]:
-            if(element):
-                message = "You have already signed up!"
-                createError(message)
-                return redirect('/error')
+        
+        if(len(check)):
+            message = "You have already signed up!"
+            createError(message)
+            return redirect('/error')
 
 # 이 줄까지는 정상 실행
 
