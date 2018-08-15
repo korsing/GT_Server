@@ -140,7 +140,8 @@ def signup():
 # 이 줄까지는 정상 실행
 
         # 아이디 자동 생성
-        
+        return "143번째 줄까지 정상 실행"
+
         c.execute("SELECT COUNT(*) FROM USERS;")
         return "145번째 줄까지 정상 실행"
 
