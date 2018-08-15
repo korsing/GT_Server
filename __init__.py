@@ -191,16 +191,21 @@ class QuestionForm(Form):
     answer = RadioField('Label', choices=[('value', 'description'), ('value_two', 'whatever')])
 
 def get_CAT(qnum):
-    if(qnum <= 25):
+    if(qnum <= 10):
+        category = "intro"
+    elif(qnum <= 30):
         category = "thinking"
     elif(qnum <= 50):
         category = "entry"
-    elif(qnum <= 75):
+    elif(qnum <= 70):
         category = "python"
-    elif(qnum <= 100):
+    elif(qnum <= 90):
         category = "c"
     else:
-        category = 'intro'
+        message = "Something seems to have gone wrong!"
+        createError(message)
+        return redirect('/error')
+
     return category
 
 @app.route("/leveltest/Q<qnum>", methods=['GET', 'POST'])
