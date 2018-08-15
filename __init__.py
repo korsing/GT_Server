@@ -132,9 +132,6 @@ def signup():
         
         check = c.fetchone()
 
-        return "135번째 줄까지 정상 실행"
-
-        
         if(len(check)):
             message = "You have already signed up!"
             createError(message)
