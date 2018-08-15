@@ -127,7 +127,8 @@ def signup():
         c, conn = connectDB()
         
         query = "SELECT userid FROM USERS WHERE school = '" + signup_form.school.data + "' AND studNo = '" + signup_form.schoolid.data + "';" 
-        c.execute(query)        
+        a = c.execute(query)    
+        return a
         check = c.fetchall()
         for element in check:
             if(element):
