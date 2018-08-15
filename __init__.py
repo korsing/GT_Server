@@ -206,7 +206,7 @@ def questions(qnum):
             form = ThinkingForm()
 
         if(form.validate_on_submit()): 
-            data = form.answer.data
+            data = form.question1.data
             # if(len(data)>500):
             #     data = data[:500]
             c,conn = connectDB()
