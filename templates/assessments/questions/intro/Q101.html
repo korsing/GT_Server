@@ -17,16 +17,10 @@
             <form method="POST">
                 <div>
                     <Margin>
-                        <div class="col-4 col-12-small">
-                            <input type="radio" name="demo-priority" id="option1"> 
-                            <label for = "option1">야 임마 </label>
-                            <input type="radio" name="demo-priority" id="option2"> 
-                            <label for = "option2">왜 임마 </label>
-                        </div>
-                        <ul>
+                      
                         {{ form.csrf_token }}
-                        {{ form.answer }}
-                        </ul>
+                        {{ form.answer(class_="col-4 col-12-small") }}
+                    
                     </Margin>
                 </div>
                 <div>
