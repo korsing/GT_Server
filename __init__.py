@@ -124,12 +124,17 @@ def signup():
             createError(message)
             return redirect('/error')
         
-        return "127번째 줄까지는 정상 실행"
+        # 이 줄까지는 정상 실행
         c, conn = connectDB()
         
         query = "SELECT userid FROM USERS WHERE school = '" + signup_form.school.data + "' AND studNo = '" + signup_form.schoolid.data + "';" 
-        a = c.execute(query)    
-        return a
+        a = c.execute(query)
+
+        if(a > 0):
+            return "a에 숫자 값이 들어있습니다."
+        else:
+            return "a에 문제가 있습니다."
+        
         check = c.fetchall()
         for element in check:
             if(element):
