@@ -142,7 +142,7 @@ def signup():
         # 아이디 자동 생성
         query="select count(*) from USERS;"
         c.execute(query)
-        counter=int(c.fetchall()[0])
+        counter=int(c.fetchall()[0][0])
         if(counter<10):
             counter='000'+str(counter+1)
         elif(counter<100):
