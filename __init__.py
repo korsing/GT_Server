@@ -132,10 +132,10 @@ def signup():
         
         check = c.fetchone()
 
-        if(len(check)):
-            message = "You have already signed up!"
-            createError(message)
-            return redirect('/error')
+        # if(len(check)):
+        #     message = "You have already signed up!"
+        #     createError(message)
+        #     return redirect('/error')
 
 # 이 줄까지는 정상 실행
 
