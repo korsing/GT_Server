@@ -132,7 +132,7 @@ def signup():
         
         check = c.fetchall()
 
-        return check[0]
+        return check[0][0]
         for element in check:
             if(element):
                 message = "You have already signed up!"
