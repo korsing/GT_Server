@@ -129,7 +129,7 @@ def signup():
         query = "SELECT userid FROM USERS WHERE school = '" + signup_form.school.data + "' AND schoolid = '" + signup_form.schoolid.data + "';" 
         c.execute(query)
         if(c.fetchall()[0] != None):  # DB에 이미 해당 정보가 있다면
-             message = "You have already signed up!"
+            message = "You have already signed up!"
             createError(message)
             return redirect('/error')
         c.execute
