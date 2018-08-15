@@ -128,14 +128,11 @@ def signup():
         c, conn = connectDB()
         
         query = "SELECT userid FROM USERS WHERE school = '" + signup_form.school.data + "' AND studNo = '" + signup_form.schoolid.data + "';" 
-        a = c.execute(query)
-
-        if(a > 0):
-            return a
-        else:
-            return "a에 문제가 있습니다."
+        c.execute(query) # 이 값은 나온 값의 개수로 정상적으로 나오는데 return은 안됌..
         
         check = c.fetchall()
+
+        return check[0]
         for element in check:
             if(element):
                 message = "You have already signed up!"
