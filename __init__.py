@@ -131,6 +131,9 @@ def signup():
         c.execute(query) # 이 값은 나온 값의 개수로 정상적으로 나오는데 return은 안됌..
         
         check = c.fetchall()
+
+        return "135번째 줄까지 정상 실행"
+
         for element in check[0]:
             if(element):
                 message = "You have already signed up!"
