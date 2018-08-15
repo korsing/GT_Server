@@ -20,15 +20,6 @@ class LoginForm(Form):
     userid = StringField("username", validators=[InputRequired()])
     userpw = PasswordField("password", validators=[InputRequired()])
 
-# 회원가입란을 정의하는 클래스 선언
-class SignupForm(Form):
-    name = StringField("name", validators=[InputRequired()])
-    phone = StringField("phone", validators=[InputRequired()])
-    email = StringField("email", validators=[InputRequired()])
-    userid = StringField("username", validators=[InputRequired()])
-    userpw = PasswordField("password", validators=[InputRequired()])
-    pwconfirm = PasswordField("password", validators=[InputRequired()])
-    school = StringField("school", validators=[InputRequired()])
 
 
 # DB 연동을 수행하는 함수
@@ -110,21 +101,20 @@ def logout():
     deleteSession()
     return redirect('/')
 
+# 회원가입란을 정의하는 클래스 선언
+class SignupForm(Form):
+    userpw = PasswordField("password", validators=[InputRequired()])
+    pwconfirm = PasswordField("password", validators=[InputRequired()])
+    name = StringField("name", validators=[InputRequired()])
+    school = StringField("school", validators=[InputRequired()])
+    schoolid = StringField("schoolsid", validators=[InputRequired()])
+
+
 @app.route("/signup", methods=['GET', 'POST'])
 def signup():
     signup_form = SignupForm()
     if(signup_form.validate_on_submit()):
-        if('@' not in signup_form.email.data):
-            message = "Wrong EMAIL has been entered."
-            createError(message)
-            return redirect('/error')
-            
-        if(len(signup_form.userid.data) < 5):
-            message = "ID must be more than 5 characters."
-            createError(message)
-            return redirect('/error')
-
-        if(len(signup_form.userpw.data) < 8):
+        if(len(signup_form.userpw.data) < 8): # 비밀번호가 8자리 이상인지 체크
             message = "PASSWORD must be more than 8 characters."
             createError(message)
             return redirect('/error')
@@ -135,16 +125,33 @@ def signup():
             return redirect('/error')
 
         c, conn = connectDB()
-        c.execute("SELECT userid from USERS;")
-        for userid_tuple in c.fetchall():
-            if(signup_form.userid.data in userid_tuple): # DB에 이미 해당 아이디가 있다면
-                message = "That ID already exists! Please another one."
-                createError(message)
-                return redirect('/error')
         
+        query = "SELECT userid FROM USERS WHERE school = '" + signup_form.school.data + "' AND schoolid = '" + signup_form.schoolid.data + "';" 
+        c.execute(query)
+        if(c.fetchall()[0] != None):  # DB에 이미 해당 정보가 있다면
+             message = "You have already signed up!"
+            createError(message)
+            return redirect('/error')
+        c.execute
+        query="select count(*) from users "
+        c.execute(query)
+        counter=int(c.fetchall()[0])
+        if(counter<10):
+            counter='000'+str(counter+1)
+        elif(counter<100):
+            counter='00'+str(counter+1)
+        elif(counter<1000):
+            counter='0'+str(counter+1)
+
+        userid = "GBLD" + counter       
         # 이까지 온다는 것 자체가 위에 에러 if문에서 하나도 안걸렸다는 말!
         password = generate_password_hash(signup_form.userpw.data) 
-        c.execute("INSERT INTO USERS VALUES (%s, %s, %s, %s, %s, %s)", (signup_form.name.data, signup_form.userid.data, password, signup_form.email.data, signup_form.phone.data, signup_form.school.data))
+        c.execute("INSERT INTO USERS VALUES (%s, %s, %s, %s, %s, %s)", (signup_form.name.data, userid, password, signup_form.email.data, signup_form.phone.data, signup_form.school.data))
+        lists = ["intro", "thinking", "entry", "python", "c"]
+        for category in lists:
+            query = "INSERT INTO " + category + "(userid) VALUES ('" + userid +"')"
+            c.execute(query)
+
         conn.commit()
         conn.close()
         return redirect("/login")
@@ -250,7 +257,20 @@ def leveltest_category(variable):
 
 @app.route('/A<qnum>/<answer>')
 def addAnswertoDB(qnum, answer):
-    return str(qnum) + " " + str(answer)
+    if('user' in session):
+        userid = session['user']
+        category = get_CAT(qnum)
+
+        c, conn = connectDB()
+        query = "UPDATE " + category + " SET Q" + str(qnum) + " = " + answer + " WHERE userid = " + userid + ";"
+        c.execute(query)
+        
+        c.commit()
+        conn.close()
+        return redirect("/leveltest/category")
+        
+    else:
+        return redirect("/onlyformembers")
 
 @app.route('/dashboard')
 def printdb():
@@ -324,6 +344,7 @@ def printdb():
             return redirect('/onlyformembers')
     else:
         return redirect('/onlyformembers')
+
 @app.route('/sensitiveinfo')
 def sensitiveinfo():
     return render_template("/privacy/sensitiveinfo.html")
