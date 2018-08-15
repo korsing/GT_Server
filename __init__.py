@@ -127,6 +127,7 @@ def signup():
         c, conn = connectDB()
         
         query = "SELECT userid FROM USERS WHERE school = '" + signup_form.school.data + "' AND schoolid = '" + signup_form.schoolid.data + "';" 
+        return query
         ###############################################################
         c.execute(query)
         data23 = c.fetchall()
