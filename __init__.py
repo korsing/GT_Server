@@ -136,6 +136,7 @@ def signup():
                 createError(message)
                 return redirect('/error')
 
+        return "정제영 멍청이"
 
         # 아이디 자동 생성
         query="select count(*) from users "
