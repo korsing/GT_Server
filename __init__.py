@@ -143,6 +143,9 @@ def signup():
         query="select count(*) from USERS;"
         c.execute(query)
         counter=int(c.fetchall()[0][0])
+
+        return counter
+        
         if(counter<10):
             counter='000'+str(counter+1)
         elif(counter<100):
