@@ -149,10 +149,11 @@ def signup():
             counter='0'+str(counter+1)
 
         userid = "GBLD" + counter
+# 이 줄까지는 정상 실행
 
         # 이까지 온다는 것 자체가 위에 에러 if문에서 하나도 안걸렸다는 말!
-        password = generate_password_hash(signup_form.userpw.data) 
-        c.execute("INSERT INTO USERS VALUES (%s, %s, %s, %s, %s, %s)", (signup_form.name.data, userid, password, signup_form.email.data, signup_form.phone.data, signup_form.school.data))
+        password = generate_password_hash(signup_form.userpw.data)
+        c.execute("INSERT INTO USERS VALUES (%s, %s, %s, %s, %s)", (userid, password, signup_form.name.data, signup_form.school.data, signup_form.schoolid.data))
         lists = ["intro", "thinking", "entry", "python", "c"]
         for category in lists:
             query = "INSERT INTO " + category + "(userid) VALUES ('" + userid +"')"
