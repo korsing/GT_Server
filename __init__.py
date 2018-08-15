@@ -131,7 +131,7 @@ def signup():
         a = c.execute(query)
 
         if(a > 0):
-            return "a에 숫자 값이 들어있습니다."
+            return a
         else:
             return "a에 문제가 있습니다."
         
