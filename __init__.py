@@ -199,6 +199,7 @@ def get_CAT(qnum):
 @app.route("/leveltest/Q<qnum>", methods=['GET', 'POST'])
 def questions(qnum):
     if('user' in session):
+        category = get_CAT(qnum)
         if(category == "intro"):
             bogi = ["혼자 하는 것이 더 즐겁다.", "어느 친구냐에 따라 다르다.", "친구와 함께 하는 것은 항상 즐겁다."]
         elif(category == "thinking"):
