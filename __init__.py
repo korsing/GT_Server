@@ -263,6 +263,7 @@ def addAnswertoDB(qnum, answer):
 
         c, conn = connectDB()
         query = "UPDATE " + category + " SET Q" + str(qnum) + " = " + answer + " WHERE userid = " + userid + ";"
+        return query
         c.execute(query)
         
         c.commit()
