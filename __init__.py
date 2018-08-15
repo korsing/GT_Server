@@ -127,7 +127,6 @@ def signup():
         c, conn = connectDB()
         
         query = "SELECT userid FROM USERS WHERE school = '" + signup_form.school.data + "' AND studNo = '" + signup_form.schoolid.data + "';" 
-        
         c.execute(query)        
         check = c.fetchall()
         for element in check:
@@ -136,7 +135,7 @@ def signup():
                 createError(message)
                 return redirect('/error')
 
-        return "정제영 멍청이"
+        ############
 
         # 아이디 자동 생성
         query="select count(*) from users "
