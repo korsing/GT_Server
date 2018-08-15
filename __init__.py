@@ -18,9 +18,6 @@ class IntroForm(Form):
     question1 = RadioField('Label', choices=[('1','혼자하는 것이 더 즐겁다.'),('2','어느 친구냐에 따라 다르다.')])
     #question1 = RadioField('Label', choices=[('1','혼자하는 것이 더 즐겁다.'),('2','어느 친구냐에 따라 다르다.')])
 
-class ThinkingForm(Form):
-    question1 = RadioField('Label', choices=[('1','15'),('2','정제영 바보')])
-
 # 입력 칸을 정의하는 클래스 선언
 class LoginForm(Form):
     userid = StringField("username", validators=[InputRequired()])
@@ -38,7 +35,7 @@ class SignupForm(Form):
 
 # 레벨테스트란을 정의하는 클래스 선언
 class QuestionForm(Form):
-    answer = TextAreaField("answer")
+    answer = RadioField('Label', choices=[('1','혼자하는 것이 더 즐겁다.'),('2','어느 친구냐에 따라 다르다.')])
 
 # DB 연동을 수행하는 함수
 def connectDB():
@@ -183,16 +180,16 @@ def aboutleveltest():
     return render_template("/assessments/abouttest.html")
 
 def get_CAT(qnum):
-    if(qnum <= 10):
-        category = 'intro'
-    elif(qnum <= 30):
+    if(qnum <= 25):
         category = "thinking"
     elif(qnum <= 50):
         category = "entry"
-    elif(qnum <= 70):
+    elif(qnum <= 75):
         category = "python"
-    else:
+    elif(qnum <= 100):
         category = "c"
+    else:
+        category = 'intro'
     return category
 
 @app.route("/leveltest/Q<qnum>", methods=['GET', 'POST'])
@@ -200,17 +197,14 @@ def questions(qnum):
     if('user' in session):
         userid = session['user']
         category = get_CAT(int(qnum))
-        if(category == "intro"):
-            form = IntroForm()
-        # elif(category == "thinking"):
-        #     form = ThinkingForm()
-        else:
+        if(int(qnum) <= 100):
             form = QuestionForm()
-
+        else:
+            form = QuestionForm() #나중에 수정의 용이성을 위해서..
         if(form.validate_on_submit()): 
-            data = form.question1.data
-            # if(len(data)>500):
-            #     data = data[:500]
+            data = form.answer.data
+            if(len(data)>500):
+                data = data[:500]
             c,conn = connectDB()
             query = "SELECT * FROM " + category + " WHERE userid = '" + userid + "';"
             flag = c.execute(query)
