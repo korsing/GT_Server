@@ -140,11 +140,11 @@ def signup():
 # 이 줄까지는 정상 실행
 
         # 아이디 자동 생성
-        query="select count(*) from USERS;"
-        c.execute(query)
+        
+        c.execute("SELECT COUNT(*) FROM USERS;")
         return "145번째 줄까지 정상 실행"
 
-        counter=c.fetchone()[0]
+        counter = c.fetchone()[0]
 
         return "147번째 줄까지 정상 실행"
 
