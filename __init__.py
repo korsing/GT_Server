@@ -164,7 +164,7 @@ def signup():
 
         createSession(userid)
         return redirect("/")
-    return render_template("/admin/signup.html", form = signup_form, userid)
+    return render_template("/admin/signup.html", form = signup_form)
 
 @app.route("/leveltest")
 def leveltest():
