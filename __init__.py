@@ -1,7 +1,7 @@
 #-*- coding: utf-8-*-
 from flask import Flask, render_template, session, redirect, flash
 from flask_wtf import Form
-from wtforms import StringField, PasswordField, IntegerField, TextAreaField, SelectField
+from wtforms import StringField, PasswordField, IntegerField, TextAreaField, SelectField, RadioField
 from wtforms.validators import InputRequired, Email, Length
 import MySQLdb
 import os
@@ -14,8 +14,12 @@ app.config['SECRET_KEY'] = "HansClass"
 app.secret_key = os.urandom(50)
 
 # 초기 설문조사를 위한 클래스 선언
-class SurveyForm(Form):
-    answer = SelectField("answer", choices=[("option1", "혼자할래요"), ("option2", "같이할래요")], validators=[InputRequired()])
+class IntroForm(Form):
+    question1 = RadioField('Label', choices=[('1','혼자하는 것이 더 즐겁다.'),('2','어느 친구냐에 따라 다르다.')])
+    #question1 = RadioField('Label', choices=[('1','혼자하는 것이 더 즐겁다.'),('2','어느 친구냐에 따라 다르다.')])
+
+class ThinkingForm(Form):
+    question1 = RadioField('Label', choices=[('1','15'),('2','정제영 바보')])
 
 # 입력 칸을 정의하는 클래스 선언
 class LoginForm(Form):
@@ -64,34 +68,7 @@ def homepage():
         c, conn = connectDB()
         c.execute("SELECT name FROM USERS WHERE userid = %s", (userid,))
         name = c.fetchone()[0]
-        id_list = ["yumin06", "XXXXX", "sampark", "x*x+y*y=1", "elliejjang002", "junslee1004", 
-        "juna0306", "terry7", "13110276", "muscle0408", "hbchoi", "jas2006", "genesis",
-        "glacier-dragon", "admin" ]
-        #강유민 권경빈 박상윤 이솔 이유경 이준서 이준하 임태원 주형조 최서현 최현빈 최현준 추지훈 하준 관리자
-        excel_url = ["https://docs.google.com/spreadsheets/d/1Piaoxl6K3mCtet3iDqnAYCTyO7OX-ILhui7Xb5_yY0Y/",
-        "https://docs.google.com/spreadsheets/d/1kem_tK6RQOyTMwxfLZukN0xUQ6uDqw7t7w9YD46KQBg/",
-        "https://docs.google.com/spreadsheets/d/1J1faY82TpVjXJWnpP5UjEDWFVlcNtv_-Qtdrw2h6Lcw/",
-        "https://docs.google.com/spreadsheets/d/1ilkezPkk1z0Nup31nGWD_wgfuTRAjvRqvKrLUOZo-Lw/",
-        "https://docs.google.com/spreadsheets/d/1ARVP04kSY4ysbEWN_Cz2veshgVzdh1ZgTPTjfozBg9I/",
-        "https://docs.google.com/spreadsheets/d/1XpNYPfFHn_l65uRoOeRLKUwYkD4dP0c7IwHVuK7LKgc/",
-        "https://docs.google.com/spreadsheets/d/1LSbDcR7Uh35y5WL6weCWFZwHutzC8wXOBxW2B2MW5ww/",
-        "https://docs.google.com/spreadsheets/d/1R7v0P-acIRwqtR1YmwwRdcOwULyWE0ykgUBW_3R82e8",
-        "https://docs.google.com/spreadsheets/d/1aGth9z-PO_srVFrk0d-TkKjA8jgMqYK_XSj0pHFPS_I/",
-        "https://docs.google.com/spreadsheets/d/1A5jcFv3ifGFeJnuzhRi3NB1zhmbAyOLHanmq-nUgpZk/",
-        "https://docs.google.com/spreadsheets/d/1Igr8wo3ACFON2umdepGTvK9k2c4fsKIo3aQhXcmv5XQ/",
-        "https://docs.google.com/spreadsheets/d/1FL7jTeGatvwp_gxRXfiRZuZkr3zqfj3r8pxjwrObN8E/",
-        "https://docs.google.com/spreadsheets/d/1xF7bBpwY53nu769T-daqUoE6uBetK7r3F32gfhT_nrQ/",
-        "https://docs.google.com/spreadsheets/d/1GM54OOh0mIj-3eewXnrOKjuRDi4dQ_JJLVPtDp-z0Tw/",
-        "https://docs.google.com/spreadsheets/d/1wFlZ7kLG6zSdS72mLPdMlWqYtbq99zyiqk6bzFO7hl8/",
-        ]
-        target_url = "/"
-        target_index = 0
-        for i in id_list:
-            if (userid == i):
-                target_url = excel_url[target_index]
-                break
-            target_index = target_index + 1
-        return render_template("index.html", name=name, flag = True, url=target_url)
+        return render_template("index.html", name=name, flag = True)
     else:
         return render_template("index.html", name="NULL", flag = False)
 
@@ -206,16 +183,16 @@ def aboutleveltest():
     return render_template("/assessments/abouttest.html")
 
 def get_CAT(qnum):
-    if(qnum <= 25):
+    if(qnum <= 10):
+        category = 'intro'
+    elif(qnum <= 30):
         category = "thinking"
     elif(qnum <= 50):
         category = "entry"
-    elif(qnum <= 75):
+    elif(qnum <= 70):
         category = "python"
-    elif(qnum <= 100):
-        category = "c"
     else:
-        category = 'intro'
+        category = "c"
     return category
 
 @app.route("/leveltest/Q<qnum>", methods=['GET', 'POST'])
@@ -223,14 +200,15 @@ def questions(qnum):
     if('user' in session):
         userid = session['user']
         category = get_CAT(int(qnum))
-        if(int(qnum) <= 100):
-            form = QuestionForm()
-        else:
-            form = QuestionForm() #나중에 수정의 용이성을 위해서..
+        if(category == "intro"):
+            form = IntroForm()
+        elif(category == "thinking"):
+            form = ThinkingForm()
+
         if(form.validate_on_submit()): 
             data = form.answer.data
-            if(len(data)>500):
-                data = data[:500]
+            # if(len(data)>500):
+            #     data = data[:500]
             c,conn = connectDB()
             query = "SELECT * FROM " + category + " WHERE userid = '" + userid + "';"
             flag = c.execute(query)

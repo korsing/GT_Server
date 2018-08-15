@@ -1,0 +1,19 @@
+{% extends "template.html" %}
+{% block bogi %}
+
+<form method="POST">
+    {{ form.csrf_token }}
+    <div>
+        <Margin>
+            {{ form.question1 }}
+        </Margin>
+    </div>
+    <div>
+        <ul class="actions">
+            <li><input type="submit" value="제출하기" class="primary" /></li>
+        </ul>
+    </div>
+</form>
+
+
+{% endblock %}
