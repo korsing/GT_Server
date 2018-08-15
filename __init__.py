@@ -203,15 +203,15 @@ def questions(qnum):
         if(category == "intro"):
             bogi = ["혼자 하는 것이 더 즐겁다.", "어느 친구냐에 따라 다르다.", "친구와 함께 하는 것은 항상 즐겁다."]
         elif(category == "thinking"):
-            bogi = []
+            bogi = [1,2,3]
         elif(category == "entry"):
-            bogi = []
+            bogi = [1,2,3]
         elif(category == "python"):
-            bogi = []
+            bogi = [1,2,3]
         else:
-            bogi = []
+            bogi = [1,2,3]
             
-        return bogi[0]
+        
         return render_template("/assessments/questions/" + category +"/Q" + str(qnum) + ".html", bogi=bogi, qnum=qnum, flag = True)
     else:
         return redirect("/onlyformemebers")
