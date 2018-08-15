@@ -138,7 +138,7 @@ def signup():
         ############
 
         # 아이디 자동 생성
-        query="select count(*) from users "
+        query="select count(*) from USERS;"
         c.execute(query)
         counter=int(c.fetchall()[0])
         if(counter<10):
