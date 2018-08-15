@@ -128,16 +128,16 @@ def signup():
         
         query = "SELECT userid FROM USERS WHERE school = '" + signup_form.school.data + "' AND studNo = '" + signup_form.schoolid.data + "';" 
         
-        ###############################################################
-        c.execute(query)
-        data23 = c.fetchall()
-        return data23
-        
-        if(c.fetchall()[0] != None):  # DB에 이미 해당 정보가 있다면
-            message = "You have already signed up!"
-            createError(message)
-            return redirect('/error')
-        c.execute
+        c.execute(query)        
+        check = c.fetchall()
+        for element in check:
+            if(element):
+                message = "You have already signed up!"
+                createError(message)
+                return redirect('/error')
+
+
+        # 아이디 자동 생성
         query="select count(*) from users "
         c.execute(query)
         counter=int(c.fetchall()[0])
@@ -148,7 +148,8 @@ def signup():
         elif(counter<1000):
             counter='0'+str(counter+1)
 
-        userid = "GBLD" + counter       
+        userid = "GBLD" + counter
+
         # 이까지 온다는 것 자체가 위에 에러 if문에서 하나도 안걸렸다는 말!
         password = generate_password_hash(signup_form.userpw.data) 
         c.execute("INSERT INTO USERS VALUES (%s, %s, %s, %s, %s, %s)", (signup_form.name.data, userid, password, signup_form.email.data, signup_form.phone.data, signup_form.school.data))
@@ -159,8 +160,10 @@ def signup():
 
         conn.commit()
         conn.close()
-        return redirect("/login")
-    return render_template("/admin/signup.html", form = signup_form)
+
+        createSession(userid)
+        return redirect("/")
+    return render_template("/admin/signup.html", form = signup_form, userid)
 
 @app.route("/leveltest")
 def leveltest():
