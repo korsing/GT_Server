@@ -17,10 +17,12 @@
             <form method="POST">
                 <div>
                     <Margin>
-                      
-                        {{ form.csrf_token }}
-                        {{ form.answer(class_="col-4 col-12-small") }}
-                    
+                        {% counter = 0 %}
+                        {% qnum %}
+                        {% for i in range(3):%}
+                            {% bogi[counter] %}
+                            {% counter = counter + 1 %}  
+                        {% endfor %}
                     </Margin>
                 </div>
                 <div>

@@ -199,29 +199,17 @@ def get_CAT(qnum):
 @app.route("/leveltest/Q<qnum>", methods=['GET', 'POST'])
 def questions(qnum):
     if('user' in session):
-        userid = session['user']
-        category = get_CAT(int(qnum))
-        if(int(qnum) <= 100):
-            form = QuestionForm()
+        if(category = "intro"):
+            bogi = ["혼자 하는 것이 더 즐겁다.", "어느 친구냐에 따라 다르다.", "친구와 함께 하는 것은 항상 즐겁다."]
+        elif(category = "thinking"):
+            bogi = []
+        elif(category = "entry"):
+            bogi = []
+        elif(category = "python"):
+            bogi = []
         else:
-            form = QuestionForm() #나중에 수정의 용이성을 위해서..
-        if(form.validate_on_submit()): 
-            data = request.form['demo-priority']
-            if(len(data)>500):
-                data = data[:500]
-            c,conn = connectDB()
-            query = "SELECT * FROM " + category + " WHERE userid = '" + userid + "';"
-            flag = c.execute(query)
-            if(flag != 0):
-                update_Variable = "UPDATE " + category +" SET Q"+ str(qnum) +" = '" + data + "' WHERE userid = '" + userid + "';"
-                c.execute(update_Variable)
-            else:
-                execute_Variable = "Insert into "+ category + " (userid, Q" + str(qnum) + " ) VALUES ('" + userid + "','" + data+ "');"
-                c.execute(execute_Variable)
-            conn.commit()
-            conn.close()
-            return redirect('/leveltest/' + category)
-        return render_template("/assessments/questions/" + category +"/Q" + str(qnum) + ".html", form=form, flag = True)
+            bogi = []
+        return render_template("/assessments/questions/" + category +"/Q" + str(qnum) + ".html", bogi=bogi, qnum=qnum flag = True)
     else:
         return redirect("/onlyformemebers")
 
