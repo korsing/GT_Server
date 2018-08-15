@@ -123,13 +123,15 @@ def signup():
             message = "PASSWORDs do not match!"
             createError(message)
             return redirect('/error')
-        ###############################################################
+        
         c, conn = connectDB()
         
         query = "SELECT userid FROM USERS WHERE school = '" + signup_form.school.data + "' AND schoolid = '" + signup_form.schoolid.data + "';" 
-        return query
-        
+        ###############################################################
         c.execute(query)
+        data23 = c.fetchall()[0]
+        return data23
+        
         if(c.fetchall()[0] != None):  # DB에 이미 해당 정보가 있다면
             message = "You have already signed up!"
             createError(message)
