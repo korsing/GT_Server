@@ -124,6 +124,7 @@ def signup():
             createError(message)
             return redirect('/error')
         
+        return "127번째 줄까지는 정상 실행""
         c, conn = connectDB()
         
         query = "SELECT userid FROM USERS WHERE school = '" + signup_form.school.data + "' AND studNo = '" + signup_form.schoolid.data + "';" 
