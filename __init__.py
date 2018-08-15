@@ -130,7 +130,7 @@ def signup():
         
         ###############################################################
         c.execute(query)
-        data23 = c.fetchall()[0]
+        data23 = c.fetchall()
         return data23
         
         if(c.fetchall()[0] != None):  # DB에 이미 해당 정보가 있다면
