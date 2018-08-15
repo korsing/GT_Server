@@ -1,5 +1,5 @@
 #-*- coding: utf-8-*-
-from flask import Flask, render_template, session, redirect, flash
+from flask import Flask, render_template, session, redirect, flash, request
 from flask_wtf import Form
 from wtforms import StringField, PasswordField, IntegerField, TextAreaField, SelectField, RadioField
 from wtforms.validators import InputRequired, Email, Length
@@ -13,10 +13,7 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = "HansClass"
 app.secret_key = os.urandom(50)
 
-# 초기 설문조사를 위한 클래스 선언
-class IntroForm(Form):
-    question1 = RadioField('Label', choices=[('1','혼자하는 것이 더 즐겁다.'),('2','어느 친구냐에 따라 다르다.')])
-    #question1 = RadioField('Label', choices=[('1','혼자하는 것이 더 즐겁다.'),('2','어느 친구냐에 따라 다르다.')])
+
 
 # 입력 칸을 정의하는 클래스 선언
 class LoginForm(Form):
@@ -33,9 +30,6 @@ class SignupForm(Form):
     pwconfirm = PasswordField("password", validators=[InputRequired()])
     school = StringField("school", validators=[InputRequired()])
 
-# 레벨테스트란을 정의하는 클래스 선언
-class QuestionForm(Form):
-    answer = RadioField('Label', choices=[('1','혼자하는 것이 더 즐겁다.'),('2','어느 친구냐에 따라 다르다.')])
 
 # DB 연동을 수행하는 함수
 def connectDB():
@@ -179,6 +173,16 @@ def aboutleveltest():
         return redirect("/onlyformembers")
     return render_template("/assessments/abouttest.html")
 
+
+
+# 초기 설문조사를 위한 클래스 선언
+class IntroForm(Form):
+    answer = RadioField('Label', choices=[('value', 'description'), ('value_two', 'whatever')])
+
+# 레벨테스트란을 정의하는 클래스 선언
+class QuestionForm(Form):
+    answer = RadioField('Label', choices=[('value', 'description'), ('value_two', 'whatever')])
+
 def get_CAT(qnum):
     if(qnum <= 25):
         category = "thinking"
@@ -202,7 +206,7 @@ def questions(qnum):
         else:
             form = QuestionForm() #나중에 수정의 용이성을 위해서..
         if(form.validate_on_submit()): 
-            data = form.answer.data
+            data = request.form['demo-priority']
             if(len(data)>500):
                 data = data[:500]
             c,conn = connectDB()
