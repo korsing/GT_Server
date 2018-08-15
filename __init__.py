@@ -210,6 +210,7 @@ def questions(qnum):
             bogi = []
         else:
             bogi = []
+        return category
         return render_template("/assessments/questions/" + category +"/Q" + str(qnum) + ".html", bogi=bogi, qnum=qnum, flag = True)
     else:
         return redirect("/onlyformemebers")
