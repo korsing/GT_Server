@@ -202,8 +202,10 @@ def questions(qnum):
         category = get_CAT(int(qnum))
         if(category == "intro"):
             form = IntroForm()
-        elif(category == "thinking"):
-            form = ThinkingForm()
+        # elif(category == "thinking"):
+        #     form = ThinkingForm()
+        else:
+            form = QuestionForm()
 
         if(form.validate_on_submit()): 
             data = form.question1.data
