@@ -144,8 +144,8 @@ def signup():
         c.execute(query)
         counter=int(c.fetchall()[0][0])
 
-        return counter
-        
+        return "147번째 줄까지 정상 실행"
+
         if(counter<10):
             counter='000'+str(counter+1)
         elif(counter<100):
@@ -154,7 +154,7 @@ def signup():
             counter='0'+str(counter+1)
 
         userid = "GBLD" + counter
-        return "154번째 줄까지 정상 실행"
+        
 
         # 이까지 온다는 것 자체가 위에 에러 if문에서 하나도 안걸렸다는 말!
         password = generate_password_hash(signup_form.userpw.data) 
