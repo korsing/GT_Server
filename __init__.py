@@ -248,6 +248,10 @@ def leveltest_category(variable):
         else:
             return redirect("/onlyformembers")
 
+@app.route('/A<qnum>/<answer>')
+def addAnswertoDB(qnum, answer):
+    return str(qnum) + " " + str(answer)
+
 @app.route('/dashboard')
 def printdb():
     if('user' in session):
