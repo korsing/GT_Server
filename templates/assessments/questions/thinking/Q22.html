@@ -1,0 +1,27 @@
+﻿{% extends "template.html" %}
+{% block content %}
+<!-- Main -->
+<section id="main" class="wrapper">
+    <Question>
+        <div align="center">
+            <div style="width : 50%">
+                <h1 style="text-align:left">
+                 22. A~H까지 8가지 작업이 있고, 각 작업마다 걸리는 시간이 다르다고 한다. 조건을 보고 작업 G가 완료될 때까지 소요되는 시간을 구하시오.(단 여러 작업들은 병행으로 수행될 수 있다.)              </h1></div>
+                       <img src="/static/image/questions/thinking/q22.PNG" />
+     </div> <br/>
+             <table>
+            {% for i in range(0,8): %}
+            <tr>
+                {% for j in range(1,6): %}
+    
+                     <td> <a href="/A{{qnum}}/{{i*5+j}}" class="button"> {{bogi[i*5+j-1]}} </a></td>
+                {% endfor %}
+            </tr>
+    
+        {% endfor %}
+        </table>
+
+</Question>
+
+</section>
+{% endblock %}

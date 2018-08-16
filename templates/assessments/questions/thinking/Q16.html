@@ -1,0 +1,27 @@
+﻿{% extends "template.html" %}
+{% block content %}
+<!-- Main -->
+<section id="main" class="wrapper">
+    <Question>
+        <div align="center">
+            <div style="width : 50%">
+                <h1 style="text-align:left">
+             16. 두 자리의 자연수 A, B (단 A > B)가 있는데, A와 B의 합을 반올림한 결과가 90이고, 두 수의 차를 반올림한 결과가 50일 때 B가 가질 수 있는 값 중 가장 큰 것은 무엇일까?                </h1></div>
+                       
+     </div> <br/>
+             <table>
+            {% for i in range(0,8): %}
+            <tr>
+                {% for j in range(1,6): %}
+    
+                     <td> <a href="/A{{qnum}}/{{i*5+j}}" class="button"> {{bogi[i*5+j-1]}} </a></td>
+                {% endfor %}
+            </tr>
+    
+        {% endfor %}
+        </table>
+
+</Question>
+
+</section>
+{% endblock %}
