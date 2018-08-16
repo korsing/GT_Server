@@ -276,9 +276,9 @@ def leveltest_category(variable):
 def addAnswertoDB(qnum, answer):
     if('user' in session):
         userid = session['user']
-        category = get_CAT(qnum)
+        category = get_CAT(int(qnum))
         return category
-        
+
         c, conn = connectDB()
         query = "UPDATE " + category + " SET Q" + str(qnum) + " = " + answer + " WHERE userid = " + userid + ";"
         return query
