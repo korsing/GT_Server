@@ -285,6 +285,7 @@ def addAnswertoDB(qnum, answer):
         c.commit()
         conn.close()
         url = "/leveltest/" + category
+        return url
         return redirect(url)
         
     else:
