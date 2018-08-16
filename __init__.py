@@ -171,12 +171,13 @@ def leveltest():
         #  문제 다 풀었으면 다 풀었다는 링크 보내주기
         flag = True # 다 풀었다고 가정
         category = ['intro','thinking','entry','python','c']
-        return "174번째 줄까지는 정상 실행"
+        
         for section in category:
             if(section == 'intro'): # 처음 설문조사에 해당
                 query = "SELECT Q10 FROM intro WHERE userid = '" + userid + "';"
                 c.execute(query)
                 check = c.fetchone() # 문제를 풀었으면 안에 뭐라도 있을거고 아니면 None 값
+                return "180번째 줄까지는 정상 실행"
                 if(not check): # 10번 문항에 답이 없다면 다 완성한게 아님
                     flag = False
                     break
