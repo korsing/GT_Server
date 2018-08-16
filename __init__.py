@@ -282,10 +282,9 @@ def addAnswertoDB(qnum, answer):
         query = "UPDATE " + category + " SET Q" + qnum + " = " + answer + " WHERE userid = '" + userid + "';"
 # 이까지는 됨
         c.execute(query)
-        c.commit()
-        conn.close()
+        conn.commit()
+        c.close()
         url = "/leveltest/" + category
-        return url
         return redirect(url)
         
     else:
