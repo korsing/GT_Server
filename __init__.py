@@ -279,9 +279,7 @@ def addAnswertoDB(qnum, answer):
         category = get_CAT(int(qnum))
         c, conn = connectDB()
         query = "UPDATE " + category + " SET Q" + str(qnum) + " = " + answer + " WHERE userid = " + userid + ";"
-        return query
         c.execute(query)
-        
         c.commit()
         conn.close()
         return redirect("/leveltest/category")
