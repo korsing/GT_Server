@@ -282,7 +282,7 @@ def addAnswertoDB(qnum, answer):
         c.execute(query)
         c.commit()
         conn.close()
-        return redirect("/leveltest/category")
+        return redirect("/leveltest/" + category)
         
     else:
         return redirect("/onlyformembers")
