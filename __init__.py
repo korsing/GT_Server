@@ -165,10 +165,9 @@ def signup():
 @app.route("/leveltest")
 def leveltest():
     if('user' in session):
-        if('qnum' in session):
+        if('intro' in session and 'thinking' in session and 'entry' in session and 'python' in session and 'c' in session):
             category = ['intro', 'thinking', 'entry', 'python', 'c']
             flag = True
-            return flag
             for section in category:
                 if(section not in session):
                     flag = False
