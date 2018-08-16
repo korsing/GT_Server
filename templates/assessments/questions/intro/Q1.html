@@ -9,19 +9,17 @@
     <Question>
         <div align="center">
             <div style="width : 80%">
-                <h2 style="text-align:left">1. 다음 중 본인이 해당하는 보기의 번호를 입력하세요.</h2>
-                <h1 style="text-align:left">나는 다른 학생들과 함께 팀을 이루어 작업하는 것을 즐거워한다.</h1>
-                <h1 style="text-align:left">
+                <h1 style="text-align:left">1 : 나는 다른 친구들과 함께 팀을 이루어 작업하는 것을 즐거워한다.</h1>
+              
             </div>
-            {% for i in range(0,8): %}
-            <tr>
-                {% for j in range(1,6): %}
+            <table>
+                
+                    <tr> <a href="/A{{qnum}}/1" class="button"> 혼자 하는 것이 더 즐겁다.  </a></tr>
+                    <tr> <a href="/A{{qnum}}/2" class="button"> 어느 친구냐에 따라 다르다.   </a></tr>
+                    <tr> <a href="/A{{qnum}}/3" class="button"> 친구와 함께 하는 것은 항상 즐겁다.  </a></tr>
+                
     
-                     <td> <a href="/A{{qnum}}/{{i*8+j}}" class="button"> {{bogi[i*8+j-1]}} </a></td>
-                {% endfor %}
-            </tr>
-    
-        {% endfor %}
+        </table>
         </div>
     </Question>
        
