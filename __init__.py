@@ -124,7 +124,6 @@ def signup():
             createError(message)
             return redirect('/error')
         
-# 이 줄까지는 정상 실행
         c, conn = connectDB()
         
         query = "SELECT userid FROM USERS WHERE school = '" + signup_form.school.data + "' AND studNo = '" + signup_form.schoolid.data + "';" 
@@ -134,8 +133,6 @@ def signup():
             message = "You have already signed up!"
             createError(message)
             return redirect('/error')
-
-# 이 줄까지는 정상 실행
 
         # 아이디 자동 생성
         c.execute("SELECT COUNT(*) FROM USERS;")
@@ -149,7 +146,6 @@ def signup():
             counter='0'+str(counter+1)
 
         userid = "GBLD" + counter
-# 이 줄까지는 정상 실행
 
         # 이까지 온다는 것 자체가 위에 에러 if문에서 하나도 안걸렸다는 말!
         password = generate_password_hash(signup_form.userpw.data)
@@ -198,7 +194,7 @@ def leveltest():
                 if(not check): # 50번 문항에 답이 없다면 다 완성한게 아님
                     flag = False
                     break
-        if(flag): # 위 3가지 경우 모두 안결렸다면 다 푼거임
+        if(flag == True): # 위 3가지 경우 모두 안결렸다면 다 푼거임
             return render_template("/assessments/finished.html", flag = True)
         else: # 하나라도 false가 있으면 아직 풀게 남았다는 것
             return render_template("/assessments/leveltest.html", flag = True)
