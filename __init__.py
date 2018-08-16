@@ -168,6 +168,7 @@ def leveltest():
         if('qnum' in session):
             category = ['intro', 'thinking', 'entry', 'python', 'c']
             flag = True
+            return flag
             for section in category:
                 if(section not in session):
                     flag = False
