@@ -165,16 +165,6 @@ def signup():
 @app.route("/leveltest")
 def leveltest():
     if('user' in session):
-        if('intro' in session and 'thinking' in session and 'entry' in session and 'python' in session and 'c' in session):
-            category = ['intro', 'thinking', 'entry', 'python', 'c']
-            flag = True
-            for section in category:
-                if(section not in session):
-                    flag = False
-            if(flag == True):
-                return render_template("/assesements/finished.html")
-
-        
         return render_template("/assessments/leveltest.html", flag = True)
     else:
         return redirect("/onlyformembers")
@@ -274,17 +264,6 @@ def leveltest_category(variable):
                 return render_template("/assessments/questions/" + variable + "/start.html", PassorFail=passorfail, difficulty = difficulty, flag = True)
         else:
             return redirect("/onlyformembers")
-
-def finished_Intro():
-    session['intro'] = True
-def finished_Thinking():
-    session['thinking'] = True
-def finished_Entry():
-    session['entry'] = True
-def finished_Python():
-    session['python'] = True
-def finished_C():
-    session['c'] = True
 
 @app.route('/A<qnum>/<answer>')
 def addAnswertoDB(qnum, answer):
