@@ -8,13 +8,13 @@
         <p>Thinking Section</p>
     </header>
 
-
+    <table>
 
 
         <!--   QuestionNumber는 문제 번호 0부터 100까지 증가-->
         <!--   QuestionCategory는 문제 카테고리 리스트로 사고력, 엔트리, 파이썬 씨 순서로 들어감-->
         <!--   PassorFail은 DB로부터 검사하여 문제를 풀었는지 아닌지 확인할 변수-->
-        {% for i in range(0,4): %}
+        {% for i in range(0,5): %}
         <tr>
 
             {% if(PassorFail[i*5] == 'X'): %}
