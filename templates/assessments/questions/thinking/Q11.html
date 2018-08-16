@@ -3,26 +3,35 @@
 <!-- Main -->
 <section id="main" class="wrapper">
     <Question>
-      
-    <div align="center">
-        <div style="width : 50%">
-            <h1 style="text-align:left"> 11. 다음 정육면체에서 나올 수 있는 검정 블럭의 최대 개수는?</h1>
-        </div>
-        <img src="/static/image/questions/thinking/q11.png" />
-    </div><br/><br/>
-              <table>
-        {% for i in range(0,8): %}
-        <tr>
-            {% for j in range(1,6): %}
+            <div align="center">
+               <div style="width : 50%">
+                <h1 style="text-align:left"> 31. 다음의 프로그램의 예상되는 출력 결과를 쓰시오. 
+				<br></h1> </div>
+            <pre style ="width : 50%;">
+                <code style="text-align: left">
+#include <stdio.h>
+int main(void){
+	printf("x x ");
+	printf("y\b");
+	printf("z");
+	return 0;
+}
+                </code>
+            </pre>
+            </div>
+            <table>
+            {% for i in range(0,8): %}
+            <tr>
+                {% for j in range(1,6): %}
+    
+                     <td> <a href="/A{{qnum}}/{{i*5+j}}" class="button"> {{bogi[i*5+j-1]}} </a></td>
+                {% endfor %}
+            </tr>
+    
+        {% endfor %}
+        </table>
 
-                 <td> <a href="/A{{qnum}}/{{i*5+j}}" class="button"> {{bogi[i*5+j-1]}} </a></td>
-            {% endfor %}
-        </tr>
-
-    {% endfor %}
-    </table>
-          
-    </Question>
+        </Question>
 
 </section>
 {% endblock %}
