@@ -5,10 +5,11 @@
     <Question>
         <div align="center">
             <div style="width : 50%">
-                <h1 style="text-align:left"> 15. ´ÙÀ½°ú °°Àº ±×¸²¿¡¼­ 8 °³ÀÇ Å©°í ÀÛÀº Á¤»ï°¢ÇüÀ» ¸¸µé±â À§ÇØ¼­ ÃÖ¼Ò ¸î°³ÀÇ ¼º³ÉÀÌ ´õ ÇÊ¿äÇÒ±î?</h1>
+                <h1 style="text-align:left"> 15. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½×¸ï¿½ï¿½ï¿½ï¿½ï¿½ 8 ï¿½ï¿½ï¿½ï¿½ Å©ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï°¢ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ø¼ï¿½ ï¿½Ö¼ï¿½ ï¿½î°³ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ê¿ï¿½ï¿½Ò±ï¿½?</h1>
             </div>
             <img src="/static/image/questions/thinking/q15.PNG" />
         </div>
+        <table>
         {% for i in range(0,8): %}
         <tr>
             {% for j in range(1,6): %}
@@ -16,7 +17,7 @@
             <td> <a href="/A{{qnum}}/{{i*8+j}}" class="button"> {{bogi[i*8+j-1]}} </a></td>
             {% endfor %}
         </tr>
-
+    </table>
         {% endfor %}
 
     </Question>

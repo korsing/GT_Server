@@ -24,6 +24,7 @@ int main(void){
           결과 : <br>
 12321<br>
           </h1></div></div>
+          <table>
                         {% for i in range(0,8): %}
             <tr>
                 {% for j in range(1,6): %}
@@ -31,8 +32,9 @@ int main(void){
                      <td> <a href="/A{{qnum}}/{{i*8+j}}" class="button"> {{bogi[i*8+j-1]}} </a></td>
                 {% endfor %}
             </tr>
-    
+     
         {% endfor %}
+    </table>
         </Question>
 
 </section>
