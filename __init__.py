@@ -94,7 +94,7 @@ def login():
 
 @app.route('/onlyformembers')
 def onlyformembers():
-    return render_template("/admin/onlyformembers.html")
+    return render_template("/admin/onlyformembers.html", flag = False)
 
 @app.route('/logout')
 def logout():
@@ -198,10 +198,10 @@ def leveltest():
                 if(not check): # 50번 문항에 답이 없다면 다 완성한게 아님
                     flag = False
                     break
-        if(flag == True): # 위 3가지 경우 모두 안결렸다면 -> 다 푼거임
-            return render_template("/assessments/finished.html")
-
-        return render_template("/assessments/leveltest.html", flag = True)
+        if(flag): # 위 3가지 경우 모두 안결렸다면 다 푼거임
+            return render_template("/assessments/finished.html", flag = True)
+        else: # 하나라도 false가 있으면 아직 풀게 남았다는 것
+            return render_template("/assessments/leveltest.html", flag = True)
     else:
         return redirect("/onlyformembers")
 
@@ -297,7 +297,7 @@ def leveltest_category(variable):
             difficulty = ["BEGINNER", "EASY", "STANDARD", "DIFFICULT", "CHALLENGING"]
             category_list = ['thinking', 'entry', 'python', 'c', 'intro']
             if(variable in category_list):
-                return render_template("/assessments/questions/" + variable + "/start.html", PassorFail=passorfail, difficulty = difficulty)
+                return render_template("/assessments/questions/" + variable + "/start.html", PassorFail=passorfail, difficulty = difficulty, flag = True)
         else:
             return redirect("/onlyformembers")
 
