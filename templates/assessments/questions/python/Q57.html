@@ -6,33 +6,29 @@
             <div align="center">
             <div style="width : 50%">
                 <h1 style="text-align:left"> 
-                    57. 다음은 1부터 100까지 더하는 프로그램을 for문을 활용하여 작성한 것이다. 이를 while문으로 바꾸어 작성해보시오.
+                    37. 다음은 Python을 활용하여 특정 프로그램을 작성한 것이다. 사용자가 8을 입력했을 때, 출력되는 값을 구하시오.
                 </h1>
             </div>
             <pre style ="width : 50%;">
                 <code style="text-align: left">
 
-sum = 0
-for i in range(1,101,1):
-    sum += i
-print(sum)     
+N = int(input()) # 8 입력
+A = [0,1]
+for i in range(2, n, 1):
+    A.append(A[i-1] + A[i-2])
+print(N-1)
 
                 </code>
             </pre>
-            <form method="POST">
-                {{ form.csrf_token }}
-                <div>
-                    <Margin>
-                    {{ form.answer(rows="8", cols="100") }}
-                    </Margin>
-                </div>
-                <div>
-                    <ul class="actions">
-                        <li><input type="submit" value="제출하기" class="primary" /></li>
-                        <li><a href="/leveltest/python" class="button fit">건너뛰기</a></li>
-                    </ul>
-                </div>
-            </form>
+            <table>
+                {% for i in range(0,8): %}
+                    <tr>
+                        {% for j in range(1,6): %}
+                            <td> <a href="/A{{qnum}}/{{i*5+j}}" class="button"> {{bogi[i*5+j-1]}} </a></td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            </table>
         </Question>
     </div>
 </section>

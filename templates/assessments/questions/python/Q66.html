@@ -6,52 +6,28 @@
             <div align="center">
             <div style="width : 50%">
                 <h1 style="text-align:left"> 
-                    66. Python 수업시간에 수아는 선생님께 다음 두 가지 경우의 조건문에 대해서 질문을 하려고 한다. 두 경우가 어떻게 다른지 간략히 서술하시오.
+                    46. 다음 코드를 실행했을 때, 출력되는 결과를 보기에서 고르시오.
                 </h1>
             </div>
             <pre style ="width : 50%;">
                 <code style="text-align: left">
 
-[보기 1]
-if(score > 90):
-    print(“A”)
-if(score > 80):
-    print(“B”)
-if(score > 70):
-    print(“C”)
-if(score > 60):
-    print(“D”)
-else:
-    print(“F”)
+a = True
+b = False
 
-[보기 2]
-if(score > 90):
-    print(“A”)
-elif(score > 80):
-    print(“B”)
-elif(score > 70):
-    print(“C”)
-elif(score > 60):
-    print(“D”)
-else:
-    print(“F”)
-
+print(not a and a or b or not (a and b))
+                        
                 </code>
             </pre>
-            <form method="POST">
-                {{ form.csrf_token }}
-                <div>
-                    <Margin>
-                    {{ form.answer(rows="8", cols="100") }}
-                    </Margin>
-                </div>
-                <div>
-                    <ul class="actions">
-                        <li><input type="submit" value="제출하기" class="primary" /></li>
-                        <li><a href="/leveltest/python" class="button fit">건너뛰기</a></li>
-                    </ul>
-                </div>
-            </form>
+            <table>
+                {% for i in range(0,8): %}
+                    <tr>
+                        {% for j in range(1,6): %}
+                            <td> <a href="/A{{qnum}}/{{i*5+j}}" class="button"> {{bogi[i*5+j-1]}} </a></td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            </table>
         </Question>
     </div>
 </section>

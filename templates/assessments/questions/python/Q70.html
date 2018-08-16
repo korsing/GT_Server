@@ -6,68 +6,45 @@
             <div align="center">
             <div style="width : 50%">
                 <h1 style="text-align:left"> 
-                    70. 다음은 break와 continue에 관한 문법을 설명하기 위한 코드이다. 제시문을 잘 읽고 아래 코드를 완성하시오. <br/><br/>
-                    <제시문> <br/>
-                    반복문을 제어하는 방법 중에 break문과 continue문이 있는데, 둘의 사용법은 다음 출력 결과를 보면 알 수 있다. <br/>
+                    50. 다음은 객체지향 언어의 클래스의 개념을 Python 문법을 빌려 의사코드로 작성한 것이다. <br/>
+                    아래와 같은 클래스가 정의되어 있을 때, <보기>를 실행한다면, <br/>
+                    <출력>의 빈 칸에 알맞는 내용을 보기에서 고르시오.
                 </h1>
             </div>
             <pre style ="width : 50%;">
                 <code style="text-align: left">
-                
-[break문]
-for i in range(10):
-    if(i==5): # 특정 조건에 도달하게되어 break문이 실행되면
-        break # 해당 회차를 끝으로 더이상 반복문이 실행되지 않는다.
-    print(i)
 
-[출력]
-0
-1
-2
-3
-4
+[클래스 정의]
 
-[continue문]
-for i in range(10): 
-    if(i==5):     # 특정 조건에 도달하여 continue문이 실행되면
-        continue  # 해당 회차를 건너뛰고 반복문을 실행한다.
-    print(i)
+CLASS 붕어빵():
+    DEFINE 밀가루
+    DEFINE 팥
+    FUNC 붕어빵(밀가루, 팥, 추가재료)
+        붕어빵이름 = 추가재료
+        밀가루 = 밀가루
+        팥 = 팥
+        굽기()
+    FUNC 굽기()
+        PRINT(“밀가루가 {} 그램, 팥이 {} 그램 들어간 {} 붕어빵이 구워졌습니다.” .format(밀가루, 팥, 추가재료))
+              
+[ 보기 ]
+첫 번째 붕어빵 = 붕어빵(X,Y, 생크림)
 
-[출력]
-0
-1
-2
-3
-4
-6
-7
-8
-9
-                    
-이 때, 다음 369 게임을 진행하는 Python 코드를 완성하려면 break문과 continue문, 어떤 것이 필요할지 작성하시오.                    
+[ 출력 ]
+밀가루가 [ 빈 칸 ] 그램, 팥이 [ 빈 칸 ]그램 들어간 
+생크림 붕어빵이 구워졌습니다.
 
-i=1
-while(1):
-    if('3' in str(number) or '6' in str(number) or '9' in str(number)):
-        ①
-    print(i)
-    i+=1
                 </code>
             </pre>
-            <form method="POST">
-                {{ form.csrf_token }}
-                <div>
-                    <Margin>
-                    {{ form.answer(rows="8", cols="100") }}
-                    </Margin>
-                </div>
-                <div>
-                    <ul class="actions">
-                        <li><input type="submit" value="제출하기" class="primary" /></li>
-                        <li><a href="/leveltest/python" class="button fit">건너뛰기</a></li>
-                    </ul>
-                </div>
-            </form>
+            <table>
+                {% for i in range(0,8): %}
+                    <tr>
+                        {% for j in range(1,6): %}
+                            <td> <a href="/A{{qnum}}/{{i*5+j}}" class="button"> {{bogi[i*5+j-1]}} </a></td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            </table>
         </Question>
     </div>
 </section>

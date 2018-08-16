@@ -6,61 +6,33 @@
             <div align="center">
             <div style="width : 50%">
                 <h1 style="text-align:left"> 
-                    62. 다음은 Python에서 사용되는 반복문 중 for문에 해당하는 문법을 유추할 수 있는 문법이다. 
-                    보기를 참조하여 다음 보기 중 출력 결과가 틀린 것을 찾고 알맞게 고치시오.
+                    42. 다음은 파이썬 자료형의 활용 방법이다. 에러가 발생하는 구간을 모두 고르시오. 
                 </h1>
             </div>
             <pre style ="width : 50%;">
                 <code style="text-align: left">
 
-[Python for 반복문]
-for i in range(2, 6, 2):
-print(i)
+list = [1,2,3,4,5]                     ①
+tuple = (1,4,5, “a”)                   ②
+tuple[0] = list[4]                     ③
+list[5] = list[0]                      ④
+for i in range(len(list)):             ⑤
+    dictionary = {list[i] : tuple[i]}  ⑥
+print(list)                            ⑦
+print(tuple)                           ⑧
+print(dictionary)                      ⑨        
 
-[출력]
-2
-4                                
-
-[1번 코드]
-for i in range(100, 101, 1):
-   print(i)
-
-[출력]
-100
-
-[2번 코드]
-for i in range(10, 6, -1):
-   print(i)
-
-[출력]
-10
-9
-8
-7
-
-[3번 코드]
-for i in range(1, 5, 2.5):
-   print(i) 
-
-[출력]
-1
-3.5
                 </code>
             </pre>
-            <form method="POST">
-                {{ form.csrf_token }}
-                <div>
-                    <Margin>
-                    {{ form.answer(rows="8", cols="100") }}
-                    </Margin>
-                </div>
-                <div>
-                    <ul class="actions">
-                        <li><input type="submit" value="제출하기" class="primary" /></li>
-                        <li><a href="/leveltest/python" class="button fit">건너뛰기</a></li>
-                    </ul>
-                </div>
-            </form>
+            <table>
+                {% for i in range(0,8): %}
+                    <tr>
+                        {% for j in range(1,6): %}
+                            <td> <a href="/A{{qnum}}/{{i*5+j}}" class="button"> {{bogi[i*5+j-1]}} </a></td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            </table>
         </Question>
     </div>
 </section>
