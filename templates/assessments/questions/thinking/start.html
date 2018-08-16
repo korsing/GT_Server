@@ -50,10 +50,10 @@
             {% endif %}
 
             {% if(PassorFail[i*5+4] == 'X'): %}
-            <td> <a href="/leveltest/Q{{i*5+75}}" class="button"> {{i*5+75}}번 문제풀기 </a></td>
+            <td> <a href="/leveltest/Q{{i*5+75}}" class="button"> {{i*5+15}}번 문제풀기 </a></td>
             <td><img src='/static/image/notattempted.png'></td>
             {% else: %}
-            <td> <a href="/leveltest/Q{{i*5+75}}" class="button primary disabled"> {{i*5+75}}번 문제풀기 </a></td>
+            <td> <a href="/leveltest/Q{{i*5+75}}" class="button primary disabled"> {{i*5+15}}번 문제풀기 </a></td>
             <td><img src='/static/image/attempted.png'></td>
             {% endif %}
         </tr>
