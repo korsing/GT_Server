@@ -1,35 +1,26 @@
-{% extends "template.html" %}
+﻿{% extends "template.html" %}
 {% block content %}
 <!-- Main -->
 <section id="main" class="wrapper">
         <header>
-            <h2>2018 영재아카데미 레벨테스트</h2>
-            <p>2018 G&T Level Test</p>
+            <h2>2018 경북 리틀드래곤 SW 영재 판별 테스트</h2>
+            <p>2018 Han's G&T Level Test</p>
         </header>
     <Question>
         <div align="center">
             <div style="width : 80%">
-                    <div style="background-color: rgb(248, 224, 204)">
-                <h2 style="text-align:left">2. 다음 중 본인이 해당하는 보기의 번호를 입력하세요.</h2>
-                <h1 style="text-align:left">나는 문제풀이 하는 것을 즐거워한다.</h1>
-                <h1 style="text-align:left">
-                    ①: 그렇다. <br/>
-                    ②: 문제에 따라 다르다. <br/>
-                    ③: 문제풀이를 좋아하지 않는다.</h1></div>
+                <h2 style="text-align:center">2 : 나는 다른 친구의 부족함을 도와주는 것을 좋아한다.</h2>
+              
             </div>
-            <form method="POST">
-                {{ form.csrf_token }}
-                <div>
-                    <Margin>
-                        {{ form.answer(rows="8", cols="100") }}
-                    </Margin>
-                </div>
-                <div>
-                    <ul class="actions">
-                        <li><input type="submit" value="제출하기" class="primary" /></li>
-                    </ul>
-                </div>
-            </form>
+            <br/>
+            <table>
+                
+                    <tr> <a href="/A{{qnum}}/1" class="button"> 친구의 부족함을 내가 도와주는 것은 아니라고 생각한다. </a></tr>
+                    <tr> <a href="/A{{qnum}}/2" class="button">시간이 나면 도와 주기도 한다. </a></tr>
+                    <tr> <a href="/A{{qnum}}/3" class="button"> 나는 기분 좋게 도와줄 수 있다.  </a></tr>
+                
+    
+        </table>
         </div>
     </Question>
        

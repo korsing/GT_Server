@@ -1,36 +1,26 @@
-{% extends "template.html" %}
+﻿{% extends "template.html" %}
 {% block content %}
 <!-- Main -->
 <section id="main" class="wrapper">
         <header>
-            <h2>2018 영재아카데미 레벨테스트</h2>
-            <p>2018 G&T Level Test</p>
+            <h2>2018 경북 리틀드래곤 SW 영재 판별 테스트</h2>
+            <p>2018 Han's G&T Level Test</p>
         </header>
     <Question>
         <div align="center">
-                
             <div style="width : 80%">
-                    <div style="background-color: rgb(204, 239, 248)">
-                <h2 style="text-align:left">5. 다음 중 본인이 해당하는 보기의 번호를 입력하세요.</h2>
-                <h1 style="text-align:left">나는 컴퓨터 또는 전자기기를 좋아한다.</h1>
-                <h1 style="text-align:left">
-                    ①: 컴퓨터나 전자기기가 정말 좋다. <br/>
-                    ②: 필요할 때만 좋아한다. <br/>
-                    ③: 그렇게 썩 좋아하지는 않는다.</h1></div>
+                <h2 style="text-align:center">1 : 나는 다른 친구들과 함께 팀을 이루어 작업하는 것을 즐거워한다.</h2>
+              
             </div>
-            <form method="POST">
-                {{ form.csrf_token }}
-                <div>
-                    <Margin>
-                        {{ form.answer(rows="8", cols="100") }}
-                    </Margin>
-                </div>
-                <div>
-                    <ul class="actions">
-                        <li><input type="submit" value="제출하기" class="primary" /></li>
-                    </ul>
-                </div>
-            </form>
+            <br/>
+            <table>
+                
+                    <tr> <a href="/A{{qnum}}/1" class="button"> 혼자 하는 것이 더 즐겁다.  </a></tr>
+                    <tr> <a href="/A{{qnum}}/2" class="button"> 어느 친구냐에 따라 다르다.   </a></tr>
+                    <tr> <a href="/A{{qnum}}/3" class="button"> 친구와 함께 하는 것은 항상 즐겁다.  </a></tr>
+                
+    
+        </table>
         </div>
     </Question>
        

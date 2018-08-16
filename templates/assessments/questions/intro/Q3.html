@@ -1,35 +1,26 @@
-{% extends "template.html" %}
+﻿{% extends "template.html" %}
 {% block content %}
 <!-- Main -->
 <section id="main" class="wrapper">
         <header>
-            <h2>2018 영재아카데미 레벨테스트</h2>
-            <p>2018 G&T Level Test</p>
+            <h2>2018 경북 리틀드래곤 SW 영재 판별 테스트</h2>
+            <p>2018 Han's G&T Level Test</p>
         </header>
     <Question>
         <div align="center">
             <div style="width : 80%">
-                    <div style="background-color: rgb(248, 244, 204)">
-                <h2 style="text-align:left">3. 다음 중 본인이 해당하는 보기의 번호를 입력하세요.</h2>
-                <h1 style="text-align:left">나는 새로운 것을 만들거나 창조해내는 것을 즐거워한다.</h1>
-                <h1 style="text-align:left">
-                    ①: 대부분 즐거워한다. <br/>
-                    ②: 만드는 것에 별로 관심이 없다. <br/>
-                    ③: 가끔은 즐기며 만든다.</h1></div>
+                <h2 style="text-align:center">3 : 긴 수식을 풀어서 답을 얻을 때 행복감을 느낀다.</h2>
+              
             </div>
-            <form method="POST">
-                {{ form.csrf_token }}
-                <div>
-                    <Margin>
-                        {{ form.answer(rows="8", cols="100") }}
-                    </Margin>
-                </div>
-                <div>
-                    <ul class="actions">
-                        <li><input type="submit" value="제출하기" class="primary" /></li>
-                    </ul>
-                </div>
-            </form>
+            <br/>
+            <table>
+                
+                    <tr> <a href="/A{{qnum}}/1" class="button"> 수식을 보는 순간 포기한다.  </a></tr>
+                    <tr> <a href="/A{{qnum}}/2" class="button"> 풀어야 하니까 풀 뿐이다.   </a></tr>
+                    <tr> <a href="/A{{qnum}}/3" class="button"> 답이 나왔을 때 정말 기쁘다.  </a></tr>
+                
+    
+        </table>
         </div>
     </Question>
        
