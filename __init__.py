@@ -186,7 +186,7 @@ def leveltest():
                 query = "SELECT Q30 FROM thinking WHERE userid = '" + userid + "';"
                 c.execute(query)
                 check = c.fetchone()
-                return "사고력 다 풀었는지 조회중"
+# 여기까지는 잘 됨
                 if(not check): # 30번 문항에 답이 없다면 다 완성한게 아님
                     flag = False
                     return "thinking 다 안풀었다!"
