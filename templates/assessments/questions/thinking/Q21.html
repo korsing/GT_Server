@@ -1,0 +1,26 @@
+﻿{% extends "template.html" %}
+{% block content %}
+<!-- Main -->
+<section id="main" class="wrapper">
+    <Question>
+        <div align="center">
+            <div style="width : 50%">
+                <h1 style="text-align:left">
+                  21.어두운 밤, 다리를 건너려는 네 사람이 있다. 네 사람이 다리를 건너는 데는 각각 3분, 5분, 10분, 20분이 걸리고, 손전등은 한 개 밖에 없어 두 사람이 같이 다리를 건너야 한다. 다리 한 쪽에 있는 네 사람이 모두 건너가려면 최소 몇 분이 필요할지 구하시오.                </h1></div>
+                       </div> <br/>
+             <table>
+            {% for i in range(0,8): %}
+            <tr>
+                {% for j in range(1,6): %}
+    
+                     <td> <a href="/A{{qnum}}/{{i*5+j}}" class="button"> {{bogi[i*5+j-1]}} </a></td>
+                {% endfor %}
+            </tr>
+    
+        {% endfor %}
+        </table>
+
+</Question>
+
+</section>
+{% endblock %}

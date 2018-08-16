@@ -1,0 +1,27 @@
+﻿{% extends "template.html" %}
+{% block content %}
+<!-- Main -->
+<section id="main" class="wrapper">
+    <Question>
+        <div align="center">
+            <div style="width : 50%">
+                <h1 style="text-align:left">
+                  14. 그림과 같은 규칙으로 블럭의 값들이 메겨져 있다. 빈칸에 들어갈 한 자리 자연수 값을 구하시오.                </h1></div>
+                       <img src="/static/image/questions/thinking/q14.PNG" />
+     </div> <br/>
+             <table>
+            {% for i in range(0,8): %}
+            <tr>
+                {% for j in range(1,6): %}
+    
+                     <td> <a href="/A{{qnum}}/{{i*5+j}}" class="button"> {{bogi[i*5+j-1]}} </a></td>
+                {% endfor %}
+            </tr>
+    
+        {% endfor %}
+        </table>
+
+</Question>
+
+</section>
+{% endblock %}
