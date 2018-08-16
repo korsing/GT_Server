@@ -1,64 +1,38 @@
+﻿
 {% extends "template.html" %}
 {% block content %}
 <!-- Main -->
 <section id="main" class="wrapper">
     <Question>
-        <div align="center">
-            <div style="width : 50%">
-                <h1 style="text-align:left">
-                    78.c언어에서는 변수를 통해 특정한 값을 저장해 놓을 수 있으며 변수의 이름은 다양하게 정할 수 있다. <br>
-                    아래의 방법을 통해 ‘a’라는 공간에 ‘5’라는 값을 저장해 놓을 수 있다.<br>
-                    ( ‘=’ 는 오른쪽의 값을 왼쪽으로 대입한다는 의미이다.) <br>
-                    1) int a = 5; <br>
-                    2) int a;<br>
-                    a = 5;<br>
-                    아래의 프로그램의 결과는 다음과 같다.<br>
-                </h1></div>
-         
-            <pre style="width : 50%;">
-            <code style="text-align: left">
+            <div align="center">
+               <div style="width : 50%">
+                <h1 style="text-align:left">38.다음 프로그램은 5번을 반복해서 “안녕하세요.” 를 출력하는 
+				프로그램이다. 10번을 반복해서 출력하고 싶다면 조건문을 어떻게 바꾸어야 하는지 쓰시오.<br>
+  ( ++ 연산자는 해당 변수의 값을 1 증가시킨다.)<br>
+  ( -- 연산자는 해당 변수의 값을 1 감소시킨다.)<br>          </h1></div>
+            <pre style ="width : 50%;">
+                <code style="text-align: left">
 #include <stdio.h>
+
 int main(void){
-	int a = 5;
-	printf(“%d\n”, a);
-	printf(“%d”, a);
+	int i;
+	for (i=0; i <= 4 ; i++)
+		printf(“안녕하세요.\n”);
 	return 0;
 }
                 </code>
-            </pre>
-            출력 :<br>
-            5<br>
-            5<br>
-            <div style="width : 50%">
-                    <h1 style="text-align:left"> 다음의 프로그램의 예상되는 결과를 쓰시오. <br></h1>
-</div>
-            <pre style="width : 50%;">
-            <code style="text-align: left">
-#include <stdio.h>
-int main(void){
-	int a = 5;
-	int b = 10
-	printf(“%d %d”, a, b);
-	return 0;
-}
-              </code>
-          </pre>
-     </div> 
-            <form method="POST">
-                {{ form.csrf_token }}
-                <div>
-                    <Margin>
-                        {{ form.answer(rows="8", cols="100") }}
-                    </Margin>
-                </div>
-                <div>
-                    <ul class="actions">
-                        <li><input type="submit" value="제출하기" class="primary" /></li>
-                        <li><a href="/leveltest/c" class="button fit">건너뛰기</a></li>
-                    </ul>
-                </div>
-            </form>
-</Question>
+            </pre></div>
+
+                        {% for i in range(0,8): %}
+            <tr>
+                {% for j in range(1,6): %}
+    
+                     <td> <a href="/A{{qnum}}/{{i*8+j}}" class="button"> {{bogi[i*8+j-1]}} </a></td>
+                {% endfor %}
+            </tr>
+    
+        {% endfor %}
+        </Question>
 
 </section>
 {% endblock %}

@@ -4,39 +4,40 @@
 <section id="main" class="wrapper">
     <Question>
             <div align="center">
-                     <div style="width : 50%">
-                <h1 style="text-align:left">90.다음 프로그램을 실행했을 때, 예상되는 결과를 쓰시오.<br></h1></div>
+                          <div style="width : 50%">
+                <h1 style="text-align:left">50.
+				다음 프로그램에서 0이 출력되는 개수와 1이 출력되는 개수를 고르시오. <br>
+</h1></div>
             <pre style ="width : 50%;">
                 <code style="text-align: left">
 #include <stdio.h>
 int main(void){
+	int p[8] = { 1, 1, 1, 1, 1, 1, 1, 1 };
 	int x = 0;
-	int y = 0;
-	for ( x = 1 ; x < 11 ; x++) {
-		if ( x < 6)
-			y = y + x;
-		else
-			y = y – 1;
-  }
-  printf(“%d %d”, x, y);
+	int i,j;
+	for(i=0;i<8;i++){
+		p[x] = 0;
+		x = x + 3;
+		if( x > 8)
+			x = x % 8;
+		if ( i == 5)
+			for(j=0;j<8;j++)
+				printf("%d ",p[j]);
+	}
 	return 0;
 }
+
                 </code>
             </pre></div>
-            <form method="POST">
-                {{ form.csrf_token }}
-                <div>
-                    <Margin>
-                    {{ form.answer(rows="8", cols="100") }}
-                    </Margin>
-                </div>
-                <div>
-                    <ul class="actions">
-                        <li><input type="submit" value="제출하기" class="primary" /></li>
-                        <li><a href="/leveltest/c" class="button fit">건너뛰기</a></li>
-                    </ul>
-                </div>
-            </form>
+                        {% for i in range(0,8): %}
+            <tr>
+                {% for j in range(1,6): %}
+    
+                     <td> <a href="/A{{qnum}}/{{i*8+j}}" class="button"> {{bogi[i*8+j-1]}} </a></td>
+                {% endfor %}
+            </tr>
+    
+        {% endfor %}
         </Question>
 
 </section>

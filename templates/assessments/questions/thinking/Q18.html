@@ -5,27 +5,20 @@
     <Question>
         <div align="center">
             <div style="width : 50%">
-                <h1 style="text-align:left">
-                        18.ë‹¤ìŒ ì œì‹œëœ í‘œí˜„ì— í•´ë‹¹ëœë‹¤ê³  ìƒê°í•˜ëŠ” ê²ƒì„ ê°ê° ì“°ì‹œì˜¤.
-                        (ë¬´ê²ê³ ë„ ê°€ë²¼ìš´ ê²ƒ, ë‘êº¼ìš°ë©´ì„œë„ ì–‡ì€ ê²ƒ, ê¸¸ë©´ì„œë„ ì§§ì€ ê²ƒ )
-                </h1>
+                <h1 style="text-align:left"> 18. ´ÙÀ½ 5X5 °ÝÀÚ¿¡¼­ °ÝÀÚÁ¡µéÀÇ °£°ÝÀÌ ¸ðµÎ µ¿ÀÏÇÒ ¶§ ³× Á¡À» ²ÀÁöÁ¡À¸·Î ÇÏ´Â Å©°í ÀÛÀº Á¤°¢ÇüÀº ¸ðµÎ ¸î °³ÀÎÁö ±¸ÇÏ½Ã¿À.</h1>
             </div>
-          
+            <img src="/static/image/questions/thinking/q18.PNG" />
         </div>
-        <form method="POST">
-            {{ form.csrf_token }}
-            <div>
-                <Margin>
-                    {{ form.answer(rows="8", cols="100") }}
-                </Margin>
-            </div>
-            <div>
-                <ul class="actions">
-                    <li><input type="submit" value="ì œì¶œí•˜ê¸°" class="primary" /></li>
-                    <li><a href="/leveltest/thinking" class="button fit">ê±´ë„ˆë›°ê¸°</a></li>
-                </ul>
-            </div>
-        </form>
+        {% for i in range(0,8): %}
+        <tr>
+            {% for j in range(1,6): %}
+
+            <td> <a href="/A{{qnum}}/{{i*8+j}}" class="button"> {{bogi[i*8+j-1]}} </a></td>
+            {% endfor %}
+        </tr>
+
+        {% endfor %}
+
     </Question>
 
 </section>

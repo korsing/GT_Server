@@ -1,46 +1,38 @@
-﻿{% extends "template.html" %}
+﻿
+{% extends "template.html" %}
 {% block content %}
 <!-- Main -->
 <section id="main" class="wrapper">
     <Question>
             <div align="center">
-                 <div style="width : 50%">
-                <h1 style="text-align:left"> 77.다음 결과가 나오기 위해서 필요한 문장들을 세 문장으로 작성해 보시오.<br></h1></div>
-              
+               <div style="width : 50%">
+                <h1 style="text-align:left">37.아래의 프로그램은 사용자의 정수 입력이 
+				홀수인지 짝수인지 판별해 주는 프로그램이다. 빈칸에 맞는 조건문을 알맞게 작성하시오.<br></h1></div>
             <pre style ="width : 50%;">
                 <code style="text-align: left">
 #include <stdio.h>
+
 int main(void){
-      (1)
-      (2)
-      (3)
-return 0;
+	int x;
+	scanf("%d", &x);
+	if(  (1)  ==  1 )
+		printf(“홀수”);
+	else
+		printf(“짝수”);
+	return 0;
 }
+
                 </code>
-            </pre>
-            <div style="width : 50%">
-                    <h1 style="text-align:left">
-            출력 : <br>
-XXXX<br>
-XXX<br>
-XX<br>
-XXX<br>
-XXXX<br>
-          </h1>  </div></div>
-            <form method="POST">
-                {{ form.csrf_token }}
-                <div>
-                    <Margin>
-                    {{ form.answer(rows="8", cols="100") }}
-                    </Margin>
-                </div>
-                <div>
-                    <ul class="actions">
-                        <li><input type="submit" value="제출하기" class="primary" /></li>
-                        <li><a href="/leveltest/c" class="button fit">건너뛰기</a></li>
-                    </ul>
-                </div>
-            </form>
+            </pre></div>
+                        {% for i in range(0,8): %}
+            <tr>
+                {% for j in range(1,6): %}
+    
+                     <td> <a href="/A{{qnum}}/{{i*8+j}}" class="button"> {{bogi[i*8+j-1]}} </a></td>
+                {% endfor %}
+            </tr>
+    
+        {% endfor %}
         </Question>
 
 </section>

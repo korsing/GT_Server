@@ -5,24 +5,19 @@
     <Question>
         <div align="center">
             <div style="width : 50%">
-                <h1 style="text-align:left">12. ë‹¤ìŒ ê·¸ë¦¼ì€ í¬ê¸°ê°€ ê°™ì€ ì •ìœ¡ë©´ì²´ë“¤ì„ ìŒ“ì€ í›„ ì•žê³¼ ì˜¤ë¥¸ìª½ì—ì„œ ë°”ë¼ë³¸ ëª¨ìŠµì´ë‹¤. ì´ ìž…ì²´ë„í˜•ì´ ì™„ì„±ë  ë•Œ ì‚¬ìš©ë˜ëŠ” ì •ìœ¡ë©´ì²´ì˜ ìµœì†Œ ê°œìˆ˜ì™€ ìµœëŒ€ ê°œìˆ˜ë¥¼ êµ¬í•˜ì‹œì˜¤.</h1>
+                <h1 style="text-align:left"> 12. 5°³ÀÇ »ö±òÀÇ ¿ÊÀ» ¹ø°¥¾Æ °¡¸é¼­ ÀÔ´Â´Ù°í ÇÑ´Ù. ¾îÁ¦ ÀÔ¾ú´ø »ö±òÀÇ ¿ÊÀ» ¿À´Ã ÀÔÀ» ¼ö ¾ø´Ù¸é 4ÀÏµ¿¾È ÀÔÀ» ¼ö ÀÖ´Â ¿ÊÀÇ °æ¿ìÀÇ ¼ö´Â ¾ó¸¶ÀÎ°¡?</h1>
             </div>
-                <img src="/static/image/questions/thinking/q12.PNG" />
-            </div>
-        <form method="POST">
-            {{ form.csrf_token }}
-            <div>
-                <Margin>
-                    {{ form.answer(rows="8", cols="100") }}
-                </Margin>
-            </div>
-            <div>
-                <ul class="actions">
-                    <li><input type="submit" value="ì œì¶œí•˜ê¸°" class="primary" /></li>
-                    <li><a href="/leveltest/thinking" class="button fit">ê±´ë„ˆë›°ê¸°</a></li>
-                </ul>
-            </div>
-        </form>
+        </div>
+        {% for i in range(0,8): %}
+        <tr>
+            {% for j in range(1,6): %}
+
+            <td> <a href="/A{{qnum}}/{{i*8+j}}" class="button"> {{bogi[i*8+j-1]}} </a></td>
+            {% endfor %}
+        </tr>
+
+        {% endfor %}
+
     </Question>
 
 </section>

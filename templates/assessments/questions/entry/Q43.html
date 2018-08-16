@@ -4,26 +4,19 @@
 <section id="main" class="wrapper">
     <Question>
         <div align="center">
-            <div style="width : 50%">
-                <h1 style="text-align:left">43. 사용자가 어떤 양수를 입력해도 가위, 바위, 보 세 가지 중에 하나를 부여하려고 합니다. 사용자가 입력한 숫자에 실행해야할 연산은 무엇일까요?</h1>
-                </div>
-                <img src="/static/image/questions/entry/q18.png" />
-            </div>
-            <form method="POST">
-                {{ form.csrf_token }}
-                <div>
-                    <Margin>
-                        {{ form.answer(rows="8", cols="100") }}
-                    </Margin>
-                </div>
-                <div>
-                    <ul class="actions">
-                        <li><input type="submit" value="제출하기" class="primary" /></li>
-                        <li><a href="/leveltest/entry" class="button fit">건너뛰기</a></li>
-                    </ul>
-                </div>
-            </form>
-</Question>
+           <h1>43.아래의 코드에 num1에는 10을 num2에는 25를 입력하면 결과 값은 어떻게 나올까요?</h1>
+            <img src="/static/image/questions/entry/q24.png" /></div>
+         {% for i in range(0,8): %}
+            <tr>
+                {% for j in range(1,6): %}
+    
+                     <td> <a href="/A{{qnum}}/{{i*8+j}}" class="button"> {{bogi[i*8+j-1]}} </a></td>
+                {% endfor %}
+            </tr>
+    
+        {% endfor %}
+
+    </Question>
 
 </section>
 {% endblock %}

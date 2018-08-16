@@ -4,26 +4,19 @@
 <section id="main" class="wrapper">
     <Question>
         <div align="center">
-            <div style="width : 50%">
-                <h1 style="text-align:left">45. 다음은 사용자가 입력한 숫자가 소수인지 아닌지 판별하는 프로그램입니다. 빈 칸을 채워넣으세요.(단, 소수는 1과 자기 자신 이외에 약수가 없는 숫자를 의미) </h1>
-              </div>
-                <img src="/static/image/questions/entry/q20.png" />
-            </div>
-            <form method="POST">
-                {{ form.csrf_token }}
-                <div>
-                    <Margin>
-                        {{ form.answer(rows="8", cols="100") }}
-                    </Margin>
-                </div>
-                <div>
-                    <ul class="actions">
-                        <li><input type="submit" value="제출하기" class="primary" /></li>
-                        <li><a href="/leveltest/entry" class="button fit">건너뛰기</a></li>
-                    </ul>
-                </div>
-            </form>
-</Question>
+            <h1>45.다음 프로그램을 실행시키고 num1에 15를, num2에 25를 입력한다면 최종적으로 변수a에는 어떤 값이 저장되어있을까요? </h1>
+            <img src="/static/image/questions/entry/q22.png" /></div>
+         {% for i in range(0,8): %}
+            <tr>
+                {% for j in range(1,6): %}
+    
+                     <td> <a href="/A{{qnum}}/{{i*8+j}}" class="button"> {{bogi[i*8+j-1]}} </a></td>
+                {% endfor %}
+            </tr>
+    
+        {% endfor %}
+
+    </Question>
 
 </section>
 {% endblock %}

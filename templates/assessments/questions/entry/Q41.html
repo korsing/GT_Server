@@ -4,32 +4,18 @@
 <section id="main" class="wrapper">
     <Question>
         <div align="center">
-            <div style="width : 50%">
-                <h1 style="text-align:left">
-                    41. 다음은 리스트 안에 있는 숫자 중에서 홀수가 몇 개인지 판별하는 프로그램의 일부입니다.
-                    주어진 코드를 활용해서 프로그램을 완성해주세요. 단, 리스트에는 이미 숫자들이 들어있는 상태라고 가정하고, 흰 칸에 있는 값들은 자유롭게 변경 가능합니다.
-                    정답은 블록 번호를 순서대로 써주시고, 블록 두 개를 합칠 때는 ‘+’ 사용해서 나타내고, 흰 칸에 들어갈 값을 나타내기 위해서는 블록 번호 옆에 대괄호([,])를 쓰고 값을 순서대로 써주세요.
-                </h1>
-                </div>
-                <img src="/static/image/questions/entry/q16-1.png" />
-            
-            <h1>ex) 4번 + 9번[7번, 8번]</h1>
-            <img src="/static/image/questions/entry/q16-2.png" />
-        </div>
-        <form method="POST">
-            {{ form.csrf_token }}
-            <div>
-                <Margin>
-                    {{ form.answer(rows="8", cols="100") }}
-                </Margin>
-            </div>
-            <div>
-                <ul class="actions">
-                    <li><input type="submit" value="제출하기" class="primary" /></li>
-                    <li><a href="/leveltest/entry" class="button fit">건너뛰기</a></li>
-                </ul>
-            </div>
-        </form>
+            <h1> 41. 다음 코드를 실행 시켰을 때 최종적으로 변수 mul에는 어떤 값이 들어있을까요?</h1>
+            <img src="/static/image/questions/entry/q13.png" /></div>
+         {% for i in range(0,8): %}
+            <tr>
+                {% for j in range(1,6): %}
+    
+                     <td> <a href="/A{{qnum}}/{{i*8+j}}" class="button"> {{bogi[i*8+j-1]}} </a></td>
+                {% endfor %}
+            </tr>
+    
+        {% endfor %}
+
     </Question>
 
 </section>

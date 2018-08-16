@@ -1,49 +1,45 @@
-﻿
-
-{% extends "template.html" %}
+﻿{% extends "template.html" %}
 {% block content %}
 <!-- Main -->
 <section id="main" class="wrapper">
     <Question>
             <div align="center">
-              <div style="width : 50%">
-                <h1 style="text-align:left">88.다음 프로그램은 사용자가 세 개의 서로 다른 정수를 입력하면 순서대로 x 변수, y 변수, z 변수에 저장하고 가장 큰 값부터 순서대로 출력해 주는 프로그램이다. <br>
-  빈 칸에 알맞은 문장을 작성하시오.<br></h1></div>
+               <div style="width : 50%">
+                <h1 style="text-align:left">48.다음 프로그램을 실행했을 때, 출력 결과가 다음과 같다. <br>
+  0 2 1 0 0 0 1 2 <br>
+  빈칸에 들어가야 할 숫자들을 순서대로 쓰시오. (단, 숫자들은 1 또는 2이다.)<br>
+</h1></div>
             <pre style ="width : 50%;">
                 <code style="text-align: left">
 #include <stdio.h>
 int main(void){
-  int x, y, z;
-  int temp = 0;
-	scanf("%d %d %d", &x, &y, &z);
-	if ( x < y ){
-		 (1)
-  }
-  if (y < z) {
-	   (2)
-  }
-	if (x < y) {
-		 (1)
+	int a[8] = { (1), 2, (2), 1, 1, 2, 1, 2 };
+	int b[8] = { 1, 2, 1, 2, 2, 1, 1, 2 };
+	int num[8] = { -1, -1, -1, -1, -1, -1, -1, -1};
+	int i;
+	for ( i=0 ; i<8 ; i++){
+		if ( (a[i] == 2) && (b[i] == 2) )
+			num[i] = 2;
+		else if ( (a[i] == 1) && (b[i] == 1) )
+			num[i] = 1;
+		else
+			num[i] = 0;
 	}
-	printf(“%d %d %d”, x, y, z);
+	for ( i=0 ; i<8 ; i++)
+		printf("%d ",num[i]);
 	return 0;
 }
                 </code>
             </pre></div>
-            <form method="POST">
-                {{ form.csrf_token }}
-                <div>
-                    <Margin>
-                    {{ form.answer(rows="8", cols="100") }}
-                    </Margin>
-                </div>
-                <div>
-                    <ul class="actions">
-                        <li><input type="submit" value="제출하기" class="primary" /></li>
-                        <li><a href="/leveltest/c" class="button fit">건너뛰기</a></li>
-                    </ul>
-                </div>
-            </form>
+                        {% for i in range(0,8): %}
+            <tr>
+                {% for j in range(1,6): %}
+    
+                     <td> <a href="/A{{qnum}}/{{i*8+j}}" class="button"> {{bogi[i*8+j-1]}} </a></td>
+                {% endfor %}
+            </tr>
+    
+        {% endfor %}
         </Question>
 
 </section>

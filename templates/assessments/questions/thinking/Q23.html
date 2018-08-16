@@ -5,24 +5,21 @@
     <Question>
         <div align="center">
             <div style="width : 50%">
-                <h1 style="text-align:left"> 23.10개의 자리가 있고 15명의 사람이 차례대로 번갈아가면서 앉는다고 하자. 10명의 자리가 처음으로 다 채워진 후에는 가장 오래 앉아있던 사람이 일어나고 자신의 차례를 기다리는 사람이 앉는다. 이렇게 앉아있던 사람이 일어나고 다음 사람이 자리를 찾아가는 일을 사건 A라고 부른다고 가정하자. 이후 자리가 부족함을 인지한 누군가가 의자를 2개 더 가져와 자리를 12개로 만들었다. 이때 자리가 늘어났다면 사건 A는 덜 발생하게 될 것인가? 덜 생한다면 얼마나 덜 발생할 것이고, 그렇지 않다면 A가 줄어들지 않는 이유를 서술하라.(500자 이내)</h1>
+                <h1 style="text-align:left">  23. ������ ���� ���Ͽ��� 7��° �ٿ� ���� �� ����� �� ���ϱ�?</h1>
             </div>
-          
+            <img src="/static/image/questions/thinking/q23.PNG" />
+
         </div>
-        <form method="POST">
-            {{ form.csrf_token }}
-            <div>
-                <Margin>
-                    {{ form.answer(rows="8", cols="100") }}
-                </Margin>
-            </div>
-            <div>
-                <ul class="actions">
-                    <li><input type="submit" value="제출하기" class="primary" /></li>
-                    <li><a href="/leveltest/thinking" class="button fit">건너뛰기</a></li>
-                </ul>
-            </div>
-        </form>
+        {% for i in range(0,8): %}
+        <tr>
+            {% for j in range(1,6): %}
+
+            <td> <a href="/A{{qnum}}/{{i*8+j}}" class="button"> {{bogi[i*8+j-1]}} </a></td>
+            {% endfor %}
+        </tr>
+
+        {% endfor %}
+
     </Question>
 
 </section>

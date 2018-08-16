@@ -4,33 +4,18 @@
 <section id="main" class="wrapper">
     <Question>
         <div align="center">
-            <div style="width : 50%">
-                <h1 style="text-align:left">
-                    44. 다음은 사용자가 그리고 싶어하는 도형을 그려주는 프로그램의 일부분입니다. 주어진 블록들을 활용하여 프로그램을 완성하세요.
-                    (사용자가 3을 입력하면 삼각형을, 4를 입력하면 사각형을 그려주는 프로그램입니다.)
-                    정답은 블록 번호를 순서대로 써주시고, 블록 두 개를 합칠 때는 ‘+’ 사용해서 나타내고,
-                    흰 칸에 들어갈 값을 나타내기 위해서는 블록 번호 옆에 대괄호([,])를 쓰고 값을 순서대로 써주세요.
-                </h1>
-                </div>
-                <img src="/static/image/questions/entry/q11-1.png" />
-        
-            <h2>ex) 4번 + 5번[2, 9번[5,6]]  </h2>
-            <img src="/static/image/questions/entry/q11-2.png" />
-        </div>
-        <form method="POST">
-            {{ form.csrf_token }}
-            <div>
-                <Margin>
-                    {{ form.answer(rows="8", cols="100") }}
-                </Margin>
-            </div>
-            <div>
-                <ul class="actions">
-                    <li><input type="submit" value="제출하기" class="primary" /></li>
-                    <li><a href="/leveltest/entry" class="button fit">건너뛰기</a></li>
-                </ul>
-            </div>
-        </form>
+            <h1>44.다음과 같은 패턴을 만들기 위해서 빈칸에 들어갈 숫자를 써주세요. </h1>
+            <img src="/static/image/questions/entry/q21.png" /></div>
+         {% for i in range(0,8): %}
+            <tr>
+                {% for j in range(1,6): %}
+    
+                     <td> <a href="/A{{qnum}}/{{i*8+j}}" class="button"> {{bogi[i*8+j-1]}} </a></td>
+                {% endfor %}
+            </tr>
+    
+        {% endfor %}
+
     </Question>
 
 </section>

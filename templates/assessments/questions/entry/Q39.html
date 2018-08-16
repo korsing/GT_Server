@@ -4,26 +4,19 @@
 <section id="main" class="wrapper">
     <Question>
         <div align="center">
-            <div style="width : 50%">
-                <h1 style="text-align:left">39. 다음은 사용자에게 5개의 단어를 입력 받고, 찾고 싶은 단어를 입력하게 한 다음에, 그 단어가 리스트 내에 몇 번 째에 들어있는지 출력해주는 프로그램입니다. 빈 칸 세 곳을 채워주세요</h1>
-                </div>
-                <img src="/static/image/questions/entry/q14.png" />
-            </div>
-            <form method="POST">
-                {{ form.csrf_token }}
-                <div>
-                    <Margin>
-                        {{ form.answer(rows="8", cols="100") }}
-                    </Margin>
-                </div>
-                <div>
-                    <ul class="actions">
-                        <li><input type="submit" value="제출하기" class="primary" /></li>
-                        <li><a href="/leveltest/entry" class="button fit">건너뛰기</a></li>
-                    </ul>
-                </div>
-            </form>
-</Question>
+            <h1>39. 다음과 같은 코드를 실행했을 때 출력되는 결과 값을 적어주세요. </h1>
+            <img src="/static/image/questions/entry/q19.png" /></div>
+         {% for i in range(0,8): %}
+            <tr>
+                {% for j in range(1,6): %}
+    
+                     <td> <a href="/A{{qnum}}/{{i*8+j}}" class="button"> {{bogi[i*8+j-1]}} </a></td>
+                {% endfor %}
+            </tr>
+    
+        {% endfor %}
+
+    </Question>
 
 </section>
 {% endblock %}

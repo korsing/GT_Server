@@ -5,25 +5,21 @@
     <Question>
         <div align="center">
             <div style="width : 50%">
-                <h1 style="text-align:left">   22. 5명의 배고픈 학생이 점심시간에 동그란 책상에 둘러 앉아있다고 한다. 총 5개의 수저가 학생들의 사이에 놓여있고, 학생은 두 수저를 모두 양손에 들었을 때 식사를 할 수 있다고 한다. 이 상황에서 발생할 수 있는 가장 큰 문제점과 그 문제점에 대한 해결방안을 서술해보시오.</h1>
+                <h1 style="text-align:left">  22. A~H���� 8���� �۾��� �ְ�, �� �۾����� �ɸ��� �ð��� �ٸ��ٰ� �Ѵ�. ������ ���� �۾� G�� �Ϸ�� ������ �ҿ�Ǵ� �ð��� ���Ͻÿ�.(�� ���� �۾����� �������� ����� �� �ִ�.) </h1>
             </div>
             <img src="/static/image/questions/thinking/q22.PNG" />
-      
+
         </div>
-        <form method="POST">
-            {{ form.csrf_token }}
-            <div>
-                <Margin>
-                    {{ form.answer(rows="8", cols="100") }}
-                </Margin>
-            </div>
-            <div>
-                <ul class="actions">
-                    <li><input type="submit" value="제출하기" class="primary" /></li>
-                    <li><a href="/leveltest/thinking" class="button fit">건너뛰기</a></li>
-                </ul>
-            </div>
-        </form>
+        {% for i in range(0,8): %}
+        <tr>
+            {% for j in range(1,6): %}
+
+            <td> <a href="/A{{qnum}}/{{i*8+j}}" class="button"> {{bogi[i*8+j-1]}} </a></td>
+            {% endfor %}
+        </tr>
+
+        {% endfor %}
+
     </Question>
 
 </section>

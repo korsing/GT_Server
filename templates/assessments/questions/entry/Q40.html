@@ -4,29 +4,19 @@
 <section id="main" class="wrapper">
     <Question>
         <div align="center">
-            <div style="width : 50%">
-                <h1 style="text-align:left">
-                    40. 주어진 블록을 활용하여 다음과 같은 패턴을 만들기 위한 코드를 작성하세요. 단, 삼각형 한 변의 길이는 50이고 중심점으로부터 삼각형까지의 거리도 50입니다.
-                    정답은 블록 번호를 순서대로 써주시고, 블록 두 개를 합칠 때는 ‘+’ 사용해서 나타내고, 흰 칸에 들어갈 값을 나타내기 위해서는 블록 번호 옆에 대괄호([,])를 쓰고 값을 순서대로 써주세요.
-                </h1>
-                </div>
-                <img src="/static/image/questions/entry/q15.PNG" />
-            </div>
-            <form method="POST">
-                {{ form.csrf_token }}
-                <div>
-                    <Margin>
-                        {{ form.answer(rows="8", cols="100") }}
-                    </Margin>
-                </div>
-                <div>
-                    <ul class="actions">
-                        <li><input type="submit" value="제출하기" class="primary" /></li>
-                        <li><a href="/leveltest/entry" class="button fit">건너뛰기</a></li>
-                    </ul>
-                </div>
-            </form>
-</Question>
+            <h1>40. 다음과 같은 코드를 실행시키고 숫자값에 4를 입력했을 때 출력되는 결과 값을 적어주세요.  </h1>
+            <img src="/static/image/questions/entry/q12.png" /></div>
+         {% for i in range(0,8): %}
+            <tr>
+                {% for j in range(1,6): %}
+    
+                     <td> <a href="/A{{qnum}}/{{i*8+j}}" class="button"> {{bogi[i*8+j-1]}} </a></td>
+                {% endfor %}
+            </tr>
+    
+        {% endfor %}
+
+    </Question>
 
 </section>
 {% endblock %}

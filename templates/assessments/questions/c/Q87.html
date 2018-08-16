@@ -1,40 +1,39 @@
-﻿
-{% extends "template.html" %}
+﻿{% extends "template.html" %}
 {% block content %}
 <!-- Main -->
 <section id="main" class="wrapper">
     <Question>
             <div align="center">
                <div style="width : 50%">
-                <h1 style="text-align:left"> 87.다음 프로그램을 실행한 결과를 쓰시오.<br></h1></div>
+                <h1 style="text-align:left">47.
+  다음 프로그램의 예상되는 출력 결과를 쓰시오.<br>
+</h1></div>
             <pre style ="width : 50%;">
                 <code style="text-align: left">
 #include <stdio.h>
 int main(void){
-  int a = 10;
-  int b = 3;
-  a = a * a;
-  b = a * b;
-  printf(“%d”, a + b);
+	int a[8] = { 0, 0, 0, 0, 0, 0, 0, 0 };
+	int i;
+	int j = 1;
+	for ( i=0 ; i<8 ; i++){
+		a[i] = j;
+		j = j + i;
+	}
+	for (i=5; i<7;i++)
+		printf(“%d “,a[i]);
 	return 0;
 }
-
                 </code>
             </pre></div>
-            <form method="POST">
-                {{ form.csrf_token }}
-                <div>
-                    <Margin>
-                    {{ form.answer(rows="8", cols="100") }}
-                    </Margin>
-                </div>
-                <div>
-                    <ul class="actions">
-                        <li><input type="submit" value="제출하기" class="primary" /></li>
-                        <li><a href="/leveltest/c" class="button fit">건너뛰기</a></li>
-                    </ul>
-                </div>
-            </form>
+                        {% for i in range(0,8): %}
+            <tr>
+                {% for j in range(1,6): %}
+    
+                     <td> <a href="/A{{qnum}}/{{i*8+j}}" class="button"> {{bogi[i*8+j-1]}} </a></td>
+                {% endfor %}
+            </tr>
+    
+        {% endfor %}
         </Question>
 
 </section>
