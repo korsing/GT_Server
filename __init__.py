@@ -177,27 +177,30 @@ def leveltest():
                 query = "SELECT Q10 FROM intro WHERE userid = '" + userid + "';"
                 c.execute(query)
                 check = c.fetchone() # 문제를 풀었으면 안에 뭐라도 있을거고 아니면 None 값
+                return "설문조사 다 풀었는지 조회 중"
                 if(not check): # 10번 문항에 답이 없다면 다 완성한게 아님
                     flag = False
-                    return "182번째 줄까지는 정상 실행"
+                    return "intro 다 안풀었다!"
                     break
             elif(section == 'thinking'): # 사고력 문제에 해당
                 query = "SELECT Q30 FROM thinking WHERE userid = '" + userid + "';"
                 c.execute(query)
                 check = c.fetchone()
+                return "사고력 다 풀었는지 조회중"
                 if(not check): # 30번 문항에 답이 없다면 다 완성한게 아님
                     flag = False
-                    return "190번째 줄까지는 정상 실행"
+                    return "thinking 다 안풀었다!"
                     break
             else: # 엔트리, 파이썬, C언어에 해당
                 query = "SELECT Q50 FROM " + variable + " WHERE userid = '" + userid + "';"
                 c.execute(query)
                 check = c.fetchone()
+                return "선택항목 다 풀었는지 조회 중"
                 if(not check): # 50번 문항에 답이 없다면 다 완성한게 아님
                     flag = False
-                    return "198번째 줄까지는 정상 실행"
+                    return "파이썬, 엔트리, C 중에 하나라도 안푼게 있다!"
                     break
-        return "200번째 줄까지는 정상 실행"
+        return "for문 탈출했다"
         if(flag == True): # 위 3가지 경우 모두 안결렸다면 다 푼거임
             return render_template("/assessments/finished.html", flag = True)
         else: # 하나라도 false가 있으면 아직 풀게 남았다는 것
