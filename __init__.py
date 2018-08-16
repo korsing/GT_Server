@@ -280,12 +280,12 @@ def addAnswertoDB(qnum, answer):
 # 이까지는 됨
         c, conn = connectDB()
         query = "UPDATE " + category + " SET Q" + qnum + " = " + answer + " WHERE userid = '" + userid + "';"
-        return query
 # 이까지는 됨
         c.execute(query)
         c.commit()
         conn.close()
-        return redirect("/leveltest/" + category)
+        url = "/leveltest/" + category
+        return redirect(url)
         
     else:
         return redirect("/onlyformembers")
