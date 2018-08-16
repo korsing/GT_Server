@@ -177,35 +177,36 @@ def leveltest():
                 query = "SELECT Q10 FROM intro WHERE userid = '" + userid + "';"
                 c.execute(query)
                 check = c.fetchone() # 문제를 풀었으면 안에 뭐라도 있을거고 아니면 None 값
-                if(not check): # 10번 문항에 답이 없다면 다 완성한게 아님
+                if(check[0]): # 10번 문항에 답이 없다면 다 완성한게 아님
                     flag = False
                     break
             elif(section == 'thinking'): # 사고력 문제에 해당
                 query = "SELECT Q30 FROM thinking WHERE userid = '" + userid + "';"
                 c.execute(query)
                 check = c.fetchone()
-                if(not check): # 30번 문항에 답이 없다면 다 완성한게 아님
+                if(check[0]): # 30번 문항에 답이 없다면 다 완성한게 아님
                     flag = False
                     break
-            elif(section == 'entry'): # 사고력 문제에 해당
+# 이까지는 잘 된다.
+            elif(section == 'entry'): # 엔트리 문제에 해당
                 query = "SELECT Q50 FROM " + variable + " WHERE userid = '" + userid + "';"
                 c.execute(query)
                 check = c.fetchone()
-                if(not check): # 50번 문항에 답이 없다면 다 완성한게 아님
+                if(check[0]): # 50번 문항에 답이 없다면 다 완성한게 아님
                     flag = False
                     break
-            elif(section == 'python'): # 사고력 문제에 해당
+            elif(section == 'python'): # 파이썬 문제에 해당
                 query = "SELECT Q70 FROM " + variable + " WHERE userid = '" + userid + "';"
                 c.execute(query)
                 check = c.fetchone()
-                if(not check): # 70번 문항에 답이 없다면 다 완성한게 아님
+                if(check[0]): # 70번 문항에 답이 없다면 다 완성한게 아님
                     flag = False
                     break
-            elif(section == 'c'): # 사고력 문제에 해당
+            else:
                 query = "SELECT Q90 FROM " + variable + " WHERE userid = '" + userid + "';"
                 c.execute(query)
                 check = c.fetchone()
-                if(not check): # 90번 문항에 답이 없다면 다 완성한게 아님
+                if(check[0]): # 90번 문항에 답이 없다면 다 완성한게 아님
                     flag = False
                     break
         if(flag == True): # 위 3가지 경우 모두 안결렸다면 다 푼거임
