@@ -166,6 +166,7 @@ def signup():
 def leveltest():
     if('user' in session):
         userid = session['user']
+        '''
         c, conn = connectDB()
 
         #  문제 다 풀었으면 다 풀었다는 링크 보내주기
@@ -212,8 +213,8 @@ def leveltest():
         if(flag == True): # 위 3가지 경우 모두 안결렸다면 다 푼거임
             return "이까지는 잘 되나?" 
             return render_template("/assessments/finished.html", flag = True)
-        else: # 하나라도 false가 있으면 아직 풀게 남았다는 것
-            return render_template("/assessments/leveltest.html", flag = True)
+        '''
+        return render_template("/assessments/leveltest.html", flag = True)
     else:
         return redirect("/onlyformembers")
 
