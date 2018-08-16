@@ -185,7 +185,7 @@ def leveltest():
                     flag = False
                     break
             elif(section == 'thinking'): # 사고력 문제에 해당
-                query = "SELECT Q30 FROM intro WHERE userid = '" + userid + "';"
+                query = "SELECT Q30 FROM thinking WHERE userid = '" + userid + "';"
                 c.execute(query)
                 check = c.fetchone()
                 if(not check): # 30번 문항에 답이 없다면 다 완성한게 아님
