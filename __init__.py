@@ -210,6 +210,7 @@ def leveltest():
                     flag = False
                     break
         if(flag == True): # 위 3가지 경우 모두 안결렸다면 다 푼거임
+            return "이까지는 잘 되나?" 
             return render_template("/assessments/finished.html", flag = True)
         else: # 하나라도 false가 있으면 아직 풀게 남았다는 것
             return render_template("/assessments/leveltest.html", flag = True)
