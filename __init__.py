@@ -247,6 +247,26 @@ def leveltest_category(variable):
         if('user' in session):
             userid = session['user']
             c, conn = connectDB()
+
+            #  문제 다 풀었으면 다 풀었다는 링크 보내주기
+            flag = True # 다 풀었다고 가정
+            if(variable == 'intro'): # 처음 설문조사에 해당
+                query = "SELECT Q10 FROM intro WHERE userid = '" + userid + "';"
+                check = c.execute(query)
+                if(not check): # 10번 문항에 답이 없다면 다 완성한게 아님
+                    flag = False
+            elif(variable == 'thinking'): # 사고력 문제에 해당
+                query = "SELECT Q30 FROM intro WHERE userid = '" + userid + "';"
+                check = c.execute(query)
+                if(not check): # 30번 문항에 답이 없다면 다 완성한게 아님
+                    flag = False
+            else: # 엔트리, 파이썬, C언어에 해당
+                query = "SELECT Q50 FROM " + variable + " WHERE userid = '" + userid + "';"
+                check = c.execute(query)
+                if(not check): # 50번 문항에 답이 없다면 다 완성한게 아님
+                    flag = False
+            if(flag == True): # 위 3가지 경우 모두 안결렸다면 -> 다 푼거임
+                return render_template("/assessments/finished.html")
             query = "SELECT * FROM " + variable + " WHERE userid = '" + userid + "';"
             c.execute(query)
             datalist = c.fetchall()
@@ -296,67 +316,7 @@ def printdb():
     if('user' in session):
         if(session['user'] == 'admin'):
             c, conn = connectDB()
-            userNo = c.execute("SELECT name, userid, email, phone FROM USERS")
-            data = c.fetchall()
-            members = []
-            for userdata in data:
-                for element in userdata:
-                    members.append(element)
-                flag = c.execute("SELECT * FROM intro WHERE userid = %s", (userdata[1],))
-                if(flag != 0):
-                    counter = 0
-                    temp = c.fetchall()[0]
-                    for questions in temp[1:]:
-                        if(questions != None):
-                            counter += 1
-                    yesno = "O [" + str(counter) + "/7]"
-                    members.append(yesno)
-                else:
-                    members.append("X")
-                flag = c.execute("SELECT * FROM thinking WHERE userid = %s", (userdata[1],))
-                if(flag != 0):
-                    counter = 0
-                    temp = c.fetchall()[0]
-                    for questions in temp[1:]:
-                        if(questions != None):
-                            counter += 1
-                    yesno = "O [" + str(counter) + "/25]"
-                    members.append(yesno)
-                else:
-                    members.append("X")
-                flag = c.execute("SELECT * FROM entry WHERE userid = %s", (userdata[1],))
-                if(flag != 0):
-                    counter = 0
-                    temp = c.fetchall()[0]
-                    for questions in temp[1:]:
-                        if(questions != None):
-                            counter += 1
-                    yesno = "O [" + str(counter) + "/25]"
-                    members.append(yesno)
-                else:
-                    members.append("X")
-                flag = c.execute("SELECT * FROM python WHERE userid = %s", (userdata[1],))
-                if(flag != 0):
-                    counter = 0
-                    temp = c.fetchall()[0]
-                    for questions in temp[1:]:
-                        if(questions != None):
-                            counter += 1
-                    yesno = "O [" + str(counter) + "/25]"
-                    members.append(yesno)
-                else:
-                    members.append("X")
-                flag = c.execute("SELECT * FROM c WHERE userid = %s", (userdata[1],))
-                if(flag != 0):
-                    counter = 0
-                    temp = c.fetchall()[0]
-                    for questions in temp[1:]:
-                        if(questions != None):
-                            counter += 1
-                    yesno = "O [" + str(counter) + "/25]"
-                    members.append(yesno)
-                else:
-                    members.append("X")
+            
             return render_template('Database.html', members = members, memberscount = len(members))
 
         else:
@@ -367,6 +327,8 @@ def printdb():
 @app.route('/sensitiveinfo')
 def sensitiveinfo():
     return render_template("/privacy/sensitiveinfo.html")
+
+@app.route('/finished')
 
 # Start
 if(__name__ == "__main__"):
