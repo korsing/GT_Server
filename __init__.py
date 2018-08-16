@@ -328,8 +328,6 @@ def printdb():
 def sensitiveinfo():
     return render_template("/privacy/sensitiveinfo.html")
 
-@app.route('/finished')
-
 # Start
 if(__name__ == "__main__"):
     app.run()
