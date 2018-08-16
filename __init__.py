@@ -278,7 +278,7 @@ def addAnswertoDB(qnum, answer):
         userid = session['user']
         category = get_CAT(int(qnum))
         c, conn = connectDB()
-        query = "UPDATE " + category + " SET Q" + str(qnum) + " = " + answer + " WHERE userid = " + userid + ";"
+        query = "UPDATE " + category + " SET Q" + qnum + " = " + str(answer) + " WHERE userid = " + userid + ";"
         c.execute(query)
         c.commit()
         conn.close()
