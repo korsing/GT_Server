@@ -5,7 +5,7 @@
 <section id="main" class="wrapper">
     <header>
         <h2>2018 경북 리틀드레곤 SW 영재 판별 테스트</h2>
-        <p>Python Section</p>
+        <p>Thinking Section</p>
     </header>
 
 
@@ -18,42 +18,42 @@
         <tr>
 
             {% if(PassorFail[i*5] == 'X'): %}
-            <td> <a href="/leveltest/Q{{i*5+51}}" class="button"> {{i*5+51}}번 문제풀기 </a></td>
+            <td> <a href="/leveltest/Q{{i*5+11}}" class="button"> {{i*5+11}}번 문제풀기 </a></td>
             <td><img src='/static/image/notattempted.png'></td>
             {% else: %}
-            <td> <a href="/leveltest/Q{{i*5+51}}" class="button primary disabled"> {{i*5+51}}번 문제풀기 </a></td>
+            <td> <a href="/leveltest/Q{{i*5+11}}" class="button primary disabled"> {{i*5+11}}번 문제풀기 </a></td>
             <td><img src='/static/image/attempted.png'></td>
             {% endif %}
 
             {% if(PassorFail[i*5+1] == 'X'): %}
-            <td> <a href="/leveltest/Q{{i*5+52}}" class="button"> {{i*5+52}}번 문제풀기 </a></td>
+            <td> <a href="/leveltest/Q{{i*5+12}}" class="button"> {{i*5+12}}번 문제풀기 </a></td>
             <td><img src='/static/image/notattempted.png'></td>
             {% else: %}
-            <td> <a href="/leveltest/Q{{i*5+52}}" class="button primary disabled"> {{i*5+52}}번 문제풀기 </a></td>
+            <td> <a href="/leveltest/Q{{i*5+12}}" class="button primary disabled"> {{i*5+12}}번 문제풀기 </a></td>
             <td><img src='/static/image/attempted.png'></td>
             {% endif %}
 
             {% if(PassorFail[i*5+2] == 'X'): %}
-            <td> <a href="/leveltest/Q{{i*5+53}}" class="button"> {{i*5+53}}번 문제풀기 </a></td>
+            <td> <a href="/leveltest/Q{{i*5+13}}" class="button"> {{i*5+13}}번 문제풀기 </a></td>
             <td><img src='/static/image/notattempted.png'></td>
             {% else: %}
-            <td> <a href="/leveltest/Q{{i*5+53}}" class="button primary disabled"> {{i*5+53}}번 문제풀기 </a></td>
+            <td> <a href="/leveltest/Q{{i*5+13}}" class="button primary disabled"> {{i*5+13}}번 문제풀기 </a></td>
             <td><img src='/static/image/attempted.png'></td>
             {% endif %}
             
             {% if(PassorFail[i*5+3] == 'X'): %}
-            <td> <a href="/leveltest/Q{{i*5+54}}" class="button"> {{i*5+54}}번 문제풀기 </a></td>
+            <td> <a href="/leveltest/Q{{i*5+14}}" class="button"> {{i*5+14}}번 문제풀기 </a></td>
             <td><img src='/static/image/notattempted.png'></td>
             {% else: %}
-            <td> <a href="/leveltest/Q{{i*5+54}}" class="button primary disabled"> {{i*5+54}}번 문제풀기 </a></td>
+            <td> <a href="/leveltest/Q{{i*5+14}}" class="button primary disabled"> {{i*5+14}}번 문제풀기 </a></td>
             <td><img src='/static/image/attempted.png'></td>
             {% endif %}
 
             {% if(PassorFail[i*5+4] == 'X'): %}
-            <td> <a href="/leveltest/Q{{i*5+55}}" class="button"> {{i*5+55}}번 문제풀기 </a></td>
+            <td> <a href="/leveltest/Q{{i*5+15}}" class="button"> {{i*5+15}}번 문제풀기 </a></td>
             <td><img src='/static/image/notattempted.png'></td>
             {% else: %}
-            <td> <a href="/leveltest/Q{{i*5+55}}" class="button primary disabled"> {{i*5+55}}번 문제풀기 </a></td>
+            <td> <a href="/leveltest/Q{{i*5+15}}" class="button primary disabled"> {{i*5+15}}번 문제풀기 </a></td>
             <td><img src='/static/image/attempted.png'></td>
             {% endif %}
         </tr>
