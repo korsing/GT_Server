@@ -6,36 +6,33 @@
             <div align="center">
             <div style="width : 50%">
                 <h1 style="text-align:left"> 
-                    59. 다음 중 변수의 사용법이 잘못 된 것을 고르시오. (단, 모든 변수는 선언되어있는 상태이다.)
+                    39. 다음은 Python에서 함수를 활용하여 프로그램을 작성한 것이다. 빈 칸에 들어갈 코드를 보기에서 고르시오.
                 </h1>
             </div>
             <pre style ="width : 50%;">
                 <code style="text-align: left">
 
-[보기]
-① a = 100 + 1
-② b = 100+(a=10)
-③ c = 100 >> 2
-④ d += 2
-⑤ e << 2 = a
-⑤ f =- 10
+def M(L):
+    B = L[0]
+    for i in range(1,len(L)):
+        if([ 빈 칸 ]):
+            B = L[i]
+    print(B)
+
+list = [1,2,5,9,-3.6,10,4]
+M(list)
 
                 </code>
             </pre>
-            <form method="POST">
-                {{ form.csrf_token }}
-                <div>
-                    <Margin>
-                    {{ form.answer(rows="8", cols="100") }}
-                    </Margin>
-                </div>
-                <div>
-                    <ul class="actions">
-                        <li><input type="submit" value="제출하기" class="primary" /></li>
-                        <li><a href="/leveltest/python" class="button fit">건너뛰기</a></li>
-                    </ul>
-                </div>
-            </form>
+            <table>
+                {% for i in range(0,8): %}
+                    <tr>
+                        {% for j in range(1,6): %}
+                            <td> <a href="/A{{qnum}}/{{i*5+j}}" class="button"> {{bogi[i*5+j-1]}} </a></td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            </table>
         </Question>
     </div>
 </section>

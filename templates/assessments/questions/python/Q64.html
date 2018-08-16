@@ -6,39 +6,31 @@
             <div align="center">
             <div style="width : 50%">
                 <h1 style="text-align:left"> 
-                    64. 다음은 파이썬 자료형의 활용 방법이다. 에러가 발생하는 구간을 고르고, 
-                    고칠 수 있다면 고쳐보고, 아니면 틀린 이유를 작성하시오.
+                    44. 다음 중 변수의 사용법이 잘못 된 것을 고르시오. (단, 모든 변수는 선언되어있는 상태이다.)
                 </h1>
             </div>
             <pre style ="width : 50%;">
                 <code style="text-align: left">
 
-list = [1,2,3,4,5]                     ①
-tuple = (1,4,5, “a”)                   ②
-tuple[0] = list[4]                     ③
-list[5] = list[0]                      ④
-for i in range(len(list)):             ⑤
-    dictionary = {list[i] : tuple[i]}  ⑥
-print(list)                            ⑦
-print(tuple)                           ⑧
-print(dictionary)                      ⑨        
+[보기]
+① a = 100 + 1
+② b = 100+(a=10)
+③ c = 100 >> 2
+④ d += 2
+⑤ e << 2 = a
+⑤ f =- 10
 
                 </code>
             </pre>
-            <form method="POST">
-                {{ form.csrf_token }}
-                <div>
-                    <Margin>
-                    {{ form.answer(rows="8", cols="100") }}
-                    </Margin>
-                </div>
-                <div>
-                    <ul class="actions">
-                        <li><input type="submit" value="제출하기" class="primary" /></li>
-                        <li><a href="/leveltest/python" class="button fit">건너뛰기</a></li>
-                    </ul>
-                </div>
-            </form>
+            <table>
+                {% for i in range(0,8): %}
+                    <tr>
+                        {% for j in range(1,6): %}
+                            <td> <a href="/A{{qnum}}/{{i*5+j}}" class="button"> {{bogi[i*5+j-1]}} </a></td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            </table>
         </Question>
     </div>
 </section>

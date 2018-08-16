@@ -6,39 +6,30 @@
             <div align="center">
             <div style="width : 50%">
                 <h1 style="text-align:left"> 
-                    52. 다음은 Python의 입출력 함수에 관한 문제이다. 최종 출력되는 결과물을 알맞게 작성하시오. 
+                    32. 다음은 "HELLO_WORLD" 라는 문자열을 거꾸로 출력하기 위한 코드이다. 각 빈칸에 들어갈 숫자의 합을 나타낸 보기로 알맞은 것은?
                 </h1>
             </div>
             <pre style ="width : 50%;">
                 <code style="text-align: left">
 
-a = input()       # 5 입력
-b = 5
-c = eval(input())  # 5 입력
-d = int(input())   # 5 입력
-e = “Hello”
+[코드]
+original = "HELLO_WORLD"
+for i in range( [ 빈 칸 ① ] , [ 빈 칸 ② ] , [ 빈 칸 ③ ]):
+    print(original[i], end="")
 
-print(a+e)
-print(c)
-print(b+d)
-                        
+[출력]
+DLROW_OLLEH
                 </code>
             </pre>
-            <form method="POST">
-                {{ form.csrf_token }}
-                <div>
-                    <Margin>
-                    {{ form.answer(rows="8", cols="100") }}
-                    </Margin>
-                </div>
-                <div>
-                    <ul class="actions">
-                        <li><input type="submit" value="제출하기" class="primary" /></li>
-                        <li><a href="/leveltest/python" class="button fit">건너뛰기</a></li>
-                    </ul>
-                </div>
-            </form>
-        </Question>
+            <table>
+                {% for i in range(0,8): %}
+                    <tr>
+                        {% for j in range(1,6): %}
+                            <td> <a href="/A{{qnum}}/{{i*5+j}}" class="button"> {{bogi[i*5+j-1]}} </a></td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            </table>
     </div>
 </section>
 {% endblock %}

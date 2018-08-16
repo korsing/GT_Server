@@ -6,50 +6,27 @@
             <div align="center">
             <div style="width : 50%">
                 <h1 style="text-align:left"> 
-                    54. 다음 출력 결과 중 옳지 않은 것을 고르시오.
+                    34. 다음 for문이 실행되면 출력되는 값 중 가장 큰 값을 보기에서 고르시오.
                 </h1>
             </div>
             <pre style ="width : 50%;">
                 <code style="text-align: left">
 
-[1번 코드]
-print(10/2)
-
-[1번 출력]
-5.0
-
-[2번 코드]
-a = 15.0
-b = 7 
-print(a/b)
-
-[2번 출력]
-2.1
-
-[3번 코드]
-a = “2018영재아카데미”
-b = 2
-print(a*b)
-
-[3번 출력]
-TypeError: unsupported operand type(s) for *: 'str' and 'int'
+for i in range( 0,100,1 ):
+if( i%40 == 0 ):
+    print(“%d” %(i))
                         
                 </code>
             </pre>
-            <form method="POST">
-                {{ form.csrf_token }}
-                <div>
-                    <Margin>
-                    {{ form.answer(rows="8", cols="100") }}
-                    </Margin>
-                </div>
-                <div>
-                    <ul class="actions">
-                        <li><input type="submit" value="제출하기" class="primary" /></li>
-                        <li><a href="/leveltest/python" class="button fit">건너뛰기</a></li>
-                    </ul>
-                </div>
-            </form>
+            <table>
+                {% for i in range(0,8): %}
+                    <tr>
+                        {% for j in range(1,6): %}
+                            <td> <a href="/A{{qnum}}/{{i*5+j}}" class="button"> {{bogi[i*5+j-1]}} </a></td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            </table>
         </Question>
     </div>
 </section>
