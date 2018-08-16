@@ -8,8 +8,8 @@
         <p>Thinking Section</p>
     </header>
 
-    <table>
 
+    <table>
 
         <!--   QuestionNumber는 문제 번호 0부터 100까지 증가-->
         <!--   QuestionCategory는 문제 카테고리 리스트로 사고력, 엔트리, 파이썬 씨 순서로 들어감-->
@@ -40,7 +40,7 @@
             <td> <a href="/leveltest/Q{{i*5+13}}" class="button primary disabled"> {{i*5+13}}번 문제풀기 </a></td>
             <td><img src='/static/image/attempted.png'></td>
             {% endif %}
-            
+
             {% if(PassorFail[i*5+3] == 'X'): %}
             <td> <a href="/leveltest/Q{{i*5+14}}" class="button"> {{i*5+14}}번 문제풀기 </a></td>
             <td><img src='/static/image/notattempted.png'></td>
@@ -50,10 +50,10 @@
             {% endif %}
 
             {% if(PassorFail[i*5+4] == 'X'): %}
-            <td> <a href="/leveltest/Q{{i*5+15}}" class="button"> {{i*5+15}}번 문제풀기 </a></td>
+            <td> <a href="/leveltest/Q{{i*5+75}}" class="button"> {{i*5+75}}번 문제풀기 </a></td>
             <td><img src='/static/image/notattempted.png'></td>
             {% else: %}
-            <td> <a href="/leveltest/Q{{i*5+15}}" class="button primary disabled"> {{i*5+15}}번 문제풀기 </a></td>
+            <td> <a href="/leveltest/Q{{i*5+75}}" class="button primary disabled"> {{i*5+75}}번 문제풀기 </a></td>
             <td><img src='/static/image/attempted.png'></td>
             {% endif %}
         </tr>
@@ -62,7 +62,7 @@
     </table>
     <br />
     <center> <a href=/leveltest class="button">뒤로 가기</a></center>
-   
+
 </section>
 
 {% endblock %}
