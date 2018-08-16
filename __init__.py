@@ -228,7 +228,7 @@ def questions(qnum):
             thinking_Answer=[14,30,3,2,2,10,32,19,6,4,16,11,14,39,21,2,13,9,13,4]
         elif(category == "entry"):
             bogi=[1,2,3]
-            entry_Answer = [95,“B”,6,251,21,31,210,3,40,25,120,3,50,3,5,45,13,20,1,4]
+            entry_Answer = [95,'B',6,251,21,31,210,3,40,25,120,3,50,3,5,45,13,20,1,4]
         elif(category == "python"):
             bogi = [1,2,3]
         else:
