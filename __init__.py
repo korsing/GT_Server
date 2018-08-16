@@ -50,7 +50,7 @@ def homepage():
         c, conn = connectDB()
         c.execute("SELECT name FROM USERS WHERE userid = %s", (userid,))
         name = c.fetchone()[0]
-        return render_template("index.html", name=name, flag = True)
+        return render_template("index.html", name=name, userid=userid, flag = True)
     else:
         return render_template("index.html", name="NULL", flag = False)
 
