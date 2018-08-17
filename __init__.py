@@ -108,6 +108,7 @@ class SignupForm(Form):
     name = StringField("name", validators=[InputRequired()])
     school = StringField("school", validators=[InputRequired()])
     schoolid = StringField("schoolsid", validators=[InputRequired()])
+    phone = StringField("phone", validators=[InputRequired()])
 
 
 @app.route("/signup", methods=['GET', 'POST'])
@@ -124,6 +125,15 @@ def signup():
             createError(message)
             return redirect('/error')
         
+        # 전화번호 일관성있게 다듬기
+        phone = signup_form.phone.data
+        if(len(phone)<13):
+            message = "Invalid Phone Number.."
+            createError(message)
+            return redirect('/error')
+
+
+
         c, conn = connectDB()
         
         query = "SELECT userid FROM USERS WHERE school = '" + signup_form.school.data + "' AND studNo = '" + signup_form.schoolid.data + "';" 
@@ -149,7 +159,7 @@ def signup():
 
         # 이까지 온다는 것 자체가 위에 에러 if문에서 하나도 안걸렸다는 말!
         password = generate_password_hash(signup_form.userpw.data)
-        c.execute("INSERT INTO USERS VALUES (%s, %s, %s, %s, %s)", (userid, password, signup_form.name.data, signup_form.school.data, signup_form.schoolid.data))
+        c.execute("INSERT INTO USERS VALUES (%s, %s, %s, %s, %s, %s)", (userid, password, signup_form.name.data, signup_form.school.data, signup_form.schoolid.data, phone))
         lists = ["intro", "thinking", "entry", "python", "c"]
         for category in lists:
             query = "INSERT INTO " + category + "(userid) VALUES ('" + userid +"')"
