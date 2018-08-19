@@ -297,22 +297,13 @@ def addAnswertoDB(qnum, answer):
         conn.commit()
         c.close()
 
-        if(qnum == '10'):
-            finished_Intro()
-        if(qnum == '30'):
-            finished_Thinking()
-        if(qnum == '50'):
-            finished_Entry()
-        if(qnum == '70'):
-            finished_Python()
-        if(qnum == '90'):
-            finished_C()
 
         url = "/leveltest/" + category
         return redirect(url)
         
     else:
         return redirect("/onlyformembers")
+
 
 @app.route('/dashboard')
 def printdb():
