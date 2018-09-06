@@ -205,15 +205,15 @@ def endtest():
     else:
         return redirect("/onlyformembers")
 
-@app.route("/realend/<var>")
+@app.route("/realend/<var>", methods=['GET', 'POST'])
 def realend():
     return "여기론 들어오냐?"
     if('user' in session):
-        if (var == '1'):
+        if (var == 'y'):
             return"메롱"
            #deleteSession()
            #return redirect("/")
-        elif (var == '2'):
+        elif (var == 'n'):
             return "박솔내 메롱"
            #return redirect("/leveltest")
         
