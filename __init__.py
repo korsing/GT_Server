@@ -206,7 +206,7 @@ def endtest():
         return redirect("/onlyformembers")
 
 @app.route("/realend/<var>", methods=['GET', 'POST'])
-def realend():
+def realend(var):
     return "여기론 들어오냐?"
     if('user' in session):
         if (var == 'y'):
