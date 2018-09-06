@@ -117,15 +117,16 @@ def returnuser():
    
 @app.route('/findidorpassword')
 def findidorpassword():
+    return render_template("/admin/findidorpassword.html")
 
- class FindidForm(Form):
+class FindidForm(Form):
     name = StringField("name", validators=[InputRequired()])
     school = StringField("school", validators=[InputRequired()])
     schoolid = StringField("schoolsid", validators=[InputRequired()])
 
 @app.route("/findid", methods=['GET', 'POST'])
 def findid():
-    findid_form = FindidForm()
+    findid_form =  FindidForm()
     if(signup_form.validate_on_submit()):
         c, conn = connectDB()
         query = "SELECT userid FROM USERS WHERE school = '" + findid_form.school.data + "' AND studNo = '" + findid_form.schoolid.data + "' AND name = '" + findid_form.name.data + "';" 
@@ -140,7 +141,7 @@ def findid():
             return redirect('/error')
     return render_template("/admin/findid.html", form = findid_form)
 
-@wrapper_descriptor.route("/findpassword")
+@app.route("/findpassword")
 def findpassword():
     render_template("admin/findpassword.html")
 @app.route('/logout')
