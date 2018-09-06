@@ -263,6 +263,7 @@ def leveltest_category(variable):
             c, conn = connectDB()
             query = "SELECT * FROM " + variable + " WHERE userid = '" + userid + "';"
             c.execute(query)
+
             datalist = c.fetchall()
             passorfail = []
             if(len(datalist) == 0):
@@ -297,11 +298,18 @@ def addAnswertoDB(qnum, answer):
         query = "UPDATE " + category + " SET Q" + qnum + " = " + answer + " WHERE userid = '" + userid + "';"
 # 이까지는 됨
         c.execute(query)
+        query = "UPDATE lastquestion set lastnumber  = "+ qnum +" WHERE userid = '" + userid + "';"
+        c.execute(query)
         conn.commit()
         c.close()
 
-
-        url = "/leveltest/" + category
+        if (category == "intro"):
+            if int(qnum)!= 10:
+                url="/leveltest/Q"+str(int(qnum)+1)
+            else:
+                url= "/assessments/questions/intro/GoNextPage"
+        else:
+            url = "/leveltest/" + category
         return redirect(url)
         
     else:
