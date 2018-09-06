@@ -96,6 +96,21 @@ def login():
 def onlyformembers():
     return render_template("/admin/onlyformembers.html", flag = False)
 
+@app.route('/returnuser')
+def returnuser():
+    if('user' in session):
+        userid = session['user']
+        c, conn = connectDB()
+        c.execute("SELECT lastnumber FROM lastquestion WHERE userid = %s", (userid,))
+        qnum = c.fetchone()[0]
+        return redirect("/leveltest/Q"+str(qnum))
+    else:
+        return redirect("/onlyformembers")
+    return render_template("/assessments/abouttest.html")
+
+   
+
+
 @app.route('/logout')
 def logout():
     deleteSession()
@@ -165,7 +180,7 @@ def signup():
             query = "INSERT INTO " + category + "(userid) VALUES ('" + userid +"')"
             c.execute(query)
             if (category == "lastquestion"):
-                query = "UPDATE lastquestion set lastnumber  = 0  WHERE userid = '" + userid + "';"
+                query = "UPDATE lastquestion set lastnumber  = 1  WHERE userid = '" + userid + "';"
                 c.execute(query)
 
         conn.commit()
