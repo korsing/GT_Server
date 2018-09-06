@@ -1,0 +1,43 @@
+﻿{% extends "template.html" %}
+{% block content%}
+
+<!-- Main -->
+			<section id="main" class="wrapper">
+				<header>
+					<h2>아이디 찾기</h2>
+					<p>Sign Up</p>
+				</header>
+				<div class="inner">
+					<form method="POST">
+						{{ form.csrf_token }}
+						<div class="row gtr-uniform">
+							<div class="col-6 col-12-xsmall">
+								<label for="demo-name">이름</label>
+								{{ form.name }}
+							</div>
+							
+							
+							
+							<div class="col-6 col-12-xsmall">
+								<label for="demo-sch">학교</label>
+								{{ form.school }}
+							</div>
+							<div class="col-6 col-12-xsmall">
+								<label for="demo-sch">학번</label>
+								{{ form.schoolid }}
+							</div>
+						</div>
+						<br/>
+						
+							<div class="col-12" style="margin-left : -20%">
+								<ul class="actions">
+									<li><input type="submit" value="아이디 조회" class="primary"/></li>
+								</ul>
+							</div>
+						
+							
+
+					</form>
+				</div>
+			</section>
+{% endblock %}

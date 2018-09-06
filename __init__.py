@@ -115,15 +115,42 @@ def returnuser():
     return render_template("/assessments/abouttest.html")
 
    
-@app.route('/findid')
+@app.route('/findidorpassword')
+def findidorpassword():
+
+ class FindidForm(Form):
+    name = StringField("name", validators=[InputRequired()])
+    school = StringField("school", validators=[InputRequired()])
+    schoolid = StringField("schoolsid", validators=[InputRequired()])
+
+@app.route("/findid", methods=['GET', 'POST'])
 def findid():
-    return "id 찾기"
+    findid_form = FindidForm()
+    if(signup_form.validate_on_submit()):
+        c, conn = connectDB()
+        query = "SELECT userid FROM USERS WHERE school = '" + findid_form.school.data + "' AND studNo = '" + findid_form.schoolid.data + "' AND name = '" + findid_form.name.data + "';" 
+        check = c.execute(query)
+        conn.commit()
+        conn.close()
+        if(check):
+            return check
+        else:
+            message = "You're information is something wrong!!"
+            createError(message)
+            return redirect('/error')
+    return render_template("/admin/findid.html", form = findid_form)
 
-
+@wrapper_descriptor.route("/findpassword")
+def findpassword():
+    render_template("admin/findpassword.html")
 @app.route('/logout')
 def logout():
     deleteSession()
     return redirect('/')
+
+
+
+
 
 # 회원가입란을 정의하는 클래스 선언
 class SignupForm(Form):
