@@ -200,11 +200,22 @@ def leveltest():
 @app.route("/endtest")
 def endtest():
     if('user' in session):
-        deleteSession()
+        
         return render_template("/assessments/finished.html")
     else:
         return redirect("/onlyformembers")
 
+@app.route("/realend/<var>")
+def endtest():
+    if('user' in session):
+        if (var == 'y'):
+           deleteSession()
+           return redirect("/")
+        elif (var == 'n'):
+            return redirect("/leveltest")
+        
+    else:
+        return redirect("/onlyformembers")
 
 @app.route('/abouttest')
 def aboutleveltest():
