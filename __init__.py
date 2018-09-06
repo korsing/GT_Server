@@ -134,7 +134,7 @@ def findid():
         check=int(check)
         c.execute("SELECT userid FROM USERS WHERE school = %s and studNo = %s and name = %s", (findid_form.school.data,findid_form.schoolid.data, findid_form.name.data))
   
-        userid = c.fetchone()[0]
+        userid = c.fetchone()
         conn.commit()
         conn.close()
         return userid
