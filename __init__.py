@@ -129,13 +129,14 @@ def findid():
     findid_form =  FindidForm()
     if(findid_form.validate_on_submit()):
         c, conn = connectDB()
-        query = "SELECT userid FROM USERS WHERE school = '" + findid_form.school.data + "' AND studNo = '" + findid_form.schoolid.data + "' AND name = '" + findid_form.name.data + "';" 
-        check = c.execute(query)
-        return "실행은 되냐"
+       # query = "SELECT userid FROM USERS WHERE school = '" + findid_form.school.data + "' AND studNo = '" + findid_form.schoolid.data + "' AND name = '" + findid_form.name.data + "';" 
+        c.execute("SELECT userid FROM USERS WHERE school = %s and studNo = %s and name = %s", (findid_form.school.data,findid_form.schoolid.data, findid_form.name.data))
+       # check = c.execute(query)
+        userid = c.fetchone()[0]
         conn.commit()
         conn.close()
-        if(check):
-            return check
+        if(userid):
+            return render_template("/admin/showid.html",userid = userid)
         else:
             message = "You're information is something wrong!!"
             createError(message)
