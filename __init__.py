@@ -1,4 +1,4 @@
-#-*- coding: utf-8-*-
+                    #-*- coding: utf-8-*-
 from flask import Flask, render_template, session, redirect, flash, request
 from flask_wtf import Form
 from wtforms import StringField, PasswordField, IntegerField, TextAreaField, SelectField, RadioField
@@ -160,16 +160,19 @@ def signup():
         # 이까지 온다는 것 자체가 위에 에러 if문에서 하나도 안걸렸다는 말!
         password = generate_password_hash(signup_form.userpw.data)
         c.execute("INSERT INTO USERS VALUES (%s, %s, %s, %s, %s, %s)", (userid, password, signup_form.name.data, signup_form.school.data, signup_form.schoolid.data, phone))
-        lists = ["intro", "thinking", "entry", "python", "c"]
+        lists = ["intro", "thinking", "entry", "python", "c", "lastquestion"]
         for category in lists:
             query = "INSERT INTO " + category + "(userid) VALUES ('" + userid +"')"
             c.execute(query)
+            if (category == "lastquestion"):
+                query = "UPDATE lastquestion set lastnumber  = 0  WHERE userid = '" + userid + "';"
+                c.execute(query)
 
         conn.commit()
         conn.close()
 
         createSession(userid)
-        return redirect("/")
+        return redirect("/assessments/questions/intro/StartPage")
     return render_template("/admin/signup.html", form = signup_form)
 
 @app.route("/leveltest")
