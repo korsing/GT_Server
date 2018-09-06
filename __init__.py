@@ -209,10 +209,12 @@ def endtest():
 def realend():
     if('user' in session):
         if (var == 'y'):
-           deleteSession()
-           return redirect("/")
+            return"메롱"
+           #deleteSession()
+           #return redirect("/")
         elif (var == 'n'):
-           return redirect("/leveltest")
+            return "박솔내 메롱"
+           #return redirect("/leveltest")
         
     else:
         return redirect("/onlyformembers")
