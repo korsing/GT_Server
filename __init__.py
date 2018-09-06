@@ -143,7 +143,7 @@ def findid():
 
 @app.route("/findpassword")
 def findpassword():
-    render_template("admin/findpassword.html")
+    return render_template("admin/findpassword.html")
 @app.route('/logout')
 def logout():
     deleteSession()
