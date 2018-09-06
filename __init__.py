@@ -206,13 +206,13 @@ def endtest():
         return redirect("/onlyformembers")
 
 @app.route("/realend/<var>")
-def endtest():
+def realend():
     if('user' in session):
         if (var == 'y'):
            deleteSession()
            return redirect("/")
         elif (var == 'n'):
-            return redirect("/leveltest")
+           return redirect("/leveltest")
         
     else:
         return redirect("/onlyformembers")
