@@ -141,7 +141,7 @@ def findid():
         if(check > 0):
             return render_template("/admin/showid.html",userid = userid)
         else:
-            return "여긴 오냐"
+            
             message = "You're information is something wrong!!"
             createError(message)
             return redirect('/error')
