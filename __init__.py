@@ -207,6 +207,7 @@ def endtest():
 
 @app.route("/realend/<var>")
 def realend():
+    return "여기론 들어오냐?"
     if('user' in session):
         if (var == 'y'):
             return"메롱"
