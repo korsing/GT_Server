@@ -207,15 +207,13 @@ def endtest():
 
 @app.route("/realend/<var>", methods=['GET', 'POST'])
 def realend(var):
-    return "여기론 들어오냐?"
     if('user' in session):
         if (var == 'y'):
-            return"메롱"
-           #deleteSession()
-           #return redirect("/")
+           deleteSession()
+           return redirect("/")
         elif (var == 'n'):
-            return "박솔내 메롱"
-           #return redirect("/leveltest")
+           
+           return redirect("/leveltest")
         
     else:
         return redirect("/onlyformembers")
