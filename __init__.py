@@ -137,7 +137,7 @@ def findid():
         conn.commit()
         conn.close()
 
-        if(check):
+        if(check > 0):
             return render_template("/admin/showid.html",userid = userid)
         else:
             return "여긴 오냐"
