@@ -137,7 +137,7 @@ def findid():
         userid = c.fetchone()
         conn.commit()
         conn.close()
-        return userid
+        
         if(check > 0):
             return render_template("/admin/showid.html",userid = userid)
         else:
