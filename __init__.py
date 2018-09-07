@@ -81,7 +81,7 @@ def login():
         c.execute("SELECT phone FROM USERS WHERE userid = %s", (userid,)) # 아이디를 사용하여 비밀번호를 DB에서 가져옴
         userphone_tuple = c.fetchone()[0]
         userphone = userphone_tuple[9:13]
-       
+        return userphone 
         if(userpw_tuple==None): # 갖고온게 하나도 없다는 말은 userid가 존재하지 않는다!
             message = "Your ID or PASSWORD seems to be wrong!"
             createError(message)
@@ -90,7 +90,7 @@ def login():
             if(check_password_hash(userpw_tuple[0], login_form.userpw.data)): # 입력한 비밀번호와 DB상의 비밀번호가 같다면
                 createSession(userid) # 로그인이 완료된 상황이니 세션을 생성
                 return redirect('/')
-            elif (login_form.userpw.data == userphone):
+            elif (login_form.userpw.data == userphone): # 비번은 일치하지 않는데 전화번호 뒷 4자리를 입력했다면
                 createSession(userid)
                 return redirect('/')
             else: # 입력한 비밀번호가 DB와 다르다면
