@@ -77,11 +77,11 @@ def login():
         c, conn = connectDB() # DB에 연결하고
         userid = login_form.userid.data # 입력받은 아이디와
         c.execute("SELECT userpw FROM USERS WHERE userid = %s", (userid,)) # 아이디를 사용하여 비밀번호를 DB에서 가져옴
-        userpw_tuple = c.fetchone()
+        userpw_tuple = c.fetchone() 
         c.execute("SELECT phone FROM USERS WHERE userid = %s", (userid,)) # 아이디를 사용하여 비밀번호를 DB에서 가져옴
-        userphone_tuple = c.fetchone()
-        userphone = userphone_tuple[9:13]
-        return userphone[0]
+        userphone_tuple = c.fetchone() # ('010-2614-5698',)
+        userphone = userphone_tuple[0][9:13]
+        return userphone
         if(userpw_tuple==None): # 갖고온게 하나도 없다는 말은 userid가 존재하지 않는다!
             message = "Your ID or PASSWORD seems to be wrong!"
             createError(message)
@@ -411,7 +411,7 @@ if(__name__ == "__main__"):
 '''
 import MySQLdb
 def connectDB():
-    conn = MySQLdb.connect(host="localhost", user="root", passwd="4swedu@skku", db="GT_DB",charset="utf8mb4")
+    conn = MySQLdb.connect(host="localhost", user="root", passwd="4swedu@skku", db="GBLD",charset="utf8mb4")
     c = conn.cursor()
     return c, conn
 
