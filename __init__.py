@@ -79,6 +79,7 @@ def login():
         c.execute("SELECT userpw FROM USERS WHERE userid = %s", (userid,)) # 아이디를 사용하여 비밀번호를 DB에서 가져옴
         userpw_tuple = c.fetchone()
         c.execute("SELECT phone FROM USERS WHERE userid = %s", (userid,)) # 아이디를 사용하여 비밀번호를 DB에서 가져옴
+        return "!"
         userphone_tuple = c.fetchone()[0]
         userphone = userphone_tuple[9:13]
         return userphone 
