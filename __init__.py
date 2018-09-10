@@ -233,7 +233,7 @@ def signup():
         conn.close()
 
         createSession(userid)
-        return render_template("/assessments/questions/intro/StartPage.html")
+        return render_template("/assessments/questions/intro/StartPage.html",userid=userid)
     return render_template("/admin/signup.html", form = signup_form)
 
 @app.route("/leveltest")
