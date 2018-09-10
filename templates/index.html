@@ -16,21 +16,21 @@
             </h1>
 
 
-            <ul class="actions stacked">
-                {% if(flag == False): %}
-                <li><a href="/findidorpassword" class="button major" style="border-color : white; width : auto ; font-size : 14px; float : right">아이디 비밀번호 찾기</a></li>
-                <li><a href="/login" class="button primary fit" style="color : white;width : auto ;font-size : 14px; float : right">로그인</a></li>
-                <li> <a href="/signup" class="button primary fit" style="color : white;width : auto ; font-size : 14px; float : right">회원가입</a></li>
-                {% endif %}
-                {% if(flag == True): %}
-                <a href="/logout" class="button primary fit" style="width : auto ; font-size : 14px; float : right">로그아웃</a>
 
-                {% endif %}
+            {% if(flag == False): %}
+                <a href="/findidorpassword" class="button primary fit" style="color : black; width : auto ; font-size : 14px; float : right">아이디 비밀번호 찾기</a>
+                <a href="/login" class="button primary fit" style="color : white;width : auto ;font-size : 14px; float : right">로그인</a>
+                <a href="/signup" class="button primary fit" style="color : white;width : auto ; font-size : 14px; float : right">회원가입</a>
+            {% endif %}
+            {% if(flag == True): %}
+              <a href="/logout" class="button primary fit" style="width : auto ; font-size : 14px; float : right">로그아웃</a>
 
-            </ul>
+            {% endif %}
 
 
-                <!-- <a href="#menu">Menu</a>-->
+
+
+            <!-- <a href="#menu">Menu</a>-->
         </header>
 
 	<!-- Menu -->
