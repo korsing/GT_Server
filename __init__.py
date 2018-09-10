@@ -206,7 +206,7 @@ def signup():
 
         c, conn = connectDB()
         schoolid=str(signup_form.gradenumber.data)+str(signup_form.classnumber.data)+str(signup_form.schoolidnumber.data)
-        return schoolid
+        
         query = "SELECT userid FROM USERS WHERE school = '" + signup_form.school.data + "' AND studNo = '" + schoolid+ "';" 
         check = c.execute(query) # 이 값은 나온 값의 개수로 정상적으로 나오는데 return은 안됌..
         
