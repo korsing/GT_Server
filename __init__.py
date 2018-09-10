@@ -133,7 +133,7 @@ def findid():
     findid_form =  FindidForm()
     if(findid_form.validate_on_submit()):
         c, conn = connectDB()
-        schoolid=str(finidid_form.gradenumber.data)+str(findid_form.classnumber.data)+str(findid_form.schoolidnumber.data)
+        schoolid=str(findid_form.gradenumber.data)+str(findid_form.classnumber.data)+str(findid_form.schoolidnumber.data)
         query = "SELECT userid FROM USERS WHERE school = '" + findid_form.school.data + "' AND studNo = '" + schoolid + "' AND name = '" + findid_form.name.data + "';" 
         check = c.execute(query)
         check=int(check)
