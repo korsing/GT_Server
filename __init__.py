@@ -245,7 +245,7 @@ def leveltest():
 def endtest():
     if('user' in session):
         
-        return render_template("/assessments/finished.html")
+        return render_template("/")
     else:
         return redirect("/onlyformembers")
 
