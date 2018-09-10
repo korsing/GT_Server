@@ -266,14 +266,14 @@ def realend(var):
 
 @app.route('/abouttest')
 def aboutleveltest():
-    if('user' in session):
-        userid = session['user']
-        c, conn = connectDB()
-        c.execute("SELECT name FROM USERS WHERE userid = %s", (userid,))
-        name = c.fetchone()[0]
-        return render_template("/assessments/abouttest.html", name=name, flag = True)
-    else:
-        return redirect("/onlyformembers")
+    #if('user' in session):
+    #    userid = session['user']
+     #   c, conn = connectDB()
+      #  c.execute("SELECT name FROM USERS WHERE userid = %s", (userid,))
+       # name = c.fetchone()[0]
+        #return render_template("/assessments/abouttest.html", name=name, flag = True)
+  #  else:
+   #     return redirect("/onlyformembers")
     return render_template("/assessments/abouttest.html")
 
 
