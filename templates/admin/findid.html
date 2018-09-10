@@ -10,23 +10,31 @@
 				<div class="inner">
 					<form method="POST">
 						{{ form.csrf_token }}
-						<div class="row gtr-uniform">
-							<div class="col-6 col-12-xsmall">
-								<label for="demo-name">이름</label>
-								{{ form.name }}
-							</div>
-							
-							
-							
-							<div class="col-6 col-12-xsmall">
-								<label for="demo-sch">학교</label>
-								{{ form.school }}
-							</div>
-							<div class="col-6 col-12-xsmall">
-								<label for="demo-sch">학번</label>
-								{{ form.schoolid }}
-							</div>
-						</div>
+                        <div class="row gtr-uniform">
+                            <div class="col-6 col-12-xsmall">
+                                <label for="demo-name">이름</label>
+                                {{ form.name }}
+                            </div>
+
+
+
+                            <div class="col-6 col-12-xsmall">
+                                <label for="demo-sch">학교</label>
+                                {{ form.school }}
+                            </div>
+                            <div class="col-6 col-12-xsmall">
+                                <label for="demo-sch">학년</label>
+                                {{ form.gradenumber }}
+                            </div>
+                            <div class="col-6 col-12-xsmall">
+                                <label for="demo-sch">반</label>
+                                {{ form.classnumber }}
+                            </div>
+                            <div class="col-6 col-12-xsmall">
+                                <label for="demo-sch">번호</label>
+                                {{ form.schoolidnumber }}
+                            </div>
+                        </div>
 						<br/>
 						
 							<div class="col-12" >

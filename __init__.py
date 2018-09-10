@@ -124,18 +124,21 @@ def findidorpassword():
 class FindidForm(Form):
     name = StringField("name", validators=[InputRequired()])
     school = StringField("school", validators=[InputRequired()])
-    schoolid = StringField("schoolsid", validators=[InputRequired()])
+    gradenumber = StringField("gradenumber", validators=[InputRequired()])
+    classnumber = StringField("classnumber", validators=[InputRequired()])
+    schoolidnumber = StringField("schoolidnumber", validators=[InputRequired()])
 
 @app.route("/findid", methods=['GET', 'POST'])
 def findid():
     findid_form =  FindidForm()
     if(findid_form.validate_on_submit()):
         c, conn = connectDB()
-        query = "SELECT userid FROM USERS WHERE school = '" + findid_form.school.data + "' AND studNo = '" + findid_form.schoolid.data + "' AND name = '" + findid_form.name.data + "';" 
+        schoolid=str(finidid_form.gradenumber.data)+str(findid_form.classnumber.data)+str(findid_form.schoolidnumber.data)
+        query = "SELECT userid FROM USERS WHERE school = '" + findid_form.school.data + "' AND studNo = '" + schoolid + "' AND name = '" + findid_form.name.data + "';" 
         check = c.execute(query)
         check=int(check)
        
-        c.execute("SELECT userid FROM USERS WHERE school = %s and studNo = %s and name = %s", (findid_form.school.data,findid_form.schoolid.data, findid_form.name.data))
+        c.execute("SELECT userid FROM USERS WHERE school = %s and studNo = %s and name = %s", (findid_form.school.data,schoolid, findid_form.name.data))
         
         userid = c.fetchone()
       
