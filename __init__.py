@@ -169,9 +169,12 @@ class SignupForm(Form):
     pwconfirm = PasswordField("password", validators=[InputRequired()])
     name = StringField("name", validators=[InputRequired()])
     school = StringField("school", validators=[InputRequired()])
-    schoolid = StringField("schoolsid", validators=[InputRequired()])
     phone = StringField("phone", validators=[InputRequired()])
     parentsphone = StringField("parentsphone", validators=[InputRequired()])
+    gradenumber = StringField("gradenumber", validators=[InputRequired()])
+    classnumber = StringField("classnumber", validators=[InputRequired()])
+    schoolidnumber = StringField("schoolidnumber", validators=[InputRequired()])
+
 
 
 @app.route("/signup", methods=['GET', 'POST'])
@@ -202,8 +205,9 @@ def signup():
             return redirect('/error')
 
         c, conn = connectDB()
-        
-        query = "SELECT userid FROM USERS WHERE school = '" + signup_form.school.data + "' AND studNo = '" + signup_form.schoolid.data + "';" 
+        schoolid=str(signup_form.gradenumber.data)+str(signup_form.classnumber.data)+str(signup_form.schoolidnumber.data)
+        return schoolid
+        query = "SELECT userid FROM USERS WHERE school = '" + signup_form.school.data + "' AND studNo = '" + schoolid+ "';" 
         check = c.execute(query) # 이 값은 나온 값의 개수로 정상적으로 나오는데 return은 안됌..
         
         if(check):
@@ -226,7 +230,7 @@ def signup():
 
         # 이까지 온다는 것 자체가 위에 에러 if문에서 하나도 안걸렸다는 말!
         password = generate_password_hash(signup_form.userpw.data)
-        c.execute("INSERT INTO USERS VALUES (%s, %s, %s, %s, %s, %s, %s)", (userid, password, signup_form.name.data, signup_form.school.data, signup_form.schoolid.data, phone, parentsphone))
+        c.execute("INSERT INTO USERS VALUES (%s, %s, %s, %s, %s, %s, %s)", (userid, password, signup_form.name.data, signup_form.school.data, schoolid, phone, parentsphone))
         lists = ["intro", "thinking", "entry", "python", "c", "lastquestion"]
         for category in lists:
             query = "INSERT INTO " + category + "(userid) VALUES ('" + userid +"')"
