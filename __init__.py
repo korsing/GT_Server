@@ -133,6 +133,7 @@ def findid():
         query = "SELECT userid FROM USERS WHERE school = '" + findid_form.school.data + "' AND studNo = '" + findid_form.schoolid.data + "' AND name = '" + findid_form.name.data + "';" 
         check = c.execute(query)
         check=int(check)
+        return check
         c.execute("SELECT userid FROM USERS WHERE school = %s and studNo = %s and name = %s", (findid_form.school.data,findid_form.schoolid.data, findid_form.name.data))
   
         userid = c.fetchone()[0]
