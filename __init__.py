@@ -146,6 +146,7 @@ def findid():
         conn.close()
        
         if(check > 0):
+            userid=userid[0]
             return render_template("/admin/showid.html",userid = userid)
         else:
             
