@@ -10,14 +10,19 @@
 	<body class="is-preload">
 
 		<!-- Header -->
-		<header id="header">
-			<h1><a href="/">경북 SW 창의인재 교육지원사업</a></h1>
-			<a href="#menu">Menu</a>
-		</header>
+        <header id="header">
+            <h1><a href="/">경북 SW 창의인재 교육지원사업</a></h1>
+            <right style="float : right">
+                <a href="/signup" class="button primary fit">회원가입</a>
+                <a href="/login" class="button fit">로그인</a>
+                <a href="/findidorpassword" class="button fit">아이디 비밀번호 찾기</a>
+            </right>
+           <!-- <a href="#menu">Menu</a>-->>
+        </header>
 		<!-- Menu -->
 		<nav id="menu">
 			<ul class="links">
-				<br><br><br><br>
+				<br/><br/><br/><br/>
 			</ul>
             <ul class="actions stacked">
                 {% if(flag == False): %}
@@ -29,7 +34,7 @@
                 <li><a href="/logout" class="button fit">로그아웃</a></li>
                 <li><a href="../" class="button primary major">홈으로</a></li>
                 <li><a href="../abouttest" class="button major">테스트 프로그램 안내</a></li>
-                <li><a href="https://swnetwork.modoo.at/" target="_blank" class="button major">경북SW창의인재교육<br />전체 사업 안내 </a></li>
+                <li><a href="https://swnetwork.modoo.at/" target="_blank" class="button major">경북SW창의인재교육 전체 사업 안내 </a></li>
                 {% endif %}
             </ul>
 		</nav>
