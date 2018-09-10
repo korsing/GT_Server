@@ -171,7 +171,7 @@ class SignupForm(Form):
     school = StringField("school", validators=[InputRequired()])
     schoolid = StringField("schoolsid", validators=[InputRequired()])
     phone = StringField("phone", validators=[InputRequired()])
-    parentsphone = StringGield("parentsphone", validators=[InputRequired()])
+    parentsphone = StringField("parentsphone", validators=[InputRequired()])
 
 
 @app.route("/signup", methods=['GET', 'POST'])
