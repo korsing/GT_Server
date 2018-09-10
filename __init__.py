@@ -110,6 +110,7 @@ def returnuser():
         c, conn = connectDB()
         c.execute("SELECT lastnumber FROM lastquestion WHERE userid = %s", (userid,))
         qnum = c.fetchone()[0]
+        qnum=int(qnum)+1
         return redirect("/leveltest/Q"+str(qnum))
     else:
         return redirect("/onlyformembers")
