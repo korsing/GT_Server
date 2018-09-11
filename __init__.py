@@ -141,7 +141,7 @@ def findid():
         length=len(findid_form.gradenumber.data)+len(findid_form.classnumber.data)+len(findid_form.schoolidnumber.data)
         
         schoolid_List=[findid_form.gradenumber.data, findid_form.classnumber.data, findid_form.schoolidnumber.data]
-        if schoolid_List[0][0]:
+        if schoolid_List[0]:
             return ok
         for i in range(len(schoolid_List)):
             for j in range(len(schoolid_List[i])):
