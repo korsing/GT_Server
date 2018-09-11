@@ -144,7 +144,7 @@ def findid():
         
         schoolid_List=[gradenumber, classnumber, schoolidnumber]
      
-        if (schoolid_List[0]):
+        if (schoolid_List[0] != None):
             return ok
         for i in range(len(schoolid_List)):
             for j in range(len(schoolid_List[i])):
