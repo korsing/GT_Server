@@ -137,7 +137,7 @@ def findid():
 
         Sign=0
         Search_number=['0','1','2','3','4','5','6','7','8','9']
-        return "되냐?"
+        return str(findid_form.gradenumber.data)
         length=len(str(findid_form.gradenumber.data))+len(str(findid_form.classnumber.data))+len(str(findid_form.schoolidnumber.data))
         return length
         schoolid_List=[findid_form.gradenumber.data,findid_form.classnumber.data,findid_form.schoolidnumber.data]
@@ -155,8 +155,6 @@ def findid():
             schoolid=str(findid_form.gradenumber.data)+str(findid_form.classnumber.data)+str(findid_form.schoolidnumber.data)
 
 
-
-        schoolid=str(findid_form.gradenumber.data)+str(findid_form.classnumber.data)+str(findid_form.schoolidnumber.data)
         query = "SELECT userid FROM USERS WHERE school = '" + findid_form.school.data + "' AND studNo = '" + schoolid + "' AND name = '" + findid_form.name.data + "';" 
         check = c.execute(query)
         check=int(check)
