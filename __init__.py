@@ -133,13 +133,13 @@ def findid():
     findid_form =  FindidForm()
     if(findid_form.validate_on_submit()):
         c, conn = connectDB()
-        gradenumber=str(findid_form.gradenumber.data)
-
+     
+        leng=str(findid_form.gradenumber.data)
         Sign=0
         
         Search_number=['0','1','2','3','4','5','6','7','8','9']
         return '이거'
-        length=len(str(findid_form.gradenumber.data))+len(str(findid_form.classnumber.data))+len(str(findid_form.schoolidnumber.data))
+        length=len(findid_form.gradenumber.data)+len(findid_form.classnumber.data)+len(findid_form.schoolidnumber.data)
         
         schoolid_List=[str(findid_form.gradenumber.data), str(findid_form.classnumber.data), str(findid_form.schoolidnumber.data)]
         
