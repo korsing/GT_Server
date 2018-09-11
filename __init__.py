@@ -134,7 +134,7 @@ def findid():
     if(findid_form.validate_on_submit()):
         c, conn = connectDB()
      
-        leng=str(findid_form.gradenumber.data)
+        leng=len(findid_form.gradenumber.data)
         Sign=0
         
         Search_number=['0','1','2','3','4','5','6','7','8','9']
