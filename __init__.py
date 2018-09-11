@@ -209,7 +209,23 @@ def signup():
             return redirect('/error')
 
         c, conn = connectDB()
-        schoolid=str(signup_form.gradenumber.data)+str(signup_form.classnumber.data)+str(signup_form.schoolidnumber.data)
+
+        Sign=0
+        Search_number=['0','1','2','3','4','5','6','7','8','9']
+        length=len(signup_form.gradenumber.data)+len(signup_form.classnumber.data)+len(signup_form.schoolidnumber.data)
+        schoolid_List=[signup_form.gradenumber.data,signup_form.classnumber.data,signup_form.schoolidnumber.data]
+
+        for i in range(len(schoolid_List)):
+            for j in range(len(schoolid_List[i])):
+                if(schoolid_List[i][j] not in Search):
+                      Sign=1
+
+        if (Sign):
+             message = "Please Insert the Number at Grade, Class, SchoolNumber.."
+             createError(message)
+             return redirect('/error')
+        else:
+            schoolid=str(signup_form.gradenumber.data)+str(signup_form.classnumber.data)+str(signup_form.schoolidnumber.data)
         
         query = "SELECT userid FROM USERS WHERE school = '" + signup_form.school.data + "' AND studNo = '" + schoolid+ "';" 
         check = c.execute(query) # 이 값은 나온 값의 개수로 정상적으로 나오는데 return은 안됌..
