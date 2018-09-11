@@ -134,13 +134,16 @@ def findid():
     if(findid_form.validate_on_submit()):
         c, conn = connectDB()
      
+        gradenumber=findid_form.gradenumber.data
+        classnumber = findid_form.classnumber.data
+        schoolidnumber = findid_form.schoolidnumber.data
         Sign=0
-        
         Search_number=['0','1','2','3','4','5','6','7','8','9']
        
-        length=len(findid_form.gradenumber.data)+len(findid_form.classnumber.data)+len(findid_form.schoolidnumber.data)
+        length=len(gradenumber)+len(classnumber)+len(schoolidnumber)
         
-        schoolid_List=[findid_form.gradenumber.data, findid_form.classnumber.data, findid_form.schoolidnumber.data]
+        schoolid_List=[gradenumber, classnumber, schoolidnumber]
+     
         if (schoolid_List[0]):
             return ok
         for i in range(len(schoolid_List)):
@@ -153,7 +156,7 @@ def findid():
              createError(message)
              return redirect('/error')
         else:
-            schoolid=str(findid_form.gradenumber.data)+str(findid_form.classnumber.data)+str(findid_form.schoolidnumber.data)
+            schoolid=str(gradenumber)+str(classnumber)+str(schoolidnumber)
 
 
         query = "SELECT userid FROM USERS WHERE school = '" + findid_form.school.data + "' AND studNo = '" + schoolid + "' AND name = '" + findid_form.name.data + "';" 
