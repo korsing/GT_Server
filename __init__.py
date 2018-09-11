@@ -145,11 +145,15 @@ def findid():
         schoolid_List=[gradenumber, classnumber, schoolidnumber]
       
 
-        for i in range(len(schoolid_List)):
-            for j in range(len(schoolid_List[i][0])):
-                if(schoolid_List[i][0][j] not in Search):
-                      Sign=1
-
+        for i in range(len(gradenumber[0])):
+            if(gradenumber[0][i] not in Search_number):
+                Sign=1
+        for i in range(len(classnumber[0])):
+            if(classnumber[0][i] not in Search_number):
+                Sign=1
+        for i in range(len(schoolidnumber[0])):
+            if(schoolidnumber[0][i] not in Search_number):
+                Sign=1
         if (Sign):
              message = "Please Insert the Number at Grade, Class, SchoolNumber.."
              createError(message)
