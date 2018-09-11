@@ -134,17 +134,14 @@ def findid():
     if(findid_form.validate_on_submit()):
         c, conn = connectDB()
      
-        leng=len(findid_form.gradenumber.data)
         Sign=0
         
         Search_number=['0','1','2','3','4','5','6','7','8','9']
        
         length=len(findid_form.gradenumber.data)+len(findid_form.classnumber.data)+len(findid_form.schoolidnumber.data)
-        if(length):
-            return 'ok'
-        else:
-            return 'not ok'
+        
         schoolid_List=[findid_form.gradenumber.data, findid_form.classnumber.data, findid_form.schoolidnumber.data]
+        return 'ok'
         for i in range(len(schoolid_List)):
             for j in range(len(schoolid_List[i])):
                 if(schoolid_List[i][j] not in Search):
