@@ -143,7 +143,7 @@ def findid():
         length=len(gradenumber)+len(classnumber)+len(schoolidnumber)
         
         schoolid_List=[gradenumber, classnumber, schoolidnumber]
-        if(gradenumber[i]):
+        if(gradenumber[0]):
             return 'ok'
         for i in range(len(gradenumber)):
            if (gradenumber[i] not in Search_number):
