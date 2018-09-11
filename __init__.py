@@ -138,9 +138,9 @@ def findid():
         Sign=0
         
         Search_number=['0','1','2','3','4','5','6','7','8','9']
-       
-        length=len(str(findid_form.gradenumber.data))+len(str(findid_form.classnumber.data))+len(str(findid_form.schoolidnumber.data))
         return '이거'
+        length=len(str(findid_form.gradenumber.data))+len(str(findid_form.classnumber.data))+len(str(findid_form.schoolidnumber.data))
+        
         schoolid_List=[str(findid_form.gradenumber.data), str(findid_form.classnumber.data), str(findid_form.schoolidnumber.data)]
         
         for i in range(len(schoolid_List)):
