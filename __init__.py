@@ -449,7 +449,7 @@ def addAnswertoDB(qnum, answer):
 # 이까지는 됨
         c, conn = connectDB()
         query = "UPDATE " + category + " SET Q" + qnum + " = " + answer + " WHERE userid = '" + userid + "';"
-# 이까지는 됨
+
         c.execute(query)
         query = "UPDATE lastquestion set lastnumber  = "+ qnum +" WHERE userid = '" + userid + "';"
         c.execute(query)
