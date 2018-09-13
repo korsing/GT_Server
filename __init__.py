@@ -368,6 +368,7 @@ def get_Time(username):
     c, conn = connectDB()
     c.execute(query)
     time = c.fetchone()[0]
+    return "여기까진?"
     conn.commit()
     conn.close()
     time=int(time)
