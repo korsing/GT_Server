@@ -297,7 +297,7 @@ def leveltest():
     if('user' in session):
         userid = session['user']
         time=get_Time(userid)
-        return render_template("/assessments/leveltest.html", flag = True,time=time)
+        return render_template("/assessments/leveltest.html", flag = True,time=time, temp=0)
     else:
         return redirect("/onlyformembers")
 
@@ -402,7 +402,7 @@ def questions(qnum):
             c_answer = [3, 33, 23, 6, 4, 29, 11, 15, 5, 24, 9, 39, 36, 12, 30, 16, 37, 26, 18, 32]
             
         
-        return render_template("/assessments/questions/" + category +"/Q" + str(qnum) + ".html", bogi=bogi, qnum=qnum, flag = True,time=time)
+        return render_template("/assessments/questions/" + category +"/Q" + str(qnum) + ".html", bogi=bogi, qnum=qnum, flag = True,time=time, temp=0)
     else:
         return redirect("/onlyformemebers")
 
@@ -437,7 +437,7 @@ def leveltest_category(variable):
             difficulty = ["BEGINNER", "EASY", "STANDARD", "DIFFICULT", "CHALLENGING"]
             category_list = ['thinking', 'entry', 'python', 'c', 'intro','language']
             if(variable in category_list):
-                return render_template("/assessments/questions/" + variable + "/start.html", PassorFail=passorfail, difficulty = difficulty, flag = True,time=time)
+                return render_template("/assessments/questions/" + variable + "/start.html", PassorFail=passorfail, difficulty = difficulty, flag = True,time=time, temp=0)
         else:
             return redirect("/onlyformembers")
 
