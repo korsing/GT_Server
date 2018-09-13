@@ -1,0 +1,51 @@
+{% extends "template.html" %}
+{% block content %}
+<!-- Main -->
+<section id="main" class="wrapper">
+    <Question>
+            <div align="center">
+            <div style="width : 50%">
+                <h1 style="text-align:left"> 45. 의사코드는 프로그램 작성 이전에 각 모듈이 작동하는 논리를 표현하기 위해 <br/>
+                사람이 쉽게 이해할 수 있는 자연어 등으로 프로그래밍 언어의 형식을 빌어 작성하는 것을 말한다. <br/>
+                다음은 의사코드를 Python 언어로 표현한 것인데, 빈칸에 들어갈 알맞은 변수명으로 짝지어진 보기를 고르시오. </h1>
+            </div>
+            <pre style ="width : 50%;">
+                <code style="text-align: left">
+
+[의사코드]
+SET X 100 
+SET Y 200
+SET Z 0
+REPEAT
+    WHEN ( X = Y )
+        STOP REPEATING
+    INCREASE X by 1
+    INCREASE Z by 1
+SAY Z
+
+[Python]
+Z = 100
+X = 200
+Y = 0
+while( 1 ):
+    if( Z == [ 빈 칸 ] ):
+        break;
+    Z += 1
+    [ 빈 칸 ] += 1
+print( Y )
+                    </code>
+            </pre>
+            <table>
+                {% for i in range(0,8): %}
+                    <tr>
+                        {% for j in range(1,6): %}
+                            <td> <a href="/A{{qnum}}/{{i*5+j}}" class="button"> {{bogi[i*5+j-1]}} </a></td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            </table>
+        </Question>
+    </div>
+</section>
+{% endblock %}
+

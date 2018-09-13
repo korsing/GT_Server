@@ -277,7 +277,7 @@ def signup():
         # 이까지 온다는 것 자체가 위에 에러 if문에서 하나도 안걸렸다는 말!
         password = generate_password_hash(signup_form.userpw.data)
         c.execute("INSERT INTO USERS VALUES (%s, %s, %s, %s, %s, %s, %s, %s)", (userid, password, signup_form.name.data, signup_form.school.data, schoolid, phone, parentsphone, time))
-        lists = ["intro", "thinking", "entry", "python", "c", "lastquestion"]
+        lists = ["intro", "thinking", "entry", "python", "c", "lastquestion","language"]
         for category in lists:
             query = "INSERT INTO " + category + "(userid) VALUES ('" + userid +"')"
             c.execute(query)
@@ -347,10 +347,10 @@ class QuestionForm(Form):
 def get_CAT(qnum):
     if(qnum <= 10):
         category = "intro"
-    elif(qnum <= 30):
+    elif(qnum <= 25):
         category = "thinking"
-    elif(qnum <= 50):
-        category = "entry"
+    elif(qnum <= 40):
+        category = "language"
     elif(qnum <= 70):
         category = "python"
     elif(qnum <= 90):
@@ -386,13 +386,15 @@ def questions(qnum):
             bogi = ["Always by myself.", "Depends on who.", "Always with friends."]
         elif(category == "thinking"):
             bogi=[3,4,5,7,10,12,14,15,19,24,30,32,36,39,40,41,43,45,50,62,65,70,80,100,120,150, 180, 210, 300, 320,  'ab','bd','ac','ad','bc','bcad','cadb','dbca','dacb','dabc']
-            thinking_Answer=[14,30,3,2,2,10,32,19,6,4,16,11,14,39,21,2,13,9,13,4]
+            thinking_Answer=[14,3,2,2, 32,19,6,4, 16,39, 2,13,9,13,4]
         elif(category == "entry"):
-            bogi = [1,2,3,4,5,6,7,8,9,10,11,12,13,20,21,25,31,40,45,50,55,56,60,70,75,80,95,100,120,210,250,251,260,261,262,263,'A','B','C','D']
-            Entry_Answer = [27,38,6,32,15,17,30,3,18,16,29,3,20,3,5,19,13,14,1,4]
+            bogi = [1,2,3,4,5,6,7,8,9,10,  11,12,13,20,21,25,31,40,45,50,  55,56,60,70,75,80,95,100,120,210,  250,251,260,261,262,263,'A','B','C','D']
+            Entry_Answer = [27,38,6,32,15,17,30,3,18,16,  29,3,20,3,5,19,13,14,1,4]
         elif(category == "python"):
             bogi = [0, 1, 2, 3, 4, 6, 7, 8, 9, 10,"1, 2", "2, 3", 13, 14, 15,"2, 3, 4", "3, 4, 5", "3, 4, 6", "2, 4", "2, 5","L[i] > B", "L[i] < B", "L[i] == B", 300, 400, "True", "False", "10-x", "10-y", "10-z", 79, 80, "X, Y", "Y, Z", "Z, X", "int()", "str()", "type()", "break", "continue"]
             python_Answer = [28, 9, 15, 32, 12, 10, 13, 40, 21, 1, 26, 18, 4, 20, 33, 26, 36, 1, 25, 33]
+        elif(category=="language"):
+            bogi=[1,2,3,4,5,6,7,8,9,10]
         else:
             bogi = ["x z y","y z x","x x z","y x z","x y z","x y","y y","x x","y x","x / 2","x % 2","x % 10","x // 10","i > 9","i <= 9","i < 7","i <= 7","5","0","1","100","130","200","400","1 1","2 1","2 2","2 3","3 2","3 3","4 4","6 2","5 10","10 5","10 11","11 10","11 16","12 16","45 10","45 9"] 
             c_answer = [3, 33, 23, 6, 4, 29, 11, 15, 5, 24, 9, 39, 36, 12, 30, 16, 37, 26, 18, 32]
@@ -417,7 +419,7 @@ def leveltest_category(variable):
             passorfail = []
             if(len(datalist) == 0):
                 if(variable == 'intro'):
-                    length = 7
+                    length = 10
                 else:
                     length = 25
                 for i in range(length):
@@ -431,7 +433,7 @@ def leveltest_category(variable):
                         passorfail.append("X")
 
             difficulty = ["BEGINNER", "EASY", "STANDARD", "DIFFICULT", "CHALLENGING"]
-            category_list = ['thinking', 'entry', 'python', 'c', 'intro']
+            category_list = ['thinking', 'entry', 'python', 'c', 'intro','language']
             if(variable in category_list):
                 return render_template("/assessments/questions/" + variable + "/start.html", PassorFail=passorfail, difficulty = difficulty, flag = True,time=time)
         else:

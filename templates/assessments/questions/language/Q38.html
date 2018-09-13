@@ -1,0 +1,56 @@
+﻿
+
+{% extends "template.html" %}
+{% block content %}
+<!-- Main -->
+<section id="main" class="wrapper">
+    <Question>
+            <div align="center">
+              <div style="width : 50%">
+                <h1 style="text-align:left">41.
+				다음 프로그램은 사용자가 세 개의 서로 다른 정수를 입력하면 순서대로 x 변수, y 변수, z 변수에 저장하고 가장 큰 값부터 순서대로 출력해 주는 프로그램이다. <br>
+  빈 칸에 알맞은 문장을 작성하시오.<br></h1></div>
+            <pre style ="width : 50%;">
+                <code style="text-align: left">
+#include <stdio.h>
+int main(void){
+  int x, y, z;
+  int temp = 0;
+	scanf("%d %d %d", &x, &y, &z);
+	if ( x < (1) ){
+		temp = x;
+		x =(1) ;
+		(1) = temp;
+	} 
+	if (y < z) {
+		temp = y;
+		y = z;
+		z = temp;
+	}
+	if ( (2) < y) {
+		temp = (2);
+		(2) = y;
+		y = temp;
+	}
+	printf(“%d %d %d”, x, y, z);
+	return 0;
+
+}
+                </code>
+            </pre></div>
+              <table>
+            {% for i in range(0,8): %}
+            <tr>
+                {% for j in range(1,6): %}
+    
+                     <td> <a href="/A{{qnum}}/{{i*5+j}}" class="button"> {{bogi[i*5+j-1]}} </a></td>
+                {% endfor %}
+            </tr>
+    
+        {% endfor %}
+        </table>
+
+        </Question>
+
+</section>
+{% endblock %}
