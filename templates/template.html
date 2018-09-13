@@ -10,7 +10,6 @@
         // Set the date we're counting down to
         var countDown = new Date().getTime();
         countDownDate = countDown + time;
-        return time;
         // Update the count down every 1 second
         var x = setInterval(function () {
 
@@ -27,7 +26,7 @@
             var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
             // Display the result in the element with id="Clock"
-            document.getElementById("Clock").innerHTML = minutes + "m " + seconds + "s " + Mi + " : " + se;
+            document.getElementById("Clock").innerHTML = minutes + "m " + seconds + "s ";
 
             // If the count down is finished, write some text
             if (distance < 0) {
