@@ -364,8 +364,8 @@ def get_CAT(qnum):
 
 
 def get_Time(username):
-    return "여기까진?"
-    query="select time from USERS where userid = "+username+" ;"
+    
+    query="select time from USERS where userid = '"+username+"' ;"
     c, conn = connectDB()
     c.execute(query)
     time = c.fetchone()[0]
