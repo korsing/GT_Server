@@ -295,7 +295,9 @@ def signup():
 @app.route("/leveltest")
 def leveltest():
     if('user' in session):
-        return render_template("/assessments/leveltest.html", flag = True)
+        userid = session['user']
+        time=get_Time(userid)
+        return render_template("/assessments/leveltest.html", flag = True,time=time)
     else:
         return redirect("/onlyformembers")
 
@@ -360,10 +362,24 @@ def get_CAT(qnum):
 
     return category
 
+
+def get_Time(username):
+    query="select time from USERS where userid = "+username+" ;"
+    c, conn = connectDB()
+    c.execute(query)
+    time = c.fetchone()[0]
+    conn.commit()
+    conn.close()
+    time=int(time)
+    return time
+
+
 @app.route("/leveltest/Q<qnum>", methods=['GET', 'POST'])
 def questions(qnum):
     if('user' in session):
         category = get_CAT(int(qnum))
+        userid = session['user']
+        time=get_Time(userid)
         if(category == "intro"):
             bogi = ["Always by myself.", "Depends on who.", "Always with friends."]
         elif(category == "thinking"):
@@ -380,7 +396,7 @@ def questions(qnum):
             c_answer = [3, 33, 23, 6, 4, 29, 11, 15, 5, 24, 9, 39, 36, 12, 30, 16, 37, 26, 18, 32]
             
         
-        return render_template("/assessments/questions/" + category +"/Q" + str(qnum) + ".html", bogi=bogi, qnum=qnum, flag = True)
+        return render_template("/assessments/questions/" + category +"/Q" + str(qnum) + ".html", bogi=bogi, qnum=qnum, flag = True,time=time)
     else:
         return redirect("/onlyformemebers")
 
@@ -389,6 +405,8 @@ def leveltest_category(variable):
     if(variable[0] != 'Q'):
         if('user' in session):
             userid = session['user']
+           
+            time=get_Time(userid)
             c, conn = connectDB()
             query = "SELECT * FROM " + variable + " WHERE userid = '" + userid + "';"
             c.execute(query)
@@ -413,7 +431,7 @@ def leveltest_category(variable):
             difficulty = ["BEGINNER", "EASY", "STANDARD", "DIFFICULT", "CHALLENGING"]
             category_list = ['thinking', 'entry', 'python', 'c', 'intro']
             if(variable in category_list):
-                return render_template("/assessments/questions/" + variable + "/start.html", PassorFail=passorfail, difficulty = difficulty, flag = True)
+                return render_template("/assessments/questions/" + variable + "/start.html", PassorFail=passorfail, difficulty = difficulty, flag = True,time=time)
         else:
             return redirect("/onlyformembers")
 
