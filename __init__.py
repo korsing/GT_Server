@@ -441,7 +441,7 @@ def leveltest_category(variable):
         else:
             return redirect("/onlyformembers")
 
-@app.route('/A<qnum>/<answer>')
+@app.route('/A<qnum>/<answer>/<distance>', methods=['GET', 'POST'])
 def addAnswertoDB(qnum, answer):
     if('user' in session):
         userid = session['user']
@@ -452,6 +452,8 @@ def addAnswertoDB(qnum, answer):
 # 이까지는 됨
         c.execute(query)
         query = "UPDATE lastquestion set lastnumber  = "+ qnum +" WHERE userid = '" + userid + "';"
+        c.execute(query)
+        query = "UPDATE USERS set time  = "+ distance +" WHERE userid = '" + userid + "';"
         c.execute(query)
         conn.commit()
         c.close()
