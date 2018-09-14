@@ -374,9 +374,9 @@ def get_Time(username):
     conn.close()
     time=int(time)
     return time
-@app.route("/go_next_page")
-def go_next_page():
-    return render_template("assessments/questions/thinking/GoNextPage.html")
+@app.route("/go_next_page/<var>")
+def go_next_page(var):
+    return render_template("assessments/questions/thinking/GoNextPage.html",type=var)
 
 @app.route("/leveltest/Q<qnum>", methods=['GET', 'POST'])
 def questions(qnum):
@@ -462,7 +462,7 @@ def addAnswertoDB(qnum, answer,distance):
             if int(qnum)!= 10:
                 url="/leveltest/Q"+str(int(qnum)+1)
             else:
-                return render_template("/assessments/questions/intro/GoNextPage.html", flag=True,time=distance, temp=0)
+                return redirect("/go_next_page/1")
         else:
             url = "/leveltest/" + category
         return redirect(url)
