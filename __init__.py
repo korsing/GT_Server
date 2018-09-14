@@ -462,7 +462,7 @@ def addAnswertoDB(qnum, answer,distance):
             if int(qnum)!= 10:
                 url="/leveltest/Q"+str(int(qnum)+1)
             else:
-                return render_template("/assessments/questions/intro/GoNextPage.html",Flag=True,time=time, temp=0)
+                return render_template("/assessments/questions/intro/GoNextPage.html",Flag=True,time=distance, temp=0)
         else:
             url = "/leveltest/" + category
         return redirect(url)
