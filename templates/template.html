@@ -10,6 +10,14 @@
     <link rel="stylesheet" href="../static/assets/css/main.css" />
     <link rel="shortcut icon" type="image/png" href="../static/image/Littledragon.png" />
    <script >
+
+       var i = 0, j = 1;
+       function Change_i(value) {
+           i = value;
+       }
+       function change_j(value) {
+           j = value;
+       }
         // Set the date we're counting down to
         var countDown = new Date().getTime();
         
@@ -21,13 +29,7 @@
             var now = new Date().getTime();
             // Find the distance between now and the count down date
             var distance = countDownDate - now;
-            var i = 0, j = 1;
-            function Change_i(value) {
-                i = value;
-            }
-            function change_j(value) {
-                j = value;
-            }
+            
             var Val = "/A{{qnum}}/"+(5*i+j)+'/' + distance;
             document.getElementById("Dict").setAttribute("href", Val);
             // Time calculations for days, hours, minutes and seconds
