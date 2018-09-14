@@ -442,7 +442,7 @@ def leveltest_category(variable):
             return redirect("/onlyformembers")
 
 @app.route('/A<qnum>/<answer>/<distance>')
-def addAnswertoDB(qnum, answer):
+def addAnswertoDB(qnum, answer,distance):
     if('user' in session):
         userid = session['user']
         category = get_CAT(int(qnum))
