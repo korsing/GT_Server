@@ -14,10 +14,15 @@
             </div>
             <br/>
             <table>
-                
-                    <tr> <a href="/A{{qnum}}/1" class="button"> 혼자 하는 것이 더 즐겁다.  </a></tr>
-                    <tr> <a href="/A{{qnum}}/2" class="button"> 어느 친구냐에 따라 다르다.   </a></tr>
-                    <tr> <a href="/A{{qnum}}/3" class="button"> 친구와 함께 하는 것은 항상 즐겁다.  </a></tr>
+{% i = 0 %}
+{% j=1 %}
+                             <tr > <a onmouseover="Changing({{i}},{{j}})" id="Dict{{5*i+j}}"  class="button"> 혼자 하는 것이 더 즐겁다. </a></tr>
+{% j=2 %}
+                   <tr > <a onmouseover="Changing({{i}},{{j}})" id="Dict{{5*i+j}}"  class="button"> 어느 친구냐에 따라 다르다.  </a></tr>
+{% j=3 %}
+		<tr > <a onmouseover="Changing({{i}},{{j}})" id="Dict{{5*i+j}}"  class="button"> 친구와 함께 하는 것은 항상 즐겁다.</a></tr>
+                    <tr> <a href="/A{{qnum}}/2" class="button">   </a></tr>
+
                 
     
         </table>
