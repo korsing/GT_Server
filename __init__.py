@@ -111,7 +111,7 @@ def returnuser():
         c.execute("SELECT lastnumber FROM lastquestion WHERE userid = %s", (userid,))
         qnum = c.fetchone()[0]
         qnum=int(qnum)+1
-        if (qnum>100):
+        if (qnum>40):
             return redirect("/leveltest/thinking")
         return redirect("/leveltest/Q"+str(qnum))
     else:
