@@ -401,7 +401,7 @@ def questions(qnum):
             bogi = ["x z y","y z x","x x z","y x z","x y z","x y","y y","x x","y x","x / 2","x % 2","x % 10","x // 10","i > 9","i <= 9","i < 7","i <= 7","5","0","1","100","130","200","400","1 1","2 1","2 2","2 3","3 2","3 3","4 4","6 2","5 10","10 5","10 11","11 10","11 16","12 16","45 10","45 9"] 
             c_answer = [3, 33, 23, 6, 4, 29, 11, 15, 5, 24, 9, 39, 36, 12, 30, 16, 37, 26, 18, 32]
             
-        return "여긴 나오냐?"
+        
         return render_template("/assessments/questions/" + category +"/Q" + str(qnum) + ".html", bogi=bogi, qnum=qnum, flag = True,time=time, temp=0)
     else:
         return redirect("/onlyformemebers")
