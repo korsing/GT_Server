@@ -12,11 +12,11 @@
              <table>
             {% for i in range(0,8): %}
             <tr>
-                Change_i({{i}})
+               
                 {% for j in range(1,6): %}
-                Change_j({{j}})
+               
    
-                     <td > <a id="Dict" class="button"> {{bogi[i*5+j-1]}} </a></td>
+                     <td > <a id="Dict" onclick="Changing({{i}},{{j}})" class="button"> {{bogi[i*5+j-1]}} </a></td>
                 {% endfor %}
             </tr>
     
