@@ -19,7 +19,7 @@
             var now = new Date().getTime();
             // Find the distance between now and the count down date
             var distance = countDownDate - now;
-            var dict = angular.module('myApp', []);
+            var app = angular.module('myApp', []);
             app.controller('myctrl', function ($scope) {
                 $scope.framework = string(distance);
             });
