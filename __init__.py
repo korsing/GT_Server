@@ -374,7 +374,7 @@ def get_Time(username):
     conn.close()
     time=int(time)
     return time
-@app.route("/go_next_page/<var>")
+@app.route("/go_next_page/<var>", methods=['GET', 'POST'] )
 def go_next_page(var):
     return render_template("assessments/questions/thinking/GoNextPage.html",type=var)
 
