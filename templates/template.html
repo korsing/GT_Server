@@ -47,7 +47,7 @@
             var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
             // Display the result in the element with id="Clock"
-            document.getElementById("Clock").innerHTML = minutes + "m " + seconds + "s ";
+            document.getElementById("Clock").innerHTML = minutes + ": " + seconds ;
      
             // If the count down is finished, write some text
           //  if (distance < 0) {
@@ -67,7 +67,7 @@
                 <a style="text-align : left; float : left; width : 66%"href="/">경북 SW 창의인재 교육지원사업</a>
                 {% if(flag == True): %}
 
-               <p id="Clock" style="color : black;width : 30%; float : right"></p>
+               <p id="Clock" style="color : blue;width : 30%; float : right"></p>
             </h1>
 
             <a href="#menu" style="width : 20%;float : right">Menu</a>
