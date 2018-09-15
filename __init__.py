@@ -284,7 +284,7 @@ def signup():
             query = "INSERT INTO " + category + "(userid) VALUES ('" + userid +"')"
             c.execute(query)
             if (category == "lastquestion"):
-                query = "UPDATE lastquestion set lastnumber  = 1  WHERE userid = '" + userid + "';"
+                query = "UPDATE lastquestion set lastnumber  = 0  WHERE userid = '" + userid + "';"
                 c.execute(query)
 
         conn.commit()
