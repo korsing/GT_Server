@@ -291,9 +291,18 @@ def signup():
         conn.close()
 
         createSession(userid)
-        return render_template("/assessments/questions/intro/StartPage.html",userid=userid)
+        return redirect("/StartPage")
     return render_template("/admin/signup.html", form = signup_form)
-
+@app.route("/StartPage",methods=['GET', 'POST'])
+def startpage():
+    userid=session['user']
+    c, conn = connectDB()
+    c.execute("SELECT lastnumber FROM lastquestion WHERE userid = %s", (userid,))
+    qnum = c.fetchone()[0]
+    conn.commit()
+    conn.close()
+    return render_template("/assessments/questions/intro/StartPage.html",userid=userid,qnum=qnum)
+    
 @app.route("/leveltest")
 def leveltest():
     if('user' in session):
