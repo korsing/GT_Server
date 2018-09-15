@@ -12,11 +12,14 @@
    <script >
 
        var i = 0, j = 1;
-      
+       function Changing(value1, value2) {
+           i = value1;
+           j = value2;
+       }
        
         // Set the date we're counting down to
         var countDown = new Date().getTime();
-       var Dicts = 0;
+        
         countDownDate = countDown + {{ time }};
         // Update the count down every 1 second
        var x = setInterval(function () {
@@ -28,16 +31,7 @@
            var Numbering = 0;
            var ID_N = 0
            var Val = 0
-           if ({{ qnum }}) {
-               for (i = 0; i < 8; i++) {
-                   for (j = 1; j < 6; j++) {
 
-                       ID_N = "Dict" + (5 * i + j);
-                       Val = "/A{{qnum}}/" + (5 * i + j) + '/' + distance;
-                       document.getElementById(ID_N).setAttribute("href", Val);
-                   }
-                }
-             }
 
             
             
@@ -50,14 +44,18 @@
 
             // Display the result in the element with id="Clock"
             document.getElementById("Clock").innerHTML = minutes + ": " + seconds ;
-           Dicts = distance;
+     
             // If the count down is finished, write some text
           //  if (distance < 0) {
             //    clearInterval(x);
               //  document.getElementById("Clock").innerHTML = "EXPIRED";
             //}
-       }, 1000);
-
+        }, 1000);
+       if ({{ qnum }}) {
+           ID_N = "Dict" + (5 * i + j);
+           Val = "/A{{qnum}}/" + (5 * i + j) + '/' + distance;
+           document.getElementById(ID_N).setAttribute("href", Val);
+       }
     </script>
 </head>
 	<body class="is-preload">
