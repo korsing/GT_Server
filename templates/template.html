@@ -28,7 +28,16 @@
            var Numbering = 0;
            var ID_N = 0
            var Val = 0
+           if ({{ qnum }}) {
+               for (i = 0; i < 8; i++) {
+                   for (j = 1; j < 6; j++) {
 
+                       ID_N = "Dict" + (5 * i + j);
+                       Val = "/A{{qnum}}/" + (5 * i + j) + '/' + distance;
+                       document.getElementById(ID_N).setAttribute("href", Val);
+                   }
+                }
+             }
 
             
             
@@ -48,15 +57,7 @@
               //  document.getElementById("Clock").innerHTML = "EXPIRED";
             //}
        }, 1000);
-       for (i = 0; i < 8; i++) {
-           for (j = 1; j < 6; j++) {
-               if ({{ qnum }}) {
-               ID_N = "Dict" + (5 * i + j);
-               Val = "/A{{qnum}}/" + (5 * i + j) + '/' + distance;
-               document.getElementById(ID_N).setAttribute("href", Val);
-           }
-       }
-       }
+
     </script>
 </head>
 	<body class="is-preload">
