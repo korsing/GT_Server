@@ -31,7 +31,11 @@
            var Numbering = 0;
            var ID_N = 0
            var Val = 0
-
+           if ({{ qnum }}){
+                ID_N = "Dict" + (5 * i + j);
+                Val = "/A{{qnum}}/" + (5 * i + j) + '/' + distance;
+                document.getElementById(ID_N).setAttribute("href", Val);
+                }
 
             
             
@@ -51,11 +55,7 @@
               //  document.getElementById("Clock").innerHTML = "EXPIRED";
             //}
         }, 1000);
-       if ({{ qnum }}) {
-           ID_N = "Dict" + (5 * i + j);
-           Val = "/A{{qnum}}/" + (5 * i + j) + '/' + distance;
-           document.getElementById(ID_N).setAttribute("href", Val);
-       }
+       
     </script>
 </head>
 	<body class="is-preload">
