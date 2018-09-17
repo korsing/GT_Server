@@ -235,7 +235,7 @@ def signup():
             return redirect('/error')
 
         c, conn = connectDB()
-        return "이거"
+        
         gradenumber=signup_form.gradenumber.data
         classnumber = signup_form.classnumber.data
         schoolidnumber = signup_form.schoolidnumber.data
@@ -294,6 +294,7 @@ def signup():
         
         conn.commit()
         conn.close()
+        return "이거"
         createSession(userid)
         return redirect("/StartPage")
     return render_template("/admin/signup.html", form = signup_form)
