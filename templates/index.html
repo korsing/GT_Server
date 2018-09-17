@@ -65,11 +65,15 @@
 					{% endif %}
 
 				</div>
-				<ul class="actions stacked">
-					<li><a href="../StartPage" class="button primary major">응시하기</a></li>
-					<li><a href="../abouttest" class="button major">경상북도 SW리틀드래곤 선발 테스트란?</a></li>
-					<li><a href="https://swnetwork.modoo.at/" target="_blank" class="button major" style="height : auto"> 경북SW창의인재교육 <br /> 전체 사업 소개</a></li>
-				</ul>
+                <ul class="actions stacked">
+                    {% if(name!="NULL"): %}
+                    <li><a href="../StartPage" class="button primary major">응시하기</a></li>
+                    {% else: %}
+                    <li><a href="../onlyformembers" class="button primary major">응시하기</a></li>
+                    {% endif %}
+                    <li><a href="../abouttest" class="button major">경상북도 SW리틀드래곤 선발 테스트란?</a></li>
+                    <li><a href="https://swnetwork.modoo.at/" target="_blank" class="button major" style="height : auto"> 경북SW창의인재교육 <br /> 전체 사업 소개</a></li>
+                </ul>
 			</div>
 		</section>
 
