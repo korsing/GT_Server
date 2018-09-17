@@ -283,7 +283,7 @@ def signup():
         password = generate_password_hash(signup_form.userpw.data)
         c.execute("INSERT INTO USERS VALUES (%s, %s, %s, %s, %s, %s, %s, %s)", (userid, password, signup_form.name.data, signup_form.school.data, schoolid, phone, parentsphone, time))
         
-        return "이거"
+        
         lists = ["intro", "thinking", "lastquestion","language"]
         for category in lists:
             query = "INSERT INTO " + category + "(userid) VALUES ('" + userid +"')"
@@ -292,7 +292,7 @@ def signup():
             if (category == "lastquestion"):
                 query = "UPDATE lastquestion set lastnumber  = 0  WHERE userid = '" + userid + "';"
                 c.execute(query)
-        
+        return "이거"
         conn.commit()
         conn.close()
         createSession(userid)
