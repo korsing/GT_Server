@@ -292,7 +292,7 @@ def signup():
         
         conn.commit()
         conn.close()
-
+        return userid
         createSession(userid)
         return redirect("/StartPage")
     return render_template("/admin/signup.html", form = signup_form)
