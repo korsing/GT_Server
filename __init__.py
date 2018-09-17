@@ -262,11 +262,11 @@ def signup():
             message = "You have already signed up!"
             createError(message)
             return redirect('/error')
-        return '여기까진 되니?'
+        
         # 아이디 자동 생성
         c.execute("SELECT COUNT(*) FROM USERS;")
         counter = c.fetchone()[0]
-        
+        return '여기까진 되니?'
         if(counter<10):
             counter='000'+str(counter+1)
         elif(counter<100):
