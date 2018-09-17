@@ -209,6 +209,8 @@ class SignupForm(Form):
 def signup():
     signup_form = SignupForm()
     if(signup_form.validate_on_submit()):
+        
+        return userid
         if(len(signup_form.userpw.data) < 8): # 비밀번호가 8자리 이상인지 체크
             message = "PASSWORD must be more than 8 characters."
             createError(message)
@@ -234,7 +236,6 @@ def signup():
 
         c, conn = connectDB()
         
-        return userid
         gradenumber=signup_form.gradenumber.data
         classnumber = signup_form.classnumber.data
         schoolidnumber = signup_form.schoolidnumber.data
