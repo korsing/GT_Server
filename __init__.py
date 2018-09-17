@@ -273,9 +273,10 @@ def signup():
             counter='00'+str(counter+1)
         elif(counter<1000):
             counter='0'+str(counter+1)
-        return '여기까진 되니?'
+        
         userid = "GBLD" + counter
         time=str(2700000)
+        return userid
         # 이까지 온다는 것 자체가 위에 에러 if문에서 하나도 안걸렸다는 말!
         password = generate_password_hash(signup_form.userpw.data)
         c.execute("INSERT INTO USERS VALUES (%s, %s, %s, %s, %s, %s, %s, %s)", (userid, password, signup_form.name.data, signup_form.school.data, schoolid, phone, parentsphone, time))
