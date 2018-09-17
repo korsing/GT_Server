@@ -258,6 +258,7 @@ def signup():
         query = "SELECT userid FROM USERS WHERE school = '" + signup_form.school.data + "' AND studNo = '" + schoolid+ "';" 
         check = c.execute(query) # 이 값은 나온 값의 개수로 정상적으로 나오는데 return은 안됌..
         
+        return userid
         if(check):
             message = "You have already signed up!"
             createError(message)
@@ -292,7 +293,6 @@ def signup():
         
         conn.commit()
         conn.close()
-        return userid
         createSession(userid)
         return redirect("/StartPage")
     return render_template("/admin/signup.html", form = signup_form)
