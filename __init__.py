@@ -289,7 +289,7 @@ def signup():
             if (category == "lastquestion"):
                 query = "UPDATE lastquestion set lastnumber  = 0  WHERE userid = '" + userid + "';"
                 c.execute(query)
-        return userid
+        
         conn.commit()
         conn.close()
 
