@@ -266,14 +266,14 @@ def signup():
         # 아이디 자동 생성
         c.execute("SELECT COUNT(*) FROM USERS;")
         counter = c.fetchone()[0]
-        return '여기까진 되니?'
+        
         if(counter<10):
             counter='000'+str(counter+1)
         elif(counter<100):
             counter='00'+str(counter+1)
         elif(counter<1000):
             counter='0'+str(counter+1)
-
+        return '여기까진 되니?'
         userid = "GBLD" + counter
         time=str(2700000)
         # 이까지 온다는 것 자체가 위에 에러 if문에서 하나도 안걸렸다는 말!
