@@ -233,7 +233,8 @@ def signup():
             return redirect('/error')
 
         c, conn = connectDB()
-
+        
+        return userid
         gradenumber=signup_form.gradenumber.data
         classnumber = signup_form.classnumber.data
         schoolidnumber = signup_form.schoolidnumber.data
@@ -257,8 +258,7 @@ def signup():
 
         query = "SELECT userid FROM USERS WHERE school = '" + signup_form.school.data + "' AND studNo = '" + schoolid+ "';" 
         check = c.execute(query) # 이 값은 나온 값의 개수로 정상적으로 나오는데 return은 안됌..
-        
-        return userid
+  
         if(check):
             message = "You have already signed up!"
             createError(message)
