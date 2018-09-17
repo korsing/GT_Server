@@ -288,11 +288,11 @@ def signup():
         for category in lists:
             query = "INSERT INTO " + category + "(userid) VALUES ('" + userid +"')"
             c.execute(query)
-
+            return "이거"
             if (category == "lastquestion"):
                 query = "UPDATE lastquestion set lastnumber  = 0  WHERE userid = '" + userid + "';"
                 c.execute(query)
-        return "이거"
+        
         conn.commit()
         conn.close()
         createSession(userid)
