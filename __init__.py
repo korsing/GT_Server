@@ -283,6 +283,7 @@ def signup():
         password = generate_password_hash(signup_form.userpw.data)
         c.execute("INSERT INTO USERS VALUES (%s, %s, %s, %s, %s, %s, %s, %s)", (userid, password, signup_form.name.data, signup_form.school.data, schoolid, phone, parentsphone, time))
         
+        return "이거"
         lists = ["intro", "thinking", "lastquestion","language"]
         for category in lists:
             query = "INSERT INTO " + category + "(userid) VALUES ('" + userid +"')"
@@ -294,7 +295,6 @@ def signup():
         
         conn.commit()
         conn.close()
-        return "이거"
         createSession(userid)
         return redirect("/StartPage")
     return render_template("/admin/signup.html", form = signup_form)
