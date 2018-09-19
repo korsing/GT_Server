@@ -186,8 +186,9 @@ class FindpwForm(Form):
     gradenumber = StringField("gradenumber", validators=[InputRequired()])
     classnumber = StringField("classnumber", validators=[InputRequired()])
     schoolidnumber = StringField("schoolidnumber", validators=[InputRequired()])
-@app.route("/findpassword")
-@app.route("/findid", methods=['GET', 'POST'])
+
+
+@app.route("/findpassword", methods=['GET', 'POST'])
 def findpw():
     findpw_form =  FindpwForm()
     if(findpw_form.validate_on_submit()):
