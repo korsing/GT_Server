@@ -1,8 +1,8 @@
-import pymysql
+import MYSQLdb
 import xlsxwriter
 
 def connectDB():
-    conn = pymysql.connect(host="localhost", user="root", passwd="4swedu@skku", db="GT_DB",charset="utf8mb4")
+    conn = MYSQLdb.connect(host="localhost", user="root", passwd="4swedu@skku", db="GT_DB",charset="utf8mb4")
     c = conn.cursor()
     return c, conn
 
