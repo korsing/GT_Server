@@ -232,7 +232,7 @@ def findpw():
             message = "You're information is something wrong!!"
             createError(message)
             return redirect('/error')
-    return render_template("/admin/findpassword.html", form = findpwform_form)
+    return render_template("/admin/findpassword.html", form = findpw_form)
 
 
 
