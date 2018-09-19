@@ -179,9 +179,65 @@ def findid():
             return redirect('/error')
     return render_template("/admin/findid.html", form = findid_form)
 
+
+class FindpwForm(Form):
+    userid = StringField("userid", validators=[InputRequired()])
+    school = StringField("school", validators=[InputRequired()])
+    gradenumber = StringField("gradenumber", validators=[InputRequired()])
+    classnumber = StringField("classnumber", validators=[InputRequired()])
+    schoolidnumber = StringField("schoolidnumber", validators=[InputRequired()])
 @app.route("/findpassword")
-def findpassword():
-    return render_template("admin/findpassword.html")
+@app.route("/findid", methods=['GET', 'POST'])
+def findpw():
+    findpw_form =  FindpwForm()
+    if(findpw_form.validate_on_submit()):
+        c, conn = connectDB()
+        userid=findpw_form.userid.data
+        gradenumber=findpw_form.gradenumber.data
+        classnumber = findpw_form.classnumber.data
+        schoolidnumber = findpw_form.schoolidnumber.data
+        Sign=0
+        Search_number=['0','1','2','3','4','5','6','7','8','9']
+        for i in range(len(gradenumber[0])):
+            if(gradenumber[0][i] not in Search_number):
+                Sign=1
+        for i in range(len(classnumber[0])):
+            if(classnumber[0][i] not in Search_number):
+                Sign=1
+        for i in range(len(schoolidnumber[0])):
+            if(schoolidnumber[0][i] not in Search_number):
+                Sign=1
+        if (Sign):
+             message = "Please Insert the Number at Grade, Class, SchoolNumber.."
+             createError(message)
+             return redirect('/error')
+        else:
+            schoolid=str(gradenumber)+str(classnumber)+str(schoolidnumber)
+
+
+        query = "SELECT * FROM USERS WHERE userid = '" + findpw_form.userid.data + "' AND school = '" + findpw_form.school.data + "' AND studNo = '" + schoolid + "' ;" 
+        check = c.execute(query)
+        check=int(check)
+       
+      
+        conn.commit()
+        conn.close()
+       
+        if(check > 0):
+            createSession(userid)
+            return redirect("/")
+        else:
+            
+            message = "You're information is something wrong!!"
+            createError(message)
+            return redirect('/error')
+    return render_template("/admin/findpassword.html", form = findpwform_form)
+
+
+
+
+
+
 @app.route('/logout')
 def logout():
     deleteSession()
