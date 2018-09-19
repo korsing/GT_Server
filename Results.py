@@ -12,7 +12,7 @@ def writeExcel(file, row, col, content):
 # DB연결
 c, conn = connectDB()
 # 엑셀파일 생성
-workbook = xlsxwriter.Workbook("DATABASE.xlsx")
+workbook = xlsxwriter.Workbook("results.xlsx")
 worksheet = workbook.add_worksheet()
 
 # 가로 타이틀 작성
