@@ -78,9 +78,7 @@ def login():
         userid = login_form.userid.data # 입력받은 아이디와
         c.execute("SELECT userpw FROM USERS WHERE userid = %s", (userid,)) # 아이디를 사용하여 비밀번호를 DB에서 가져옴
         userpw_tuple = c.fetchone() 
-        c.execute("SELECT phone FROM USERS WHERE userid = %s", (userid,)) # 아이디를 사용하여 비밀번호를 DB에서 가져옴
-        userphone_tuple = c.fetchone() # ('010-2614-5698',)
-        userphone = userphone_tuple[0][9:13] # 5698 출력 성공
+        
 
         if(userpw_tuple==None): # 갖고온게 하나도 없다는 말은 userid가 존재하지 않는다!
             message = "Your ID or PASSWORD seems to be wrong!"
@@ -90,9 +88,7 @@ def login():
             if(check_password_hash(userpw_tuple[0], login_form.userpw.data)): # 입력한 비밀번호와 DB상의 비밀번호가 같다면
                 createSession(userid) # 로그인이 완료된 상황이니 세션을 생성
                 return redirect('/')
-            elif (login_form.userpw.data == userphone): # 비번은 일치하지 않는데 전화번호 뒷 4자리를 입력했다면
-                createSession(userid)
-                return redirect('/')
+            
             else: # 입력한 비밀번호가 DB와 다르다면
                 message = "Your ID or PASSWORD seems to be wrong!"
                 createError(message)
@@ -254,8 +250,7 @@ class SignupForm(Form):
     pwconfirm = PasswordField("password", validators=[InputRequired()])
     name = StringField("name", validators=[InputRequired()])
     school = StringField("school", validators=[InputRequired()])
-    phone = StringField("phone", validators=[InputRequired()])
-    parentsphone = StringField("parentsphone", validators=[InputRequired()])
+   
     gradenumber = StringField("gradenumber", validators=[InputRequired()])
     classnumber = StringField("classnumber", validators=[InputRequired()])
     schoolidnumber = StringField("schoolidnumber", validators=[InputRequired()])
@@ -278,19 +273,8 @@ def signup():
             createError(message)
             return redirect('/error')
         
-        # 전화번호 일관성있게 다듬기
-        phone = signup_form.phone.data
-        if(len(phone)<13):
-            message = "Invalid Phone Number.."
-            createError(message)
-            return redirect('/error')
-
-        parentsphone=signup_form.parentsphone.data
-        if(len(parentsphone)<13):
-            message = "Invalid Phone Number.."
-            createError(message)
-            return redirect('/error')
-
+  
+  
         c, conn = connectDB()
         
         gradenumber=signup_form.gradenumber.data
@@ -338,7 +322,7 @@ def signup():
         
         # 이까지 온다는 것 자체가 위에 에러 if문에서 하나도 안걸렸다는 말!
         password = generate_password_hash(signup_form.userpw.data)
-        c.execute("INSERT INTO USERS VALUES (%s, %s, %s, %s, %s, %s, %s, %s)", (userid, password, signup_form.name.data, signup_form.school.data, schoolid, phone, parentsphone, time))
+        c.execute("INSERT INTO USERS VALUES (%s, %s, %s, %s, %s, %s, %s, %s)", (userid, password, signup_form.name.data, signup_form.school.data, schoolid, 0, 0, time))
         
         
         lists = ["intro", "thinking", "lastquestion","language"]
