@@ -22,7 +22,7 @@ writeExcel(worksheet, 0,1, "UserID")
 for i in range(25):
     writeExcel(worksheet, 0,i+2, i+1)
 
-category = ["intro", "thinking", "language"]
+category = ["USERS","intro", "thinking", "language"]
 
 row = 1
 for i in range(len(category)):
