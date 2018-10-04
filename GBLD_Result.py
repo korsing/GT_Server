@@ -21,13 +21,13 @@ language = workbook.add_worksheet()
 label = [USERS, intro, thinking, language]
 category = ["USERS","intro", "thinking", "language"]
 
-row = 1
 for i in range(len(category)):
+    row = 0
     query = "SELECT * FROM " + str(category[i]) + " ;"
     c.execute(query)
     data = c.fetchall()
     for tuples in data:
-        col = 1
+        col = 0
         row += 1
         for element in tuples:
             writeExcel(label[i], row, col, str(element))
