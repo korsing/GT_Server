@@ -13,27 +13,10 @@ def writeExcel(file, row, col, content):
 c, conn = connectDB()
 # 엑셀파일 생성
 workbook = xlsxwriter.Workbook("results.xlsx")
-worksheet = workbook.add_worksheet()
+USERS = workbook.add_worksheet()
+intro = workbook.add_worksheet()
 thinking = workbook.add_worksheet()
 language = workbook.add_worksheet()
-
-# 가로 타이틀 작성
-writeExcel(worksheet, 0,0, "USER ID")
-writeExcel(worksheet, 0,1, "Q1")
-writeExcel(worksheet, 0,1, "Q2")
-writeExcel(worksheet, 0,1, "Q3")
-writeExcel(worksheet, 0,1, "Q4")
-writeExcel(worksheet, 0,1, "Q5")
-writeExcel(worksheet, 0,1, "Q6")
-writeExcel(worksheet, 0,1, "Q7")
-writeExcel(worksheet, 0,1, "Q8")
-writeExcel(worksheet, 0,1, "Q9")
-writeExcel(worksheet, 0,1, "Q10")
-writeExcel(worksheet, 0,1, "Q11")
-writeExcel(worksheet, 0,1, "Q12")
-writeExcel(worksheet, 0,1, "Q13")
-writeExcel(worksheet, 0,1, "Q14")
-writeExcel(worksheet, 0,1, "Q15")
 
 category = ["USERS","intro", "thinking", "language"]
 
@@ -46,7 +29,7 @@ for i in range(len(category)):
         col = 1
         row += 1
         for element in tuples:
-            writeExcel(worksheet, row, col, str(element))
+            writeExcel(category[i], row, col, str(element))
             col += 1
             
 workbook.close()
