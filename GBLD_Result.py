@@ -18,6 +18,7 @@ intro = workbook.add_worksheet()
 thinking = workbook.add_worksheet()
 language = workbook.add_worksheet()
 
+label = [USERS, intro, thinking, language]
 category = ["USERS","intro", "thinking", "language"]
 
 row = 1
@@ -29,7 +30,7 @@ for i in range(len(category)):
         col = 1
         row += 1
         for element in tuples:
-            writeExcel(category[i], row, col, str(element))
+            writeExcel(label[i], row, col, str(element))
             col += 1
             
 workbook.close()
