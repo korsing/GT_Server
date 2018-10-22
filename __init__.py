@@ -316,6 +316,8 @@ def signup():
             counter='00'+str(counter+1)
         elif(counter<1000):
             counter='0'+str(counter+1)
+        else:
+            counter=str(counter+1)
         
         userid = "GBLD" + counter
         time=str(2700000)
