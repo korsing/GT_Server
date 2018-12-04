@@ -15,10 +15,10 @@ workbook = xlsxwriter.Workbook("results.xlsx")
 USERS = workbook.add_worksheet("users")
 intro = workbook.add_worksheet("intro")
 thinking = workbook.add_worksheet("thinking")
-c = workbook.add_worksheet("c")
+clang = workbook.add_worksheet("clang")
 python = workbook.add_worksheet("python")
 entry = workbook.add_worksheet("entry")
-label = [USERS, intro, thinking, c, python, entry]
+label = [USERS, intro, thinking, clang, python, entry]
 
 workbook = xlsxwriter.Workbook("GT_DOWNLOAD.xlsx")
 worksheet = workbook.add_worksheet()
