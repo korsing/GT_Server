@@ -9,10 +9,9 @@ def connectDB():
 def writeExcel(file, row, col, content):
     file.write(row, col, content)
 
-# DB연결
 c, conn = connectDB()
-# 엑셀파일 생성
-workbook = xlsxwriter.Workbook("results.xlsx")
+
+workbook = xlsxwriter.Workbook("GBLD_DOWNLOAD.xlsx")
 USERS = workbook.add_worksheet()
 intro = workbook.add_worksheet()
 thinking = workbook.add_worksheet()
