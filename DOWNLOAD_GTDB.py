@@ -10,7 +10,6 @@ def writeExcel(file, row, col, content):
     file.write(row, col, content)
 
 c, conn = connectDB()
-<<<<<<< HEAD:DOWNLOAD_GTDB.py
 # 엑셀파일 생성
 workbook = xlsxwriter.Workbook("results.xlsx")
 USERS = workbook.add_worksheet("users")
@@ -20,7 +19,6 @@ c = workbook.add_worksheet("c")
 python = workbook.add_worksheet("python")
 entry = workbook.add_worksheet("entry")
 label = [USERS, intro, thinking, c, python, entry]
-=======
 
 workbook = xlsxwriter.Workbook("GT_DOWNLOAD.xlsx")
 worksheet = workbook.add_worksheet()
@@ -32,7 +30,6 @@ writeExcel(worksheet, 0,1, "UserID")
 for i in range(25):
     writeExcel(worksheet, 0,i+2, i+1)
 
->>>>>>> deebcaebf747b62a8f2cd07fd9cc95dbcc20a43f:Results.py
 category = ["USERS","intro", "thinking", "c", "python", "entry"]
 
 row = 1
