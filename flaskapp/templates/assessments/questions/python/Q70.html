@@ -1,0 +1,52 @@
+{% extends "template.html" %}
+{% block content %}
+<!-- Main -->
+<section id="main" class="wrapper">
+    <Question>
+            <div align="center">
+            <div style="width : 50%">
+                <h1 style="text-align:left"> 
+                    50. 다음은 객체지향 언어의 클래스의 개념을 Python 문법을 빌려 의사코드로 작성한 것이다. <br/>
+                    아래와 같은 클래스가 정의되어 있을 때, <보기>를 실행한다면, <br/>
+                    <출력>의 빈 칸에 알맞는 내용을 보기에서 고르시오.
+                </h1>
+            </div>
+            <pre style ="width : 50%;">
+                <code style="text-align: left">
+
+[클래스 정의]
+
+CLASS 붕어빵():
+    DEFINE 밀가루
+    DEFINE 팥
+    FUNC 붕어빵(밀가루, 팥, 추가재료)
+        붕어빵이름 = 추가재료
+        밀가루 = 밀가루
+        팥 = 팥
+        굽기()
+    FUNC 굽기()
+        PRINT(“밀가루가 {} 그램, 팥이 {} 그램 들어간 {} 붕어빵이 구워졌습니다.” .format(밀가루, 팥, 추가재료))
+              
+[ 보기 ]
+첫 번째 붕어빵 = 붕어빵(X,Y, 생크림)
+
+[ 출력 ]
+밀가루가 [ 빈 칸 ] 그램, 팥이 [ 빈 칸 ]그램 들어간 
+생크림 붕어빵이 구워졌습니다.
+
+                </code>
+            </pre>
+            <table>
+                {% for i in range(0,8): %}
+                    <tr>
+                        {% for j in range(1,6): %}
+                            <td> <a href="/A{{qnum}}/{{i*5+j}}" class="button"> {{bogi[i*5+j-1]}} </a></td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            </table>
+        </Question>
+    </div>
+</section>
+{% endblock %}
+

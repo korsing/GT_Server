@@ -1,0 +1,40 @@
+{% extends "template.html" %}
+{% block content %}
+<!-- Main -->
+<section id="main" class="wrapper">
+    <Question>
+            <div align="center">
+            <div style="width : 50%">
+                <h1 style="text-align:left"> 
+                    42. 다음은 파이썬 자료형의 활용 방법이다. 에러가 발생하는 구간을 모두 고르시오. 
+                </h1>
+            </div>
+            <pre style ="width : 50%;">
+                <code style="text-align: left">
+
+list = [1,2,3,4,5]                     ①
+tuple = (1,4,5, “a”)                   ②
+tuple[0] = list[4]                     ③
+list[5] = list[0]                      ④
+for i in range(len(list)):             ⑤
+    dictionary = {list[i] : tuple[i]}  ⑥
+print(list)                            ⑦
+print(tuple)                           ⑧
+print(dictionary)                      ⑨        
+
+                </code>
+            </pre>
+            <table>
+                {% for i in range(0,8): %}
+                    <tr>
+                        {% for j in range(1,6): %}
+                            <td> <a href="/A{{qnum}}/{{i*5+j}}" class="button"> {{bogi[i*5+j-1]}} </a></td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            </table>
+        </Question>
+    </div>
+</section>
+{% endblock %}
+

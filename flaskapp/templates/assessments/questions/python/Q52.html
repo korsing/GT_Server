@@ -1,0 +1,36 @@
+{% extends "template.html" %}
+{% block content %}
+<!-- Main -->
+<section id="main" class="wrapper">
+    <Question>
+            <div align="center">
+            <div style="width : 50%">
+                <h1 style="text-align:left"> 
+                    32. 다음은 "HELLO_WORLD" 라는 문자열을 거꾸로 출력하기 위한 코드이다. 각 빈칸에 들어갈 숫자의 합을 나타낸 보기로 알맞은 것은?
+                </h1>
+            </div>
+            <pre style ="width : 50%;">
+                <code style="text-align: left">
+
+[코드]
+original = "HELLO_WORLD"
+for i in range( [ 빈 칸 ① ] , [ 빈 칸 ② ] , [ 빈 칸 ③ ]):
+    print(original[i], end="")
+
+[출력]
+DLROW_OLLEH
+                </code>
+            </pre>
+            <table>
+                {% for i in range(0,8): %}
+                    <tr>
+                        {% for j in range(1,6): %}
+                            <td> <a href="/A{{qnum}}/{{i*5+j}}" class="button"> {{bogi[i*5+j-1]}} </a></td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            </table>
+    </div>
+</section>
+{% endblock %}
+

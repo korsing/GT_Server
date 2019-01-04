@@ -1,0 +1,113 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Welcome to 2018 G&T Academy</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="../static/assets/css/main.css" />
+    <link rel="shortcut icon" type="image/png" href="../static/image/Littledragon.png" />
+</head>
+	<body class="is-preload">
+
+		<!-- Header -->
+        <header id="header" class='alt'>
+            <h1>
+                <a href="/">경북 SW 창의인재 교육지원사업</a>
+            </h1>
+
+
+
+            {% if(flag == False): %}
+                <a href="/findidorpassword" style="color : white; width : auto ; font-size : 14px; float : right">아이디 비밀번호 찾기</a>
+                <a href="/login"  style="color : white;width : auto ;font-size : 14px; float : right; margin-right : auto">로그인</a>
+                <a href="/signup"  style="color : white;width : auto ; font-size : 14px; float : right; margin-right : auto">회원가입</a>
+            {% endif %}
+            {% if(flag == True): %}
+                <a href="/logout" style="color : white;width : auto ; font-size : 14px; float : right; margin-right : auto">로그아웃</a>
+
+            {% endif %}
+
+
+
+
+            <!-- <a href="#menu">Menu</a>-->
+        </header>
+
+	<!-- Menu -->
+		<nav id="menu">
+			<ul class="links">
+				<br><br><br><br>
+			</ul>
+			<ul class="actions stacked">
+				{% if(flag == False): %}
+					<li><a href="/signup" class="button primary fit">회원가입</a></li>
+					<li><a href="/login" class="button fit">로그인</a></li>
+					<li><a href="/findidorpassword" class="button fit">아이디 비밀번호 찾기</a></li>
+				{% endif %}
+				{% if(flag == True): %}
+					<li><a href="/logout" class="button fit">로그아웃</a></li>
+				{% endif %}
+			</ul>
+		</nav>
+
+		<section id="banner">
+			<div class="inner">
+				<div class="content">
+					
+					{% if(name=="NULL"): %}
+						<h2>경상북도 SW리틀드래곤    </h2><h2> 선발 테스트</h2>
+						<p>로그인하여 테스트를 진행해주세요.</p>
+			
+
+					{% else: %}
+					<h2> {{ name }} 님, 환영합니다. </h2>
+					<p>귀하의 아이디는 {{ userid }} 입니다.</p>
+					{% endif %}
+
+				</div>
+                <ul class="actions stacked">
+                    {% if(name!="NULL"): %}
+                    <li><a href="../StartPage" class="button primary major">응시하기</a></li>
+                    {% else: %}
+                    <li><a href="../onlyformembers" class="button primary major">응시하기</a></li>
+                    {% endif %}
+                    <li><a href="../abouttest" class="button major" style="height : auto;line-height : 200%">경상북도 SW리틀드래곤 <br/>선발 테스트란?</a></li>
+                    <li><a href="https://swnetwork.modoo.at/" target="_blank" class="button major" style="height : auto ;line-height : 200%"> 경북SW창의인재교육 <br />전체 사업 소개</a></li>
+                </ul>
+			</div>
+		</section>
+
+	<!-- Footer -->
+	<footer id="footer">
+		<div class="inner">
+			<ul class="icons">
+				<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+				<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+				<li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+				<li><a href="#" class="icon fa-github"><span class="label">GitHub</span></a></li>
+				<li><a href="#" class="icon fa-linkedin"><span class="label">LinkedIn</span></a></li>
+				<li><a href="#" class="icon fa-envelope"><span class="label">Envelope</span></a></li>
+			</ul>
+			<ul class="contact">
+				<li>SungKyunKwan Rd 25-2</li>
+				<li>Jongro Gu, Seoul</li>
+			</ul>
+			<ul class="links">
+				<li><a href="#">Q&As</a></li>
+				<li><a href="/sensitiveinfo">Privacy Terms</a></li>
+				<li><a href="#">Contact</a></li>
+			</ul>
+			<p class="copyright">&copy; 2018 Han's G&T Academy All rights reserved. .</p>
+		</div>
+	</footer>
+
+		<!-- Scripts -->
+			<script src="../static/assets/js/jquery.min.js"></script>
+			<script src="../static/assets/js/jquery.scrollex.min.js"></script>
+			<script src="../static/assets/js/browser.min.js"></script>
+			<script src="../static/assets/js/breakpoints.min.js"></script>
+			<script src="../static/assets/js/util.js"></script>
+			<script src="../static/assets/js/main.js"></script>
+
+	</body>
+</html>

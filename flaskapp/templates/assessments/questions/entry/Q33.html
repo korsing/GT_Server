@@ -1,0 +1,26 @@
+﻿{% extends "template.html" %}
+{% block content %}
+<!-- Main -->
+<section id="main" class="wrapper">
+    <Question>
+        <div align="center">
+            <h1> 33.꽃잎 한 장을 여러 번 회전시켜서 오른쪽과 같은 그림을 만들려고 합니다. 코드의 빈 칸을 채워주세요.</h1>
+            <img src="/static/image/questions/entry/q3.PNG">
+<br/><br/>
+        </div>
+           <table>
+            {% for i in range(0,8): %}
+            <tr>
+                {% for j in range(1,6): %}
+    
+                     <td> <a href="/A{{qnum}}/{{i*5+j}}" class="button"> {{bogi[i*5+j-1]}} </a></td>
+                {% endfor %}
+            </tr>
+    
+        {% endfor %}
+        </table>
+
+    </Question>
+
+</section>
+{% endblock %}

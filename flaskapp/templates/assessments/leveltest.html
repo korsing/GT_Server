@@ -1,0 +1,31 @@
+﻿{% extends "template.html" %}
+{% block content%}
+
+<!-- Main -->
+<section id="main" class="wrapper">
+    <header>
+        <h2>사고력 테스트를 종료합니다.</h2>
+        <h2>SW프로그래밍 언어 역량 검사를 시작합니다.</h2>
+    </header>
+    <div class="inner" style="padding:5px 0px 5px 0px">
+        <Question>
+        <h1> 아래 세 가지 파트 중 원하시는 파트를 최소 한 개 이상 선택해주세요.</h1>
+        <h1> 한 개의 파트 문제풀이 종료 후 나머지 두 개 파트도 추가로 응시 할 수 있습니다.</h1>
+        <br/>
+            <div>
+             
+                <center style="margin-bottom: 30px;margin-top: 30px;">
+                    <a href="/leveltest/entry" class="button" style="width : 250px">엔트리</a>
+                    <a href="/leveltest/python" class="button" style="width : 250px">Python</a>
+                    <a href="/leveltest/c" class="button" style="width : 250px">C 언어</a>
+                </center>
+                <center style="margin-bottom: 30px;margin-top: 30px;">
+                    <a href="/endtest" class="button primary" style="width : 250px">시험 종료하기</a>
+                </center>
+
+            </div>
+		</Question>
+    </div>
+</section>
+
+{% endblock %}

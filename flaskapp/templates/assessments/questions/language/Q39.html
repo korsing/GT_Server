@@ -1,0 +1,44 @@
+﻿{% extends "template.html" %}
+{% block content %}
+<!-- Main -->
+<section id="main" class="wrapper">
+    <Question>
+            <div align="center">
+               <div style="width : 50%">
+                <h1 style="text-align:left">14.
+  다음 프로그램의 예상되는 출력 결과를 쓰시오.<br>
+</h1></div>
+            <pre style ="width : 50%;">
+                <code style="text-align: left">
+#include <stdio.h>
+int main(void){
+	int a[8] = { 0, 0, 0, 0, 0, 0, 0, 0 };
+	int i;
+	int j = 1;
+	for ( i=0 ; i<8 ; i++){
+		a[i] = j;
+		j = j + i;
+	}
+	for (i=5; i<7;i++)
+		printf(“%d “,a[i]);
+	return 0;
+}
+                </code>
+            </pre>
+ 모든 답은 대소문자를 구별하지 않고 답을 고르시기 바랍니다.</div>
+                 <table>
+            {% for i in range(0,8): %}
+            <tr>
+                {% for j in range(1,6): %}
+    
+                   <td> <a onmouseover="Changing({{i}},{{j}})" id="Dict{{5*i+j}}" class="button"> {{bogi[i*5+j-1]}} </a></td>
+              {% endfor %}
+            </tr>
+    
+        {% endfor %}
+        </table>
+
+        </Question>
+
+</section>
+{% endblock %}

@@ -1,0 +1,38 @@
+﻿{% extends "template.html" %}
+{% block content %}
+<!-- Main -->
+<section id="main" class="wrapper">
+    <Question>
+            <div align="center">
+                      <div style="width : 50%">
+                <h1 style="text-align:left">44.사용자가 세 자리 정수를 입력하면 백의 자리 숫자, 십의 자리 숫자, 일의 자리 숫자를 출력해주는 프로그램이 되기 위해 빈칸을 채우시오.<br></h1></div>
+            <pre style ="width : 50%;">
+                <code style="text-align: left">
+#include <stdio.h>
+int main(void){
+	int x;
+	scanf(“%d”, &x);
+	int y = x / 100;
+	printf(“백의 자리 : %d\n”, y );
+	printf(“십의 자리 : %d\n” , (x – y * 100) / 10 );
+	printf(“일의 자리 : %d\n” ,(1) );
+	return 0;
+}
+                </code>
+            </pre></div>
+             <table>
+            {% for i in range(0,8): %}
+            <tr>
+                {% for j in range(1,6): %}
+    
+                     <td> <a href="/A{{qnum}}/{{i*5+j}}" class="button"> {{bogi[i*5+j-1]}} </a></td>
+                {% endfor %}
+            </tr>
+    
+        {% endfor %}
+        </table>
+
+        </Question>
+
+</section>
+{% endblock %}

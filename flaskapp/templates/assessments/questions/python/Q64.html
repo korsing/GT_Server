@@ -1,0 +1,38 @@
+{% extends "template.html" %}
+{% block content %}
+<!-- Main -->
+<section id="main" class="wrapper">
+    <Question>
+            <div align="center">
+            <div style="width : 50%">
+                <h1 style="text-align:left"> 
+                    44. 다음 중 변수의 사용법이 잘못 된 것을 고르시오. (단, 모든 변수는 선언되어있는 상태이다.)
+                </h1>
+            </div>
+            <pre style ="width : 50%;">
+                <code style="text-align: left">
+
+[보기]
+① a = 100 + 1
+② b = 100+(a=10)
+③ c = 100 >> 2
+④ d += 2
+⑤ e << 2 = a
+⑤ f =- 10
+
+                </code>
+            </pre>
+            <table>
+                {% for i in range(0,8): %}
+                    <tr>
+                        {% for j in range(1,6): %}
+                            <td> <a href="/A{{qnum}}/{{i*5+j}}" class="button"> {{bogi[i*5+j-1]}} </a></td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            </table>
+        </Question>
+    </div>
+</section>
+{% endblock %}
+

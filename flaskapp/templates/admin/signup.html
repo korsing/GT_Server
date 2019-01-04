@@ -1,0 +1,57 @@
+{% extends "template.html" %}
+{% block content%}
+
+<!-- Main -->
+			<section id="main" class="wrapper">
+				<header>
+					<h2>회원가입</h2>
+					<p>Sign Up</p>
+				</header>
+				<div class="inner">
+					<form method="POST">
+						{{ form.csrf_token }}
+                        <div class="row gtr-uniform">
+                            <div class="col-6 col-12-xsmall">
+                                <label for="demo-name">이름</label>
+                                {{ form.name }}
+                            </div>
+                            
+                            <div class="col-6 col-12-xsmall">
+                                <label for="demo-pw">비밀번호</label>
+                                {{ form.userpw }}
+                            </div>
+                            <div class="col-6 col-12-xsmall">
+                                <label for="demo-pwconfirm">비밀번호 재확인</label>
+                                {{ form.pwconfirm }}
+                            </div>
+                            <div class="col-6 col-12-xsmall">
+                                <label for="demo-sch">학교</label>
+                                {{ form.school }}
+                            </div>
+                            <div class="col-6 col-12-xsmall">
+                                <label for="demo-sch">학년</label>
+                                {{ form.gradenumber }}
+                            </div>
+                            <div class="col-6 col-12-xsmall">
+                                <label for="demo-sch">반</label>
+                                {{ form.classnumber }}
+                            </div>
+                            <div class="col-6 col-12-xsmall">
+                                <label for="demo-sch">번호</label>
+                                {{ form.schoolidnumber }}
+                            </div>
+                        </div>
+						<br/>
+						
+							<div class="col-12" style="margin-left : -20%">
+								<ul class="actions">
+									<li><input type="submit" value="회원가입" class="primary"/></li>
+								</ul>
+							</div>
+						
+							
+
+					</form>
+				</div>
+			</section>
+{% endblock %}

@@ -1,0 +1,27 @@
+﻿{% extends "template.html" %}
+{% block content %}
+<!-- Main -->
+<section id="main" class="wrapper">
+    <Question>
+        <div align="center">
+            <div style="width : 50%">
+                <h1 style="text-align:left">
+         7. 다음 그림은 크기가 같은 정육면체들을 쌓은 후 앞과 오른쪽에서 바라본 모습이다. 이 입체도형이 완성될 때 사용되는 정육면체의 최대 개수를 구하시오.                </h1></div>
+                       <img src="/static/image/questions/thinking/q19.PNG" />
+     </div> <br/>
+             <table>
+            {% for i in range(0,8): %}
+            <tr>
+                {% for j in range(1,6): %}
+    
+                        <td > <a onmouseover="Changing({{i}},{{j}})" id="Dict{{5*i+j}}"  class="button"> {{bogi[i*5+j-1]}} </a></td>
+              {% endfor %}
+            </tr>
+    
+        {% endfor %}
+        </table>
+
+</Question>
+
+</section>
+{% endblock %}

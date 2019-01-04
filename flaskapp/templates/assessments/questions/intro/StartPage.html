@@ -1,0 +1,29 @@
+﻿{% extends "template.html" %}
+{% block content%}
+
+<!-- Main -->
+<section id="main" class="wrapper">
+    <header>
+        {% if (qnum < 1) : %}
+        <h2> 당신의 아이디는 {{userid}} 입니다.</h2>
+        <br />
+        <br />
+        {% endif %}
+        <h1> 선발 테스트는 아래와 같이 3개의 파트로 이루어져 있습니다.</h1>
+        <h1> 시험 선발 시간은 총 45분으로 적절히 시간 배분을 하여 테스트에 응하길 바랍니다.</h1>
+        <br />
+
+        <h1>PART1. 적성고사 (10문항) : 예상시간 5분</h1>
+        <h1>PART2. 사고력 검사 (15문항) : 예상시간 20분</h1>
+        <h1>PART3. SW 프로그래밍 언어 역량 검사 (15문항) : 예상시간 20분</h1>
+
+    </header>
+    {% if (qnum>0) : %}
+    <center> <a href=/returnuser class="button" style="font-size:20px">테스트 이어보기</a></center>
+    {% else : %}
+    <center> <a href=/go_next_page/3 class="button" style="font-size:20px">테스트 시작하기</a></center>
+    {% endif %}
+</section>
+
+{% endblock %}
+

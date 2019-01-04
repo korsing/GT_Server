@@ -1,0 +1,72 @@
+﻿{% extends "template.html" %}
+{% block content%}
+
+<!-- Main -->
+<section id="main" class="wrapper">
+    <header>
+        <h2>경상북도 SW리틀드래곤 선발 테스트</h2>
+        <p>Language Section</p>
+<h1> 언어 영역은 총 15문제로 구성되어 있습니다.</h1>
+<h1> 1번부터 5번 까지는 엔트리, 6번부터 10번까지는 파이선, 11번부터 15번까지는 C언어</h1>
+<h1> 로 구성되어 있음을 미리 알려드리는 바입니다.</h1>
+    </header>
+
+
+    <table>
+
+        <!--   QuestionNumber는 문제 번호 0부터 100까지 증가-->
+        <!--   QuestionCategory는 문제 카테고리 리스트로 사고력, 엔트리, 파이썬 씨 순서로 들어감-->
+        <!--   PassorFail은 DB로부터 검사하여 문제를 풀었는지 아닌지 확인할 변수-->
+        {% for i in range(0,3): %}
+        <tr>
+
+            {% if(PassorFail[i*5] == 'X'): %}
+            <td> <a href="/leveltest/Q{{i*5+26}}" class="button"> {{i*5+1}}번 문제풀기 </a></td>
+            <td><img src='/static/image/notattempted.png'></td>
+            {% else: %}
+            <td> <a href="/leveltest/Q{{i*5+26}}" class="button primary disabled"> {{i*5+1}}번 문제풀기 </a></td>
+            <td><img src='/static/image/attempted.png'></td>
+            {% endif %}
+
+            {% if(PassorFail[i*5+1] == 'X'): %}
+            <td> <a href="/leveltest/Q{{i*5+27}}" class="button"> {{i*5+2}}번 문제풀기 </a></td>
+            <td><img src='/static/image/notattempted.png'></td>
+            {% else: %}
+            <td> <a href="/leveltest/Q{{i*5+27}}" class="button primary disabled"> {{i*5+2}}번 문제풀기 </a></td>
+            <td><img src='/static/image/attempted.png'></td>
+            {% endif %}
+
+            {% if(PassorFail[i*5+2] == 'X'): %}
+            <td> <a href="/leveltest/Q{{i*5+28}}" class="button"> {{i*5+3}}번 문제풀기 </a></td>
+            <td><img src='/static/image/notattempted.png'></td>
+            {% else: %}
+            <td> <a href="/leveltest/Q{{i*5+28}}" class="button primary disabled"> {{i*5+3}}번 문제풀기 </a></td>
+            <td><img src='/static/image/attempted.png'></td>
+            {% endif %}
+            
+            {% if(PassorFail[i*5+3] == 'X'): %}
+            <td> <a href="/leveltest/Q{{i*5+29}}" class="button"> {{i*5+4}}번 문제풀기 </a></td>
+            <td><img src='/static/image/notattempted.png'></td>
+            {% else: %}
+            <td> <a href="/leveltest/Q{{i*5+29}}" class="button primary disabled"> {{i*5+4}}번 문제풀기 </a></td>
+            <td><img src='/static/image/attempted.png'></td>
+            {% endif %}
+
+            {% if(PassorFail[i*5+4] == 'X'): %}
+            <td> <a href="/leveltest/Q{{i*5+30}}" class="button"> {{i*5+5}}번 문제풀기 </a></td>
+            <td><img src='/static/image/notattempted.png'></td>
+            {% else: %}
+            <td> <a href="/leveltest/Q{{i*5+30}}" class="button primary disabled"> {{i*5+5}}번 문제풀기 </a></td>
+            <td><img src='/static/image/attempted.png'></td>
+            {% endif %}
+        </tr>
+
+        {% endfor %}
+    </table>
+    <br />
+    <center> <a href="/endtest" class="button">시험 종료 하기</a></center>
+   
+</section>
+
+{% endblock %}
+

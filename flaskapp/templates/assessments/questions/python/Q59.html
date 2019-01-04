@@ -1,0 +1,40 @@
+{% extends "template.html" %}
+{% block content %}
+<!-- Main -->
+<section id="main" class="wrapper">
+    <Question>
+            <div align="center">
+            <div style="width : 50%">
+                <h1 style="text-align:left"> 
+                    39. 다음은 Python에서 함수를 활용하여 정렬되지 않은 데이터를 오름차순으로 정렬하는 프로그램을 작성한 것이다. 빈 칸에 들어갈 코드를 보기에서 고르시오.
+                </h1>
+            </div>
+            <pre style ="width : 50%;">
+                <code style="text-align: left">
+
+def M(L):
+    B = L[0]
+    for i in range(1,len(L)):
+        if([ 빈 칸 ]):
+            B = L[i]
+    print(B)
+
+list = [1,2,5,9,-3.6,10,4]
+M(list)
+
+                </code>
+            </pre>
+            <table>
+                {% for i in range(0,8): %}
+                    <tr>
+                        {% for j in range(1,6): %}
+                            <td> <a href="/A{{qnum}}/{{i*5+j}}" class="button"> {{bogi[i*5+j-1]}} </a></td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            </table>
+        </Question>
+    </div>
+</section>
+{% endblock %}
+

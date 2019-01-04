@@ -1,0 +1,48 @@
+{% extends "template.html" %}
+{% block content %}
+<!-- Main -->
+<section id="main" class="wrapper">
+    <Question>
+            <div align="center">
+                <div style="width : 50%">
+                    <h1 style="text-align:left"> 
+                        40. 다음은 10진수의 정수를 입력받아 2진수로 변환하는 프로그램의 일부이다. 빈 칸에 들어갈 숫자의 합을 나타낸 보기를 고르시오.
+                        단, 연산기호는 %와 /만 사용하시오.
+                    </h1>
+                </div>
+            <pre style ="width : 50%;">
+                <code style="text-align: left">
+def A(N):
+    if (N == 1):
+        return '1'
+    R = ''
+    while True:
+        if (N % 2 == [ 빈 칸 ]):
+            R += '0'
+        else:
+            R += '[ 빈 칸 ]'
+        N = N / 2
+
+        if (N == 1):
+            R += '1'
+            return R[::[ 빈 칸 ]]
+
+N = int(input())
+print (A(N))
+
+                </code>
+            </pre>
+            <table>
+                {% for i in range(0,8): %}
+                    <tr>
+                        {% for j in range(1,6): %}
+                            <td> <a href="/A{{qnum}}/{{i*5+j}}" class="button"> {{bogi[i*5+j-1]}} </a></td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+        </Question>
+</section>
+{% endblock %}
+

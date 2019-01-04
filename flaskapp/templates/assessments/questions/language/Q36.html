@@ -1,0 +1,37 @@
+﻿
+{% extends "template.html" %}
+{% block content %}
+<!-- Main -->
+<section id="main" class="wrapper">
+    <Question>
+        <div align="center">
+            <div style="width : 50%">
+                <h1 style="text-align:left">
+                    11.x라는 변수에 151 <br>
+                    y라는 변수에 15<br>
+                    z라는 변수에 51 이 저장되어 있을 때, <br>
+                    다음과 같은 결과가 나오기 위해 변수를 이용해 괄호를 완성해주세요 <br>
+
+                    printf(“%d%d%d” , (1), (2), (3) );<br>
+
+                    결과 : <br>
+                    1515151<br>
+                </h1></div>
+           
+ 모든 답은 대소문자를 구별하지 않고 답을 고르시기 바랍니다. </div>
+                     <table>
+            {% for i in range(0,8): %}
+            <tr>
+                {% for j in range(1,6): %}
+    
+                    <td> <a onmouseover="Changing({{i}},{{j}})" id="Dict{{5*i+j}}" class="button"> {{bogi[i*5+j-1]}} </a></td>
+                {% endfor %}
+            </tr>
+    
+        {% endfor %}
+        </table>
+
+</Question>
+
+</section>
+{% endblock %}
